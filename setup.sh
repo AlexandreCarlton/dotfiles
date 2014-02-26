@@ -14,6 +14,7 @@ echo "Creating $OLDDIR for backup of existing dotfiles..."
 mkdir -p $OLDDIR
 echo "Finished creating $OLDDIR ."
 
+
 echo "Creating folders if they don't already exist..."
 for folder in $FOLDERS; do
     mkdir -p dir/$folder
@@ -23,10 +24,7 @@ echo "Finished creating folders."
 
 echo "Commencing backup and linking of files and folders..."
 for file in $FILES $FOLDERS; do
-
-    # Check if file is symlink, directory or regular file
-    # if [ -L ~/.$file -o -d ~/.$file -o -f ~/.$file ]; then 
-    
+   
     if [ -e ~/.$file ]; then
         echo "Moving existing ~/.$file to $OLDDIR ..."
         mv ~/.$file $OLDDIR

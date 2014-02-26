@@ -1,4 +1,8 @@
-" Vundle settings
+"
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" Vundle settings                                "
+"                                                "
+""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/vundle
@@ -12,139 +16,72 @@ Bundle 'gmarik/vundle'
 " :BundleSearch(!) foo - search (or refresh cache first) for foo
 " :BundleClean(!)      - confirm (or auto-approve) remove of unused bundles
 
-
-" Solarized Color Scheme
-Bundle 'altercation/vim-colors-solarized'
-
-" Statusline using VimScript (not Python like Powerline)
-Bundle 'bling/vim-airline'      
-
-" Handles csv files.
-Bundle 'chrisbra/csv.vim'       
-
-" Haskell plugins
-Bundle 'dag/vim2hs'
-
-" Close XML/HTML Tags - not great.
-Bundle 'docunext/closetag.vim'
-
-" Haskell plugin
-Bundle 'eagletmt/ghcmod-vim'
-
-" Completion plugin for Haskell using ghc-mod
-Bundle 'eagletmt/neco-ghc'
-
-" Shell prompt generator. 
-" Bundle 'edkolev/promptline.vim' 
-
-" GitHub Color Scheme
-Bundle 'endel/vim-github-colorscheme'
-
-" Aligns text.
-Bundle 'godlygeek/tabular'      
-
-" Makes NERDTree handle tabs seamlessly.
-Bundle 'jistr/vim-nerdtree-tabs'
-
-" Add CoffeeScript compilation support
-Bundle 'kchmck/vim-coffee-script'
-
-" Superior Lisp Interaction Mode for Vim
-Bundle 'kovisoft/slimv'
-
-" Statusline using Python
-" Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-
-" Easily browse tags of source files.
-" Bundle 'majutsushi/tagbar'
-
-" Twilight Color Scheme (TextMate)
-Bundle 'matthewtodd/vim-twilight'
-
-" CoffeeScript indent and syntax highlighting
-Bundle 'mintplant/vim-literate-coffeescript'
-
-" JavaScript support
-Bundle 'pangloss/vim-javascript'
-
-" Autocompletion for quotes, parens, etc.
-Bundle 'Raimondi/delimitMate'
-
-" Easier commenting.
-Bundle 'scrooloose/nerdcommenter'
-
-" Explore filesystem within Vim.
-Bundle 'scrooloose/nerdtree'    
-
-" Syntax checker.
-Bundle 'scrooloose/syntastic'   
-
-" Molokai Color Scheme (Sublime Text)
-Bundle 'tomasr/molokai'
-
-" Git wrapper.
-Bundle 'tpope/vim-fugitive'     
-
-" End certain strutures automatically.
-Bundle 'tpope/vim-endwise'      
-
-" Markdown runtime viles
-Bundle 'tpope/vim-markdown'
-
-" Defaults everyone can agree on.
-Bundle 'tpope/vim-sensible'     
-
-" Easily change surroundings (e.g. tags) in pairs.
-Bundle 'tpope/vim-surround'     
-
-" Code Completion.
-Bundle 'Valloric/YouCompleteMe'
-
+source ~/.vim/plugins.vim
 
 syntax on
 filetype plugin indent on 
 
-" End Vundle settings.
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" Colors & Fonts                                 "
+"                                                "
+""""""""""""""""""""""""""""""""""""""""""""""""""
+
+colorscheme molokai
+
+" Enable 256-Colour mode
+set t_Co=256
+
+" Set utf8 as standard encoding and en_US as standard language
+set encoding=utf8
+
+" Set unix as standard file type
+set fileformats=unix,dos,mac
 
 
-" General Settings not found in vim-sensible.
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" User Interface                                 "
+"                                                "
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" Set line numbers
+set number          
 
-colorscheme molokai " Use default colorscheme for Sublime Text
-set number          " Set Line numbers
-set t_Co=256        " Enable 256-Colour mode
-set tabstop=4       " Number of spaces <Tab> counts for.
-set softtabstop=4   " Number of spaces <Tab> counts when inserting <Tab>
-set shiftwidth=4    " Indent/oudent by 4 columns.
-set expandtab       " Always use spaces instead of tabs.
-set ignorecase      " Make searches case-insensitive.
+" Make searches case-insensitive.
+set ignorecase      
 
+" Make searches case-senstive with the inclusion of an upper-case character.
+set smartcase
 
-" Plugin settings.
-
-
-" Syntastic settings
-"
-" Use clang as checker
-let g:syntastic_cpp_compiler = 'clang++' 
-" Use C++11 as standard
-let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++' 
+" Highlight search results (C-L to clear highlighting)
+set hlsearch        
 
 
-" NERDTree Tabs settings
-"
-" map so typing it is unnecessary
-map <Leader>n <plug>NERDTreeTabsToggle<CR> 
-" Open NERDtree on Console vim startup
-let g:nerdtree_tabs_open_on_console_startup = 1
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" Text, Tab & Indent                             "
+"                                                "
+""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Number of spaces <Tab> counts for.
+set tabstop=4
+
+" Number of spaces <Tab> counts when inserting <Tab>
+set softtabstop=4
+
+" Indent/oudent by 4 columns.
+set shiftwidth=4
+
+" Always use spaces instead of tabs.
+set expandtab
+
+" Smart autoindenting when starting a new line.
+set smartindent
 
 
-" YouCompleteMe settings
-"
-" Find file to check
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
- 
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugin Setings                                 "
+"                                                "
+""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" TagBar settings
-"
-" Map F8 to toggle TagBar window
-nmap <F8> :TagBarToggle<CR>
+source ~/.vim/plugin-settings.vim
+
+
