@@ -12,6 +12,7 @@ Bundle 'gmarik/vundle'
 " :BundleSearch(!) foo - search (or refresh cache first) for foo
 " :BundleClean(!)      - confirm (or auto-approve) remove of unused bundles
 
+
 " Solarized Color Scheme
 Bundle 'altercation/vim-colors-solarized'
 
@@ -21,8 +22,17 @@ Bundle 'bling/vim-airline'
 " Handles csv files.
 Bundle 'chrisbra/csv.vim'       
 
+" Haskell plugins
+Bundle 'dag/vim2hs'
+
 " Close XML/HTML Tags - not great.
 Bundle 'docunext/closetag.vim'
+
+" Haskell plugin
+Bundle 'eagletmt/ghcmod-vim'
+
+" Completion plugin for Haskell using ghc-mod
+Bundle 'eagletmt/neco-ghc'
 
 " Shell prompt generator. 
 " Bundle 'edkolev/promptline.vim' 
@@ -38,6 +48,9 @@ Bundle 'jistr/vim-nerdtree-tabs'
 
 " Add CoffeeScript compilation support
 Bundle 'kchmck/vim-coffee-script'
+
+" Superior Lisp Interaction Mode for Vim
+Bundle 'kovisoft/slimv'
 
 " Statusline using Python
 " Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
@@ -108,24 +121,30 @@ set ignorecase      " Make searches case-insensitive.
 
 " Plugin settings.
 
-" Syntastic settings
-let g:syntastic_cpp_compiler = 'clang++' " Use clang as checker
-let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++' " Use C++11 as standard
 
-" Vim-airline settings
-" let g:airline_section_b = '%{strftime("%c")}' "Display time in bottom left corner (tabnew to open, g[Tt] to switch)
-" let g:airline#extensions#tabline#enabled = 1 " Display all buffers when one tab is open
+" Syntastic settings
+"
+" Use clang as checker
+let g:syntastic_cpp_compiler = 'clang++' 
+" Use C++11 as standard
+let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++' 
+
 
 " NERDTree Tabs settings
+"
 " map so typing it is unnecessary
 map <Leader>n <plug>NERDTreeTabsToggle<CR> 
 " Open NERDtree on Console vim startup
-" let g:nerdtree_tabs_open_on_console_startup = 1
+let g:nerdtree_tabs_open_on_console_startup = 1
+
 
 " YouCompleteMe settings
+"
 " Find file to check
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
  
+
 " TagBar settings
+"
 " Map F8 to toggle TagBar window
 nmap <F8> :TagBarToggle<CR>

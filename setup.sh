@@ -1,37 +1,45 @@
 #!/bin/sh
 
-# Creates symlinks to dotfiles while backing up old ones.
-# Set up Vim packages
-
-# Largely stolen from michaeljsmalley
+# Creates symlinks to dotfiles while backing up old ones
+# Sets up Vim packages
 
 
-dir=~/.dotfiles
-olddir=~/.dotfiles_old
-files="bashrc bash_profile gitconfig vimrc vim"
+DIR=~/.dotfiles
+OLDDIR=~/.dotfiles_old
+FILES="bash_profile gitconfig vimrc"
+FOLDERS="vim"
 
 
-echo "Creating $olddir for backup of existing dotfiles..."
-mkdir -p $olddir
+echo "Creating $OLDDIR for backup of existing dotfiles..."
+mkdir -p $OLDDIR
+echo "Finished creating $OLDDIR ."
 
-echo "Commencing backup and linking of files..."
-for file in $files; do
+echo "Creating folders if they don't already exist..."
+for folder in $FOLDERS; do
+    mkdir -p dir/$folder
+done
+echo "Finished creating folders."
 
-    if [ -f ~/.$file ]; then
-        echo "Moving existing ~/.$file to $olddir ..."
-        mv ~/.$file $olddir
+
+echo "Commencing backup and linking of files and folders..."
+for file in $FILES $FOLDERS; do
+
+    # Check if file is symlink, directory or regular file
+    # if [ -L ~/.$file -o -d ~/.$file -o -f ~/.$file ]; then 
+    
+    if [ -e ~/.$file ]; then
+        echo "Moving existing ~/.$file to $OLDDIR ..."
+        mv ~/.$file $OLDDIR
     fi
 
     echo "Creating symlink of $file ..."
-    ln -s $dir/$file ~/.$file
+    ln -s $DIR/$file ~/.$file
 
 done
-echo "Finished backup and linking."
+echo "Finished backup into $OLDDIR and linking."
 
 
-
-
-# Setup Vundle plugins
+echo "Setting up Vundle plugin..."
 if [ ! -d ~/.vim/bundle/vundle ]; then
 
     echo "Creating ~/.vim/bundle if not already present..."
@@ -39,17 +47,21 @@ if [ ! -d ~/.vim/bundle/vundle ]; then
 
     echo "Cloning Vundle into ~/.vim/bundle/vundle..."
     git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+
+    echo "Finished setting up Vundle plugin."
+else
+    echo "Vundle already installed."
 fi
 
 echo "Installing Vundle packages..."
 vim +BundleInstall +qall
 
 
-# Setup promptline if it was included.
+echo "Setting up Promptline if included..."
 if [ ! -d ~/.vim/bundle/promptline.vim ]; then
     echo "Promptline not included in .vimrc, skipping setting..."
 else
-    echo "Setting up Promptline... "
+    echo "Promptline included in .vimrc, setting up..."
     vim +"PromptlineSnapshot ~/.shell_prompt.sh airline" +qall
 fi
 
