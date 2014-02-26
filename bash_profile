@@ -7,4 +7,6 @@ fi
 
 alias ls="ls -Glah"
 
+alias ack=ack-grep
+
 cs() { cd "$1" && ls; }

@@ -49,6 +49,9 @@ Bundle 'scrooloose/nerdtree'
 "                                                "
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
+" TeX plugin (requires LaTeX-Box)
+Bundle 'coot/atp_vim'
+
 " Haskell plugins
 Bundle 'dag/vim2hs'
 
@@ -57,6 +60,9 @@ Bundle 'kchmck/vim-coffee-script'
 
 " Superior Lisp Interaction Mode for Vim
 Bundle 'kovisoft/slimv'
+
+" LaTeX Plugin
+Bundle 'LaTeX-Box-Team/LaTeX-Box'
 
 " CoffeeScript indent and syntax highlighting
 Bundle 'mintplant/vim-literate-coffeescript'
@@ -99,6 +105,9 @@ Bundle 'Valloric/YouCompleteMe'
 
 " Aligns text.
 Bundle 'godlygeek/tabular'      
+
+" Ack wrapper.
+Bundle 'mileszs/ack.vim'
 
 " Easier commenting.
 Bundle 'scrooloose/nerdcommenter'

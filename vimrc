@@ -1,4 +1,4 @@
-"
+
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Vundle settings                                "
 "                                                "
@@ -16,10 +16,14 @@ Bundle 'gmarik/vundle'
 " :BundleSearch(!) foo - search (or refresh cache first) for foo
 " :BundleClean(!)      - confirm (or auto-approve) remove of unused bundles
 
-source ~/.vim/plugins.vim
+" List of bundles.
+source ~/.vim/vundles.vim
 
 syntax on
 filetype plugin indent on 
+
+" Bundle settings
+source ~/.vim/vundle-settings.vim
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -53,7 +57,7 @@ set ignorecase
 set smartcase
 
 " Highlight search results (C-L to clear highlighting)
-set hlsearch        
+set hlsearch
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -75,13 +79,3 @@ set expandtab
 
 " Smart autoindenting when starting a new line.
 set smartindent
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
-" Plugin Setings                                 "
-"                                                "
-""""""""""""""""""""""""""""""""""""""""""""""""""
-
-source ~/.vim/plugin-settings.vim
-
-

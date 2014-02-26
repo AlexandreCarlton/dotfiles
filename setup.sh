@@ -10,6 +10,7 @@ FILES="bash_profile gitconfig vimrc"
 FOLDERS="vim"
 
 
+
 echo "Creating $OLDDIR for backup of existing dotfiles..."
 mkdir -p $OLDDIR
 echo "Finished creating $OLDDIR ."
@@ -21,6 +22,11 @@ for folder in $FOLDERS; do
 done
 echo "Finished creating folders."
 
+##################################################
+#                                                #
+# Backup & Symlink                               #
+#                                                #
+##################################################
 
 echo "Commencing backup and linking of files and folders..."
 for file in $FILES $FOLDERS; do
@@ -37,11 +43,18 @@ done
 echo "Finished backup into $OLDDIR and linking."
 
 
-echo "Setting up Vundle plugin..."
-if [ ! -d ~/.vim/bundle/vundle ]; then
+##################################################
+#                                                #
+# Vundle                                         #
+#                                                #
+##################################################
 
-    echo "Creating ~/.vim/bundle if not already present..."
-    mkdir -p ~/.vim/bundle
+# Note: zsh can automatically install vundle for you.
+echo "Setting up Vundle plugin..."
+if [ ! -d ~/.vim/bundle/vundle/.git/ ]; then
+
+    echo "Creating ~/.vim/bundle/vundle..."
+    mkdir -p ~/.vim/bundle/vundle
 
     echo "Cloning Vundle into ~/.vim/bundle/vundle..."
     git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
@@ -54,6 +67,12 @@ fi
 echo "Installing Vundle packages..."
 vim +BundleInstall +qall
 
+
+##################################################
+#                                                #
+# Promptline                                     #
+#                                                #
+##################################################
 
 echo "Setting up Promptline if included..."
 if [ ! -d ~/.vim/bundle/promptline.vim ]; then
