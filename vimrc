@@ -17,7 +17,7 @@ Bundle 'gmarik/vundle'
 " :BundleClean(!)      - confirm (or auto-approve) remove of unused bundles
 
 " List of bundles.
-source ~/.vim/vundles.vim
+source ~/.vim/vundle-list.vim
 
 syntax on
 filetype plugin indent on 
@@ -58,6 +58,12 @@ set smartcase
 
 " Highlight search results (C-L to clear highlighting)
 set hlsearch
+
+" Remove the pop up menu (if visible) after moving in Insert mode.
+autocmd CursorMovedI * if pumvisible() == 0|silent! pclose|endif
+
+" Remove the pop up menu (if visible) when leaving Insert mode.
+autocmd InsertLeave * if pumvisible() == 0|silent! pclose|endif
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""

@@ -88,6 +88,9 @@ Bundle 'eagletmt/ghcmod-vim'
 " Completion plugin for Haskell using ghc-mod
 Bundle 'eagletmt/neco-ghc'
 
+" Python for static analysis, code completion
+" Bundle 'klen/python-mode'
+
 " Autocompletion for quotes, parens, etc.
 Bundle 'Raimondi/delimitMate'
 

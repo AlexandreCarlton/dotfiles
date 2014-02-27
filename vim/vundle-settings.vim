@@ -31,10 +31,25 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_auto_jump = 1
 
 " Use clang as checker
-let g:syntastic_cpp_compiler = 'clang++' 
+" let g:syntastic_cpp_compiler = 'clang++' 
 
 " Use C++11 as standard
-let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++' 
+" let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++' 
+
+" Ignore on C/C++, as YouCompleteMe handles that.
+let g:syntastic_ignore_files = ['\.c$', '\.cc$']
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" Python-Mode                                    "
+"                                                "
+""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Disable automatic lint checking as Syntastic's is better.
+let g:pymode_lint_write = 0
+
+" Disable autocompletion as Jedi (used in YouCompleteMe) is better.
+let g:pymode_rope_completion = 0
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
