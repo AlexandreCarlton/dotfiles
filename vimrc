@@ -1,29 +1,38 @@
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
-" Vundle settings                                "
+" NeoBundle settings                                "
 "                                                "
 """"""""""""""""""""""""""""""""""""""""""""""""""
-set nocompatible
-filetype off
-set rtp+=~/.vim/bundle/vundle
-call vundle#rc()
+if has('vim_starting')
 
-" Let Vundle manage Vundle. (NTS: Consider using NeoBundle)
-Bundle 'gmarik/vundle'
+	" Use Vim instead of Vi.
+	set nocompatible
 
-" :BundleList          - list configured bundles
-" :BundleInstall(!)    - install (update) bundles
-" :BundleSearch(!) foo - search (or refresh cache first) for foo
-" :BundleClean(!)      - confirm (or auto-approve) remove of unused bundles
+	" Enable NeoBundle commands.
+	set runtimepath+=~/.vim/bundle/neobundle.vim
+endif
+
+call neobundle#rc(expand('~/.vim/bundle/'))
+
+" Let NeoBundle manage NeoBundle.
+
+NeoBundle 'Shougo/neobundle.vim'
+
+" :NeoBundleList          - list configured bundles
+" :NeoBundleInstall(!)    - install (update) bundles
+" :NeoBundleClean(!)      - confirm (or auto-approve) remove of unused bundles
 
 " List of bundles.
-source ~/.vim/vundle-list.vim
+source ~/.vim/bundle-list.vim
 
 syntax on
-filetype plugin indent on 
+filetype plugin indent on
+
+" Check for any uninstalled bundles on startup.
+NeoBundleCheck
 
 " Bundle settings
-source ~/.vim/vundle-settings.vim
+source ~/.vim/bundle-settings.vim
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -48,22 +57,19 @@ set fileformats=unix,dos,mac
 "                                                "
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Set line numbers
-set number          
+set number
 
 " Make searches case-insensitive.
-set ignorecase      
+set ignorecase
 
 " Make searches case-senstive with the inclusion of an upper-case character.
 set smartcase
 
-" Highlight search results (C-L to clear highlighting)
+" Highlight search results (<C-l> to clear highlighting)
 set hlsearch
 
-" Remove the pop up menu (if visible) after moving in Insert mode.
-autocmd CursorMovedI * if pumvisible() == 0|silent! pclose|endif
-
-" Remove the pop up menu (if visible) when leaving Insert mode.
-autocmd InsertLeave * if pumvisible() == 0|silent! pclose|endif
+" When buffer is abandoned it becomes hidden.
+set hidden
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -85,3 +91,23 @@ set expandtab
 
 " Smart autoindenting when starting a new line.
 set smartindent
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" Mappings                                       "
+"                                                "
+""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Rapidly these keys (instead of Esc) to go Normal mode.
+inoremap jk <Esc>
+inoremap kj <Esc>
+
+" When wrapping is enabled, move down by row not by line.
+nnoremap j gj
+nnoremap k gk
+
+" Use free-form input (Don't assume everything is offset by 8 spaces)
+let fortran_free_source = 1
+
+" Make syntax colouring more precise (albeit slower)
+let fortran_more_precise = 1

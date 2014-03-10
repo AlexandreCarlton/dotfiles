@@ -1,0 +1,47 @@
+# To install the packags in this list:
+# pacman -S $(sed s/#.*//g ~/.dotfiles/arch/package-list.txt)
+# For information, consult the Arch Wiki.
+
+# General
+npd         # Manages syncing of time
+chromium    # Web browser
+
+
+# GUI (Graphics-agnostic)
+xorg-server xorg-server-utils xorg-xinit # base xorg packages
+mesa                                     # mesa for 3D support
+ttf-dejavu                               # TrueType fonts (scalable)
+gnome                                    # Gnome (ensure you get gdm) 
+screenfetch                              # Shows info about machine
+
+# Entertainment
+steam       # [Multilib] Digital game distribution service 
+desmume     # DS Emulator
+vbam-gtk    # GameBoy (Color|Advance) Emulator
+handbrake   # DVD ripping program ideal for mkv/x264
+beets       # Command-line music manager
+flashplugin # Flash (need for Youtube)
+
+# Work 
+zsh                 # Better shell
+xmonad              # Tiling manager
+xmonad-contrib      # Extra features
+xmobar              # Toolbar for xmonad
+notification-daemon # For nice popups 
+xorg-xmessage       # For nicer error message
+tmux                # BSD-licensed terminal multiplexer
+
+# Languages & support
+vim
+lua
+clang
+clang-analyzer  # Static analyzer
+gfortran
+ghc
+
+
+# Chat & News
+links       # Console web browser
+pidgin      # Universal chat client
+irssi       # ncurses-absed irc chat client
+newsbeuter  # Ncurses RSS aggregator
