@@ -27,9 +27,11 @@ zsh                 # Better shell
 xmonad              # Tiling manager
 xmonad-contrib      # Extra features
 xmobar              # Toolbar for xmonad
+trayer              # Complement for xmonad
 notification-daemon # For nice popups 
 xorg-xmessage       # For nicer error message
 tmux                # BSD-licensed terminal multiplexer
+vimpager            # Scan documentation better
 
 # Languages & support
 vim

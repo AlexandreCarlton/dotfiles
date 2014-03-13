@@ -154,8 +154,8 @@ NeoBundle 'scrooloose/syntastic'
 " " Clang-based completion for C-family languages and Python.
 NeoBundle 'Valloric/YouCompleteMe', {
     \   'build' : {
-    \       'unix' : './install.sh --clang-completer --omnisharp-completer',
-    \       'mac' : './install.sh --clang-completer --omnisharp-completer'
+    \       'unix' : 'cd ~/.vim/bundle/YouCompleteMe && ./install.sh --clang-completer --system-libclang --omnisharp-completer',
+    \       'mac' : 'cd ~/.vim/bundle/YouCompleteMe && ./install.sh --clang-completer --system-libclang --omnisharp-completer'
     \    }
     \}
 

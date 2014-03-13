@@ -7,6 +7,7 @@ snippet program "Program" b
 PROGRAM ${1:name}
 	IMPLICIT NONE
 	${2:! code}
+STOP
 END PROGRAM $1
 endsnippet
 
@@ -124,7 +125,7 @@ LOGICAL :: ${1:name}
 endsnippet
 
 snippet character "Character" b
-CHARACTER(LEN=${1:size}) :: ${2:name}
+CHARACTER(len=${1:size}) :: ${2:name}
 endsnippet
 
 # Intent
@@ -146,37 +147,37 @@ LOGICAL, INTENT(${1:INOUT}) :: ${2:name}
 endsnippet
 
 snippet chi "Character Intent" b
-CHARACTER(LEN=${1:size}), INTENT(${2:INOUT}) :: ${3:name}
+CHARACTER(len=${1:size}), INTENT(${2:INOUT}) :: ${3:name}
 endsnippet
 
 # Dimensions
 
 snippet dim "Dimension" b
-${1:datatype}, DIMENSION(${2:size}) :: ${3:name}
+${1:datatype}, DIMENSION(${2::}) :: ${3:name}
 endsnippet
 
 snippet intdim "Integer Dimension" b
-INTEGER(KIND=${1:4}), DIMENSION(${2:size}) :: ${3:name}
+INTEGER(KIND=${1:4}), DIMENSION(${2::}) :: ${3:name}
 endsnippet
 
 snippet realdim "Real Dimension" b
-REAL(KIND=${1:8}), DIMENSION(${2:size}) :: ${3:name}
+REAL(KIND=${1:8}), DIMENSION(${2::}) :: ${3:name}
 endsnippet
 
 snippet comdim "Complex Dimension" b
-COMPLEX(KIND=${1:8}), DIMENSION(${2:size}) :: ${3:name}
+COMPLEX(KIND=${1:8}), DIMENSION(${2::}) :: ${3:name}
 endsnippet
 
 snippet intdimall "Integer Dimension Allocatable" b
-INTEGER(KIND=${1:4}), DIMENSION(${2:size}), ALLOCATABLE :: ${3:name}
+INTEGER(KIND=${1:4}), DIMENSION(${2::}), ALLOCATABLE :: ${3:name}
 endsnippet
 
 snippet realdimall "Real Dimension Allocatable" b
-REAL(KIND=${1:8}), DIMENSION(${2:size}), ALLOCATABLE :: ${3:name}
+REAL(KIND=${1:8}), DIMENSION(${2::}), ALLOCATABLE :: ${3:name}
 endsnippet
 
 snippet comdimall "Complex Dimension Allocatable" b
-COMPLEX(KIND=${1:8}), DIMENSION(${2:size}), ALLOCATABLE :: ${3:name}
+COMPLEX(KIND=${1:8}), DIMENSION(${2::}), ALLOCATABLE :: ${3:name}
 endsnippet
 
 # I/O

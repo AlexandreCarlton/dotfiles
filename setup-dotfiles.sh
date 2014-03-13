@@ -7,20 +7,13 @@
 DIR=~/.dotfiles
 OLDDIR=~/.dotfiles_old
 FILES="bash_profile gitconfig vimrc"
-FOLDERS="vim config"
-
+FOLDERS="vim"
+MERGE_FOLDERS="config" # Folders that have things in them we want to keep.
 
 echo "Creating $OLDDIR for backup of existing dotfiles..."
 mkdir -p $OLDDIR
 echo "Finished creating $OLDDIR ."
 
-
-# Is this even necessary?
-echo "Creating folders if they don't already exist..."
-for folder in $FOLDERS; do
-    mkdir -p $OLDDIR/$folder
-done
-echo "Finished creating folders."
 
 ##################################################
 #                                                #
@@ -49,7 +42,7 @@ echo "Finished backup into $OLDDIR and linking."
 #                                                #
 ##################################################
 
-# Note: zsh can automatically install vundle for you.
+# Note: oh-my-zsh can automatically install vundle for you.
 
 BUNDLE_FOLDER=~/.vim/bundle
 BUNDLE_MANAGER=neobundle.vim
