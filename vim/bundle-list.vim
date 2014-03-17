@@ -41,11 +41,10 @@ NeoBundle 'chrisbra/histwin.vim'
 NeoBundle 'edkolev/promptline.vim'
 
 " Replace Python operators with nice symbols.
-NeoBundle 'ehamberg/vim-cute-python'
+" NeoBundle 'ehamberg/vim-cute-python'
 
 " Makes NERDTree handle tabs seamlessly.
 NeoBundle 'jistr/vim-nerdtree-tabs'
-
 
 " Easily browse tags of source files.
 " NeoBundle 'majutsushi/tagbar'
@@ -60,7 +59,7 @@ NeoBundle 'mhinz/vim-signify'
 NeoBundle 'scrooloose/nerdtree'
 
 " Replace haskell operators with nice symbols.
-NeoBundle 'Twinside/vim-haskellConceal'
+" NeoBundle 'Twinside/vim-haskellConceal'
 
 " Diplay vertical lines for each indentation level.
 NeoBundle 'Yggdroot/indentLine'
@@ -139,19 +138,26 @@ NeoBundle 'eagletmt/neco-ghc'
 " Python for static analysis, code completion
 NeoBundle 'klen/python-mode'
 
+" Convert CSS-like syntax ( html > body > p{Text} ) to HTML. 
+NeoBundle 'mattn/emmet-vim'
+
 " Autocompletion for quotes, parens, etc.
 NeoBundle 'Raimondi/delimitMate'
 
-" Convert CSS-like syntax ( html > body > p{Text} ) to HTML with Ctrl+E
-" Breaks when using brackets (top elements evaluated to div) - Use Emmet?
-" NeoBundle 'rstacruz/sparkup', {
-"     \   'rtp' : 'vim/'
-"     \}
-
-" Syntax checker.
+" General syntax checker.
 NeoBundle 'scrooloose/syntastic'
 
-" " Clang-based completion for C-family languages and Python.
+" Allows asynchronous execution (great for syntax checkers)
+NeoBundle 'Shougo/vimproc.vim', {
+    \ 'build': {
+    \       'windows': 'make -f make_mingw32.mak',
+    \       'cygwin': 'make -f make_cygwin.mak',
+    \       'mac': 'make -f make_mac.mak',
+    \       'unix': 'make -f make_unix.mak'
+    \   }
+    \ }
+
+" Clang-based completion for C-family languages and Python.
 NeoBundle 'Valloric/YouCompleteMe', {
     \   'build' : {
     \       'unix' : 'cd ~/.vim/bundle/YouCompleteMe && ./install.sh --clang-completer --system-libclang --omnisharp-completer',
@@ -169,14 +175,14 @@ NeoBundle 'Valloric/YouCompleteMe', {
 " Aligns text - conflicts with LaTeX-Box
 " NeoBundle 'godlygeek/tabular'
 
-" Fuzzy file finder
-NeoBundle 'kien/ctrlp.vim'
-
 " Ack wrapper.
 NeoBundle 'mileszs/ack.vim'
 
 " Easier commenting.
 NeoBundle 'scrooloose/nerdcommenter'
+
+" Fuzzy file finder
+NeoBundle 'Shougo/unite.vim'
 
 " Include snippets on <Tab> completion
 NeoBundle 'SirVer/ultisnips'

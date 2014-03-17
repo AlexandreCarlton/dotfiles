@@ -5,17 +5,25 @@
 # General
 npd         # Manages syncing of time
 chromium    # Web browser
+xorg-utils  # has 'xprop'- good for finding class names in xmonad
 
 
 # GUI (Graphics-agnostic)
 xorg-server xorg-server-utils xorg-xinit # base xorg packages
 mesa                                     # mesa for 3D support
-ttf-dejavu                               # TrueType fonts (scalable)
 gnome                                    # Gnome (ensure you get gdm) 
 screenfetch                              # Shows info about machine
 
-# Entertainment
+# Fonts
+ttf-dejavu                               # TrueType fonts (scalable)
+ttf-liberation # Arial font for Steam
+ttf-ubunty-font-family # Ubuntu's fonts
+
+# Steam
 steam       # [Multilib] Digital game distribution service 
+lib32-alsa-plugins # Enable sound for 32bit games on 64bit systems.
+
+# Entertainment
 desmume     # DS Emulator
 vbam-gtk    # GameBoy (Color|Advance) Emulator
 handbrake   # DVD ripping program ideal for mkv/x264
@@ -28,6 +36,7 @@ xmonad              # Tiling manager
 xmonad-contrib      # Extra features
 xmobar              # Toolbar for xmonad
 trayer              # Complement for xmonad
+dmenu               # Easily startup programs
 notification-daemon # For nice popups 
 xorg-xmessage       # For nicer error message
 tmux                # BSD-licensed terminal multiplexer

@@ -106,6 +106,12 @@ inoremap kj <Esc>
 nnoremap j gj
 nnoremap k gk
 
+" Sublime-style autoindent
+imap {<CR> {<CR>}<C-o>O
+
+" Change leader to something saner.
+let mapleader=","
+
 " Use free-form input (Don't assume everything is offset by 8 spaces)
 let fortran_free_source = 1
 

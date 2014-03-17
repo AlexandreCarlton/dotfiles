@@ -1,6 +1,7 @@
 # Alexandre's commands to set up Arch
 These are in no way meant to replace the [Wiki](https://wiki.archlinux.org).
 They are merely meant to streamline the process of installing Arch for myself, and does not account for any errors that may be encountered.
+Alternatively, use [ArchBang](https://wiki.archbang.org).
 
 ## Language
 Change font so symbols from foreign languages don't appear as blank squares.
@@ -292,10 +293,10 @@ Enable 32 bit on 64:
 
 # Customise bootloader
 TODO
-splashy
+plymouth
 
 # Git
-To set up extra files that I need, install git
+To set up extra files that I need, install git and set up ssh keys.
 ```bash
     pacman -S git
 ```
