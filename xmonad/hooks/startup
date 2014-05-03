@@ -1,0 +1,31 @@
+#!/bin/sh
+
+# Essentially .xinitrc
+# However, managers like GDM ignore it completely so we execute this script in xmonad (and keep xinitrc blank)
+
+# Set background
+WALLPAPER_FOLDER=~/.wallpaper
+WALLPAPER=HumbleBundleFive.png 
+feh --bg-max --no-fehbg $WALLPAPER_FOLDER/$WALLPAPER &
+
+
+# Power Manager
+xfce4-power-manager &
+
+# Network Manager - already launched by other program.
+#nm-applet &
+
+# Volume Manager
+volti &
+
+# Dropbox
+dropboxd &
+
+# Set regular cursor
+xsetroot -cursor_name 
+
+# Hide cursur when not in use (move to restore)
+unclutter &
+
+# System tray
+trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --widthtype percent --width 15 --transparent true --alpha 0 --tint 0x000000 --height 16

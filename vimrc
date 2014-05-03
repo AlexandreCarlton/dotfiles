@@ -24,6 +24,7 @@ NeoBundle 'Shougo/neobundle.vim'
 
 " List of bundles.
 source ~/.vim/bundle-list.vim
+"NeoBundle 'tomasr/molokai'
 
 syntax on
 filetype plugin indent on
@@ -111,6 +112,12 @@ imap {<CR> {<CR>}<C-o>O
 
 " Change leader to something saner.
 let mapleader=","
+
+
+" Other stuff
+
+" Set spellcheck on documents
+autocmd FileType tex set spell
 
 " Use free-form input (Don't assume everything is offset by 8 spaces)
 let fortran_free_source = 1

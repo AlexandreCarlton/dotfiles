@@ -1,3 +1,16 @@
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" Airline                                        "
+"                                                "
+""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Use powerline font symbols
+let g:airline_powerline_fonts = 1
+
+" Specify theme
+let g:airline_theme = 'wombat'
+
+
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Emmet                                          "
 "                                                "
@@ -9,6 +22,36 @@ autocmd FileType html,css EmmetInstall
 
 " Change key ( default is <C-y>, )
 let g:user_emmet_leader_key='<C-e>'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" LaTeX-Box                                      "
+"                                                "
+""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Enable asynchronous compilation using vimserver
+let g:LatexBox_latexmk_async = 1
+
+" Make Latexmk compile as necessary without hanging vim
+" Be sure to have LatexBox_quickfix=2 when enabled
+let g:LatexBox_latexmk_preview_continuously = 1
+
+" Quickfix window opened automaticaly if not empty, cursor stays in current
+" window
+let g:LatexBox_quickfix = 2
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" neco-ghc                                       "
+"                                                "
+""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Show detailed information (type) of symbols
+let g:necoghc_enable_detailed_browse = 1
+
+" Use omni-completion (YouCompleteMe)
+autocmd FileType haskell set omnifunc=necoghc#omnifunc
+
+" Allow YouCompleteMe to suggest completion
+let g:ycm_semantic_triggers = {'haskell' : ['.']}
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -28,8 +71,8 @@ let g:NERDTreeWinSize = 15
 " map so typing it is unnecessary
 map <Leader>n <plug>NERDTreeTabsToggle<cr> 
 
-" Open NERDtree on Console vim startup
-let g:nerdtree_tabs_open_on_console_startup = 1
+" Don't open NERDtree on Console vim startup
+let g:nerdtree_tabs_open_on_console_startup = 0
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -37,10 +80,10 @@ let g:nerdtree_tabs_open_on_console_startup = 1
 "                                                "
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
-" Disable automatic lint checking as Syntastic's is better.
+" Disable automatic lint checking as Syntastic's is better (supports python3)
 " (However, PyMode does have more checkers & checks as you go)
 " Syntastic's loc_list automatically closes and syncs with powerline
-" let g:pymode_lint = 1
+let g:pymode_lint = 0
 
 " Automatically check as you write (Syntastic doesn't have this)
 let g:pymode_lint_on_fly = 1
@@ -51,6 +94,13 @@ let g:pymode_rope_completion = 0
 " Disable automatic folding
 let g:pymode_folding = 0
 
+" Define checkers
+let g:pymode_lint_checkers = ['pylint', 'pyflakes', 'pep8', 'mccabe']
+
+" Set error signs to use same as Syntastic's (when refactoring set directly to
+" variable)
+let g:pymode_lint_error_symbol = '✗'
+let g:pymode_lint_comment_symbol = '⚠'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Syntastic                                      "
@@ -66,7 +116,7 @@ let g:syntastic_warning_symbol = '⚠' " Change?
 " Disable Python (Python-Mode checks as you type and hence wins here)
 let g:syntastic_mode_map = { 'mode': 'active',
                            \ 'active_filetypes': [],
-                           \ 'passive_filetypes': ['python'] }
+                           \ 'passive_filetypes': [] } " insert 'python'
 
 " Check for errors on startup.
 let g:syntastic_check_on_open = 1
@@ -89,7 +139,7 @@ let g:syntastic_fortran_compiler = 'gfortran'
 " Use Fortran 95 as standard
 let g:syntastic_fortran_compiler_options = '-std=f95'
 
-let g:syntastic_haskell_checkers = ['hlint']
+"let g:syntastic_haskell_checkers = ['hlint']
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -120,10 +170,10 @@ nmap <F8> :TagBarToggle<cr>
 
 " Use to expand snippets - Tab already taken.
 " Same mapping as one used to switch between tabstops.
-let g:UltiSnipsExpandTrigger =  '<c-j>'
+let g:UltiSnipsExpandTrigger =  '<C-j>'
 
 " Add my own snippets by including the custom snippets folder in ~/.vim
-let g:UltiSnipsSnippetDirectories=["UltiSnips", "MyUltiSnips"]
+"let g:UltiSnipsSnippetDirectories=["UltiSnips", "MyUltiSnips"]
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
