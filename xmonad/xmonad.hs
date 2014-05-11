@@ -1,9 +1,6 @@
 --
 -- Alexandre's xmonad config file.
 --
--- Launches all programs needed on startup from here (not xinitrc if
--- possible- gdm for example, ignores it completely)
---
 -- See vicfryzel/xmonad-config for more.
 --
 -- A template showing all available configuration hooks,
@@ -16,7 +13,7 @@ import XMonad
 --import XMonad.Actions.CycleWS
 import XMonad.Actions.GridSelect
 import XMonad.Hooks.DynamicLog
---import XMonad.Hooks.ManageDocks 
+--import XMonad.Hooks.ManageDocks
 --import XMonad.Hooks.Script -- Simple interface to run ~/.xmonad/hooks script.
 import XMonad.Layout.LayoutModifier
 import XMonad.Layout.Spacing
@@ -24,19 +21,15 @@ import XMonad.Layout.Spacing
 --import XMonad.Util.Run
 import Graphics.X11.ExtraTypes.XF86 -- Special keybindings
 import Data.Monoid
---import System.Exit
+import System.Exit
 
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
 
-
-
-
-
-
 -- The preferred terminal program
+-- Make sure systemd entry is set up, or that urxvtd -q -o -f is in .xinitrc
 myTerminal :: String
-myTerminal = "urxvt"
+myTerminal = "urxvtc"
 
 -- Preferred browser
 myBrowser :: String
@@ -44,7 +37,11 @@ myBrowser = "chromium"
 
 -- Preferred status bar
 myBar :: String
-myBar = "xmobar"
+myBar = "xmobar" --"/home/alexandre/bar/conky_bar.sh"
+
+-- Custom PP, describes what is being written to the bar
+myPP :: PP
+myPP = xmobarPP --defaultPP
 
 -- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool
@@ -58,7 +55,7 @@ myClickJustFocuses = False
 myBorderWidth :: Dimension
 myBorderWidth = 1
 
--- Use Windows Key (Super) as mod. 
+-- Use Windows Key (Super) as mod.
 myModMask :: KeyMask
 myModMask = mod4Mask
 
@@ -154,7 +151,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- Quit xmonad
     -- Modify it to use the logout based on the session.
-    , ((modm .|. shiftMask, xK_q     ), spawn "lxde-logout")--io exitSuccess)
+    , ((modm .|. shiftMask, xK_q     ), io exitSuccess)
 
     -- Restart xmonad
     , ((modm              , xK_q     ), spawn "xmonad --recompile; xmonad --restart")
@@ -199,7 +196,6 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 ------------------------------------------------------------------------
 -- Mouse bindings: default actions bound to mouse events
 --
---myMouseBindings :: forall (t :: * -> *). XConfig t -> Map (KeyMask, Button) (Window -> X ())
 myMouseBindings :: XConfig t -> M.Map (KeyMask, Button) (Window -> X ())
 myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList
 
@@ -229,7 +225,7 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList
 -- which denotes layout choice.
 
 spaceBetweenWindows :: Int
-spaceBetweenWindows = 1
+spaceBetweenWindows = 3
 
 myLayout :: ModifiedLayout Spacing (Choose Tall (Choose (Mirror Tall) Full)) a
 myLayout = spacing spaceBetweenWindows $ tiled ||| Mirror tiled ||| Full
@@ -261,7 +257,7 @@ myLayout = spacing spaceBetweenWindows $ tiled ||| Mirror tiled ||| Full
 -- To match on the WM_NAME, you can use 'title' in the same way that
 -- 'className' and 'resource' are used below.
 --
-myManageHook :: ManageHook 
+myManageHook :: ManageHook
 myManageHook = composeAll . concat $
     [ [className    =? browser          --> doShift "Web"   |   browser     <- myBrowsers   ]
     , [className    =? emulator         --> doShift "Emu"   |   emulator    <- myEmulators  ]
@@ -313,28 +309,26 @@ myLogHook = return ()
 -- per-workspace layout choices.
 --
 -- By default, do nothing.
---myStartupHook = return ()
+-- myStartupHook = return ()
 
 --myStartUpScript :: String
 --myStartUpScript = "startup"
 
 myStartupHook :: X ()
-myStartupHook = spawn "~/.xmonad/hooks/startup" --execScriptHook myStartUpScript 
+myStartupHook = return ()
+--myStartupHook = spawn "~/.xmonad/hooks/startup" --execScriptHook myStartUpScript
+--myStartupHook = spawn "~/.xinitrc" --execScriptHook myStartUpScript
 
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
 
 -- Run xmonad with settings specified. Don't change.
 main :: IO ()
-main = xmonad =<< statusBar myBar myPP toggleStrutsKey myConfig 
+main = xmonad =<< statusBar myBar myPP toggleStrutsKey myConfig
 --main = do
 --        h <- spawnPipe myTray
---        xmonad =<< statusBar myBar myPP toggleStrutsKey myConfig 
+--        xmonad =<< statusBar myBar myPP toggleStrutsKey myConfig
 
--- Custom PP, describes what is being writen to the bar
---myPP = xmobarPP { ppCurrent = xmobarColor "#429942" "" . wrap "<" ">" }
-myPP :: PP
-myPP = xmobarPP
 
 -- Keybinding to toggle gap for the bar
 toggleStrutsKey :: XConfig t -> (KeyMask, KeySym)

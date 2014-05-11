@@ -1,6 +1,12 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
+
+# Source .xinitrc if login manager (like gdm) skips it
+#if [[ -n "$XINITRC_LOADED" ]]; then
+#    source ~/.xinitrc
+#fi
+
 # Use Vimpage for man pages and other documentation
 if [[ -x /bin/vimpager ]]; then
     export PAGER=/bin/vimpager
@@ -50,3 +56,6 @@ export PATH="/root/.gem/ruby/2.1.0/bin:$PATH"
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
+
+# Make the example scripts executable - change this later
+export PATH=$PATH:/home/alexandre/panel_scripts

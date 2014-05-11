@@ -4,7 +4,9 @@
 NeoBundle 'altercation/vim-colors-solarized'
 
 " Tomorrow (Night)
-NeoBundle 'ChrisKempson/Tomorrow-Theme'
+NeoBundle 'chriskempson/tomorrow-theme', {
+    \   'rtp': 'vim'
+    \}
 
 " GitHub
 NeoBundle 'endel/vim-github-colorscheme'
