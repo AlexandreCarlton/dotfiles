@@ -38,8 +38,9 @@ nnoremap <C-p> :<C-u>Unite -start-insert file_rec/async:!<cr>
 
 " General settings
 "
-" Set line numbers
+" Set line numbers to allow easy navigation
 set number
+set relativenumber
 
 " Make searches case-insensitive.
 set ignorecase

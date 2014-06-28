@@ -1,6 +1,6 @@
 " Python (Bundle) Settings
 
-" PyMode
+" PyMode - DISABLED (due to lack of Python 3 support)
 
 " Disable automatic lint checking as Syntastic's is better (supports python3)
 " (However, PyMode does have more checkers & checks as you go)

@@ -1,7 +1,7 @@
 " Colour Schemes
 
-" Solarized
-NeoBundle 'altercation/vim-colors-solarized'
+" Solarized - fork of altercation to fix gitgutter.
+NeoBundle 'jwhitley/vim-colors-solarized'
 
 " Tomorrow (Night)
 NeoBundle 'chriskempson/tomorrow-theme', {

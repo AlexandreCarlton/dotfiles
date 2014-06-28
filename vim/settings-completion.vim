@@ -13,8 +13,8 @@ let g:syntastic_mode_map = { 'mode': 'active',
                            \ 'active_filetypes': [],
                            \ 'passive_filetypes': [] } " insert 'python'
 
-" Check for errors on startup.
-let g:syntastic_check_on_open = 1
+" Check for errors on startup? Making things slow.
+let g:syntastic_check_on_open = 0
 
 " Always display any errors in the location list.
 let g:syntastic_always_populate_loc_list = 1
@@ -50,7 +50,7 @@ let g:UltiSnipsExpandTrigger =  '<C-j>'
 " YouCompleteMe
 "
 " Find file to check for cpp files.
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 
 " Fill location list every time new diagnostic data is generated.
 let g:ycm_always_populate_location_list = 1

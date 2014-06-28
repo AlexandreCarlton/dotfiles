@@ -18,8 +18,8 @@ NeoBundle 'jistr/vim-nerdtree-tabs'
 " Nice start screen (Table of Contents)
 NeoBundle 'mhinz/vim-startify'
 
-" Indicates added, modified or deleted lines based on VCS (e.g. git)
-NeoBundle 'mhinz/vim-signify'
+" Visually display indent levels in Vim (to highlight tabs)
+NeoBundle 'nathanaelkane/vim-indent-guides'
 
 " Explore filesystem within Vim.
 NeoBundle 'scrooloose/nerdtree'

@@ -23,8 +23,9 @@ NeoBundle 'Shougo/neobundle.vim'
 " :NeoBundleClean(!)      - confirm (or auto-approve) remove of unused bundles
 
 " List of bundles.
-source ~/.vim/bundle-list.vim
-"NeoBundle 'tomasr/molokai'
+for file in split(glob('~/.vim/bundles-*.vim'), '\n')
+    exe 'source' file
+endfor
 
 syntax on
 filetype plugin indent on
@@ -32,9 +33,7 @@ filetype plugin indent on
 " Check for any uninstalled bundles on startup.
 NeoBundleCheck
 
-" Bundle settings
-source ~/.vim/bundle-settings.vim
-
-source ~/.vim/settings-tab.vim
-
-source ~/.vim/settings-mapping.vim
+" Bundle & miscellaneous settings.
+for file in split(glob('~/.vim/settings-*.vim'), '\n')
+    exe 'source' file
+endfor
