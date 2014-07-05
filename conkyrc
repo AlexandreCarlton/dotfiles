@@ -1,0 +1,48 @@
+#!/bin/sh
+
+short_units yes
+# Change back to "yes"
+background no
+out_to_console yes
+out_to_x no
+update_interval 1
+update_interval_on_battery 10
+use_xft yes
+#font -misc-stlarch-medium-r-normal--10-100-75-75-c-80-iso10646-1
+
+#template0 ~/.config/bspwm/panel/toggle_conky \1
+
+# Colors
+#color1 777777
+#color2 bbbbbb
+#color3 aff73e
+
+pad_percents 3
+
+
+# Requires stlarch_font package - Use dzen so you can use xbm and read from Xresources.
+# If there is enough room, stick time in the middle.
+
+#TEXT
+#%{r} \
+# ${wireless_essid wlp1s0} \
+# ${upspeedf wlp1s0} KB/s \
+# ${downspeedf wlp1s0} KB/s \
+# ${cpu cpu0}%% ${cpu cpu1}%% \
+# ${mem}B (${memperc}%%) \
+# ${swap} (${swapperc}%%) \
+#${if_match "${battery_short}" == "C"}${else}${endif} ${battery_percent}%% \
+# ${exec pacman -Qu | wc -l} \
+# ${time %a %b %d %H:%M} \
+
+#${weather http://wxdata.weather.com/wxdata/weather/local/ ASXX0112 temperature} \
+TEXT
+S \
+ ${wireless_essid wlp1s0} \
+ ${cpu cpu0}%% \
+%{A:/home/alexandre/.config/bspwm/panel/toggle_conky mem:} ${memperc}%%%{A} \
+ ${swapperc}%% \
+${if_match "${battery_short}" == "C"}${else}${endif} ${battery_percent}%% \
+ ${exec pacman -Qu | wc -l} \
+Vol: ${execi 1 amixer get Master | grep 'Mono:' | cut -d' ' -f 6 | tr -d '%[]'} \
+ ${time %a %b %d %H:%M} \
