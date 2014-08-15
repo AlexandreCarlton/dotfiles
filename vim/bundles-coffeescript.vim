@@ -1,7 +1,14 @@
 " Coffeescript Bundles
 
+let g:coffee_context = {
+\   'autoload': {
+\       'filename_patterns': ['\.coffee$']
+\   }
+\ }
+
+
 " Add CoffeeScript compilation support
-NeoBundle 'kchmck/vim-coffee-script'
+NeoBundleLazy 'kchmck/vim-coffee-script', g:coffee_context
 
 " CoffeeScript indent and syntax highlighting
-NeoBundle 'mintplant/vim-literate-coffeescript'
+NeoBundleLazy 'mintplant/vim-literate-coffeescript', g:coffee_context

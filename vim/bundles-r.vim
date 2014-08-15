@@ -1,6 +1,8 @@
 " R Bundles
 
 " Nice mappings and launcher capabilities
-NeoBundle 'jcfaria/Vim-R-Plugin' ", {
-"    \   'rtp' : '~/Vim-R-plugin'
-"    \}
+NeoBundleLazy 'jcfaria/Vim-R-Plugin' , {
+\   'autoload': {
+\       'filetypes': ['r']
+\   }
+\ }

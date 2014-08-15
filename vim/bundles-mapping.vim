@@ -1,7 +1,10 @@
 " Shortcut and Mapping Bundles
 
 " Aligns text - conflicts with LaTeX-Box
-" NeoBundle 'godlygeek/tabular'
+NeoBundle 'godlygeek/tabular'
+
+" Easier way of navigating
+NeoBundle 'Lokaltog/vim-easymotion'
 
 " Easier commenting.
 NeoBundle 'scrooloose/nerdcommenter'

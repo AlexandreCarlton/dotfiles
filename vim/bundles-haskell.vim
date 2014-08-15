@@ -1,15 +1,31 @@
 " Haskell Bundles
-"
+
+let g:haskell_context = {
+\   'autoload': {
+\       'filetypes': ['haskell']
+\   }
+\ }
+
 " Haskell plugins
-NeoBundle 'dag/vim2hs'
+NeoBundleLazy 'dag/vim2hs', g:haskell_context
 
 " Haskell plugin to display error messages
-NeoBundle 'eagletmt/ghcmod-vim'
+NeoBundleLazy 'eagletmt/ghcmod-vim', {
+\     'autoload': {
+\         'filetypes': ['haskell']
+\     },
+\     'depends': 'Shougo/vimproc.vim',
+\     'external_commands': 'ghc-mod'
+\ }
 
 " Completion plugin for Haskell using ghc-mod
-NeoBundle 'eagletmt/neco-ghc' ", {
-    "\   'rtp' : 'necoghc'
-    "\}
-    "
+NeoBundleLazy 'eagletmt/neco-ghc' , {
+\   'autoload': {
+\       'filetypes': ['haskell']
+\   },
+\   'external_commands': 'ghc-mod',
+\   'rtp': 'necoghc'
+\ }
+
 " Hoogle (Haskell query plugin)
-NeoBundle 'Twinside/vim-hoogle'
+NeoBundleLazy 'Twinside/vim-hoogle', g:haskell_context

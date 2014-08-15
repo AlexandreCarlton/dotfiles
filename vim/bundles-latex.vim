@@ -1,7 +1,13 @@
 " LaTeX Bundles
 
-" LaTeX Plugin - clashes with tabular as it has the same tag (:h tabular)
-NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
+let g:latex_context = {
+\     'autoload': {
+\         'filetypes': ['plaintex', 'context', 'latex', 'rnoweb']
+\     }
+\ }
+
+" LaTeX Plugin 
+NeoBundleLazy 'LaTeX-Box-Team/LaTeX-Box', g:latex_context
 
 " TeX plugin (requires LaTeX-Box)
-NeoBundle 'coot/atp_vim'
+" NeoBundleLazy 'coot/atp_vim', g:latex_context

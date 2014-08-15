@@ -1,4 +1,10 @@
 " Javascript Bundles
 
+let g:javascript_context = {
+    \ 'autoload': {
+        \ 'filetypes': ['javascript']
+    \ }
+\ }
+
 " JavaScript support
-NeoBundle 'pangloss/vim-javascript'
+NeoBundleLazy 'pangloss/vim-javascript', g:javascript_context

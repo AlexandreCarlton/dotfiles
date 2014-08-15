@@ -3,3 +3,11 @@
 " Piece de resistance
 " Easily browse tags of source files.
 NeoBundle 'majutsushi/tagbar'
+
+" CoffeeScript support
+" `gem install CoffeeTags` also must be done.
+NeoBundleLazy 'lukaszkorecki/CoffeeTags', {
+\    'autoload': {
+\       'filename_patterns': ['\.coffee$']
+\    }
+\ }
