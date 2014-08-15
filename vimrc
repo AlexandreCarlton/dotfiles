@@ -15,8 +15,8 @@ endif
 call neobundle#rc(expand('~/.vim/bundle/'))
 
 " Let NeoBundle manage NeoBundle.
-
-NeoBundle 'Shougo/neobundle.vim'
+" Required:
+NeoBundleFetch 'Shougo/neobundle.vim'
 
 " :NeoBundleList          - list configured bundles
 " :NeoBundleInstall(!)    - install (update) bundles
@@ -27,7 +27,9 @@ for file in split(glob('~/.vim/bundles-*.vim'), '\n')
     exe 'source' file
 endfor
 
-syntax on
+call neobundle#end()
+
+" Required:
 filetype plugin indent on
 
 " Check for any uninstalled bundles on startup.

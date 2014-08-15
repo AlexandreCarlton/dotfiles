@@ -14,6 +14,7 @@ let g:LatexBox_latexmk_preview_continuously = 1
 " window
 let g:LatexBox_quickfix = 2
 
+au BufNewFile,BufRead *.tex set filetype=tex
 
 " Set spellcheck on documents
 autocmd FileType tex set spell

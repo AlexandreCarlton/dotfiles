@@ -3,14 +3,10 @@
 " NERDTree
 "
 " Set width to be almost half its default.
-let g:NERDTreeWinSize = 15
+" let g:NERDTreeWinSize = 15
 
 
 " NERDTree Tabs
-"
-" map so typing it is unnecessary
-map <Leader>n <plug>NERDTreeTabsToggle<cr> 
-
 " Don't open NERDtree on Console vim startup
 let g:nerdtree_tabs_open_on_console_startup = 0
 
@@ -24,24 +20,22 @@ let g:startify_change_to_dir = 1
 autocmd FileType startify setlocal buftype=
 
 
-" TagBar
-"
-" Map F8 to toggle TagBar window
-nmap <F8> :TagBarToggle<cr>
-
-
 " Unite
 "
 " File searching like ctrlp
 nnoremap <C-p> :<C-u>Unite -start-insert file_rec/async:!<cr>
 
 
+" Numbers.vim
+"
+" Odd things happen without this.
+set number
+" List of items to exclude from being numbered.
+let g:numbers_exclude = ['unite', 'tagbar', 'startify', 'gundo', 'vimshell', 'w3m']
+
+
 " General settings
 "
-" Set line numbers to allow easy navigation
-set number
-set relativenumber
-
 " Make searches case-insensitive.
 set ignorecase
 
@@ -53,3 +47,11 @@ set hlsearch
 
 " When buffer is abandoned it becomes hidden.
 set hidden
+
+" Highlight current row
+" Works really nicely with TagBar - press p over a function definition and the
+" cursor is sent their (so it is highlighted automatically).
+set cursorline
+
+" Highlight nth column as a guideline for maximum space
+set colorcolumn=80
