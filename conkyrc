@@ -1,14 +1,12 @@
-#!/bin/sh
-
 short_units yes
 # Change back to "yes"
 background no
+pad_percents 3
 out_to_console yes
 out_to_x no
 update_interval 1
 update_interval_on_battery 10
 use_xft yes
-#font -misc-stlarch-medium-r-normal--10-100-75-75-c-80-iso10646-1
 
 #template0 ~/.config/bspwm/panel/toggle_conky \1
 
@@ -17,11 +15,40 @@ use_xft yes
 #color2 bbbbbb
 #color3 aff73e
 
-pad_percents 3
 
 
 # Requires stlarch_font package - Use dzen so you can use xbm and read from Xresources.
-# If there is enough room, stick time in the middle.
+# Conky uses OSS emulation for volume on linux, if that doesn't work:
+
+#^i($HOME/.xbm/net-wifi.xbm) \
+#${wireless_essid wlp1s0} \
+#\
+#^i($HOME/.xbm/cpu.xbm) \
+#\uE026 \
+#${cpu cpu0}%% \
+#\
+#^i($HOME/.xbm/memory.xbm) \
+#${memperc}% \
+#\
+#${if_match "${exec $HOME/.conky/scripts/is_charging.sh}" == "true"}\
+#Bat Charg.\
+#${else}\
+#Bat Disch.\
+#${endif} \
+#${battery_percent}% \
+#\
+#^i($HOME/.xbm/pacman.xbm) \
+#\
+#${if_mixer_mute Vol}\
+#Muted\
+#${else}\
+#Not muted\
+#${endif} \
+#Vol: \
+#${mixer Vol} \
+#\
+#^i($HOME/.xbm/clock.xbm) \
+#${time %a %b %d %H:%M}
 
 #TEXT
 #%{r} \
@@ -36,13 +63,71 @@ pad_percents 3
 # ${time %a %b %d %H:%M} \
 
 #${weather http://wxdata.weather.com/wxdata/weather/local/ ASXX0112 temperature} \
+#${execi 3600 pacman -Qu | wc -l} \
+#^r(2x10)^fg(#B64403)^r(2x10) mem: ${memperc}% ^r(2x10)^fg(#435493)^r(2x10) \
+#| BAT: ${if_match "${battery_short}" == "C"}Chg.${else}Dis.${endif} ${battery_percent}% \
+
+
+# To get the icons, launch another instance of urxvtc
+# This will mess up the powerline symbols, but it is only temporary.
+# urxvtc -letsp 2 -fn "-*-gohufont-medium-*-*-*-11-*-*-*-*-*-iso10646-*","-misc-stlarch-medium-r-normal--10-100-75-75-c-80-iso10646-1"
+# use charmap (select Private Use Area) to see available symbols.
+
+# OSS Emulation may not always be enabled;
+# load snd-mixer-oss in /etc/modules-load.d/
+
 TEXT
 S \
- ${wireless_essid wlp1s0} \
  ${cpu cpu0}%% \
-%{A:/home/alexandre/.config/bspwm/panel/toggle_conky mem:} ${memperc}%%%{A} \
- ${swapperc}%% \
-${if_match "${battery_short}" == "C"}${else}${endif} ${battery_percent}%% \
- ${exec pacman -Qu | wc -l} \
-Vol: ${execi 1 amixer get Master | grep 'Mono:' | cut -d' ' -f 6 | tr -d '%[]'} \
- ${time %a %b %d %H:%M} \
+\
+\
+ ${memperc}%% \
+\
+\
+${if_match ${wireless_link_qual_perc wlp1s0} >= 75}\
+\
+${else}${if_match ${wireless_link_qual_perc wlp1s0} >= 50}\
+\
+${else}\
+\
+${endif}${endif} \
+${wireless_essid wlp1s0} \
+\
+\
+${if_existing /dev/mixer}\
+${if_mixer_mute}\
+\
+${else}${if_match ${mixer} >= 66}\
+\
+${else}${if_match ${mixer} >= 33}\
+\
+${else}\
+\
+${endif}${endif}${endif} \
+${mixer}%% \
+${else}\
+${execi 1 $HOME/.bin/volume.sh}%% \
+${endif}\
+\
+\
+${if_existing /sys/class/power_supply/AC/online 1}\
+\
+${else}${if_match ${battery_percent} >= 75 }\
+\
+${else}${if_match ${battery_percent} >= 50}\
+\
+${else}${if_match ${battery_percent} >= 25}\
+\
+${else}\
+\
+${endif}${endif}${endif}${endif} \
+${battery_percent}%% \
+\
+\
+ ${execi 1 printf "%.0f\n" $(xbacklight)}%% \
+\
+\
+ ${texeci 3600 checkupdates | wc -l} \
+\
+\
+ ${time %a %b %d %H:%M}
