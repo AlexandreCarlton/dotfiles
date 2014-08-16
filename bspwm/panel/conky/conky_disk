@@ -1,0 +1,48 @@
+out_to_x yes
+out_to_console no
+background yes
+
+own_window yes
+own_window_class conky_disk
+own_window_type panel
+own_window_argb_visual yes
+own_window_argb_value 240
+double_buffer yes
+
+minimum_size 200 150
+alignment top_right
+gap_x 335
+gap_y 18
+
+own_window_colour 000000
+default_color dadada
+
+use_xft yes
+xftfont Tewi:size=7
+draw_shades no
+
+update_interval 5
+
+TEXT
+${alignc}OCZ Vector 150
+${diskiograph_write /dev/sda 15}
+${alignc}▲ ${diskio_write /dev/sda}
+${diskiograph_read /dev/sda 15}
+${alignc}▼ ${diskio_read /dev/sda}
+
+/:     ${fs_bar /}
+/home: ${fs_bar /home/alexandre}
+
+Wear:  ${execibar 86400 sudo smartctl --attributes /dev/sda | grep Wearout|awk '{print $NF}'}
+${alignc}SMART status: ${execi 86400 sudo smartctl -H /dev/sda | grep result | awk '{print $NF}'}
+${stippled_hr}
+${alignc}SAMSUNG SpinPoint P80 SD
+${diskiograph_write /dev/sdb 15}
+${alignc}▲ ${diskio_write /dev/sdb}
+${diskiograph_read /dev/sdb 15}
+${alignc}▼ ${diskio_read /dev/sdb}
+
+/scratch: ${fs_bar /scratch/out}
+
+${alignc}SMART status: ${execi 86400 sudo smartctl -H /dev/sdb | grep result | awk '{print $NF}'}
+

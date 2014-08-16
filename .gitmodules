@@ -1,0 +1,6 @@
+[submodule "palettes/base16"]
+	path = palettes/base16
+	url = git://github.com/chriskempson/base16-xresources
+[submodule "palettes/solarized"]
+	path = palettes/solarized
+	url = git://github.com/solarized/xresources.git

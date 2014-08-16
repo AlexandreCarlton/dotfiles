@@ -1,0 +1,17 @@
+#!/bin/bash
+
+pkill -x dmenu
+
+. ~/.conky/scripts/export_colours_conky.sh
+
+if [ $(pgrep -cf conky_$1) -gt 0 ]; then
+	if [ "$(xdotool search --onlyvisible --class conky_$1)" != "" ]; then
+		xdotool search --class conky windowunmap %@
+	else
+		xdotool search --class conky windowunmap %@
+		xdotool search --class conky_$1 windowmap %1 windowraise
+	fi
+else
+	xdotool search --class conky windowunmap %@
+	conky -c ~/.config/bspwm/panel/conky/conky_$1
+fi

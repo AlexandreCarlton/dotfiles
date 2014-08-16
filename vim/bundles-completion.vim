@@ -35,8 +35,9 @@ NeoBundle 'Shougo/vimproc.vim', {
 NeoBundle 'tpope/vim-endwise'
 
 " Clang-based completion for C-family languages and Python.
+" Clang must be at least version 3.3
 NeoBundle 'Valloric/YouCompleteMe', {
-\   'build_commands': 'cmake',
+\   'build_commands': ['cmake', 'clang'],
 \   'build': {
 \       'unix': './install.sh --clang-completer --system-libclang --omnisharp-completer',
 \       'mac': './install.sh --clang-completer --system-libclang --omnisharp-completer'

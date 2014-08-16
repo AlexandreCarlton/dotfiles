@@ -10,63 +10,6 @@ use_xft yes
 
 #template0 ~/.config/bspwm/panel/toggle_conky \1
 
-# Colors
-#color1 777777
-#color2 bbbbbb
-#color3 aff73e
-
-
-
-# Requires stlarch_font package - Use dzen so you can use xbm and read from Xresources.
-# Conky uses OSS emulation for volume on linux, if that doesn't work:
-
-#^i($HOME/.xbm/net-wifi.xbm) \
-#${wireless_essid wlp1s0} \
-#\
-#^i($HOME/.xbm/cpu.xbm) \
-#\uE026 \
-#${cpu cpu0}%% \
-#\
-#^i($HOME/.xbm/memory.xbm) \
-#${memperc}% \
-#\
-#${if_match "${exec $HOME/.conky/scripts/is_charging.sh}" == "true"}\
-#Bat Charg.\
-#${else}\
-#Bat Disch.\
-#${endif} \
-#${battery_percent}% \
-#\
-#^i($HOME/.xbm/pacman.xbm) \
-#\
-#${if_mixer_mute Vol}\
-#Muted\
-#${else}\
-#Not muted\
-#${endif} \
-#Vol: \
-#${mixer Vol} \
-#\
-#^i($HOME/.xbm/clock.xbm) \
-#${time %a %b %d %H:%M}
-
-#TEXT
-#%{r} \
-# ${wireless_essid wlp1s0} \
-# ${upspeedf wlp1s0} KB/s \
-# ${downspeedf wlp1s0} KB/s \
-# ${cpu cpu0}%% ${cpu cpu1}%% \
-# ${mem}B (${memperc}%%) \
-# ${swap} (${swapperc}%%) \
-#${if_match "${battery_short}" == "C"}${else}${endif} ${battery_percent}%% \
-# ${exec pacman -Qu | wc -l} \
-# ${time %a %b %d %H:%M} \
-
-#${weather http://wxdata.weather.com/wxdata/weather/local/ ASXX0112 temperature} \
-#${execi 3600 pacman -Qu | wc -l} \
-#^r(2x10)^fg(#B64403)^r(2x10) mem: ${memperc}% ^r(2x10)^fg(#435493)^r(2x10) \
-#| BAT: ${if_match "${battery_short}" == "C"}Chg.${else}Dis.${endif} ${battery_percent}% \
-
 
 # To get the icons, launch another instance of urxvtc
 # This will mess up the powerline symbols, but it is only temporary.
@@ -74,7 +17,10 @@ use_xft yes
 # use charmap (select Private Use Area) to see available symbols.
 
 # OSS Emulation may not always be enabled;
-# load snd-mixer-oss in /etc/modules-load.d/
+# In /etc/modules-load.d/ create a file called snd-mixer-oss.conf
+# containing 1 line:
+# snd-mixer-oss
+
 
 TEXT
 S \

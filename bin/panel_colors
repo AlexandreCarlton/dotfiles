@@ -1,0 +1,50 @@
+#!/bin/sh
+
+source ~/.bin/export_colours_bar.sh
+
+COLOR_FOREGROUND=$foreground
+COLOR_BACKGROUND=$background
+# Currently selected workspace with something in it
+COLOR_FOCUSED_OCCUPIED_FG=$white
+COLOR_FOCUSED_OCCUPIED_BG=$yellow
+# Currently selected workspace with nothing in it.
+COLOR_FOCUSED_FREE_FG=$foreground
+COLOR_FOCUSED_FREE_BG=$background
+# Not sure what 'urgent' means here.
+COLOR_FOCUSED_URGENT_FG=$foreground
+COLOR_FOCUSED_URGENT_BG=$background
+# Workspace with something in it.
+COLOR_OCCUPIED_FG=$white
+COLOR_OCCUPIED_BG=$background 
+# Workspace with nothing in it.
+COLOR_FREE_FG=$foreground
+COLOR_FREE_BG=$background
+COLOR_URGENT_FG=$foreground
+COLOR_URGENT_BG=$background
+COLOR_LAYOUT_FG=$foreground
+COLOR_LAYOUT_BG=$background
+COLOR_TITLE_FG=$foreground
+COLOR_TITLE_BG=$background
+COLOR_STATUS_FG=$foreground
+COLOR_STATUS_BG=$background
+
+#COLOR_FOREGROUND='#A3A6AB'
+#COLOR_BACKGROUND='#34322E'
+#COLOR_FOCUSED_OCCUPIED_FG='#F6F9FF'
+#COLOR_FOCUSED_OCCUPIED_BG='#5C5955'
+#COLOR_FOCUSED_FREE_FG='#F6F9FF'
+#COLOR_FOCUSED_FREE_BG='#6D561C'
+#COLOR_FOCUSED_URGENT_FG='#34322E'
+#COLOR_FOCUSED_URGENT_BG='#F9A299'
+#COLOR_OCCUPIED_FG='#A3A6AB'
+#COLOR_OCCUPIED_BG='#34322E'
+#COLOR_FREE_FG='#6F7277'
+#COLOR_FREE_BG='#34322E'
+#COLOR_URGENT_FG='#F9A299'
+#COLOR_URGENT_BG='#34322E'
+#COLOR_LAYOUT_FG='#A3A6AB'
+#COLOR_LAYOUT_BG='#34322E'
+#COLOR_TITLE_FG='#A3A6AB'
+#COLOR_TITLE_BG='#34322E'
+#COLOR_STATUS_FG='#A3A6AB'
+#COLOR_STATUS_BG='#34322E'

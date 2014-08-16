@@ -13,29 +13,41 @@ xrdb -load ~/.Xresources
 
 # Set background
 WALLPAPER_FOLDER=~/.wallpaper
-WALLPAPER=HumbleBundleFive.png
-feh --bg-max --no-fehbg $WALLPAPER_FOLDER/$WALLPAPER &
+WALLPAPER=PikachuEevee.png
+feh --bg-fill --no-fehbg $WALLPAPER_FOLDER/$WALLPAPER &
 
 # Launch urxvt daemon (so other instances are launched quickly)
-# Unless this is already configured elsewhere (with systemctl), uncomment this.
-urxvtd -q -o -f &
+# Unless already configured with systemd
+# What if it fails? systemctl --failed lists all failed,
+# should probably check that too.
+if [[ $(systemctl | grep --count "urxvtd@${USER}\.service") -eq 0 ]]; then
+    urxvtd -q -o -f &
+fi
+
+. ~/.profile
 
 
 # System Tray - CHANGE BACK TO TOP
-TINT='#002b36'
-trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --widthtype pixel --width 100 --transparent true --alpha 0 --tint $TINT --height 16 &
+#TINT='0x002b36'
+#trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --widthtype pixel --width 100 --transparent true --alpha 0 --tint $TINT --height 16 &
+
+# Thunar (File manager)
+#thunar --daemon &
 
 # Power Manager
-xfce4-power-manager &
+#xfce4-power-manager &
 
 # Network Manager
 nm-applet &
 
 # Volume Manager
-volti &
+#volti &
 
-# Dropbox
+# Dropbox daemon
 dropboxd &
+
+# Automount removable drives with udisks
+udiskie &
 
 # Set regular cursor
 xsetroot -cursor_name left_ptr &
@@ -59,3 +71,4 @@ sxhkd &
 
 # Load bspwm
 exec bspwm -s "$PANEL_FIFO" -p W
+#exec gnome-session
