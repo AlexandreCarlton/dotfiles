@@ -1,125 +1,45 @@
-! Compile xft: Attempt to find a visual with the given bit depth; option -depth.
-! URxvt*depth: bitdepth
+! Include colorscheme from ~/.palettes
+! Defines *{back,fore}ground, along with *color[1-15].
+! And possibly other things, like cursor colour.
+#include "palettes/solarized/solarized"
 
-! Compile xft: Turn on/off double-buffering for xft (default enabled).  On some card/driver combination enabling it slightly decreases performance, on most it greatly helps it. The
-! URxvt*buffered: boolean
+! TODO: Find way to use MAIN_FONT,POWERLINE_FONT
+! - currently it breaks when using both (space is inserted after)
+#define MAIN_FONT -*-gohufont-medium-*-*-*-11-*-*-*-*-*-iso10646-*
+#define BOLD_FONT -*-gohufont-bold-*-*-*-11-*-*-*-*-*-iso10646-*
+#define ITALIC_FONT -*-gohufont-medium-*-*-*-11-*-*-*-*-*-iso10646-*
+#define BOLD_ITATLIC_FONT -*-gohufont-bold-*-*-*-11-*-*-*-*-*-iso10646-*
 
-! Create the window with the specified X window geometry [default 80x24]; option -geometry.
-! URxvt*geometry: geom
+#define POWERLINE_FONT xft:Inconsolata for Powerline:pixelsize=12
 
-! Use the specified colour as the windows background colour [default White]; option -bg.
-!URxvt*background: #222222
-*background: #002b36
+! Compile xft: Turn on/off double-buffering for xft (default enabled).  On some card/driver combination enabling it slightly decreases performance, on most it greatly helps it. The slowdown is small. so it should noramlly be enabled.
+URxvt*buffered: true
 
-
-! Use the specified colour as the windows foreground colour [default Black]; option -fg.
-!URxvt*foreground: #e8e9ca
-*foreground: #657b83
-
-! Use the specified colour for the colour value n, where 0-7 corresponds to low-intensity (normal) colours and 8-15 corresponds to high-intensity (bold = bright foreground, blink =
-
-! Black dark/light
-*color0: #073642
-*color8: #002b36
-
-! Red dark/light
-*color1: #dc322f
-*color9: #cb4b16
-
-! Green dark/light
-*color2: #859900
-*color10: #586e75
-
-! Yellow dark/light
-*color3: #b58900
-*color11: #657b83
-
-! Blue dark/light
-*color4: #268bd2
-*color12: #839496
-
-! Magenta dark/light
-*color5: #d33682
-*color13: #6c71c4
-
-! Cyan dark/light
-*color6: #2aa198
-*color14: #93a1a1
-
-! White dark/light
-*color7: #eee8d5
-*color15: #fdf6e3
-
-
-
-! URxvt*colorBD: colour
-
-! Use the specified colour to display bold or italic characters when the foreground colour is the default. If font styles are not available (Compile styles) and this option is unset,
-! URxvt*colorIT: colour
-
-! Use the specified colour to display underlined characters when the foreground colour is the default.
-! URxvt*colorUL: colour
-
-! If set, use the specified colour as the colour for the underline itself. If unset, use the foreground colour.
-! URxvt*underlineColor: colour
-
-! If set, use the specified colour as the background for highlighted characters. If unset, use reverse video.
-! URxvt*highlightColor: colour
-
-! If set and highlightColor is set, use the specified colour as the foreground for highlighted characters.
-! URxvt*highlightTextColor: colour
-
-! Use the specified colour for the cursor. The default is to use the foreground colour; option -cr.
-! URxvt*cursorColor: colour
-
-! Use the specified colour for the colour of the cursor text. For this to take effect, cursorColor must also be specified. The default is to use the background colour.
-! URxvt*cursorColor2: colour
-
-! True: simulate reverse video by foreground and background colours; option -rv. False: regular screen colours [default]; option +rv. See note in COLOURS AND GRAPHICS section.
-! URxvt*reverseVideo: boolean
 
 ! True: specify that jump scrolling should be used. When receiving lots of lines, urxvt will only scroll once a whole screen height of lines has been read, resulting in fewer updates
-! URxvt*jumpScroll: boolean
+URxvt*jumpScroll: true
 
 ! True: (the default) specify that skip scrolling should be used. When receiving lots of lines, urxvt will only scroll once in a while (around 60 times per second), resulting in far
-! URxvt*skipScroll: boolean
+URxvt*skipScroll: false
 
-! Fade the text by the given percentage when focus is lost; option -fade.
-! URxvt*fading: number
+*font:           -*-gohufont-medium-*-*-*-11-*-*-*-*-*-iso10646-*
+*boldFont:       -*-gohufont-bold-*-*-*-11-*-*-*-*-*-iso10646-*
+*italicFont:     -*-gohufont-medium-*-*-*-11-*-*-*-*-*-iso10646-*
+*boldItalicFont: -*-gohufont-bold-*-*-*-11-*-*-*-*-*-iso10646-*
 
-! Fade to this colour, when fading is used (see fading:). The default colour is black; option -fadecolor.
-! URxvt*fadeColor: colour
+!URxvt*font: MAIN_FONT,POWERLINE_FONT
+URxvt*font: -*-gohufont-medium-*-*-*-11-*-*-*-*-*-iso10646-*,xft:Inconsolata for Powerline:pixelsize=12
 
-! Set the application icon pixmap; option -icon.
-! URxvt*iconFile: file
-
-! Use the specified colour for the scrollbar [default #B2B2B2].
-! URxvt*scrollColor: colour
-
-! Use the specified colour for the scrollbars trough area [default #969696]. Only relevant for rxvt (non XTerm/NeXT) scrollbar.
-! URxvt*troughColor: colour
-
-! The colour of the border around the text area and between the scrollbar and the text.
-! URxvt*borderColor: colour
-
-! Select the fonts to be used. This is a comma separated list of font names that are checked in order when trying to find glyphs for characters. The first font defines the cell size for
-URxvt*font: -*-gohufont-medium-*-*-*-11-*-*-*-*-*-iso10646-*,xft:Inconsolata\ for\ Powerline:pixelsize=12,-misc-stlarch-medium-r-normal--10-100-75-75-c-80-iso10646-1
-!URxvt*font: -*-gohufont-medium-*-*-*-11-*-*-*-*-*-iso10646-*,xft:Inconsolata\ for\ Powerline:pixelsize=12,-*-ohsnap.icons-medium-r-*-*-14-*-*-*-*-*-*-*
-!URxvt*font: -*-gohufont-medium-*-*-*-11-*-*-*-*-*-iso10646-*,xft:Inconsolata\ for\ Powerline:pixelsize=12,-*-ohsnap.icons-medium-r-*-*-14-*-*-*-*-*-*-*
-!URxvt*font: xft:Inconsolata\ for\ Powerline:pixelsize=12,-misc-stlarch-medium-r-normal--10-100-75-75-c-80-iso10646-1
-! URxvt*boldFont: fontlist
-URxvt*boldFont: -*-gohufont-bold-*-*-*-11-*-*-*-*-*-iso10646-*
-
-! URxvt*italicFont: fontlist
+!URxvt*font: -*-gohufont-medium-*-*-*-11-*-*-*-*-*-iso10646-*,xft:Inconsolata\ for\ Powerline:pixelsize=12
+!,-misc-stlarch-medium-r-normal--10-100-75-75-c-80-iso10646-1
 
 ! The font list to use for displaying bold, italic or bold italic characters, respectively.
-! URxvt*boldItalicFont: fontlist
 
 ! When font styles are not enabled, or this option is enabled (True, option -is, the default), bold/blink font styles imply high intensity foreground/background colours. Disabling this
 ! URxvt*intensityStyles: boolean
 
 ! Set window title string, the default title is the command-line specified after the -e option, if any, otherwise the application name; option -title.
-! URxvt*title: string
+URxvt*title: rxvt-unicode-256color
 
 ! Set the name used to label the windows icon or displayed in an icon manager window, it also sets the windows title unless it is explicitly set; option -n.
 ! URxvt*iconName: string
@@ -146,13 +66,13 @@ URxvt*boldFont: -*-gohufont-bold-*-*-*-11-*-*-*-*-*-iso10646-*
 URxvt*scrollstyle: plain
 
 ! Set the scrollbar width in pixels.
-! URxvt*thickness: number
+URxvt*thickness: 7
 
 ! True: enable the scrollbar [default]; option -sb. False: disable the scrollbar; option +sb.
-URxvt*scrollBar: True
+URxvt*scrollBar: true
 
 ! True: place the scrollbar on the right of the window; option -sr.  False: place the scrollbar on the left of the window; option +sr.
-URxvt*scrollBar_right: True
+URxvt*scrollBar_right: true
 
 ! True: display an rxvt scrollbar without a trough; option -st.  False: display an rxvt scrollbar with a trough; option +st.
 ! URxvt*scrollBar_floating: boolean
@@ -161,72 +81,22 @@ URxvt*scrollBar_right: True
 ! URxvt*scrollBar_align: mode
 
 ! True: scroll to bottom when tty receives output; option -si.  False: do not scroll to bottom when tty receives output; option +si.
-! URxvt*scrollTtyOutput: boolean
+URxvt*scrollTtyOutput: true
 
 ! True: scroll with scrollback buffer when tty receives new lines (i.e.  try to show the same lines) and scrollTtyOutput is False; option -sw. False: do not scroll with scrollback buffer
-! URxvt*scrollWithBuffer: boolean
+URxvt*scrollWithBuffer: true
 
 ! True: scroll to bottom when a non-special key is pressed. Special keys are those which are intercepted by rxvt-unicode for special handling and are not passed onto the shell; option
-! URxvt*scrollTtyKeypress: boolean
+URxvt*scrollTtyKeypress: true
 
 ! Save number lines in the scrollback buffer [default 64]. This resource is limited on most machines to 65535; option -sl.
 URxvt*saveLines: 65535
 
-! Internal border of number pixels. This resource is limited to 100; option -b.
-! URxvt*internalBorder: number
-
-! External border of number pixels. This resource is limited to 100; option -w, -bw, -borderwidth.
-! URxvt*externalBorder: number
-
-! Set MWM hints to request a borderless window, i.e. if honoured by the WM, the rxvt-unicode window will not have window decorations; option -bl.
-! URxvt*borderLess: boolean
-
 ! Compile frills: Disable the usage of the built-in block graphics/line drawing characters and just rely on what the specified fonts provide. Use this if you have a good font and want to
-! URxvt*skipBuiltinGlyphs: boolean
+URxvt*skipBuiltinGlyphs: true
 
-! Specifies the terminal type name to be set in the TERM environment variable; option -tn.
-! URxvt*termName: termname
 
-! Specifies number of lines (pixel height) to insert between each row of the display [default 0]; option -lsp.
-! URxvt*lineSpace: number
 
-! True: handle Meta (Alt) + keypress to set the 8th bit. False: handle Meta (Alt) + keypress as an escape prefix [default].
-! URxvt*meta8: boolean
-
-! True: the mouse wheel scrolls a page full. False: the mouse wheel scrolls five lines [default].
-! URxvt*mouseWheelScrollPage: boolean
-
-! True: store tabs as wide characters. False: interpret tabs as cursor movement only; option "-ptab".
-! URxvt*pastableTabs: boolean
-
-! True: blink the cursor. False: do not blink the cursor [default]; option -bc.
-! URxvt*cursorBlink: boolean
-
-! True: Make the cursor underlined. False: Make the cursor a box [default]; option -uc.
-! URxvt*cursorUnderline: boolean
-
-! True: blank the pointer when a key is pressed or after a set number of seconds of inactivity. False: the pointer is always visible [default].
-! URxvt*pointerBlank: boolean
-
-! Mouse pointer foreground colour.
-! URxvt*pointerColor: colour
-
-! Mouse pointer background colour.
-! URxvt*pointerColor2: colour
-
-! Specifies number of seconds before blanking the pointer [default 2]. Use a large number (e.g. 987654321) to effectively disable the timeout.
-! URxvt*pointerBlankDelay: number
-
-! The string to send when the backspace key is pressed. If set to DEC or unset it will send Delete (code 127) or, with control, Backspace (code 8) - which can be reversed with the
-! URxvt*backspacekey: string
-
-! The string to send when the delete key (not the keypad delete key) is pressed. If unset it will send the sequence traditionally associated with the Execute key.
-! URxvt*deletekey: string
-
-! The characters used as delimiters for double-click word selection (whitespace delimiting is added automatically if resource is given).
-! URxvt*cutchars: string
-
-!
 ! URxvt*{|}
 
 ! OverTheSpot, OffTheSpot, Root; option -pt.
