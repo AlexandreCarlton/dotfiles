@@ -16,7 +16,7 @@ bspc config top_padding $PANEL_HEIGHT
 
 # Place this first so it may be overridden by everything else
 # should it extend too far.
-xtitle -sf 'T%s' > "$PANEL_FIFO" &
+#xtitle -sf 'T%s' > "$PANEL_FIFO" &
 
 bspc control --subscribe > "$PANEL_FIFO" &
 #clock -sf 'S%a %H:%M' > "$PANEL_FIFO" &

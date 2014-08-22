@@ -39,7 +39,7 @@ URxvt*font: -*-gohufont-medium-*-*-*-11-*-*-*-*-*-iso10646-*,xft:Inconsolata for
 ! URxvt*intensityStyles: boolean
 
 ! Set window title string, the default title is the command-line specified after the -e option, if any, otherwise the application name; option -title.
-URxvt*title: rxvt-unicode-256color
+! URxvt*title: rxvt-unicode-256color
 
 ! Set the name used to label the windows icon or displayed in an icon manager window, it also sets the windows title unless it is explicitly set; option -n.
 ! URxvt*iconName: string

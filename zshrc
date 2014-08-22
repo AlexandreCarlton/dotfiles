@@ -1,54 +1,15 @@
+#!/bin/zsh
+
+#################################
+# Oh-My-Zsh configuration.
+# Slow on weaker systems; consider using Prezto (an optimised fork).
+
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
-
-# Source .xinitrc if login manager (like gdm) skips it
-#if [[ -n "$XINITRC_LOADED" ]]; then
-#    source ~/.xinitrc
-#fi
-
-# Pesky permissions - can't get this working.
-alias ffs='eval "sudo $(fc -ln -1)"'
-
-# Don't accidentally delete an important directory.
-if [[ -x /usr/bin/trash-rm ]]; then
-    alias rm='echo "rm is disabled, use trash-rm instead."'
-fi
-
-# Use Vimpage for man pages and other documentation
-if [[ -x /bin/vimpager ]]; then
-    export PAGER=/bin/vimpager
-    alias less=$PAGER
-    alias zless=$PAGER
-fi
-
-# Make a new status line
-if [[ -e $HOME/.shell_prompt.sh ]]; then
-    source $HOME/.shell_prompt.sh
-fi
-
-#Use vim if available
-if [[ -x /bin/vim ]]; then
-    export EDITOR="vim"
-else
-    export EDITOR="vi"
-fi
-
-# Start R without the startup prompt
-alias R="R --quiet"
-
-# Create aliases for nmcli for easy use of wifi.
-alias nmcon="nmcli -p con up id"
-alias nmlist="nmcli -p dev wifi"
-
-# Easily upgrade AUR packages
-alias aurupg="sudo aura -Akuax"
-
-alias urxvtc_stlarch='urxvtc -letsp 2 -fn "-*-gohufont-medium-*-*-*-11-*-*-*-*-*-iso10646-*","-misc-stlarch-medium-r-normal--10-100-75-75-c-80-iso10646-1"'
-
 # Look in ~/.oh-my-zsh/themes/, or use "random" (when oh-my-zsh is loaded)
 # Overridden by ~/.shell_prompt.sh
-# ZSH_THEME="itchy"
+ZSH_THEME="agnoster"
 DEFAULT_USER="alexandre"
 
 HIST_STAMPS="dd.mm.yyyy"
@@ -66,25 +27,72 @@ plugins=(archlinux \
          systemd \
          themes)
 
-source $ZSH/oh-my-zsh.sh
+# Uncomment if you want oh-my-zsh.
+# source $ZSH/oh-my-zsh.sh
+
+################################
+# Prezto (Instantly Awesome Zsh) configuration
+# source $HOME/.zprezto/init.zsh
+
+
+################################
+
+# Pesky permissions - can't get this working.
+alias ffs='eval "sudo $(fc -ln -1)"'
+
+# Don't accidentally delete an important directory.
+if [[ -x /usr/bin/trash-rm ]]; then
+    alias rm='echo "rm is disabled, use trash-rm instead."'
+fi
+
+# Use Vimpage for man pages and other documentation
+# if [[ -x /bin/vimpager ]]; then
+#     export PAGER=/bin/vimpager
+#     alias less=$PAGER
+#     alias zless=$PAGER
+# fi
+
+# Make a new status line
+if [[ -e $HOME/.shell_prompt.sh ]]; then
+    source $HOME/.shell_prompt.sh
+fi
+
+# Use vim if available
+# if [[ -x /bin/vim ]]; then
+#     export EDITOR="vim"
+# else
+#     export EDITOR="vi"
+# fi
+
+# Start R without the startup prompt
+alias R="R --quiet"
+
+# Create aliases for nmcli for easy use of wifi.
+alias nmcon="nmcli -p con up id"
+alias nmlist="nmcli -p dev wifi"
+
+# Easily upgrade AUR packages
+alias aurupg="sudo aura -Akuax"
+
+alias urxvtc_stlarch='urxvtc -letsp 2 -fn "-*-gohufont-medium-*-*-*-11-*-*-*-*-*-iso10646-*","-misc-stlarch-medium-r-normal--10-100-75-75-c-80-iso10646-1"'
+
 
 # User configuration
 
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/core_perl"
+#export PATH="$PATH:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/core_perl"
 
-export PATH="$HOME/.cabal/bin:$PATH"
+# export PATH="$PATH:$HOME/.cabal/bin"
 
-export PATH="/usr/bin/vendor_perl:$PATH"
+# export PATH="$PATH:/usr/bin/vendor_perl"
 # export MANPATH="/usr/local/man:$MANPATH"
 
-export PATH="$HOME/.gem/ruby/2.1.0/bin:$PATH"
-export PATH="/root/.gem/ruby/2.1.0/bin:$PATH"
+# export PATH="$PATH:$HOME/.gem/ruby/2.1.0/bin:/root/.gem/ruby/2.1.0/bin"
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
 # ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
+# export SSH_KEY_PATH="~/.ssh/id_rsa"
 
 # Make the example scripts executable - change this later
 # export PATH="$PATH:/home/alexandre/.bin"
@@ -93,3 +101,5 @@ export PATH="/root/.gem/ruby/2.1.0/bin:$PATH"
 #     fortune | cowsay # -f elephant-in-snake
 # fi
 cat /etc/motd
+
+# export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting

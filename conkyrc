@@ -30,13 +30,15 @@ S \
  ${memperc}%% \
 \
 \
-${if_match ${wireless_link_qual_perc wlp1s0} >= 75}\
-\
-${else}${if_match ${wireless_link_qual_perc wlp1s0} >= 50}\
+${if_match ${wireless_link_qual_perc wlp1s0} <= 25}\
+ \
+${else}${if_match ${wireless_link_qual_perc wlp1s0} <= 50}\
+\
+${else}${if_match ${wireless_link_qual_perc wlp1s0} <= 75}\
 \
 ${else}\
-\
-${endif}${endif} \
+\
+${endif}${endif}${endif} \
 ${wireless_essid wlp1s0} \
 \
 \
