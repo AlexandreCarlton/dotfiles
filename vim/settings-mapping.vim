@@ -10,6 +10,9 @@ inoremap kj <Esc>
 nnoremap j gj
 nnoremap k gk
 
+" Centre the found match.
+nnoremap n nzz
+
 " Allow for easier window navigation
 map <C-j> <C-w>j
 map <C-k> <C-w>k

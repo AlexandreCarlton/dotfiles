@@ -2,6 +2,7 @@
 ! Defines *{back,fore}ground, along with *color[1-15].
 ! And possibly other things, like cursor colour.
 #include "palettes/solarized/solarized"
+! #include "palettes/base16/base16-solarized.dark.xresources"
 
 ! TODO: Find way to use MAIN_FONT,POWERLINE_FONT
 ! - currently it breaks when using both (space is inserted after)
@@ -33,7 +34,13 @@ URxvt*font: -*-gohufont-medium-*-*-*-11-*-*-*-*-*-iso10646-*,xft:Inconsolata for
 !URxvt*font: -*-gohufont-medium-*-*-*-11-*-*-*-*-*-iso10646-*,xft:Inconsolata\ for\ Powerline:pixelsize=12
 !,-misc-stlarch-medium-r-normal--10-100-75-75-c-80-iso10646-1
 
-! The font list to use for displaying bold, italic or bold italic characters, respectively.
+
+! Dmenu2
+dmenu*selbackground: S_blue 
+!dmenu*selbackground: $(*.color4)
+dmenu*selforeground: S_base2 
+
+
 
 ! When font styles are not enabled, or this option is enabled (True, option -is, the default), bold/blink font styles imply high intensity foreground/background colours. Disabling this
 ! URxvt*intensityStyles: boolean

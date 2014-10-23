@@ -10,6 +10,9 @@ NeoBundleLazy 'chrisbra/csv.vim', {
 " Browse the Undo Tree with :UB
 NeoBundle 'chrisbra/histwin.vim'
 
+" More options (like diff) when dealing with swp files.
+NeoBundle 'chrisbra/Recover.vim'
+
 " Shell prompt generator.
 NeoBundleLazy 'edkolev/promptline.vim'
 
@@ -24,6 +27,9 @@ NeoBundle 'myusuf3/numbers.vim'
 
 " Visually display indent levels in Vim (to highlight tabs)
 " NeoBundle 'nathanaelkane/vim-indent-guides'
+
+" Show trailing whitespace - fix with :StripWhitespace
+NeoBundle 'ntpeters/vim-better-whitespace'
 
 " Explore filesystem within Vim.
 NeoBundle 'scrooloose/nerdtree'

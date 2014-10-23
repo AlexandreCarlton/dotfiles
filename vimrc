@@ -1,3 +1,10 @@
+" Look into vim-plug 
+" Seems cleaner and faster - it's just a single file.
+" Load on command as well- so only loads nerdtree if you call :NERDTreeToggle
+" (and obviously executes it).
+"
+" Find way to just download plugin manager in here instead of adding a git
+" submodule.
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " NeoBundle settings                                "
@@ -12,7 +19,7 @@ if has('vim_starting')
 	set runtimepath+=~/.vim/bundle/neobundle.vim
 endif
 
-call neobundle#rc(expand('~/.vim/bundle/'))
+call neobundle#begin(expand('~/.vim/bundle/'))
 
 " Let NeoBundle manage NeoBundle.
 " Required:
@@ -27,13 +34,16 @@ for file in split(glob('~/.vim/bundles-*.vim'), '\n')
     exe 'source' file
 endfor
 
+" Why not?
+NeoBundleLazy 'mattn/flappyvird-vim'
+
 call neobundle#end()
 
 " Required:
 filetype plugin indent on
 
 " Check for any uninstalled bundles on startup.
-NeoBundleCheck
+" NeoBundleCheck
 
 " Bundle & miscellaneous settings.
 for file in split(glob('~/.vim/settings-*.vim'), '\n')

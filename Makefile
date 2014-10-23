@@ -27,9 +27,11 @@ update:
 
 hacking: vim-link emacs-link
 
-vim-link: ctags-link
+vim-link: update ctags-link
 	$(BACKUP_AND_LINK) vimrc
 	$(BACKUP_AND_LINK) vim
+	vim +NeoBundleInstall +qall
+	vim +"PromptlineSnapshot ~/.shell_prompt.sh" +qall
 
 emacs-link:
 	$(BACKUP_AND_LINK) emacs.d

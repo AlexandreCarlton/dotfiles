@@ -2,6 +2,15 @@
 
 # Append & to everything ?
 
+# "Auto-run" - get rid of it, lose too much control
+if [[ -d /etc/X11/xinit/xinitrc.d ]]; then
+    for f in /etc/X11/xinit/xinitrc.d/*; do
+        if [[ -x "$f" ]]; then
+            . "$f"
+        fi
+    done
+fi
+
 # Load fonts
 xset +fp /usr/share/fonts/local,/usr/share/fonts/OTF
 xset fp rehash
@@ -9,7 +18,14 @@ xset fp rehash
 # Remove beep
 xset b off
 
-xrdb -load ~/.Xresources
+if [[ -f ~/.Xresources ]]; then
+    xrdb -load ~/.Xresources
+fi
+
+# TODO source ~/bin/export_colours.sh,
+# Start dunst specifying the colours and fonts
+# - sourcing everything in xinitrc.d/ usually starts it for us.
+# See if you can get a dmenu daemon running with these parameters as well.
 
 # Set background
 WALLPAPER_FOLDER=~/.wallpaper
@@ -65,9 +81,6 @@ unclutter &
 
 # Load keybindings for bspwm
 sxhkd &
-
-# Launch instance of terminal
-#urxvtc &
 
 # Load bspwm
 exec bspwm -s "$PANEL_FIFO" -p W

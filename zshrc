@@ -28,7 +28,7 @@ plugins=(archlinux \
          themes)
 
 # Uncomment if you want oh-my-zsh.
-# source $ZSH/oh-my-zsh.sh
+source $ZSH/oh-my-zsh.sh
 
 ################################
 # Prezto (Instantly Awesome Zsh) configuration
@@ -36,6 +36,10 @@ plugins=(archlinux \
 
 
 ################################
+# Base16-shell
+# BASE16_SCHEME="solarized"
+# BASE16_SHELL="$HOME/.config/base16-shell/base16-$BASE16_SCHEME.dark.sh"
+# [[ -s $BASE16_SHELL ]] && . $BASE16_SHELL
 
 # Pesky permissions - can't get this working.
 alias ffs='eval "sudo $(fc -ln -1)"'
@@ -53,9 +57,9 @@ fi
 # fi
 
 # Make a new status line
-if [[ -e $HOME/.shell_prompt.sh ]]; then
-    source $HOME/.shell_prompt.sh
-fi
+[[ -s $HOME/.shell_prompt.sh ]] && . $HOME/.shell_prompt.sh
+# Fix whitespace on right prompt
+ZLE_RPROMPT_INDENT=0
 
 # Use vim if available
 # if [[ -x /bin/vim ]]; then
@@ -102,4 +106,5 @@ alias urxvtc_stlarch='urxvtc -letsp 2 -fn "-*-gohufont-medium-*-*-*-11-*-*-*-*-*
 # fi
 cat /etc/motd
 
+export PATH="$PATH:$HOME/neo4j-community/bin"
 # export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting

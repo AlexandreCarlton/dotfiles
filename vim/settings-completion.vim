@@ -49,7 +49,15 @@ let g:UltiSnipsExpandTrigger =  '<C-j>'
 
 " YouCompleteMe
 "
-" Find file to check for cpp files.
+" Completion traversals (to integrate nicely with UltiSnips)
+" To match Ultisnips (which uses <tab> for expansion):
+" let g:ycm_key_list_previous_completion = ['<C-j>', '<C-n>', '<Down>']
+" let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
+
+
+" Find (backup) file to check for cpp files.
+" This script should be copied into the base project folder and configured
+" according to the project requirements.
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 
 " Fill location list every time new diagnostic data is generated.
@@ -67,3 +75,5 @@ let g:ycm_autoclose_preview_window_after_insertion = 1
 " Include semantic triggers for languages
 " neco-ghc for haskell.
 let g:ycm_semantic_triggers = {'haskell': ['.']}
+
+
