@@ -1,31 +1,16 @@
 " Haskell Bundles
 
-let g:haskell_context = {
-\   'autoload': {
-\       'filetypes': ['haskell']
-\   }
-\ }
-
-" Haskell plugins
-NeoBundleLazy 'dag/vim2hs', g:haskell_context
+" Haskell plugins - out of date
+Plug 'dag/vim2hs', { 'for' : 'haskell' }
+" Plug 'lpil/vim2hs-flexible', { 'for' : 'haskell' }
 
 " Haskell plugin to display error messages
-NeoBundleLazy 'eagletmt/ghcmod-vim', {
-\     'autoload': {
-\         'filetypes': ['haskell']
-\     },
-\     'depends': 'Shougo/vimproc.vim',
-\     'external_commands': 'ghc-mod'
-\ }
+" Needs vimproc.vim and ghc-mod
+Plug 'eagletmt/ghcmod-vim', { 'for' : 'haskell' }
 
 " Completion plugin for Haskell using ghc-mod
-NeoBundleLazy 'eagletmt/neco-ghc' , {
-\   'autoload': {
-\       'filetypes': ['haskell']
-\   },
-\   'external_commands': 'ghc-mod',
-\   'rtp': 'necoghc'
-\ }
+" Needs ghc-mod
+Plug 'eagletmt/neco-ghc', { 'for' : 'haskell' }
 
 " Hoogle (Haskell query plugin)
-NeoBundleLazy 'Twinside/vim-hoogle', g:haskell_context
+Plug 'Twinside/vim-hoogle', { 'for' : 'haskell' }

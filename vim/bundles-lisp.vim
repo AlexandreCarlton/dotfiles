@@ -1,8 +1,4 @@
 " Lisp Bundles
 
 " Superior Lisp Interaction Mode for Vim
-NeoBundleLazy 'kovisoft/slimv', {
-\     'autoload': {
-\         'filetypes': ['lisp', 'scheme', 'clojure']
-\     }
-\ }
+Plug 'kovisoft/slimv', { 'for': ['lisp', 'scheme', 'clojure'] }

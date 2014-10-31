@@ -1,15 +1,13 @@
 " Statusline Bundles
 "
-" Statusline using VimScript, integrates with plugins 
-NeoBundle 'bling/vim-airline'
+" Statusline using VimScript, integrates with plugins
+Plug 'bling/vim-airline'
 
 " Shows list of buffers in command bar
-" NeoBundle 'bling/vim-bufferline'
+" Plug 'bling/vim-bufferline'
 
 " Statusline using Python, difficult to configure (and heavyweight)
-" NeoBundle 'Lokaltog/powerline', {
-"     \   'rtp' : 'powerline/bindings/vim/'
-"     \}
+" Plug 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim/' }
 
 " Minimal statusline
-" NeoBundle 'itchyny/lightline.vim'
+" Plug 'itchyny/lightline.vim'

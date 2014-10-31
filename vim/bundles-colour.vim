@@ -1,30 +1,28 @@
 " Colour (Schemes and whatnot)
 
 " Base-16
-NeoBundle 'chriskempson/base16-vim'
+Plug 'chriskempson/base16-vim'
 
 " Solarized - fork of altercation to fix gitgutter.
-NeoBundle 'jwhitley/vim-colors-solarized'
+Plug 'jwhitley/vim-colors-solarized'
 
 " Tomorrow (Night)
-NeoBundle 'chriskempson/tomorrow-theme', {
-\   'rtp': 'vim'
-\ }
+Plug 'chriskempson/tomorrow-theme', { 'rtp': 'vim' }
 
 " GitHub
-NeoBundle 'endel/vim-github-colorscheme'
+Plug 'endel/vim-github-colorscheme'
 
 " Zenburn
-NeoBundle 'jnurmine/Zenburn'
+Plug 'jnurmine/Zenburn'
 
 " Jelly Beans
-NeoBundle 'nanotech/jellybeans.vim'
+Plug 'nanotech/jellybeans.vim'
 
 " Molokai (Sublime Text)
-NeoBundle 'tomasr/molokai'
+Plug 'tomasr/molokai'
 
 " Twilight (TextMate)
-NeoBundle 'matthewtodd/vim-twilight'
+Plug 'matthewtodd/vim-twilight'
 
 " Colour view/pick/edit/design/scheme tool.
-NeoBundleLazy 'Rykka/colorv.vim'
+Plug 'Rykka/colorv.vim', { 'on' : 'ColorV' }

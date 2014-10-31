@@ -1,33 +1,24 @@
-" Look into vim-plug 
-" Seems cleaner and faster - it's just a single file.
-" Load on command as well- so only loads nerdtree if you call :NERDTreeToggle
-" (and obviously executes it).
-"
-" Find way to just download plugin manager in here instead of adding a git
-" submodule.
 
-""""""""""""""""""""""""""""""""""""""""""""""""""
-" NeoBundle settings                                "
-"                                                "
-""""""""""""""""""""""""""""""""""""""""""""""""""
-if has('vim_starting')
-
-	" Use Vim instead of Vi.
-	set nocompatible
-
-	" Enable NeoBundle commands.
-	set runtimepath+=~/.vim/bundle/neobundle.vim
+" Automatic installation {{{
+if empty(glob('~/.vim/autoload/plug.vim'))
+    silent !mkdir -p ~/.vim/autoload
+    silent !curl -fLo ~/.vim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall
 endif
+" }}}
 
-call neobundle#begin(expand('~/.vim/bundle/'))
+autocmd FileType vim set foldmethod=marker
 
-" Let NeoBundle manage NeoBundle.
-" Required:
-NeoBundleFetch 'Shougo/neobundle.vim'
+" Neovim-specific settings {{{
+if has('nvim')
+    runtime! plugin/python_setup.vim
+endif
+" }}}
 
-" :NeoBundleList          - list configured bundles
-" :NeoBundleInstall(!)    - install (update) bundles
-" :NeoBundleClean(!)      - confirm (or auto-approve) remove of unused bundles
+call plug#begin()
+
+" Note that certain plugins like NerdTree and Tagbar don't work well lazily -
+" need more fiddling.
 
 " List of bundles.
 for file in split(glob('~/.vim/bundles-*.vim'), '\n')
@@ -35,15 +26,9 @@ for file in split(glob('~/.vim/bundles-*.vim'), '\n')
 endfor
 
 " Why not?
-NeoBundleLazy 'mattn/flappyvird-vim'
+Plug 'mattn/flappyvird-vim', { 'on': 'FlappyVird' }
 
-call neobundle#end()
-
-" Required:
-filetype plugin indent on
-
-" Check for any uninstalled bundles on startup.
-" NeoBundleCheck
+call plug#end()
 
 " Bundle & miscellaneous settings.
 for file in split(glob('~/.vim/settings-*.vim'), '\n')

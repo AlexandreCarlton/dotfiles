@@ -1,8 +1,4 @@
 " Markdown Bundles
 
 " Markdown runtime files
-NeoBundleLazy 'tpope/vim-markdown', {
-\   'autoload': {
-\       'filename_patterns': ['\.md$','\.mkd$', '\.markdown$']
-\   }
-\ }
+Plug 'tpope/vim-markdown', { 'for' : 'markdown' }

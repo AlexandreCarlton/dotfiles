@@ -1,10 +1,10 @@
 " Wrapper Bundles
 
 " Coveragepy Wrapper
-NeoBundle 'alfredodeza/coveragepy.vim'
+Plug 'alfredodeza/coveragepy.vim', { 'on' : 'Coveragepy' }
 
 " Convienient single-file compilation
-NeoBundle 'xuhdev/SingleCompile'
+Plug 'xuhdev/SingleCompile', { 'on' : ['SCCompile', 'SCCompileRun'] }
 
 " Ack wrapper - replaced by Unite.
-" NeoBundle 'mileszs/ack.vim'
+" Plug 'mileszs/ack.vim'

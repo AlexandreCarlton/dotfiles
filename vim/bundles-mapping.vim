@@ -1,19 +1,19 @@
 " Shortcut and Mapping Bundles
 
-" Aligns text - conflicts with LaTeX-Box
-NeoBundle 'godlygeek/tabular'
+" Aligns text
+Plug 'godlygeek/tabular', { 'on' : ['Tabularize', 'AddTabularPattern'] }
 
 " Easier way of navigating
-NeoBundle 'Lokaltog/vim-easymotion'
+Plug 'Lokaltog/vim-easymotion'
 
 " Easier commenting.
-NeoBundle 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdcommenter'
 
 " Defaults everyone can agree on.
-NeoBundle 'tpope/vim-sensible'
+Plug 'tpope/vim-sensible'
 
 " Easily change surroundings (e.g. tags) in pairs.
-NeoBundle 'tpope/vim-surround'
+Plug 'tpope/vim-surround'
 
 " Nicer mappings using ']' and '[' for 'next' and 'previous'
-NeoBundle 'tpope/vim-unimpaired'
+Plug 'tpope/vim-unimpaired'

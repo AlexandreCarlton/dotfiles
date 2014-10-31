@@ -1,41 +1,38 @@
 " Interface Bundles
 
 " Handles csv files.
-NeoBundleLazy 'chrisbra/csv.vim', {
-\     'autoload': {
-\         'filetypes': ['csv']
-\     }
-\ }
+Plug 'chrisbra/csv.vim', { 'for' : 'csv' }
 
 " Browse the Undo Tree with :UB
-NeoBundle 'chrisbra/histwin.vim'
+Plug 'chrisbra/histwin.vim', { 'on' : 'UB' }
 
 " More options (like diff) when dealing with swp files.
-NeoBundle 'chrisbra/Recover.vim'
+Plug 'chrisbra/Recover.vim'
 
 " Shell prompt generator.
-NeoBundleLazy 'edkolev/promptline.vim'
+Plug 'edkolev/promptline.vim', { 'on' : 'PromptlineSnapshot' }
 
 " Makes NERDTree handle tabs seamlessly.
-NeoBundle 'jistr/vim-nerdtree-tabs'
+Plug 'jistr/vim-nerdtree-tabs' ", { 'on' : 'NERDTreeTabsToggle' }
 
 " Nice start screen (Table of Contents)
-" NeoBundle 'mhinz/vim-startify'
+" Plug 'mhinz/vim-startify'
 
 " Intelligent number toggling.
-NeoBundle 'myusuf3/numbers.vim'
+Plug 'myusuf3/numbers.vim'
 
 " Visually display indent levels in Vim (to highlight tabs)
-" NeoBundle 'nathanaelkane/vim-indent-guides'
+" Plug 'nathanaelkane/vim-indent-guides'
 
 " Show trailing whitespace - fix with :StripWhitespace
-NeoBundle 'ntpeters/vim-better-whitespace'
+Plug 'ntpeters/vim-better-whitespace', { 'on' : 'StripWhitespace' }
 
 " Explore filesystem within Vim.
-NeoBundle 'scrooloose/nerdtree'
+" Loading NERDTree is expensive, but NERDTreeTabs is not.
+Plug 'scrooloose/nerdtree' ", { 'on' : 'NERDTreeTabsToggle' }
 
 " Fuzzy file finder
-NeoBundle 'Shougo/unite.vim'
+Plug 'Shougo/unite.vim', { 'on' : 'Unite' }
 
 " Diplay vertical lines for each indentation level.
-" NeoBundle 'Yggdroot/indentLine'
+" Plug 'Yggdroot/indentLine'

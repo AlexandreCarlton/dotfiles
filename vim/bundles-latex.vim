@@ -1,13 +1,7 @@
 " LaTeX Bundles
 
-let g:latex_context = {
-\     'autoload': {
-\         'filetypes': ['plaintex', 'context', 'latex', 'rnoweb']
-\     }
-\ }
-
-" LaTeX Plugin 
-NeoBundleLazy 'LaTeX-Box-Team/LaTeX-Box', g:latex_context
+" LaTeX Plugin
+Plug 'LaTeX-Box-Team/LaTeX-Box', { 'for' : ['plaintex', 'context', 'latex', 'rnoweb'] }
 
 " TeX plugin (requires LaTeX-Box)
-" NeoBundleLazy 'coot/atp_vim', g:latex_context
+" Plug 'coot/atp_vim', { 'for' : ['plaintex', 'context', 'latex', 'rnoweb'] }
