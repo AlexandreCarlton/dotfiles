@@ -3,9 +3,13 @@
 # For information, consult the Arch Wiki.
 
 # General
-npd         # Manages syncing of time
-chromium    # Web browser
-xorg-utils  # has 'xprop'- good for finding class names in xmonad
+npd                 # Manages syncing of time
+chromium            # Web browser
+xorg-utils          # has 'xprop'- good for finding class names in xmonad
+ntfs-3g             # Mount NTFS partitions
+archlinux-keyring   # For upgrades
+
+
 
 
 # GUI (Graphics-agnostic)
@@ -14,10 +18,22 @@ mesa                                     # mesa for 3D support
 gnome                                    # Gnome (ensure you get gdm) 
 screenfetch                              # Shows info about machine
 
+
+# System Tray
+xfce4-battery-plugin                     # Power manager
+dropboxd                                 # File sync
+network-manager-applet                   # Network Manager.
+elementary-icon-theme                    # Nice theme for a systray
+
 # Fonts
 ttf-dejavu                               # TrueType fonts (scalable)
 ttf-liberation # Arial font for Steam
-ttf-ubunty-font-family # Ubuntu's fonts
+ttf-ubuntu-font-family # Ubuntu's fonts
+ttf-droid
+ttf-symbola # Emoji.
+
+# LaTeX
+texlive-most 
 
 # Steam
 steam       # [Multilib] Digital game distribution service 
@@ -29,8 +45,10 @@ vbam-gtk    # GameBoy (Color|Advance) Emulator
 handbrake   # DVD ripping program ideal for mkv/x264
 beets       # Command-line music manager
 flashplugin # Flash (need for Youtube)
+calibre     # Ebook manager
 
 # Work 
+rxvt-unicode        # Customizable terminal
 zsh                 # Better shell
 xmonad              # Tiling manager
 xmonad-contrib      # Extra features
@@ -41,6 +59,7 @@ notification-daemon # For nice popups
 xorg-xmessage       # For nicer error message
 tmux                # BSD-licensed terminal multiplexer
 vimpager            # Scan documentation better
+vpnc                # VPN utilies
 
 # Languages & support
 vim
@@ -49,6 +68,14 @@ clang
 clang-analyzer  # Static analyzer
 gfortran
 ghc
+nodejs
+
+# Python utilities
+python-numpy
+python-scipy
+python-scikit-learn
+python-matplotlib
+python-scikit-learn
 
 
 # Chat & News

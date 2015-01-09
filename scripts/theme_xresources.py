@@ -39,6 +39,7 @@ def get_colours(theme):
                      for colour, value in files.items()}
         return converted
 
+
 def formatted_colours(theme):
     '''Replace given lines in file with keys'''
     colours = get_colours(theme)
@@ -47,10 +48,15 @@ def formatted_colours(theme):
     title = "! {t} theme generated from {f}".format(t=theme, f=CONFIG_FILENAME)
     return "{t}\n{f}".format(t=title, f=formatted)
 
+
+def main(theme):
+    '''Print out formatted colours'''
+    colours = formatted_colours(theme)
+    print(colours)
+
+
 if __name__ == '__main__':
     from sys import argv
     if len(argv) < 2:
         raise ValueError("Please supply a valid theme.")
-    theme = argv[1]
-    colours = formatted_colours(theme)
-    print(colours)
+    main(argv[1])

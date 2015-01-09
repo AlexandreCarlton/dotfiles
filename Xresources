@@ -29,7 +29,9 @@ URxvt*skipScroll: false
 *boldItalicFont: -*-gohufont-bold-*-*-*-11-*-*-*-*-*-iso10646-*
 
 !URxvt*font: MAIN_FONT,POWERLINE_FONT
-URxvt*font: -*-gohufont-medium-*-*-*-11-*-*-*-*-*-iso10646-*,xft:Inconsolata for Powerline:pixelsize=12
+URxvt*font: -*-gohufont-medium-*-*-*-11-*-*-*-*-*-iso10646-*,xft:Inconsolata for Powerline:pixelsize=11
+!URxvt*font: xft:PowerlineSymbols:pixelsize=11,-*-gohufont-medium-*-*-*-11-*-*-*-*-*-iso10646-*
+
 
 !URxvt*font: -*-gohufont-medium-*-*-*-11-*-*-*-*-*-iso10646-*,xft:Inconsolata\ for\ Powerline:pixelsize=12
 !,-misc-stlarch-medium-r-normal--10-100-75-75-c-80-iso10646-1

@@ -21,25 +21,26 @@ use_xft yes
 # containing 1 line:
 # snd-mixer-oss
 
+# %{F\#fffdf6e3}Thing%{F-} \
 
 TEXT
 S \
- ${cpu cpu0}%% \
+ %{F\#fffdf6e3}CPU%{F-} ${cpu cpu1} ${cpu cpu2} ${cpu cpu3} ${cpu cpu4} \
 \
 \
- ${memperc}%% \
+ %{F\#fffdf6e3}RAM%{F-} ${mem} \
 \
 \
-${if_match ${wireless_link_qual_perc wlp1s0} <= 25}\
+${if_match ${wireless_link_qual_perc wlp1s0b1} <= 25}\
  \
-${else}${if_match ${wireless_link_qual_perc wlp1s0} <= 50}\
+${else}${if_match ${wireless_link_qual_perc wlp1s0b1} <= 50}\
 \
-${else}${if_match ${wireless_link_qual_perc wlp1s0} <= 75}\
+${else}${if_match ${wireless_link_qual_perc wlp1s0b1} <= 75}\
 \
 ${else}\
 \
 ${endif}${endif}${endif} \
-${wireless_essid wlp1s0} \
+${wireless_essid wlp1s0b1} \
 \
 \
 ${if_existing /dev/mixer}\
@@ -52,9 +53,9 @@ ${else}${if_match ${mixer} >= 33}\
 ${else}\
 \
 ${endif}${endif}${endif} \
-${mixer}%% \
+${mixer} \
 ${else}\
-${execi 1 $HOME/.bin/volume.sh}%% \
+${execi 1 $HOME/.bin/volume.sh} \
 ${endif}\
 \
 \
@@ -69,10 +70,13 @@ ${else}${if_match ${battery_percent} >= 25}\
 ${else}\
 \
 ${endif}${endif}${endif}${endif} \
-${battery_percent}%% \
+${battery_percent} \
 \
 \
- ${execi 1 printf "%.0f\n" $(xbacklight)}%% \
+ ${execi 1 printf "%.0f\n" $(xbacklight)} \
+\
+\
+DBX ${execi 10 dropbox status | head -n 1} \
 \
 \
  ${texeci 3600 checkupdates | wc -l} \

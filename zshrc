@@ -46,15 +46,15 @@ alias ffs='eval "sudo $(fc -ln -1)"'
 
 # Don't accidentally delete an important directory.
 if [[ -x /usr/bin/trash-rm ]]; then
-    alias rm='echo "rm is disabled, use trash-rm instead."'
+    alias rm='trash'
 fi
 
 # Use Vimpage for man pages and other documentation
-# if [[ -x /bin/vimpager ]]; then
-#     export PAGER=/bin/vimpager
-#     alias less=$PAGER
-#     alias zless=$PAGER
-# fi
+if [[ -x /bin/vimpager ]]; then
+    export PAGER=/bin/vimpager
+    alias less=$PAGER
+    alias zless=$PAGER
+fi
 
 # Make a new status line
 [[ -s $HOME/.shell_prompt.sh ]] && . $HOME/.shell_prompt.sh
@@ -75,11 +75,14 @@ alias R="R --quiet"
 alias nmcon="nmcli -p con up id"
 alias nmlist="nmcli -p dev wifi"
 
+# Easily install AUR packages
+alias aurin="sudo aura -Ax"
 # Easily upgrade AUR packages
 alias aurupg="sudo aura -Akuax"
 
 alias urxvtc_stlarch='urxvtc -letsp 2 -fn "-*-gohufont-medium-*-*-*-11-*-*-*-*-*-iso10646-*","-misc-stlarch-medium-r-normal--10-100-75-75-c-80-iso10646-1"'
 
+alias top="htop"
 
 # User configuration
 

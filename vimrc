@@ -2,7 +2,7 @@
 " Automatic installation {{{
 if empty(glob('~/.vim/autoload/plug.vim'))
     silent !mkdir -p ~/.vim/autoload
-    silent !curl -fLo ~/.vim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    silent !curl -fLo ~/.vim/autoload/plug.vim https://raw.githubusercontent.com/AlexandreCarlton/vim-plug/build-requirements/plug.vim
     autocmd VimEnter * PlugInstall
 endif
 " }}}
@@ -154,7 +154,7 @@ Plug 'tpope/vim-endwise'
 " Clang-based completion for C-family languages and Python.
 " Clang must be at least version 3.3
 " Only update when specified; it takes a lot of time.
-Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer --system-libclang --omnisharp-completer', 'frozen' : 1 } " {{{
+Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer --system-clang --omnisharp-completer', 'frozen' : 1, 'needs' : 'cmake' } " {{{
 
 " Completion traversals (to integrate nicely with UltiSnips)
 " To match Ultisnips (which uses <tab> for expansion):
@@ -289,7 +289,7 @@ Plug 'chrisbra/Recover.vim'
 Plug 'edkolev/promptline.vim', { 'on' : 'PromptlineSnapshot' }
 
 " Makes NERDTree handle tabs seamlessly.
-Plug 'jistr/vim-nerdtree-tabs' " {{{, { 'on' : 'NERDTreeTabsToggle' } 
+Plug 'jistr/vim-nerdtree-tabs' " {{{, { 'on' : 'NERDTreeTabsToggle' }
 " Don't open NERDtree on Console vim startup
 let g:nerdtree_tabs_open_on_console_startup = 0
 " }}}
@@ -339,9 +339,12 @@ nnoremap <C-p> :<C-u>Unite -start-insert file_rec/async:!<cr>
 " General support
 Plug 'pangloss/vim-javascript', { 'for' : 'javascript' }
 
+" Tags and omnicompletion.
+Plug 'marijnh/tern_for_vim', { 'for' : 'javascript', 'do': 'npm install', 'needs': 'npm' }
+
 " }}}
 
-" LaTeX {{{ 
+" LaTeX {{{
 au BufNewFile,BufRead *.tex set filetype=tex
 
 " Set spellcheck on documents
@@ -417,9 +420,9 @@ imap {<CR> {<CR>}<C-o>O
 let mapleader=","
 " let localleader=" "
 
-map <Leader>n <plug>NERDTreeTabsToggle<cr> 
+map <Leader>n <plug>NERDTreeTabsToggle<cr>
 
-" Function Keys 
+" Function Keys
 nmap <F5> :SCCompileRun<cr>
 nmap <F6> :SCCompile<cr>
 nmap <F8> :TagbarToggle<cr>
@@ -475,7 +478,7 @@ let g:pymode_lint_comment_symbol = '⚠'
 
 " Nice mappings and launcher capabilities
 let g:install_vimcom = 'sudo R -e "library(devtools); install_github(\"jalvesaq/VimCom\")"'
-Plug 'jcfaria/Vim-R-Plugin' , { 'for' : ['r', 'rnoweb'], 'do' : g:install_vimcom }
+Plug 'jcfaria/Vim-R-Plugin' , { 'for' : ['r', 'rnoweb'], 'do' : g:install_vimcom , 'needs' : 'R' }
 
 autocmd FileType r set omnifunc=rcomplete#CompleteR
 
@@ -558,11 +561,11 @@ set smartindent
 " Piece de resistance
 " Easily browse tags of source files.
 " Reguires ctags and vim >= 7.0
-Plug 'majutsushi/tagbar'
+Plug 'majutsushi/tagbar', { 'needs' : ['jsctags', 'hasktags'] }
 
 " CoffeeScript support
 " `gem install CoffeeTags` also must be done.
-Plug 'lukaszkorecki/CoffeeTags', { 'for' : 'coffee', 'do' : 'gem install CoffeeTags' } 
+Plug 'lukaszkorecki/CoffeeTags', { 'for' : 'coffee', 'do' : 'gem install CoffeeTags', 'needs' : 'gem' }
 
 " Haskell (requires hasktags) {{{
 let g:tagbar_type_haskell = {
@@ -623,13 +626,11 @@ Plug 'xuhdev/SingleCompile', { 'on' : ['SCCompile', 'SCCompileRun'] }
 
 " }}}
 
-" List of bundles.
-for file in split(glob('~/.vim/bundles-*.vim'), '\n')
-    exe 'source' file
-endfor
-
 " Why not?
 Plug 'mattn/flappyvird-vim', { 'on': 'FlappyVird' }
+
+" Testing
+" Plug 'junegunn/vader.vim'
 
 call plug#end()
 
@@ -637,7 +638,3 @@ call plug#end()
 " HAS to be set after t_Co and background - weird things happen otherwise.
 colorscheme solarized
 
-" Bundle & miscellaneous settings.
-for file in split(glob('~/.vim/settings-*.vim'), '\n')
-    exe 'source' file
-endfor

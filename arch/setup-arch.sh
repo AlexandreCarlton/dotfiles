@@ -3,7 +3,7 @@
 function build_aur () {
     package=$1
     index=${package:0:2}
-    tarball={$package}.tar.gz
+    tarball=${package}.tar.gz
 
     cd $HOME
     wget https://aur.archlinux.org/packages/$index/$package/$tarball
@@ -35,6 +35,7 @@ $HOME/.dotfiles/setup-dotfiles.sh
 
 # Enable Gnome Display Manager (login screen)
 systemctl enable gdm.service 
+#systemctl enable slim.service 
 
 # Set Chromium as default web browser
 xdg-mime default chromium.desktop x-scheme-handler/http

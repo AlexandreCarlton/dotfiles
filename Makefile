@@ -31,7 +31,7 @@ vim-link: update ctags-link
 	$(BACKUP_AND_LINK) vimrc
 	$(BACKUP_AND_LINK) vim
 	vim +qall
-	vim +"PromptlineSnapshot ~/.shell_prompt.sh" +qall
+	vim +"PromptlineSnapshot ~/.shell_prompt.sh airline" +qall
 
 neovim-link: vim-link
 	ln -sf ~/.vimrc ~/.nvimrc
@@ -80,4 +80,6 @@ X-link:
 	$(BACKUP_AND_LINK) xinitrc
 
 fonts-link:
-	echo "TODO"
+	$(BACKUP_AND_LINK) fonts
+	$(BACKUP_AND_LINK) fontconfig config	
+	fc-cache vf ~/.fonts

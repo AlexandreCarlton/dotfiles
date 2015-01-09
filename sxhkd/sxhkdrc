@@ -99,6 +99,10 @@ super + Return
 super + space
 	dmenu_run -l 10 -h 16 -w 200 -y 16 
 
+# Wifi
+# super + i
+# 	nmcli_dmenu
+
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
@@ -115,10 +119,10 @@ XF86AudioMute
 
 # Brightness settings
 XF86MonBrightnessUp
-    xbacklight -inc 10
+	xbacklight -inc 10
 
 XF86MonBrightnessDown
-    xbacklight -dec 10
+	xbacklight -dec 10
 
 #
 # Drop-down Conky menus from bar.
