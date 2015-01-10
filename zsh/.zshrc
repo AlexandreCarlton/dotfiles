@@ -59,7 +59,7 @@ fi
 # Make a new status line
 [[ -s $HOME/.shell_prompt.sh ]] && . $HOME/.shell_prompt.sh
 # Fix whitespace on right prompt
-ZLE_RPROMPT_INDENT=0
+export ZLE_RPROMPT_INDENT=0
 
 # Use vim if available
 # if [[ -x /bin/vim ]]; then

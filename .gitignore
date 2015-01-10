@@ -1,4 +1,5 @@
-vim/bundle/
-vim/autoload/
-vim/plugged
+./vim/vim/bundle/
+./vim/vim/autoload/
+./vim/vim/plugged
 ssh/id_rsa
+in-progress/

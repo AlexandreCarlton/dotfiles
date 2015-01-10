@@ -1,10 +1,4 @@
 
-# Idea: set up dotfiles more easily.
-# make install-vim-bundle: Installs neobundle.
-# make install-vim: installs installs vim-bundle, backs up vimrc and vim/,
-# and installs everything (ctags, vim, vimrc, calls vim +NeoBundleInstall, etc.)
-#
-# make desktop - symlinks Xresources, etc.
 
 # We don't want these to represent physical files - perhaps rename to install-x?
 # or x-link
@@ -12,6 +6,7 @@
 # could change usage to accept variable number of arguments
 # and specify a --folder=<folder>, which it would be placed in instead of ~
 # so: $(BACKUP_AND_LINK) bspwm sxhkd --folder=config for example.
+
 BACKUP_AND_LINK=sh `pwd`/scripts/backup_and_link.sh
 
 all:
@@ -48,10 +43,7 @@ ctags-link:
 shell-link: zsh-link bash-link profile-link
 
 zsh-link:
-	$(BACKUP_AND_LINK) zshrc
-	$(BACKUP_AND_LINK) oh-my-zsh
-	$(BACKUP_AND_LINK) zprezto
-	$(BACKUP_AND_LINK) zpreztorc
+	stow zsh
 
 bash-link:
 	$(BACKUP_AND_LINK) bashrc
