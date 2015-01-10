@@ -1,7 +1,7 @@
 ! Include colorscheme from ~/.palettes
 ! Defines *{back,fore}ground, along with *color[1-15].
 ! And possibly other things, like cursor colour.
-#include ".palettes/solarized/solarized"
+! #include ".palettes/solarized/solarized"
 ! #include "palettes/base16/base16-solarized.dark.xresources"
 
 ! TODO: Find way to use MAIN_FONT,POWERLINE_FONT
