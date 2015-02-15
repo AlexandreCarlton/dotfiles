@@ -2,7 +2,7 @@
 " Automatic installation {{{
 if empty(glob('~/.vim/autoload/plug.vim'))
     silent !mkdir -p ~/.vim/autoload
-    silent !curl -fLo ~/.vim/autoload/plug.vim https://raw.githubusercontent.com/AlexandreCarlton/vim-plug/build-requirements/plug.vim
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/build-requirements/plug.vim
     autocmd VimEnter * PlugInstall
 endif
 " }}}
@@ -285,8 +285,6 @@ Plug 'chrisbra/histwin.vim', { 'on' : 'UB' }
 " More options (like diff) when dealing with swp files.
 Plug 'chrisbra/Recover.vim'
 
-" Shell prompt generator.
-Plug 'edkolev/promptline.vim', { 'on' : 'PromptlineSnapshot' }
 
 " Makes NERDTree handle tabs seamlessly.
 Plug 'jistr/vim-nerdtree-tabs' " {{{, { 'on' : 'NERDTreeTabsToggle' }
@@ -536,6 +534,9 @@ endif
 
 " Minimal statusline
 " Plug 'itchyny/lightline.vim'
+
+" Shell prompt generator.
+Plug 'edkolev/promptline.vim', { 'on' : 'PromptlineSnapshot' }
 
 " }}}
 

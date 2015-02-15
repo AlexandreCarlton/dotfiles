@@ -5,7 +5,7 @@ pad_percents 3
 out_to_console yes
 out_to_x no
 update_interval 1
-update_interval_on_battery 10
+# update_interval_on_battery 10
 use_xft yes
 
 #template0 ~/.config/bspwm/panel/toggle_conky \1
@@ -25,24 +25,26 @@ use_xft yes
 
 TEXT
 S \
- %{F\#fffdf6e3}CPU%{F-} ${cpu cpu1} ${cpu cpu2} ${cpu cpu3} ${cpu cpu4} \
+CPU %{F\#fffdf6e3}${cpu cpu1} ${cpu cpu2} ${cpu cpu3} ${cpu cpu4}%{F-} \
 \
 \
- %{F\#fffdf6e3}RAM%{F-} ${mem} \
+RAM %{F\#fffdf6e3}${mem}%{F-} \
 \
 \
 ${if_match ${wireless_link_qual_perc wlp1s0b1} <= 25}\
- \
+▂___\
 ${else}${if_match ${wireless_link_qual_perc wlp1s0b1} <= 50}\
-\
+▂▄__\
 ${else}${if_match ${wireless_link_qual_perc wlp1s0b1} <= 75}\
-\
+▂▄▆_\
 ${else}\
-\
+▂▄▆█\
 ${endif}${endif}${endif} \
-${wireless_essid wlp1s0b1} \
+%{F\#fffdf6e3}${wireless_essid wlp1s0b1}%{F-} \
 \
 \
+VOL\
+%{F\#fffdf6e3}\
 ${if_existing /dev/mixer}\
 ${if_mixer_mute}\
 \
@@ -57,29 +59,22 @@ ${mixer} \
 ${else}\
 ${execi 1 $HOME/.bin/volume.sh} \
 ${endif}\
+%{F-}\
 \
 \
+BAT \
 ${if_existing /sys/class/power_supply/AC/online 1}\
-\
-${else}${if_match ${battery_percent} >= 75 }\
-\
-${else}${if_match ${battery_percent} >= 50}\
-\
-${else}${if_match ${battery_percent} >= 25}\
-\
+(C) \
 ${else}\
-\
-${endif}${endif}${endif}${endif} \
-${battery_percent} \
+(D) \
+${endif}\
+%{F\#fffdf6e3}${battery_percent}%{F-} \
 \
 \
- ${execi 1 printf "%.0f\n" $(xbacklight)} \
+DBX %{F\#fffdf6e3}${execi 10 dropbox status | head -n 1}%{F-} \
 \
 \
-DBX ${execi 10 dropbox status | head -n 1} \
+PAC %{F\#fffdf6e3}${texeci 3600 checkupdates | wc -l}%{F-} \
 \
 \
- ${texeci 3600 checkupdates | wc -l} \
-\
-\
- ${time %a %b %d %H:%M}
+${time %a %b %d %H:%M}

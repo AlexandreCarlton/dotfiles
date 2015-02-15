@@ -1,6 +1,6 @@
 #!/bin/sh
 
-source ~/.bin/export_colours_bar.sh
+. ~/.bin/export_colours_bar.sh
 
 COLOR_FOREGROUND=$foreground
 COLOR_BACKGROUND=$background

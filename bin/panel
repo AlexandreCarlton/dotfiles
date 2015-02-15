@@ -30,7 +30,7 @@ case "$flavor" in
 	bar)
         MAIN_FONT=$(xrdb -q | egrep '^\*font:' | awk '{ print $2 }')
         ICON_FONT='-misc-stlarch-medium-r-normal--10-100-75-75-c-80-iso10646-1'
-		cat "$PANEL_FIFO" | panel_bar | bar-aint-recursive -g 1024x$PANEL_HEIGHT -f "$ICON_FONT","$MAIN_FONT" -F "$COLOR_FOREGROUND" -B "$COLOR_BACKGROUND" &
+		cat "$PANEL_FIFO" | panel_bar | bar-aint-recursive -g 1024x$PANEL_HEIGHT -f "$MAIN_FONT" -F "$COLOR_FOREGROUND" -B "$COLOR_BACKGROUND" &
 		#cat "$PANEL_FIFO" | panel_bar | bar -g 1024x$PANEL_HEIGHT -f "$ICON_FONT","$MAIN_FONT" -F "$foreground" -B "$background" &
 		;;
 	dzen2)

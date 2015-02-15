@@ -1,3 +1,0 @@
-# Web
-flask      # Microframework
-sqlalchemy # ORM

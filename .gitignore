@@ -1,5 +1,7 @@
-./vim/vim/bundle/
-./vim/vim/autoload/
-./vim/vim/plugged
-ssh/id_rsa
+emacs/.emacs.d/
 in-progress/
+ssh/.ssh/id_rsa
+vim/.vim/bundle/
+vim/.vim/autoload/
+vim/.vim/plugged
+xmonad/.xmonad/

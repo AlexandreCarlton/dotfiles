@@ -1,0 +1,37 @@
+#!/bin/sh
+
+# A word on checking whether a util is installed:
+# Technically `command -v $util` is better as we don't need to know where the
+# command is installed, but it is a lot slower.
+# Pretty much all the utilities here will be in /usr/bin, especially on Arch
+# Linux where /bin and /sbin are just symlinks to /usr/bin.
+# As such, test -x /usr/bin/${util} works just as well.
+
+# Pesky permissions
+alias ffs='eval "sudo $(fc -ln -1)"'
+
+# Don't accidentally delete an important directory.
+[ -x /usr/bin/trash ] && alias rm='trash'
+
+# Use Vimpager to view files.
+if [ -x /usr/bin/vimpager ]; then
+    alias less=vimpager
+    alias zless=vimpager
+fi
+
+# Start R without the startup prompt
+alias R="R --quiet"
+
+# Create aliases for nmcli for easy use of wifi.
+alias nmcon="nmcli -p con up id"
+alias nmlist="nmcli -p dev wifi"
+
+# Easily install and upgrade AUR packages
+alias aurin="sudo aura -Ax"
+alias aurupg="sudo aura -Akuax"
+
+# Helper alias for debugging symbols.
+alias urxvtc_stlarch='urxvtc -letsp 2 -fn "-*-gohufont-medium-*-*-*-11-*-*-*-*-*-iso10646-*","-misc-stlarch-medium-r-normal--10-100-75-75-c-80-iso10646-1"'
+
+# top on steroids
+[ $(command -v htop) ] && alias top="htop"

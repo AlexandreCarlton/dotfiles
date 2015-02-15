@@ -2,7 +2,7 @@
 
 # Distro-agnostic script to install a program.
 
-if [[ "$#" == "0" ]]; then
+if [ "$#" = "0" ]; then
     echo 'Please specify at least one package to install.'
     exit
 fi
