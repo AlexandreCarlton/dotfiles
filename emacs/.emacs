@@ -6,6 +6,26 @@
 
 (require 'package)
 
+;; Plugins to look into:
+;; Look up 'emacs awesome' for more ideas.
+;; Or spacemacs
+
+;; Flycheck (Syntax-checking)
+;; AutoComplete/ComapanyMode (Completion)
+;; Helm
+;; Evil & co (Vim-like keybindings)
+;;  Ideally we'd make extensive use of these keybindings to minimise transition
+;; yasnippet (Snippets)
+
+;; Auctex (LaTeX)
+;; ESS (R)
+;; elpy (Python)
+;; haskell-mode (haskell)
+;;
+
+
+
+
 ;;; Code:
 
 ; Package repositories

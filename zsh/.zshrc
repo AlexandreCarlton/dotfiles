@@ -21,7 +21,7 @@ HIST_STAMPS="dd.mm.yyyy"
 # Plugins to load(found in ~/.oh-my-zsh/plugins/*)
 plugins=(archlinux \
          battery \
-         #emacs \
+         emacs \
          git \
          history \
          jsontools \
@@ -59,3 +59,5 @@ export ZLE_RPROMPT_INDENT=0
 #     fortune | cowsay # -f elephant-in-snake
 # fi
 cat /etc/motd
+
+alias google-chrome=google-chrome-stable

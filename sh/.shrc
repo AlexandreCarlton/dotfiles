@@ -34,4 +34,4 @@ alias aurupg="sudo aura -Akuax"
 alias urxvtc_stlarch='urxvtc -letsp 2 -fn "-*-gohufont-medium-*-*-*-11-*-*-*-*-*-iso10646-*","-misc-stlarch-medium-r-normal--10-100-75-75-c-80-iso10646-1"'
 
 # top on steroids
-[ $(command -v htop) ] && alias top="htop"
+[ -x /usr/bin/htop ] && alias top="htop"
