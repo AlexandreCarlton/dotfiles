@@ -7,3 +7,6 @@
 [submodule "X/.palettes/base16-xresources"]
 	path = X/.palettes/base16-xresources
 	url = git@github.com:chriskempson/base16-xresources
+[submodule "spacemacs/.emacs.d"]
+	path = spacemacs/.emacs.d
+	url = git@github.com:syl20bnr/spacemacs.git
