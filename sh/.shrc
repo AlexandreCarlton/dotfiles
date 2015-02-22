@@ -35,3 +35,6 @@ alias urxvtc_stlarch='urxvtc -letsp 2 -fn "-*-gohufont-medium-*-*-*-11-*-*-*-*-*
 
 # top on steroids
 [ -x /usr/bin/htop ] && alias top="htop"
+
+# Helper aliases/exports when working on Chromium.
+# . $HOME/.chromium
