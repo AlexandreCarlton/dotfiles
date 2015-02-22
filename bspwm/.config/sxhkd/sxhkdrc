@@ -100,8 +100,8 @@ super + space
 	dmenu_run -l 10 -h 16 -w 200 -y 16 
 
 # Wifi
-# super + i
-# 	nmcli_dmenu
+super + n
+	nmcli_dmenu
 
 # make sxhkd reload its configuration files:
 super + Escape
