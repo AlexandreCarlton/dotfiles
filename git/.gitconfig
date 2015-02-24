@@ -10,3 +10,5 @@
 	prompt = false
 [core]
 	excludesfile = ~/.gitignore_global
+[branch]
+	autosetuprebase = always
