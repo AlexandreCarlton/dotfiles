@@ -7,6 +7,7 @@ help:
 	@echo "update		-- Update and pull in third-party repositories"
 	@echo "install-stow	-- Install GNU stow from official repositories"
 	@echo "install-dash	-- Install dash (a small, fast POSIX shell) from official repositories"
+	@echo "link-fonts   -- Install fonts (e.g. Powerline)"
 	@echo ""
 	@echo "Programming utilities:"
 	@echo "hacking		-- Install all programming dotfiles"
@@ -106,6 +107,6 @@ conky-link: install-stow
 X-link: install-stow
 	stow X
 
-fonts-link: install-stow
+link-fonts: install-stow
 	stow font
 	fc-cache vf ~/.fonts
