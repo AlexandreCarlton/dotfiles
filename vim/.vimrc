@@ -526,6 +526,9 @@ endif
 
 " }}}
 
+" Show statusline on all windows
+set laststatus=2
+
 " Shows list of buffers in command bar
 " Plug 'bling/vim-bufferline'
 

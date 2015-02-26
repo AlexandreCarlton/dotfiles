@@ -14,6 +14,7 @@ ZSH=${HOME}/.oh-my-zsh
 
 # Look in ~/.oh-my-zsh/themes/, or use "random" (when oh-my-zsh is loaded)
 # ZSH_THEME="agnoster"
+# ZSH_THEME="solarized-powerline"
 DEFAULT_USER="alexandre"
 
 HIST_STAMPS="dd.mm.yyyy"
@@ -21,7 +22,7 @@ HIST_STAMPS="dd.mm.yyyy"
 # Plugins to load(found in ~/.oh-my-zsh/plugins/*)
 plugins=(archlinux \
          battery \
-         emacs \
+#        emacs \
          git \
          history \
          jsontools \
@@ -59,5 +60,3 @@ export ZLE_RPROMPT_INDENT=0
 #     fortune | cowsay # -f elephant-in-snake
 # fi
 cat /etc/motd
-
-alias google-chrome=google-chrome-stable

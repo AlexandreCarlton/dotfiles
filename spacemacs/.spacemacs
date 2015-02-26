@@ -1,3 +1,4 @@
+;; vim: filetype=lisp
 ;; -*- mode: emacs-lisp -*-
 ;; This file is loaded by Spacemacs at startup.
 ;; It must be stored in your home directory.
@@ -11,14 +12,17 @@
  dotspacemacs-configuration-layer-path '()
  ;; List of configuration layers to load.
  dotspacemacs-configuration-layers '(auctex
+                                     ; company-mode
                                      c-c++
                                      ess
                                      git
                                      haskell
                                      html
                                      javascript
+                                     lua
                                      markdown
-                                     python)
+                                     python
+                                     themes-megapack)
  ;; A list of packages and/or extensions that will not be install and loaded.
  dotspacemacs-excluded-packages '()
 )
@@ -39,11 +43,11 @@
                        solarized-light)
  ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
  ;; size to make separators look not too crappy.
- dotspacemacs-default-font '("GohuFont"
-                             :size 11
+ dotspacemacs-default-font '("GohuFont" ;; Use same font in ~/.Xresources
+                             :size 11 ;; Use same size as in ~/.Xresources
                              :weight normal
                              :width normal
-                             :powerline-scale 1.5)
+                             :powerline-scale 1.1)
  ;; The leader key
  dotspacemacs-leader-key "SPC"
  ;; Major mode leader key is a shortcut key which is the equivalent of
@@ -99,23 +103,19 @@
  startup."
   ;; Default escape is 'fd', but 'jk' is nicer.
   (setq-default evil-escape-key-sequence "jk")
-  ;; Use ASCII characters in Minor Mode.
-  (setq solarized-high-contrast-mode-line t)
-  ;; (set-face-attribute 'mode-line nil
-  ;;                     :foreground "#fdf6e3"
-  ;;                     :background "#2aa198"
-  ;;                     :box nil)
-  ;; (set-face-attribute 'mode-line-inactive nil
-  ;;                     :box nil)
 )
 
 (defun dotspacemacs/config ()
   "This is were you can ultimately override default Spacemacs configuration.
 This function is called at the very end of Spacemacs initialization."
-  ;; Tweak the modeline to look better with solarized.
-  (setq powerline-default-separator 'slant)
-  ;; (setq powerline-color1 "#073642")
-  ;; (setq powerline-color2 "#002b36")
+  ;; Tweak the modeline to look better with bitmap fonts.
+  (setq powerline-default-separator nil)
+  ;; Don't use icons when using Neo-Tree
+  (setq neo-theme 'nerd)
+  ;; Enable line numbers by default.
+  (global-linum-mode 1)
+  ;; Enable flycheck by default.
+  (flycheck-mode)
 )
 
 ;; Custom variables

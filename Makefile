@@ -31,7 +31,7 @@ help:
 ## Installation of tools and submodules
 ##
 update:
-	git pull
+	git pull --rebase
 	git submodule update --init --recursive
 
 # make these aliases, like install-stow=/usr/bin/stow
