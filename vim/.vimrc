@@ -87,10 +87,6 @@ set fileformats=unix,dos,mac
 
 " Code Completion {{{
 
-" Snippets for snippet engine
-" Compatible with ultisnips or neosnippet
-" Plug 'honza/vim-snippets'
-
 " Autocompletion for quotes, parens, etc.
 Plug 'Raimondi/delimitMate'
 
@@ -155,7 +151,7 @@ Plug 'Shougo/neosnippet-snippets'
 
 " Snippet engine - requires NeoComplete enabled
 Plug 'Shougo/neosnippet.vim' " {{{
-" let g:neosnippet#snippets_directory=g:bundle_folder.'/vim-snippets/snippets'
+
 imap <C-j> <Plug>(neosnippet_expand_or_jump)
 smap <C-j> <Plug>(neosnippet_expand_or_jump)
 xmap <C-j> <Plug>(neosnippet_expand_target)
@@ -255,12 +251,6 @@ Plug 'chrisbra/histwin.vim', { 'on' : 'UB' }
 " More options (like diff) when dealing with swp files.
 Plug 'chrisbra/Recover.vim'
 
-" Makes NERDTree handle tabs seamlessly.
-" Plug 'jistr/vim-nerdtree-tabs' " {{{
-" Don't open NERDtree on Console vim startup
-let g:nerdtree_tabs_open_on_console_startup = 0
-" }}}
-
 " Display marks in the gutter
 Plug 'kshenoy/vim-signature'
 
@@ -274,23 +264,13 @@ let g:numbers_exclude = ['unite', 'tagbar', 'startify', 'gundo', 'vimshell', 'w3
 
 " }}}
 
-" Visually display indent levels in Vim (to highlight tabs)
-" Plug 'nathanaelkane/vim-indent-guides'
-
 " Show trailing whitespace - fix with :StripWhitespace
 Plug 'ntpeters/vim-better-whitespace'
-
-" Explore filesystem within Vim.
-" Loading NERDTree is expensive, but NERDTreeTabs is not.
-" Plug 'scrooloose/nerdtree'
-
-
-" Diplay vertical lines for each indentation level.
-" Plug 'Yggdroot/indentLine'
 
 " }}}
 
 " JavaScript {{{
+
 " General support
 Plug 'pangloss/vim-javascript', { 'for' : 'javascript' }
 
@@ -300,6 +280,7 @@ Plug 'marijnh/tern_for_vim', { 'for' : 'javascript', 'do': 'npm install -g' }
 " }}}
 
 " LaTeX {{{
+
 au BufNewFile,BufRead *.tex set filetype=tex
 
 " Set spellcheck on documents
@@ -317,6 +298,7 @@ let g:LatexBox_quickfix = 2
 " }}}
 
 " Mappings {{{
+
 " Aligns text
 Plug 'godlygeek/tabular'
 
@@ -418,15 +400,6 @@ let g:airline_powerline_fonts = 1
 
 " }}}
 
-" Powerline (Remove this later - too heavy) {{{
-" let $PYTHONPATH='~/.local/lib/python3.4/site-packages'
-" python import sys; sys.path.append('~/.local/lib/python3.4/site-packages')
-" python import vim
-" python from powerline.vim import setup as powerline_setup
-" python powerline_setup()
-" python del powerline_setup
-" }}}
-
 " Show statusline on all windows
 set laststatus=2
 
@@ -508,7 +481,10 @@ Plug 'xuhdev/SingleCompile', { 'on' : ['SCCompile', 'SCCompileRun'] }
 " }}}
 
 " Unite (and plugins that depend on it) {{{
-Plug 'Shougo/unite.vim', { 'on' : 'Unite' }
+Plug 'Shougo/unite.vim'
+
+Plug 'Shougo/vimfiler.vim', {'on': 'VimFilerTab'}
+let g:vimfiler_as_default_explorer = 1
 
 " Use ag or ack if available
 "if executable('ag')
@@ -522,6 +498,7 @@ Plug 'Shougo/unite.vim', { 'on' : 'Unite' }
 
 nnoremap <Leader>ua :Unite grep:.<cr>
 nnoremap <Leader>uf :Unite -start-insert file_rec/async:!<cr>
+nnoremap <Leader>f :VimFilerTab<cr>
 
 " }}}
 
