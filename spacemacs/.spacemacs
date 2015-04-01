@@ -16,7 +16,7 @@
                                      c-c++
                                      ess
                                      git
-                                     haskell
+                                     ;haskell
                                      html
                                      javascript
                                      lua
