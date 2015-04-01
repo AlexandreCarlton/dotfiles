@@ -71,10 +71,7 @@ ${endif}\
 %{F\#fffdf6e3}${battery_percent}%{F-} \
 \
 \
-DBX %{F\#fffdf6e3}${execi 10 dropbox status | head -n 1}%{F-} \
-\
-\
 PAC %{F\#fffdf6e3}${texeci 3600 checkupdates | wc -l}%{F-} \
 \
 \
-${time %a %b %d %H:%M}
+${time %a %b %d} %{F\#fffdf6e3}${time %H:%M}%{F-}
