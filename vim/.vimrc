@@ -197,7 +197,7 @@ Plug 'eagletmt/neco-ghc', { 'for' : 'haskell' } " {{{
 " Show detailed information (type) of symbols
 let g:necoghc_enable_detailed_browse = 1
 
-" Use omni-completion (YouCompleteMe)
+" Use omni-completion (YouCompleteMe/NeoComplete)
 autocmd FileType haskell set omnifunc=necoghc#omnifunc
 
 " }}}
@@ -264,8 +264,9 @@ let g:numbers_exclude = ['unite', 'tagbar', 'startify', 'gundo', 'vimshell', 'w3
 
 " }}}
 
-" Show trailing whitespace - fix with :StripWhitespace
-Plug 'ntpeters/vim-better-whitespace'
+" Show trailing whitespace - fix with :StripWhitespace - Interferes with
+" Unite.
+" Plug 'ntpeters/vim-better-whitespace'
 
 " }}}
 
@@ -275,7 +276,7 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'pangloss/vim-javascript', { 'for' : 'javascript' }
 
 " Tags and omnicompletion.
-Plug 'marijnh/tern_for_vim', { 'for' : 'javascript', 'do': 'npm install -g' }
+Plug 'marijnh/tern_for_vim', { 'for' : 'javascript', 'do': 'npm install' }
 
 " }}}
 
@@ -315,6 +316,7 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 
 " Nicer mappings using ']' and '[' for 'next' and 'previous'
+" e.g. ]b for next buffer
 Plug 'tpope/vim-unimpaired'
 
 " Rapidly these keys (instead of Esc) to go Normal mode.
@@ -340,14 +342,17 @@ imap {<CR> {<CR>}<C-o>O
 " Change leader to space to allow easier transitioning with spacemacs.
 let mapleader=" "
 
-map <Leader>n <plug>NERDTreeTabsToggle<cr>
 nnoremap <Leader>tt :TagbarToggle<cr>
+nnoremap <Leader>ts :SyntasticToggleMode<cr>
 nnoremap <Leader>en :NeoCompleteEnable<cr>
-
-" Function Keys
-nmap <F5> :SCCompileRun<cr>
-nmap <F6> :SCCompile<cr>
-nmap <F8> :TagbarToggle<cr>
+nnoremap <Leader>cc :SCCompile<cr>
+nnoremap <Leader>cr :SCCompileRun<cr>
+nnoremap <Leader>gght :GitGutterLineHighlightsToggle<cr>
+nnoremap <Leader>rc :VimuxPromptCommand<cr>
+nnoremap <Leader>rl :VimuxRunLastCommand<cr>
+nnoremap <Leader>ua :Unite grep:.<cr>
+nnoremap <Leader>uf :Unite -start-insert file_rec/async:!<cr>
+nnoremap <Leader>f :VimFilerExplorer<cr>
 
 " }}}
 
@@ -389,14 +394,39 @@ au BufRead,BufNewFile *.hql setfiletype sql
 " }}}
 
 " Statuslines {{{
+
 " Uses VimScript, integrates with plugins
+" Works out of the box.
 Plug 'bling/vim-airline' " {{{
 
 " Tabs are stylised like the status line
 let g:airline#extensions#tabline#enabled = 1
 
+" Don't let airline automatically set Tmuxline's colours.
+let g:airline#extensions#tmuxline#enabled = 0
+
 " Use powerline symbols?
 let g:airline_powerline_fonts = 1
+
+" }}}
+
+" Show buffers (which can be cycled with [b/]b) in status line
+" Plug 'bling/vim-bufferline'
+
+" Even more lightweight and configurable than airline
+" Plug 'itchyny/lightline.vim' " {{{
+
+let g:lightline = {
+    \ 'colorscheme': 'solarized',
+    \ 'component': {
+    \   'readonly': '%{&readonly?"":""}',
+    \ },
+    \ 'separator': { 'left': '', 'right': '' },
+    \ 'subseparator': { 'left': '', 'right': '' }
+    \ }
+
+" Include settings for lightline that comes with airline
+" Plug 'itchyny/lightline-powerful'
 
 " }}}
 
@@ -405,6 +435,18 @@ set laststatus=2
 
 " Shell prompt generator.
 Plug 'edkolev/promptline.vim', { 'on' : 'PromptlineSnapshot' }
+
+" Tmux status generator.
+" Use within tmux:
+" vim +"Tmuxline airline | TmuxlineSnapshot tmuxline.conf"
+Plug 'edkolev/tmuxline.vim' , { 'on': 'Tmuxline' }
+let g:tmuxline_preset = 'crosshair'
+
+" }}}
+
+" Systemd {{{
+
+au BufNewFile,BufRead *.service set filetype=cfg
 
 " }}}
 
@@ -427,14 +469,14 @@ set smartindent
 " }}}
 
 " Tags {{{
-" Piece de resistance
-" Easily browse tags of source files.
+
+" Easily browse tags of source files (generated on the fly).
 " Reguires ctags and vim >= 7.0
 Plug 'majutsushi/tagbar'
 
 " CoffeeScript support
 " `gem install CoffeeTags` also must be done.
-Plug 'lukaszkorecki/CoffeeTags', { 'for' : 'coffee', 'do' : 'gem install CoffeeTags', 'needs' : 'gem' }
+Plug 'lukaszkorecki/CoffeeTags', {'for': 'coffee', 'do': 'gem install CoffeeTags'}
 
 " Haskell (requires hasktags) {{{
 let g:tagbar_type_haskell = {
@@ -473,17 +515,20 @@ let g:tagbar_type_haskell = {
 
 " }}}
 
-" Wrappers {{{
+" Tmux {{{
 
-" Convienient single-file compilation
-Plug 'xuhdev/SingleCompile', { 'on' : ['SCCompile', 'SCCompileRun'] }
+" Send commands to Tmux pane
+Plug 'benmills/vimux', {'on': ['VimuxPromptCommand', 'VimuxRunLastCommand'] }
+
+" Syntax highlighting
+Plug 'Keithbsmiley/tmux.vim'
 
 " }}}
 
 " Unite (and plugins that depend on it) {{{
 Plug 'Shougo/unite.vim'
 
-Plug 'Shougo/vimfiler.vim', {'on': 'VimFilerTab'}
+Plug 'Shougo/vimfiler.vim', {'on': 'VimFilerExplorer'}
 let g:vimfiler_as_default_explorer = 1
 
 " Use ag or ack if available
@@ -496,9 +541,6 @@ let g:vimfiler_as_default_explorer = 1
   "let g:unite_source_grep_command = 'ack-grep'
 "endif
 
-nnoremap <Leader>ua :Unite grep:.<cr>
-nnoremap <Leader>uf :Unite -start-insert file_rec/async:!<cr>
-nnoremap <Leader>f :VimFilerTab<cr>
 
 " }}}
 
