@@ -4,11 +4,11 @@
 
 if [ "$#" = "0" ]; then
     echo 'Please specify at least one package to install.'
-    exit
+    return
 fi
 
 programs=$@
-OS=$(cat /etc/*-release | ack '^ID=' | sed 's/.*=//g')
+OS=$(cat /etc/*-release | grep '^ID=' | sed 's/.*=//g')
 
 
 case ${OS} in
@@ -17,5 +17,8 @@ case ${OS} in
         ;;
     ubuntu)
         apt-get install ${programs}
-        ;; 
+        ;;
+    fedora)
+        yum install ${programs}
+        ;;
 esac
