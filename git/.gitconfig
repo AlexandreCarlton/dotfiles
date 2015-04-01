@@ -2,13 +2,13 @@
 	name = Alexandre Carlton
 	email = acar7163@uni.sydney.edu.au
 [alias]
-    co = checkout
-    cob = checkout -b
+	co = checkout
+	cob = checkout -b
 	d = difftool
-    ec = config --global -e 
+	ec = config --global -e 
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue) <%an>%Creset' --abbrev-commit
-    undo = reset HEAD~1 --mixed
-    up = !git pull --rebase --prune $@ && git submodule update --init --recursive
+	undo = reset HEAD~1 --mixed
+	up = !git pull --rebase --prune $@ && git submodule update --init --recursive
 [diff]
 	tool = vimdiff
 [difftool]
