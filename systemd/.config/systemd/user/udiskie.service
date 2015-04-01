@@ -1,0 +1,8 @@
+[Unit]
+Description=Udiskie
+
+[Service]
+ExecStart=/usr/bin/udiskie
+
+[Install]
+WantedBy=default.target
