@@ -13,22 +13,14 @@
 
 #define POWERLINE_FONT xft:Inconsolata for Powerline:pixelsize=12
 
-! Compile xft: Turn on/off double-buffering for xft (default enabled).  On some card/driver combination enabling it slightly decreases performance, on most it greatly helps it. The slowdown is small. so it should noramlly be enabled.
-URxvt*buffered: true
 
-
-! True: specify that jump scrolling should be used. When receiving lots of lines, urxvt will only scroll once a whole screen height of lines has been read, resulting in fewer updates
-URxvt*jumpScroll: true
-
-! True: (the default) specify that skip scrolling should be used. When receiving lots of lines, urxvt will only scroll once in a while (around 60 times per second), resulting in far
-URxvt*skipScroll: false
 
 *font:           -*-gohufont-medium-*-*-*-11-*-*-*-*-*-iso10646-*
 *boldFont:       -*-gohufont-bold-*-*-*-11-*-*-*-*-*-iso10646-*
 *italicFont:     -*-gohufont-medium-*-*-*-11-*-*-*-*-*-iso10646-*
 *boldItalicFont: -*-gohufont-bold-*-*-*-11-*-*-*-*-*-iso10646-*
 
-!URxvt*font: MAIN_FONT,POWERLINE_FONT
+!URxvt*font: MAIN_FONT\b,POWERLINE_FONT
 URxvt*font: -*-gohufont-medium-*-*-*-11-*-*-*-*-*-iso10646-*,xft:Inconsolata for Powerline:pixelsize=11
 !URxvt*font: xft:PowerlineSymbols:pixelsize=11,-*-gohufont-medium-*-*-*-11-*-*-*-*-*-iso10646-*
 
@@ -38,148 +30,39 @@ URxvt*font: -*-gohufont-medium-*-*-*-11-*-*-*-*-*-iso10646-*,xft:Inconsolata for
 
 
 ! Dmenu2
-dmenu*selbackground: S_blue 
+*selbackground: S_blue
 !dmenu*selbackground: $(*.color4)
-dmenu*selforeground: S_base2 
+*selforeground: S_base2
 
 
-
-! When font styles are not enabled, or this option is enabled (True, option -is, the default), bold/blink font styles imply high intensity foreground/background colours. Disabling this
-! URxvt*intensityStyles: boolean
-
+! Compile xft: Turn on/off double-buffering for xft (default enabled).  On some card/driver combination enabling it slightly decreases performance, on most it greatly helps it. The slowdown is small. so it should noramlly be enabled.
+URxvt*buffered: true
 ! Set window title string, the default title is the command-line specified after the -e option, if any, otherwise the application name; option -title.
-! URxvt*title: rxvt-unicode-256color
-
-! Set the name used to label the windows icon or displayed in an icon manager window, it also sets the windows title unless it is explicitly set; option -n.
-! URxvt*iconName: string
-
-! True: de-iconify (map) on receipt of a bell character. False: no de-iconify (map) on receipt of a bell character [default].
-! URxvt*mapAlert: boolean
-
-! True: set the urgency hint for the wm on receipt of a bell character.  False: do not set the urgency hint [default].
-! URxvt*urgentOnBell: boolean
-
-! True: use visual bell on receipt of a bell character; option -vb.  False: no visual bell [default]; option +vb.
-! URxvt*visualBell: boolean
-
-! True: start as a login shell by prepending a - to argv[0] of the shell; option -ls. False: start as a normal sub-shell [default]; option +ls.
-! URxvt*loginShell: boolean
-
-! True: inhibit writing record into the system log file utmp; option -ut. False: write record into the system log file utmp [default]; option +ut.
-! URxvt*utmpInhibit: boolean
-
-! Specify a command pipe for vt100 printer [default lpr(1)]. Use Print to initiate a screen dump to the printer and Ctrl-Print or Shift-Print to include the scrollback as well.
-! URxvt*print-pipe: string
+URxvt*title: rxvt-unicode-256color
 
 ! Set scrollbar style to rxvt, plain, next or xterm. plain is the authors favourite.
 URxvt*scrollstyle: plain
 
-! Set the scrollbar width in pixels.
-URxvt*thickness: 7
+! Disable scrollabr (use Tmux scrollback buffers)
+URxvt*scrollBar: false
 
-! True: enable the scrollbar [default]; option -sb. False: disable the scrollbar; option +sb.
-URxvt*scrollBar: true
-
-! True: place the scrollbar on the right of the window; option -sr.  False: place the scrollbar on the left of the window; option +sr.
-URxvt*scrollBar_right: true
-
-! True: display an rxvt scrollbar without a trough; option -st.  False: display an rxvt scrollbar with a trough; option +st.
-! URxvt*scrollBar_floating: boolean
-
-! Align the top, bottom or centre [default] of the scrollbar thumb with the pointer on middle button press/drag.
-! URxvt*scrollBar_align: mode
-
-! True: scroll to bottom when tty receives output; option -si.  False: do not scroll to bottom when tty receives output; option +si.
-URxvt*scrollTtyOutput: true
-
-! True: scroll with scrollback buffer when tty receives new lines (i.e.  try to show the same lines) and scrollTtyOutput is False; option -sw. False: do not scroll with scrollback buffer
-URxvt*scrollWithBuffer: true
-
-! True: scroll to bottom when a non-special key is pressed. Special keys are those which are intercepted by rxvt-unicode for special handling and are not passed onto the shell; option
+! Scroll to bottom when non-special key is pressed.
 URxvt*scrollTtyKeypress: true
 
-! Save number lines in the scrollback buffer [default 64]. This resource is limited on most machines to 65535; option -sl.
-URxvt*saveLines: 65535
+! Do not scroll to bottom when tty receives new output
+URxvt*scrollTtyOutput: false
+
+! Do not scroll when tty receives new lines; adds speed.
+URxvt*scrollWithBuffer: false
+
+! When receiving lots of lines, only scroll once in a while.
+! Adds speed, at the cost of not showing some lines.
+! Obviously if you are receiving a lot of output it would be best to redirect
+! it to a file and analyse it there.
+URxvt*skipScroll: true
 
 ! Compile frills: Disable the usage of the built-in block graphics/line drawing characters and just rely on what the specified fonts provide. Use this if you have a good font and want to
 URxvt*skipBuiltinGlyphs: true
 
-
-
-! URxvt*{|}
-
-! OverTheSpot, OffTheSpot, Root; option -pt.
-! URxvt*preeditType: style
-
-! name of inputMethod to use; option -im.
-! URxvt*inputMethod: name
-
-! The locale to use for opening the IM. You can use an "LC_CTYPE" of e.g.  "de_DE.UTF-8" for normal text processing but "ja_JP.EUC-JP" for the input extension to be able to input
-! URxvt*imLocale: name
-
-! Specify the font-set used for XIM styles "OverTheSpot" or "OffTheSpot". It must be a standard X font set (XLFD patterns separated by commas), i.e. its not in the same format as the
-! URxvt*imFont: fontset
-
-! Change the meaning of triple-click selection with the left mouse button. Instead of selecting a full line it will extend the selection to the end of the logical line only; option -tcw.
-! URxvt*tripleclickwords: boolean
-
-! Enables "insecure" mode. Rxvt-unicode offers some escape sequences that echo arbitrary strings like the icon name or the locale. This could be abused if somebody gets 8-bit-clean
-! URxvt*insecure: boolean
-
-! Set the key to be interpreted as the Meta key to: alt, meta, hyper, super, mod1, mod2, mod3, mod4, mod5; option -mod.
-! URxvt*modifier: modifier
-
-! Specify the reply rxvt-unicode sends to the shell when an ENQ (control-E) character is passed through. It may contain escape values as described in the entry on keysym following.
-! URxvt*answerbackString: string
-
-! Turn on/off secondary screen (default enabled).
-! URxvt*secondaryScreen: boolean
-
-! Turn on/off secondary screen scroll (default enabled). If this option is enabled, scrolls on the secondary screen will change the scrollback buffer and, when secondaryScreen is off,
-! URxvt*secondaryScroll: boolean
-
-! Turn on/off hold window after exit support. If enabled, urxvt will not immediately destroy its window when the program executed within it exits. Instead, it will wait till it is being
-! URxvt*hold: boolean
-
-! Sets the working directory for the shell (or the command specified via -e). The path must be an absolute path and it must exist for urxvt to start. If it isnt specified then the
-! URxvt*chdir: path
-
-! Compile frills: Associate string with keysym sym. The intervening resource name keysym. cannot be omitted.
-! URxvt*keysym.sym: string
-
-! URxvt*perl-ext-common: string
-
-! Comma-separated list(s) of perl extension scripts (default: "default") to use in this terminal instance; option -pe.
-! URxvt*perl-ext: string
-
-! Perl code to be evaluated when all extensions have been registered. See the urxvtperl(3) manpage.
-! URxvt*perl-eval: string
-
-! Colon-separated list of additional directories that hold extension scripts. When looking for perl extensions, urxvt will first look in these directories, then in $URXVT_PERL_LIB,
-! URxvt*perl-lib: path
-
-! Additional selection patterns, see the urxvtperl(3) manpage for details.
-! URxvt*selection.pattern-idx: perl-regex
-
-! Selection auto-transform patterns, see the urxvtperl(3) manpage for details.
-! URxvt*selection-autotransform.idx: perl-transform
-
-! Sets the hotkey that starts the incremental scrollback buffer search (default: "M-s").
-! URxvt*searchable-scrollback: keysym
-
-! Specifies the program to be started with a URL argument. Used by the "selection-popup" and "matcher" perl extensions.
-! URxvt*url-launcher: string
-
-! Compile frills: Sets the WM_TRANSIENT_FOR property to the given window id.
-! URxvt*transient-for: windowid
-
-! Compile frills: Sets override-redirect for the terminal window, making it almost invisible to window managers; option -override-redirect.
-! URxvt*override-redirect: boolean
-
-! Turn on/off ISO 14755 (default enabled).
-! URxvt*iso14755: boolean
-
-! Turn on/off ISO 14755 5.2 mode (default enabled).
-! URxvt*iso14755_52: boolean
-
-
+! Do not save any lines; use Tmux
+URxvt*saveLines: 0
