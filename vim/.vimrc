@@ -12,8 +12,9 @@
 " Automatic installation {{{
 if empty(glob('~/.vim/autoload/plug.vim'))
     silent !mkdir -p ~/.vim/autoload
-    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/build-requirements/plug.vim
-    autocmd VimEnter * PlugInstall
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    source ~/.vimrc
+    PlugInstall
 endif
 " }}}
 
