@@ -97,11 +97,14 @@ super + Return
 # Change the selected colour to xrdb's blue:
 # -sb $(xrdb -q | grep color4 | cut -d$'\t' -f2)
 super + space
-	dmenu_run -l 10 -h 16 -w 200 -y 16 
+	dmenu_run -h $PANEL_HEIGHT
 
-# Wifi
+# Browser choice.
+super + shift + Return
+    midori
+
 super + n
-	nmcli_dmenu
+	sudo connman_dmenu
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -123,6 +126,20 @@ XF86MonBrightnessUp
 
 XF86MonBrightnessDown
 	xbacklight -dec 10
+
+# Media keys
+XF86AudioPlay
+    playerctl play-pause
+
+XF86AudioNext
+    playerctl next
+
+XF86AudioPrev
+    playerctl previous
+
+XF86AudioStop
+    playerctl stop
+
 
 #
 # Drop-down Conky menus from bar.
