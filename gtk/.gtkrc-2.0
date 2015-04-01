@@ -1,0 +1,4 @@
+include "/usr/share/themes/Numix Solarized Light/gtk-2.0/gtkrc"
+#include "/usr/share/themes/Paper/gtk-2.0/gtkrc"
+#include "/usr/share/themes/Gnome-Cupertino/gtk-2.0/gtkrc"
+include "/home/alexandre/.gtkrc.mine"
