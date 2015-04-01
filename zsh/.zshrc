@@ -19,18 +19,19 @@ DEFAULT_USER="alexandre"
 
 HIST_STAMPS="dd.mm.yyyy"
 
+# Start tmux on launch 
+ZSH_TMUX_AUTOSTART=true
+
 # Plugins to load(found in ~/.oh-my-zsh/plugins/*)
 plugins=(archlinux \
-         battery \
 #        emacs \
          git \
          history \
-         jsontools \
-#        lol \
          python \
          pylint \
          systemd \
-         themes)
+         themes \
+         tmux)
 
 # Uncomment if you want oh-my-zsh.
 source $ZSH/oh-my-zsh.sh
@@ -46,12 +47,14 @@ source $ZSH/oh-my-zsh.sh
 # BASE16_SHELL="$HOME/.config/base16-shell/base16-$BASE16_SCHEME.dark.sh"
 # [[ -s $BASE16_SHELL ]] && . $BASE16_SHELL
 
+# Use powerline-daemon
+# source ~/.local/lib/python3.4/site-packages/powerline/bindings/zsh/powerline.zsh
 
 # Make a new status line
 [[ -s $HOME/.shell_prompt.sh ]] && source $HOME/.shell_prompt.sh
 
 # Fix whitespace on right prompt
-export ZLE_RPROMPT_INDENT=0
+export ZLE_RPROMPT_INDENT=1
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/id_rsa"
@@ -59,4 +62,4 @@ export ZLE_RPROMPT_INDENT=0
 # if [[ -x /usr/bin/cowsay && -x /usr/bin/fortune ]]; then
 #     fortune | cowsay # -f elephant-in-snake
 # fi
-cat /etc/motd
+# cat /etc/motd
