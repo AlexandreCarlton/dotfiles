@@ -61,7 +61,7 @@ hacking: neovim-link emacs-link git-link
 vim-link: install-stow update ctags-link
 	stow vim
 	vim +qall
-	vim +"PromptlineSnapshot ~/.shell_prompt.sh airline" +qall
+	vim +"PromptlineSnapshot! ~/.shell_prompt.sh airline" +qall
 
 neovim-link: vim-link
 	ln -sf ~/.vimrc ~/.nvimrc
@@ -97,6 +97,10 @@ desktop-link: bspwm-link xinitrc-link
 
 bspwm-link: install-stow conky-link X-link bin-link profile-link
 	stow bspwm
+
+tmux-link: vim-link
+	stow tmux
+	tmux new-session 'vim +"Tmuxline airline | TmuxlineSnapshot! ~/.tmuxline.conf" +qall'
 
 bin-link:
 	$(BACKUP_AND_LINK) bin
