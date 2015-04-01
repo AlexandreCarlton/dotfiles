@@ -26,12 +26,21 @@ alias R="R --quiet"
 alias nmcon="nmcli -p con up id"
 alias nmlist="nmcli -p dev wifi"
 
+# Useful pacman aliases
+alias pacin="sudo pacman -S"
+alias pacupg="sudo pacman -Syu"
+alias pacs="pacman -Ss"
+
 # Easily install and upgrade AUR packages
 alias aurin="sudo aura -Ax"
 alias aurupg="sudo aura -Akuax"
+alias aurs="aura -As"
 
 # Helper alias for debugging symbols.
 alias urxvtc_stlarch='urxvtc -letsp 2 -fn "-*-gohufont-medium-*-*-*-11-*-*-*-*-*-iso10646-*","-misc-stlarch-medium-r-normal--10-100-75-75-c-80-iso10646-1"'
+
+# Upgrade Spacemacs
+alias spupg="cd ${HOME}/.emacs.d && git pull --rebase && git submodule sync && git submodule update"
 
 # top on steroids
 [ -x /usr/bin/htop ] && alias top="htop"

@@ -1,6 +1,7 @@
 #!/bin/sh
 
-# Useful exports and aliases for working on chromium
+# Useful exports and aliases for working on Chromium
+# Guess I'm not gonna use these, though.
 
 CHROMIUM_DIR="$HOME/chromium"
 DEPOT_TOOLS_DIR="$HOME/depot_tools"
@@ -18,9 +19,8 @@ fi
 
 export PATH="$PATH:$DEPOT_TOOLS_DIR"
 export GYP_GENERATORS="ninja"
-# Speed up incremental builds but hit debug asserts.
+# Speed up incremental builds (but still hit debug asserts).
 export GYP_DEFINES="component=shared_library dcheck_always_on=1"
-
 
 # TODO: Shorten these - e.g. chr, chbr, etc.
 alias chrome_refresh="cd $CHROMIUM_DIR && git checkout master && git pull && gclient sync"
