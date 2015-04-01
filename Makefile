@@ -114,3 +114,9 @@ X-link: install-stow
 link-fonts: install-stow
 	stow font
 	fc-cache vf ~/.fonts
+
+systemd: install-stow
+	systemctl --user enable udiskie
+	# Don't need a service file for dropbox, it's included - but DB is slow anyhow.
+	# systemctl --user enable dropbox
+	systemctl --user enable pulseaudio
