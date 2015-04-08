@@ -27,6 +27,7 @@ endif
 " }}}
 
 let g:bundle_folder='~/.vim/plugged'
+let g:use_powerline = 0
 
 call plug#begin(g:bundle_folder)
 
@@ -407,7 +408,23 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tmuxline#enabled = 0
 
 " Use powerline symbols?
-let g:airline_powerline_fonts = 1
+" Customise if not using Powerline
+if ! g:use_powerline
+    let g:airline_powerline_fonts = 0
+    if !exists('g:airline_symbols')
+        let g:airline_symbols = {}
+    endif 
+    let g:airline_left_sep = ''
+    let g:airline_left_alt_sep = '|'
+    let g:airline_right_sep = ''
+    let g:airline_right_alt_sep = '|'
+    let g:airline_symbols.linenr = 'L'
+    let g:airline_symbols.branch = 'Br'
+    let g:airline_symbols.paste = 'P'
+    let g:airline_symbols.whitespace = 'W'
+    let g:airline_symbols.readonly = 'RO'
+endif
+
 
 " }}}
 
@@ -434,20 +451,43 @@ let g:lightline = {
 " Show statusline on all windows
 set laststatus=2
 
-" Shell prompt generator.
-Plug 'edkolev/promptline.vim', { 'on' : 'PromptlineSnapshot' }
+" Shell prompt generator using statusline colours.
+Plug 'edkolev/promptline.vim', { 'on' : 'PromptlineSnapshot' } " {{{
+if ! g:use_powerline
+    let g:promptline_powerline_symbols = 0
+    let g:promptline_symbols  = {
+    \ 'left': '',
+    \ 'left_alt': '|',
+    \ 'right': '',
+    \ 'right_alt': '|',
+    \ 'dir_sep' : ' | '
+    \ }
+endif
+" }}}
 
 " Tmux status generator.
 " Use within tmux:
 " vim +"Tmuxline airline | TmuxlineSnapshot tmuxline.conf"
-Plug 'edkolev/tmuxline.vim' , { 'on': 'Tmuxline' }
-let g:tmuxline_preset = 'crosshair'
+Plug 'edkolev/tmuxline.vim' , { 'on': 'Tmuxline' } " {{{
+let g:tmuxline_preset = 'minimal'
+if ! g:use_powerline
+    let g:tmuxline_separators = {
+    \ 'left': '',
+    \ 'left_alt': '|',
+    \ 'right': '',
+    \ 'right_alt': '|',
+    \ 'space': ' '
+    \ }
+endif
+
+" }}}
 
 " }}}
 
 " Systemd {{{
 
-au BufNewFile,BufRead *.service set filetype=cfg
+" Systemd syntax
+Plug 'Matt-Deacalion/vim-systemd-syntax', {'for': 'systemd'}
 
 " }}}
 
