@@ -1,0 +1,12 @@
+[Unit]
+Description=xrdb - X server resource database utility
+Documentation=man:xrdb(1)
+After=xorg.target
+
+[Service]
+Type=oneshot
+Environment=DISPLAY=:0
+ExecStart=/usr/bin/xrdb -load %h/.Xresources
+
+[Install]
+WantedBy=xinit.target

@@ -1,9 +1,8 @@
 #!/bin/sh
 
+# This is used as a fall-back if systemd fails to launch Xorg.
 # Remember to append & to things that would otherwise hang;
 # Unless it's crucial the thing is executed.
-# Use `systemd-analyze blame` if boot time is poor.
-# Consider making systemd user services - ideally this would only run if systemd weren't installed.
 
 # "Auto-run" - get rid of it? lose too much control
 if [ -d /etc/X11/xinit/xinitrc.d ]; then
@@ -16,7 +15,7 @@ fi
 # Load fonts
 xset +fp /usr/share/fonts/local &
 xset +fp /usr/share/fonts/OTF &
-xset +fp ${HOME}/.fonts &
+xset +fp /home/alexandre/.fonts &
 # fc-cache -vf
 xset fp rehash &
 
@@ -24,7 +23,7 @@ xset fp rehash &
 xset b off &
 
 # Don't fork this; pretty crucial.
-[ -r ${HOME}/.Xresources ] && xrdb -load ${HOME}/.Xresources
+[ -r /home/alexandre/.Xresources ] && xrdb -load /home/alexandre/.Xresources
 
 # TODO source ~/bin/export_colours.sh,
 # Start dunst specifying the colours and fonts
@@ -32,7 +31,7 @@ xset b off &
 # See if you can get a dmenu daemon running with these parameters as well.
 
 # Set background - consider making a systemd service.
-sh ${HOME}/.fehbg &
+sh /home/alexandre/.fehbg &
 
 # Launch URxvt Daemon (urxvtc to connect)
 # We don't launch this through systemd because we cannot execute systemctl
@@ -53,7 +52,7 @@ if [ $(pgrep -cx systemd) -eq 0 ]; then
 fi
 
 # Better sound server, proxy to alsa
-pulseaudio --start --fail &
+pulseaudio --start &
 
 # Hide cursor when not in use (move to restore)
 # Don't include a service file as this depends on xorg.

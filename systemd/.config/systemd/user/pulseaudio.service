@@ -1,13 +1,11 @@
 [Unit]
-Description=PulseAudio Sound System
-Documentation=man:pulseaudio(1)
-After=sound.target
+Description=PulseAudio server
+Requires=dbus.socket
 
 [Service]
-BusName=org.pulseaudio.Server
+RemainAfterExit=yes
 ExecStart=/usr/bin/pulseaudio --start
 ExecStop=/usr/bin/pulseaudio --kill
-Restart=always
 
 [Install]
-WantedBy=default.target
+WantedBy=xinit.target

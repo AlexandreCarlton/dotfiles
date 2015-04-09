@@ -1,0 +1,10 @@
+[Unit]
+Description=RXVT-Unicode Daemon
+After=xorg.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/urxvtd -q -o
+
+[Install]
+WantedBy=xinit.target

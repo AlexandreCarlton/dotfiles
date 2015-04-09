@@ -1,0 +1,11 @@
+[Unit]
+Description=feh - image viewer and cataloguer
+After=xorg.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/feh --no-fehbg --bg-fill %h/.wallpaper/PikachuEevee.png
+Environment=DISPLAY=:0
+
+[Install]
+WantedBy=xinit.target
