@@ -1,0 +1,11 @@
+[Unit]
+Description=dunst - A customizable and lightweight notification-daemon
+After=dbus.socket
+After=xorg.target
+
+[Service]
+Environment=DISPLAY=:0
+ExecStart=/usr/bin/dunst
+
+[Install]
+WantedBy=xinit.target

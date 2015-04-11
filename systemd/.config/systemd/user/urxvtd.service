@@ -1,10 +1,11 @@
 [Unit]
 Description=RXVT-Unicode Daemon
 After=xorg.target
+Requires=xorg.target
 
 [Service]
-Type=simple
-ExecStart=/usr/bin/urxvtd -q -o
+Type=forking
+ExecStart=/usr/bin/urxvtd -q -o -f
 
 [Install]
 WantedBy=xinit.target

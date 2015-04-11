@@ -5,4 +5,4 @@ Description=Udiskie
 ExecStart=/usr/bin/udiskie
 
 [Install]
-WantedBy=default.target
+WantedBy=xinit.target
