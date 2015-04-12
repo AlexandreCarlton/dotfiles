@@ -1,11 +1,13 @@
 [Unit]
 Description=RXVT-Unicode Daemon
-After=xorg.target
+Requires=urxvtd.socket
 Requires=xorg.target
+After=xorg.target
 
 [Service]
-Type=forking
-ExecStart=/usr/bin/urxvtd -q -o -f
+ExecStart=/usr/bin/urxvtd --opendisplay
+Restart=on-failure
 
 [Install]
+Also=urxvtd.socket
 WantedBy=xinit.target
