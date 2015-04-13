@@ -7,4 +7,5 @@ Environment=DISPLAY=:0
 ExecStart=/usr/bin/bspwm
 
 [Install]
+Also=sxhkd.service
 WantedBy=wm.target
