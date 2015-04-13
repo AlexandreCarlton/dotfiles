@@ -1,38 +1,15 @@
 ! Include colorscheme from ~/.palettes
 ! Defines *{back,fore}ground, along with *color[1-15].
-! And possibly other things, like cursor colour.
 #include ".palettes/xresources/solarized"
-! #include "palettes/base16/base16-solarized.dark.xresources"
-
-! TODO: Find way to use MAIN_FONT,POWERLINE_FONT
-! - currently it breaks when using both (space is inserted after)
-#define MAIN_FONT -*-gohufont-medium-*-*-*-11-*-*-*-*-*-iso10646-*
-#define BOLD_FONT -*-gohufont-bold-*-*-*-11-*-*-*-*-*-iso10646-*
-#define ITALIC_FONT -*-gohufont-medium-*-*-*-11-*-*-*-*-*-iso10646-*
-#define BOLD_ITATLIC_FONT -*-gohufont-bold-*-*-*-11-*-*-*-*-*-iso10646-*
-
-#define POWERLINE_FONT xft:Inconsolata for Powerline:pixelsize=12
-
-
 
 *font:           -*-gohufont-medium-*-*-*-11-*-*-*-*-*-iso10646-*
 *boldFont:       -*-gohufont-bold-*-*-*-11-*-*-*-*-*-iso10646-*
 *italicFont:     -*-gohufont-medium-*-*-*-11-*-*-*-*-*-iso10646-*
 *boldItalicFont: -*-gohufont-bold-*-*-*-11-*-*-*-*-*-iso10646-*
 
-!URxvt*font: MAIN_FONT\b,POWERLINE_FONT
-URxvt*font: -*-gohufont-medium-*-*-*-11-*-*-*-*-*-iso10646-*,xft:Inconsolata for Powerline:pixelsize=11
-!URxvt*font: xft:PowerlineSymbols:pixelsize=11,-*-gohufont-medium-*-*-*-11-*-*-*-*-*-iso10646-*
-
-
-!URxvt*font: -*-gohufont-medium-*-*-*-11-*-*-*-*-*-iso10646-*,xft:Inconsolata\ for\ Powerline:pixelsize=12
-!,-misc-stlarch-medium-r-normal--10-100-75-75-c-80-iso10646-1
-
-
 ! Dmenu2
-*selbackground: S_blue
-!dmenu*selbackground: $(*.color4)
-*selforeground: S_base2
+*selbackground: #268bd2
+*selforeground: #eee8d5
 
 
 ! Compile xft: Turn on/off double-buffering for xft (default enabled).  On some card/driver combination enabling it slightly decreases performance, on most it greatly helps it. The slowdown is small. so it should noramlly be enabled.
