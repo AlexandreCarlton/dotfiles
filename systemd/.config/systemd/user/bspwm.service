@@ -4,7 +4,7 @@ After=xorg.target
 
 [Service]
 Environment=DISPLAY=:0
-ExecStart=/usr/bin/bspwm -s "/tmp/panel-fifo" -p W
+ExecStart=/usr/bin/bspwm
 
 [Install]
 WantedBy=wm.target
