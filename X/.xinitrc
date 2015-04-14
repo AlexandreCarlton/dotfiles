@@ -15,7 +15,7 @@ fi
 # Load fonts
 xset +fp /usr/share/fonts/local &
 xset +fp /usr/share/fonts/OTF &
-xset +fp /home/alexandre/.fonts &
+xset +fp ${HOME}/.fonts &
 # fc-cache -vf
 xset fp rehash &
 
@@ -23,15 +23,15 @@ xset fp rehash &
 xset b off &
 
 # Don't fork this; pretty crucial.
-[ -r /home/alexandre/.Xresources ] && xrdb -load /home/alexandre/.Xresources
+[ -r ${HOME}/.Xresources ] && xrdb -load ${HOME}/.Xresources
 
 # TODO source ~/bin/export_colours.sh,
 # Start dunst specifying the colours and fonts
 # - sourcing everything in xinitrc.d/ usually starts it for us.
 # See if you can get a dmenu daemon running with these parameters as well.
 
-# Set background - consider making a systemd service.
-sh /home/alexandre/.fehbg &
+# Set background
+sh ${HOME}/.fehbg &
 
 # Launch URxvt Daemon (urxvtc to connect)
 # We don't launch this through systemd because we cannot execute systemctl
@@ -43,13 +43,11 @@ urxvtd -q -o -f &
 # UniSydney needs this for some reason
 # nm-applet &
 
-# If systemd is running then our service files will have been started.
-if [ $(pgrep -cx systemd) -eq 0 ]; then
-  # Dropbox daemon
-  dropbox &
-  # Automount removable drives with udisks
-  udiskie &
-fi
+# Dropbox daemon
+dropbox &
+
+# Automount removable drives with udisks
+udiskie &
 
 # Better sound server, proxy to alsa
 pulseaudio --start &
@@ -67,7 +65,7 @@ environment=${1:-${DEFAULT_ENVIRONMENT}}
 case ${environment} in
     bspwm)
         sxhkd &
-        exec bspwm -s "$PANEL_FIFO" -p W
+        exec bspwm
         ;;
     xmonad)
         exec xmonad

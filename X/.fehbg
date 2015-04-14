@@ -1,2 +1,1 @@
-#!/bin/sh
-feh --no-fehbg --bg-fill "${HOME}/.wallpaper/PikachuEevee.png"
+feh  --bg-fill '/home/alexandre/.wallpaper/SonicCute.jpg' 
