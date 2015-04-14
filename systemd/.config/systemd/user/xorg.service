@@ -13,11 +13,11 @@
 
 [Unit]
 Description=Xorg server launch helper
+Requires=xorg.socket
+After=xorg.socket
 Before=xorg.target
 
 [Service]
 Type=notify
-ExecStart=/usr/bin/xorg-launch-helper :0 -nolisten tcp -noreset -verbose 2 vt1
-Restart=always
-RestartSec=10
-
+ExecStart=/usr/bin/Xorg :0 -nolisten tcp -noreset -verbose 2 vt1
+SuccessExitStatus=0 1
