@@ -7,43 +7,22 @@
 # Linux where /bin and /sbin are just symlinks to /usr/bin.
 # As such, test -x /usr/bin/${util} works just as well.
 
-# Pesky permissions
-alias ffs='eval "sudo $(fc -ln -1)"'
-
-# Don't accidentally delete an important directory.
-[ -x /usr/bin/trash ] && alias rm='trash'
-
-# Use Vimpager to view files.
-if [ -x /usr/bin/vimpager ]; then
-    alias less=vimpager
-    alias zless=vimpager
+# Attach to existing tmux session if not already in one.
+# Doing this early prevents the original shell from executing everything
+# beneath until the user detaches.
+if [ -x /usr/bin/tmux ] && [ -z "$TMUX" ]; then
+    tmux attach
 fi
 
-# Start R without the startup prompt
-alias R="R --quiet"
+. ${HOME}/.aliases
 
-# Create aliases for nmcli for easy use of wifi.
-alias nmcon="nmcli -p con up id"
-alias nmlist="nmcli -p dev wifi"
+# Base16-shell
+# BASE16_SCHEME="monokai"
+# BASE16_SHELL="$HOME/.config/base16-shell/base16-${BASE16_SCHEME}.sh"
+# [[ -s $BASE16_SHELL ]] && . $BASE16_SHELL
 
-# Useful pacman aliases
-alias pacin="sudo pacman -S"
-alias pacupg="sudo pacman -Syu"
-alias pacs="pacman -Ss"
+if [[ -x /usr/bin/cowsay && -x /usr/bin/fortune ]]; then
+    fortune | cowsay -f tux
+fi
 
-# Easily install and upgrade AUR packages
-alias aurin="sudo aura -Ax"
-alias aurupg="sudo aura -Akuax"
-alias aurs="aura -As"
-
-# Helper alias for debugging symbols.
-alias urxvtc_stlarch='urxvtc -letsp 2 -fn "-*-gohufont-medium-*-*-*-11-*-*-*-*-*-iso10646-*","-misc-stlarch-medium-r-normal--10-100-75-75-c-80-iso10646-1"'
-
-# Upgrade Spacemacs
-alias spupg="cd ${HOME}/.emacs.d && git pull --rebase && git submodule sync && git submodule update"
-
-# top on steroids
-[ -x /usr/bin/htop ] && alias top="htop"
-
-# Helper aliases/exports when working on Chromium.
-# . $HOME/.chromium
+# cat /etc/motd
