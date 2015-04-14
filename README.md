@@ -23,3 +23,4 @@ You'll need to boot into another run level (normally 3) by appending "1" (withou
 ```
 Then you can revert any changes as root.
 You can change the boot level by going into the Advanced options.
+You can change user with `su - <username>` if necessary (e.g. switching git branches).
