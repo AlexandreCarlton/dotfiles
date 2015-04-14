@@ -487,7 +487,7 @@ endif
 " Systemd {{{
 
 " Systemd syntax
-Plug 'Matt-Deacalion/vim-systemd-syntax', {'for': 'systemd'}
+Plug 'Matt-Deacalion/vim-systemd-syntax' ", {'for': 'systemd'}
 
 " }}}
 

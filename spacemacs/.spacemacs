@@ -12,16 +12,17 @@
  dotspacemacs-configuration-layer-path '()
  ;; List of configuration layers to load.
  dotspacemacs-configuration-layers '(auctex
-                                     ; company-mode
+                                     auto-completion
                                      c-c++
                                      ess
                                      git
-                                     ;haskell
+                                     haskell
                                      html
                                      javascript
                                      lua
                                      markdown
                                      python
+                                     syntax-checking
                                      themes-megapack)
  ;; A list of packages and/or extensions that will not be install and loaded.
  dotspacemacs-excluded-packages '()
@@ -115,7 +116,7 @@ This function is called at the very end of Spacemacs initialization."
   ;; Enable line numbers by default.
   (global-linum-mode 1)
   ;; Enable flycheck by default.
-  (flycheck-mode)
+  ;(flycheck-mode)
 )
 
 ;; Custom variables
