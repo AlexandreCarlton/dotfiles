@@ -18,6 +18,5 @@ After=xorg.socket
 Before=xorg.target
 
 [Service]
-Type=notify
 ExecStart=/usr/bin/Xorg :0 -nolisten tcp -noreset -verbose 2 vt1
 SuccessExitStatus=0 1
