@@ -1,5 +1,4 @@
 
-
 all: update install-stow install-dash hacking shell-link
 
 # Not all that useful really.
@@ -116,7 +115,19 @@ link-fonts: install-stow
 	fc-cache vf ~/.fonts
 
 systemd: install-stow
+	stow --ignore="*.md" systemd
 	systemctl --user enable udiskie
-	# Don't need a service file for dropbox, it's included - but DB is slow anyhow.
+	# Don't need a service file for dropbox or pulseaudio, it's included
 	# systemctl --user enable dropbox
 	systemctl --user enable pulseaudio
+	systemctl --user enable tmux
+	systemctl --user enable udiskie
+	systemctl --user enable wm.target
+	systemctl --user enable bspwm # includes sxhkd
+	systemctl --user enable xorg
+	systemctl --user enable xrdb
+	systemctl --user enable xset
+	systemctl --user enable xsetroot
+	systemctl --user enable wallpaper
+	systemctl --user enable dunst
+	systemctl --user enable unclutter

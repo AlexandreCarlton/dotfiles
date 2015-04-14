@@ -37,3 +37,14 @@ If using an HDD (and running Arch), install `systemd-readahead` from the AUR, an
 Note that you will need to reboot a few times before the performance gains kick in.
 SSDs may experience little to none (or potentially negative) increases in performance.
 In my case, boot time increased on an HDD; perhaps this is due to my (rather limited) memory.
+
+# TODO
+- Start xorg as a socket (alleviates need for xorg-launch-helper)
+  - xorg.socket is wantedBy xorg.target
+  - xorg.service also,requires,after=xorg.socket
+    - Goal is that we can `systemctl --user enable xorg` and everything is taken care of
+- Start tmux as a socket (if possible)
+- Rename targets to be more descriptive
+  - wm.target to window-manager.target
+  - xorg.target to display-server.target (what about graphical?)
+    - So when wayland can be used we can easily sub it out without any confusion.

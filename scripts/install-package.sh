@@ -8,7 +8,7 @@ if [ "$#" = "0" ]; then
 fi
 
 programs=$@
-OS=$(cat /etc/*-release | grep '^ID=' | sed 's/.*=//g')
+OS=$(cat /etc/*-release | grep "^ID=" | cut -d'=' -f2)
 
 
 case ${OS} in
