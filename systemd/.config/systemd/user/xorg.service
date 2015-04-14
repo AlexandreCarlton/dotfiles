@@ -12,7 +12,7 @@
 # service unit file needs to include 'After=xorg.target'.
 
 [Unit]
-Description=Xorg server launch helper
+Description=Xorg server
 Requires=xorg.socket
 After=xorg.socket
 Before=xorg.target
