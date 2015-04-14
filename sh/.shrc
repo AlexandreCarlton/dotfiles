@@ -22,7 +22,7 @@ fi
 # [[ -s $BASE16_SHELL ]] && . $BASE16_SHELL
 
 if [[ -x /usr/bin/cowsay && -x /usr/bin/fortune ]]; then
-    fortune | cowsay -f tux
+    fortune | cowsay -n -f tux
 fi
 
 # cat /etc/motd
