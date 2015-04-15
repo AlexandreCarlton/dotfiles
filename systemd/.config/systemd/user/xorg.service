@@ -15,7 +15,6 @@
 Description=Xorg server
 Requires=xorg.socket
 After=xorg.socket
-Before=xorg.target
 
 [Service]
 ExecStart=/usr/bin/Xorg :0 -nolisten tcp -noreset -verbose 2 vt1

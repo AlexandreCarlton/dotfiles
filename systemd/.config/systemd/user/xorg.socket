@@ -5,5 +5,5 @@ Description=Xorg server (Socket)
 ListenStream=/tmp/.X11-unix/X0
 
 [Install]
-WantedBy=sockets.target
-#WantedBy=xorg.target
+#WantedBy=sockets.target
+WantedBy=xorg.target

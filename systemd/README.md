@@ -1,7 +1,6 @@
 # systemd user config files
 
-## xorg-launch-helper
-Install xorg-launch-helper from the AUR, and configure its config:
+## Make Xorg run with root privileges
 ```sh
 $ cat /etc/X11/Xwrapper.config
 allowed_users=anybody
@@ -11,10 +10,11 @@ needs_root_rights=yes
 ## Current setup
 Targets are designed to
  - wm.target (aliased to default.target)
+   - aliased to default.target, so this kicks off everything.
    - Wants bspwm and sxhkd
  - xorg.target (active as soon as Xorg is ready to accept incoming connections)
    - If you need something that requires Xorg to be launched, include After=xorg.target
-   - xorg.service launches before this
+   - xorg.service launches before this (See if you still need to specify this - maybe xorg.socket instead?)
    - xinit.target requires this
  - xinit.target (essentially ~/.xinitrc)
    - Wants pretty much all programs that are normally started in ~/.xinitrc.
@@ -39,10 +39,6 @@ SSDs may experience little to none (or potentially negative) increases in perfor
 In my case, boot time increased on an HDD; perhaps this is due to my (rather limited) memory.
 
 # TODO
-- Start xorg as a socket (alleviates need for xorg-launch-helper)
-  - xorg.socket is wantedBy xorg.target
-  - xorg.service also,requires,after=xorg.socket
-    - Goal is that we can `systemctl --user enable xorg` and everything is taken care of
 - Start tmux as a socket (if possible)
 - Rename targets to be more descriptive
   - wm.target to window-manager.target
