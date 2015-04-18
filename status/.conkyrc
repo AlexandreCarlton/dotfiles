@@ -74,4 +74,7 @@ ${endif}\
 PAC %{F\#fffdf6e3}${texeci 3600 checkupdates | wc -l}%{F-} \
 \
 \
+ORP %{F\#fffdf6e3}${texeci 3600 pacman -Qdtq | wc -l}%{F-} \
+\
+\
 ${time %a %b %d} %{F\#fffdf6e3}${time %H:%M}%{F-}
