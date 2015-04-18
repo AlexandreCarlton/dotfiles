@@ -21,6 +21,11 @@ alias R="R --quiet"
 alias nmcon="nmcli -p con up id"
 alias nmlist="nmcli -p dev wifi"
 
+# Git
+alias ga="git add"
+alias gc="git commit -v"
+alias gst="git status"
+
 # Tmux
 alias ta="tmux attach"
 alias td="tmux detach"

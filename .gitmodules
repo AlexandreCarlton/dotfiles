@@ -13,3 +13,6 @@
 [submodule "fish/.oh-my-fish"]
 	path = fish/.oh-my-fish
 	url = git@github.com:bpinto/oh-my-fish.git
+[submodule "zsh/.zprezto"]
+	path = zsh/.zprezto
+	url = git@github.com:sorin-ionescu/prezto
