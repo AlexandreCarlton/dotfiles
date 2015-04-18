@@ -25,6 +25,7 @@ alias nmlist="nmcli -p dev wifi"
 alias ga="git add"
 alias gc="git commit -v"
 alias gst="git status"
+alias gd="git diff"
 
 # Tmux
 alias ta="tmux attach"

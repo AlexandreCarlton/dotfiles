@@ -5,6 +5,3 @@ After=xorg.target
 [Service]
 Environment=DISPLAY=:0
 ExecStart=/usr/bin/sxhkd
-
-[Install]
-WantedBy=wm.target

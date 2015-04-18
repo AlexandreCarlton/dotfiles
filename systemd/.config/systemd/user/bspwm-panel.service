@@ -1,0 +1,17 @@
+[Unit]
+Description=lemonbar - Featherweight lemon-scented bar
+Documentation=man:lemonbar(1)
+Requires=xrdb.service
+After=xrdb.service
+Requires=bspwm.service
+After=bspwm.service
+
+[Service]
+Environment=DISPLAY=:0
+Environment=PANEL_FIFO=/tmp/panel-fifo
+Environment=PANEL_HEIGHT=16
+Environment=PATH=/usr/bin:%h/.bin
+ExecStart=/bin/sh %h/.bin/panel bar
+
+[Install]
+WantedBy=wm.target

@@ -1,5 +1,6 @@
 [Unit]
 Description=bspwm - Binary space partitioning window manager
+Requires=sxhkd.service
 After=xorg.target
 
 [Service]
@@ -7,5 +8,5 @@ Environment=DISPLAY=:0
 ExecStart=/usr/bin/bspwm
 
 [Install]
-Also=sxhkd.service
+Also=bspwm-panel.service
 WantedBy=wm.target

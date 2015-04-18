@@ -17,5 +17,5 @@ bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
 bspc rule -a Conky sticky=on manage=off lower=on
 
-# Launch panel
-panel bar &
+# Launch panel (Now taken care by systemd)
+# panel bar &
