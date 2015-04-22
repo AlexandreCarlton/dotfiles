@@ -1,12 +1,6 @@
-[submodule "zsh/oh-my-zsh"]
-	path = zsh/.oh-my-zsh
-	url = git@github.com:robbyrussell/oh-my-zsh.git
 [submodule "X/.palettes/xresources"]
 	path = X/.palettes/xresources
 	url = git@github.com:solarized/xresources.git
-[submodule "X/.palettes/base16-xresources"]
-	path = X/.palettes/base16-xresources
-	url = git@github.com:chriskempson/base16-xresources
 [submodule "spacemacs/.emacs.d"]
 	path = spacemacs/.emacs.d
 	url = git@github.com:syl20bnr/spacemacs.git
@@ -16,3 +10,12 @@
 [submodule "zsh/.zprezto"]
 	path = zsh/.zprezto
 	url = git@github.com:sorin-ionescu/prezto
+[submodule "colours/.config/base16/shell"]
+	path = colours/.config/base16/shell
+	url = https://github.com/chriskempson/base16-shell
+[submodule "colours/.config/base16/xresources"]
+	path = colours/.config/base16/xresources
+	url = https://github.com/chriskempson/base16-xresources
+[submodule "colours/.themes/Numix-Ocean"]
+	path = colours/.themes/Numix-Ocean
+	url = https://github.com/aaronjamesyoung/Numix-Ocean
