@@ -28,77 +28,24 @@ endif
 
 let g:bundle_folder='~/.vim/plugged'
 let g:use_powerline = 0
+let g:use_neocomplete = 1 " Off means we have YouCompleteMe
 
 call plug#begin(g:bundle_folder)
 
-" C / C++ {{{
-
-Plug 'rhysd/vim-clang-format', { 'for': ['c', 'cpp', 'objc'], 'on': 'ClangFormat' }
-
-" }}}
-
-" CoffeeScript {{{
-
-" Compilation support + Syntax highlighting.
-Plug 'kchmck/vim-coffee-script', { 'for' : 'coffee' }
-
-" Indent and syntax highlighting
-Plug 'mintplant/vim-literate-coffeescript', { 'for' : 'coffee' }
-
-" }}}
-
-" Colours {{{
-
-" Base-16
-Plug 'chriskempson/base16-vim'
-
-" Solarized - fork of altercation to fix gitgutter.
-Plug 'jwhitley/vim-colors-solarized'
-
-" Tomorrow (Night)
-Plug 'chriskempson/tomorrow-theme', { 'rtp': 'vim' }
-
-" Zenburn
-Plug 'jnurmine/Zenburn'
-
-" Jelly Beans
-Plug 'nanotech/jellybeans.vim'
-
-" Molokai (Sublime Text)
-Plug 'tomasr/molokai'
-
-" Twilight (TextMate)
-Plug 'matthewtodd/vim-twilight'
-
-" Use 256 to enable 256-Colour mode
-" Use 16 to use Terminal's colours.
-set t_Co=256
-
-set background=dark
-
-" For base16 colours, this has to be before colorscheme declaration.
-let base16colorspace=256
-
-" Set utf8 as standard encoding and en_US as standard language
-set encoding=utf8
-
-" Set unix as standard file type
-set fileformats=unix,dos,mac
-
-" }}}
-
-" Code Completion {{{
-
-" Autocompletion for quotes, parens, etc.
-Plug 'Raimondi/delimitMate'
+" Syntax {{{
 
 " General syntax checker
 " Use ']l' and '[l' to cycle through errors (with vim-unimpaired)
 Plug 'scrooloose/syntastic' " {{{
 
 " Use nicer symbols (given in the docs).
-let g:syntastic_error_symbol = '✗'
-let g:syntastic_warning_symbol = '⚠'
+if g:use_powerline
+    let g:syntastic_error_symbol = '✗'
+    let g:syntastic_warning_symbol = '⚠'
+else
+    let g:syntastic_error_symbol = 'x'
+    let g:syntastic_warning_symbol = '!'
+endif
 
 " Active mode runs SyntasticCheck on save or opened; passive does not.
 let g:syntastic_mode_map = { 'mode': 'passive',
@@ -129,40 +76,122 @@ let g:syntastic_fortran_compiler_options = '-std=f95'
 let g:syntastic_haskell_checkers = ['ghc_mod'] "['hlint']
 " }}}
 
+
 " Allows asynchronous execution (great for syntax checkers)
 Plug 'Shougo/vimproc.vim', { 'do': 'make -f make_unix.mak' }
 
+" }}}
+
+" C / C++ {{{
+
+Plug 'rhysd/vim-clang-format', { 'for': ['c', 'cpp', 'objc'], 'on': 'ClangFormat' }
+
+" }}}
+
+" CoffeeScript {{{
+
+" Compilation support + Syntax highlighting.
+Plug 'kchmck/vim-coffee-script', { 'for' : 'coffee' }
+
+" Indent and syntax highlighting
+Plug 'mintplant/vim-literate-coffeescript', { 'for' : 'coffee' }
+
+" }}}
+
+" Colours {{{
+
+" Base-16 - contains lots of great colorschemes
+" Needs respective setting in Xresources if using xterm or urxvt.
+Plug 'chriskempson/base16-vim'
+
+" Solarized - fork of altercation to fix gitgutter.
+" Base16-solarized isn't as nice as this one.
+Plug 'jwhitley/vim-colors-solarized'
+
+" Zenburn
+Plug 'jnurmine/Zenburn'
+
+" Jelly Beans
+Plug 'nanotech/jellybeans.vim'
+
+" Use 256 to enable 256-Colour mode
+" Use 16 to use Terminal's colours.
+set t_Co=256
+
+set background=dark
+
+" Set utf8 as standard encoding and en_US as standard language
+set encoding=utf-8
+scriptencoding utf-8
+
+" Set unix as standard file type
+set fileformats=unix,dos,mac
+
+" }}}
+
+" Completion {{{
+
+" Autocompletion for quotes, parens, etc.
+Plug 'Raimondi/delimitMate'
+
 " Completion engine - faster startup with Vim, but slower completion
 " Use :NeoCompleteEnable if not executed on startup.
-Plug 'Shougo/neocomplete.vim' " {{{
+if g:use_neocomplete
+  Plug 'Shougo/neocomplete.vim' " {{{
 
-" Run on startup?
-let g:neocomplete#enable_at_startup = 0
+  " Run on startup?
+  let g:neocomplete#enable_at_startup = 0
 
-if !exists('g:neocomplete#force_omni_input_patterns')
-  let g:neocomplete#force_omni_input_patterns = {}
+  if !exists('g:neocomplete#force_omni_input_patterns')
+    let g:neocomplete#force_omni_input_patterns = {}
+  endif
+
+  " (Shift-) Tab Completion
+  inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+  inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
+  " }}}
+
+  " Snippets
+  Plug 'Shougo/neosnippet-snippets'
+
+  " Snippet engine - requires NeoComplete enabled
+  Plug 'Shougo/neosnippet.vim' " {{{
+
+  imap <C-j> <Plug>(neosnippet_expand_or_jump)
+  smap <C-j> <Plug>(neosnippet_expand_or_jump)
+  xmap <C-j> <Plug>(neosnippet_expand_target)
+
+  " }}}
+else
+  " Other options are --omnisharp-completer and gocode-completer
+  "
+  let ycm_options = '--clang-completer --system-libclang --systemd-boost'
+  Plug 'Valloric/YouCompleteMe', {'do': './install.sh ' . ycm_options, 'frozen': 1 } "{{{
+  let g:ycm_gobal_ycm_extra_conf = g:bundle_folder . '/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+  " Fill loction list everytime new diagnostic data is generated
+  let g:ycm_always_populate_location_list = 1
+  let g:ycm_add_preview_to_completeopt = 1
+  let g:ycm_autoclose_preview_window_after_completion = 1
+  let g:ycm_autoclose_preview_window_after_insertion = 1
+  let g:ycm_semantic_triggers = {'haskell': ['.'], 'r': ['.', '$', 're![_a-zA-Z]+[_\w]*\.']}
+   " }}}
+
+   " Snippets produced along side YouCompleteMe
+  Plug 'SirVer/UltiSnips' " {{{
+  let g:UltiSnipsExpandTrigger = '<C-j>'
+  " }}}
 endif
 
-" (Shift-) Tab Completion
-inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
-" }}}
-
-" Snippets
-Plug 'Shougo/neosnippet-snippets'
-
-" Snippet engine - requires NeoComplete enabled
-Plug 'Shougo/neosnippet.vim' " {{{
-
-imap <C-j> <Plug>(neosnippet_expand_or_jump)
-smap <C-j> <Plug>(neosnippet_expand_or_jump)
-xmap <C-j> <Plug>(neosnippet_expand_target)
-
-" }}}
 
 " End certain strutures automatically.
 Plug 'tpope/vim-endwise'
 
+
+
+" }}}
+
+" Fish {{{
+Plug 'dag/vim-fish', {'for': 'fish'}
 " }}}
 
 " Fortran {{{
@@ -177,7 +206,11 @@ let fortran_more_precise = 1
 
 " Git {{{
 " Shows git diff in column - better than mhinz/vim-signify
-Plug 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter' " {{{
+let g:gitgutter_sign_removed = '-'
+let g:gitgutter_sign_modified_removed = '~-'
+
+" }}}
 
 " Git Wrapper.
 Plug 'tpope/vim-fugitive'
@@ -193,7 +226,6 @@ Plug 'dag/vim2hs', { 'for' : 'haskell' }
 Plug 'eagletmt/ghcmod-vim', { 'for' : 'haskell' }
 
 " Completion plugin for Haskell using ghc-mod
-" Needs ghc-mod
 Plug 'eagletmt/neco-ghc', { 'for' : 'haskell' } " {{{
 
 " Show detailed information (type) of symbols
@@ -201,7 +233,6 @@ let g:necoghc_enable_detailed_browse = 1
 
 " Use omni-completion (YouCompleteMe/NeoComplete)
 autocmd FileType haskell set omnifunc=necoghc#omnifunc
-
 " }}}
 
 " Hoogle (Haskell query plugin)
@@ -266,9 +297,9 @@ let g:numbers_exclude = ['unite', 'tagbar', 'startify', 'gundo', 'vimshell', 'w3
 
 " }}}
 
-" Show trailing whitespace - fix with :StripWhitespace - Interferes with
-" Unite.
-" Plug 'ntpeters/vim-better-whitespace'
+" Show trailing whitespace - fix with :StripWhitespace
+Plug 'ntpeters/vim-better-whitespace'
+let g:better_whitespace_filetypes_blacklist = ['vimfiler', 'unite', 'vim-plug']
 
 " }}}
 
@@ -277,8 +308,10 @@ let g:numbers_exclude = ['unite', 'tagbar', 'startify', 'gundo', 'vimshell', 'w3
 " General support
 Plug 'pangloss/vim-javascript', { 'for' : 'javascript' }
 
-" Tags and omnicompletion.
-Plug 'marijnh/tern_for_vim', { 'for' : 'javascript', 'do': 'npm install' }
+" JS Tags and omnicompletion.
+Plug 'marijnh/tern_for_vim', { 'for' : 'javascript', 'do': 'npm install' } " {{{
+autocmd FileType javascript set omnifunc=tern#Complete
+" }}}
 
 " }}}
 
@@ -347,8 +380,6 @@ let mapleader=" "
 nnoremap <Leader>tt :TagbarToggle<cr>
 nnoremap <Leader>ts :SyntasticToggleMode<cr>
 nnoremap <Leader>en :NeoCompleteEnable<cr>
-nnoremap <Leader>cc :SCCompile<cr>
-nnoremap <Leader>cr :SCCompileRun<cr>
 nnoremap <Leader>gght :GitGutterLineHighlightsToggle<cr>
 nnoremap <Leader>rc :VimuxPromptCommand<cr>
 nnoremap <Leader>rl :VimuxRunLastCommand<cr>
@@ -374,16 +405,18 @@ Plug 'plasticboy/vim-markdown', { 'for' : 'markdown' }
 
 " Python {{{
 
-" Completion - Making start-up time slow...
-Plug 'davidhalter/jedi-vim', {'for': 'python'} " {{{
-" Use NeoComplete
-autocmd FileType python setlocal omnifunc=jedi#completions
-let g:jedi#auto_initialization = 0
-let g:jedi#completions_enabled = 0
-let g:jedi#auto_vim_configuration = 0
-let g:neocomplete#force_omni_input_patterns.python =
-\ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
-" }}}
+" Python Completion - Already supplied by YouCompleteMe
+if g:use_neocomplete
+  Plug 'davidhalter/jedi-vim', {'for': 'python'} " {{{
+  " Use NeoComplete
+  autocmd FileType python setlocal omnifunc=jedi#completions
+  let g:jedi#auto_initialization = 0
+  let g:jedi#completions_enabled = 0
+  let g:jedi#auto_vim_configuration = 0
+  let g:neocomplete#force_omni_input_patterns.python =
+  \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
+  " }}}
+endif
 
 " }}}
 
@@ -399,7 +432,7 @@ au BufRead,BufNewFile *.hql setfiletype sql
 
 " Uses VimScript, integrates with plugins
 " Works out of the box.
-Plug 'bling/vim-airline' " {{{
+" Plug 'bling/vim-airline' " {{{
 
 " Tabs are stylised like the status line
 let g:airline#extensions#tabline#enabled = 1
@@ -407,13 +440,16 @@ let g:airline#extensions#tabline#enabled = 1
 " Don't let airline automatically set Tmuxline's colours.
 let g:airline#extensions#tmuxline#enabled = 0
 
+" Disable TagBar (Makes scrolling slow)
+let g:airline#extensions#tagbar#enabled = 0
+
 " Use powerline symbols?
 " Customise if not using Powerline
 if ! g:use_powerline
     let g:airline_powerline_fonts = 0
     if !exists('g:airline_symbols')
         let g:airline_symbols = {}
-    endif 
+    endif
     let g:airline_left_sep = ''
     let g:airline_left_alt_sep = '|'
     let g:airline_right_sep = ''
@@ -425,62 +461,128 @@ if ! g:use_powerline
     let g:airline_symbols.readonly = 'RO'
 endif
 
-
 " }}}
 
 " Show buffers (which can be cycled with [b/]b) in status line
-" Plug 'bling/vim-bufferline'
+" Plug 'bling/vim-bufferline' " {{{
+let g:bufferline_echo = 0
+let g:bufferline_show_bufnr = 0
+let g:bufferline_active_buffer_left = ''
+let g:bufferline_active_buffer_right = ''
+" }}}
+
+" Better buffertab
+Plug 'ap/vim-buftabline'
 
 " Even more lightweight and configurable than airline
-" Plug 'itchyny/lightline.vim' " {{{
+" Get bufferline in the tabline
+" Have a look at vim-quack-lightline
+Plug 'itchyny/lightline.vim' " {{{
 
+" Need to set the colorscheme, ugh.
+" If using base16, use '16color'
+"
 let g:lightline = {
     \ 'colorscheme': 'solarized',
-    \ 'component': {
-    \   'readonly': '%{&readonly?"":""}',
+    \ 'enable': {
+    \   'tabline': 0
     \ },
-    \ 'separator': { 'left': '', 'right': '' },
-    \ 'subseparator': { 'left': '', 'right': '' }
+    \ 'active': {
+    \   'left': [
+    \     ['mode', 'paste', 'readonly'],
+    \     ['fugitive', 'gitgutter', 'filename']
+    \   ],
+    \   'right': [
+    \     ['syntastic', 'lineinfo'],
+    \     ['percent'],
+    \     ['fileformat', 'fileencoding', 'filetype'],
+    \     ['tagbar']
+    \   ]
+    \ },
+    \ 'tabline': {
+    \   'left': [['buffers']],
+    \   'right': []
+    \ },
+    \ 'component': {
+    \   'close': printf('%%999X %s ', has('multi_byte') && g:use_powerline ? "\u2717" : 'x'),
+    \   'lineinfo': '%3l:%-2c',
+    \   'readonly': '%{&readonly ? "RO" : ""}',
+    \   'fileencoding': '%{strlen(&fenc) ? &fenc : &enc}',
+    \   'filetype': '%{strlen(&ft) ? &ft : "no ft"}',
+    \   'tagbar': '%{exists("*tagbar#currenttag") ? tagbar#currenttag("%s", "", "f") : ""}',
+    \   'buffers': '%{bufferline#refresh_status()}%{g:bufferline_status_info.before}' .
+    \              '%#TabLineSel#%{g:bufferline_status_info.current}' .
+    \              '%#LightLineLeft_active_2#%{g:bufferline_status_info.after}'
+    \ },
+    \ 'component_expand': {
+    \   'syntastic': 'SyntasticStatuslineFlag',
+    \ },
+    \ 'component_function': {
+    \   'mode': 'MyMode',
+    \   'fugitive': 'MyFugitive',
+    \   'gitgutter': 'MyGitGutter',
+    \ },
+    \ 'component_type': {
+    \   'syntastic': 'error',
+    \ },
+    \ 'separator': { 'left': '', 'right': '' },
+    \ 'subseparator': { 'left': '|', 'right': '|' }
     \ }
 
-" Include settings for lightline that comes with airline
-" Plug 'itchyny/lightline-powerful'
+" Lightline functions {{{
+function! MyBuffer()
+    call bufferline#refresh_status()
+    let b = g:bufferline_status_info.before
+    let c = g:bufferline_status_info.current
+    let a = g:bufferline_status_info.after
+    return b .  c . a
+endfunction
+
+function! MyFugitive()
+  if expand('%:t') !~? 'Tagbar' && &ft !~? 'vimfiler' && exists('*fugitive#head')
+    let head = fugitive#head()
+    return strlen(head) ? head : ''
+  return ''
+endfunction
+
+function! MyGitGutter()
+  if exists('*GitGutterGetHunkSummary')
+    let hunks = GitGutterGetHunkSummary()
+    if hunks != [0, 0, 0]
+      return g:gitgutter_sign_added . hunks[0] .
+      \ ' ' . g:gitgutter_sign_modified . hunks[1] .
+      \ ' ' . g:gitgutter_sign_removed . hunks[2]
+    else
+      return ''
+    endif
+  else
+    return ''
+  endif
+endfunction
+
+function! MyMode()
+  let fname = expand('%:t')
+  return fname == '__Tagbar__' ? 'Tagbar' :
+       \ lightline#mode() == 'NORMAL' ? 'N' :
+       \ lightline#mode() == 'INSERT' ? 'I' :
+       \ lightline#mode() == 'VISUAL' ? 'V' :
+       \ lightline#mode() == 'V-LINE' ? 'V' :
+       \ lightline#mode() == 'V-BLOCK' ? 'V' :
+       \ lightline#mode() == 'REPLACE' ? 'R' :
+       \ &ft == 'unite' ? 'Unite' :
+       \ &ft == 'vimfiler' ? 'VimFiler' :
+       \ lightline#mode()
+endfunction
+" }}}
 
 " }}}
+
+" Always show the tabline
+" set showtabline=2
 
 " Show statusline on all windows
 set laststatus=2
 
-" Shell prompt generator using statusline colours.
-Plug 'edkolev/promptline.vim', { 'on' : 'PromptlineSnapshot' } " {{{
-if ! g:use_powerline
-    let g:promptline_powerline_symbols = 0
-    let g:promptline_symbols  = {
-    \ 'left': '',
-    \ 'left_alt': '|',
-    \ 'right': '',
-    \ 'right_alt': '|',
-    \ 'dir_sep' : ' | '
-    \ }
-endif
-" }}}
-
-" Tmux status generator.
-" Use within tmux:
-" vim +"Tmuxline airline | TmuxlineSnapshot tmuxline.conf"
-Plug 'edkolev/tmuxline.vim' , { 'on': 'Tmuxline' } " {{{
-let g:tmuxline_preset = 'minimal'
-if ! g:use_powerline
-    let g:tmuxline_separators = {
-    \ 'left': '',
-    \ 'left_alt': '|',
-    \ 'right': '',
-    \ 'right_alt': '|',
-    \ 'space': ' '
-    \ }
-endif
-
-" }}}
 
 " }}}
 
@@ -513,7 +615,7 @@ set smartindent
 
 " Easily browse tags of source files (generated on the fly).
 " Reguires ctags and vim >= 7.0
-Plug 'majutsushi/tagbar'
+Plug 'majutsushi/tagbar', {'on': 'TagbarToggle'}
 
 " CoffeeScript support
 " `gem install CoffeeTags` also must be done.
@@ -588,5 +690,11 @@ let g:vimfiler_as_default_explorer = 1
 call plug#end()
 
 " Colorscheme
+"
+" For base16 colours, this has to be before colorscheme declaration.
+" ONLY IF using  base16-shell.
+let base16colorspace=256
+let g:base16_shell_path='~/.config/base16/shell'
+
 " HAS to be set after t_Co and background - weird things happen otherwise.
 colorscheme solarized
