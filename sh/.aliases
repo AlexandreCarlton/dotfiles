@@ -8,12 +8,6 @@ alias ffs='eval "sudo $(fc -ln -1)"'
 # Don't accidentally delete an important directory.
 [ -x /usr/bin/trash ] && alias rm="trash"
 
-# Use Vimpager to view files.
-if [ -x /usr/bin/vimpager ]; then
-    alias less=vimpager
-    alias zless=vimpager
-fi
-
 # Start R without the startup prompt
 alias R="R --quiet"
 
@@ -23,6 +17,7 @@ alias nmlist="nmcli -p dev wifi"
 
 # Git
 alias ga="git add"
+alias gb="git branch"
 alias gc="git commit -v"
 alias gst="git status"
 alias gd="git diff"
@@ -47,6 +42,14 @@ alias urxvtc_stlarch='urxvtc -letsp 2 -fn "-*-gohufont-medium-*-*-*-11-*-*-*-*-*
 
 # Upgrade Spacemacs
 alias spupg="cd ${HOME}/.emacs.d && git pull --rebase && git submodule sync && git submodule update"
+
+# (colour) cat with syntax highlighting!
+# pygmentize is nicer, albeit slower
+if [ -x /usr/bin/pygmentize ]; then
+    alias ccat="pygmentize -g"
+elif [ -x /usr/bin/highlight ]; then
+    alias ccat="highlight -O ansi"
+fi
 
 # Helper aliases/exports when working on Chromium.
 # . $HOME/.chromium
