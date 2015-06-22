@@ -1,6 +1,7 @@
 [Unit]
 Description=bspwm - Binary space partitioning window manager
 Requires=sxhkd.service
+Requires=bspwm-panel.service
 After=xorg.target
 
 [Service]
