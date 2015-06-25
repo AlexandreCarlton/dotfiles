@@ -5,7 +5,6 @@ After=xorg.target
 [Service]
 Type=simple
 ExecStart=/usr/bin/unclutter -noevents
-Environment=DISPLAY=:0
 
 [Install]
 WantedBy=xinit.target

@@ -3,5 +3,4 @@ Description=sxhkd - Simple X hotkey daemon
 After=xorg.target
 
 [Service]
-Environment=DISPLAY=:0
 ExecStart=/usr/bin/sxhkd
