@@ -10,4 +10,4 @@ ExecStart=/usr/bin/bspwm
 
 [Install]
 Also=bspwm-panel.service
-WantedBy=wm.target
+WantedBy=window-manager.target

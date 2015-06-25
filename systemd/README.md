@@ -9,10 +9,10 @@ needs_root_rights=yes
 ```
 
 ## Current setup
-Targets are designed to
- - wm.target (aliased to default.target)
-   - aliased to default.target, so this kicks off everything.
-   - Wants bspwm and sxhkd
+Targets are designed to group up logical units to allow easier dependency tracking.
+ - window-manager.target
+   - aliased to default.target when enabled, so this kicks off everything.
+   - each WM has WantedBy=window-manager.target (so we can swap out other window managers)
  - xorg.target (active as soon as Xorg is ready to accept incoming connections)
    - If you need something that requires Xorg to be launched, include After=xorg.target
    - wants xorg.socket
@@ -41,13 +41,20 @@ In my case, boot time increased on an HDD; perhaps this is due to my (rather lim
 
 # TODO
 - Start tmux as a socket (if possible)
+  - Poettering has a nice blog post on why sockets are great.
 - Rename targets to be more descriptive
   - wm.target to window-manager.target
   - xorg.target to display-server.target
-    - then we enable xorg.socket or (potentially in future) wayland.service.
-    - Should make xset.service etc. have Wants=xorg.socket - wayland wouldn't need them.
-  - start bspwm as a service - but don't 'enable' it
-    - just say that bspwm has a Wants=bspwm-panel
-    - this is because we ALWAYS want it with bspwm.
-    - bspwm-panel has Requires,After=xrdb.service (for colours)
-
+    - then we enable xorg.socket or (potentially in future) wayland.service. (have them conflict with the other?)
+    - Should make xset.service etc. have Wants=xorg.socket - wayland wouldn't need them, for example.
+  - Maybe remove xinit.target? Nah, it's separate to xorg itself, but dependent on it.
+  - xinit.target should be needed by xorg.socket? that way if we switch to wayland we won't launch these x services.
+- Be more specific with targets
+  - Specify what the service is wanted by; instead of 'default.target'
+  - Note that user sessions don't respond to 'multi-user' or 'graphical' (that's for booting) - just default.
+  - we could switch out wm.target for de.target (desktop environment like gnome)
+  - don't have "Wants" in wm.target for services; but rather WantedBy in bspwm.service ; easy to enable and disable services. "Wants" for other targets is fine.
+- Change wallpaper.service to allow the filename: wallpaper@PikachuEevee,service (or similar)
+- Use 8-bit day wallpapers
+    - Change wallpaper to reflect time.
+    - Requires timers and services - 1 for initial startup, and others for each time.
