@@ -1,8 +1,9 @@
 [Unit]
 Description=Xorg server (Socket)
+Before=display-server.target
 
 [Socket]
 ListenStream=/tmp/.X11-unix/X0
 
 [Install]
-WantedBy=sockets.target display-server.target
+WantedBy=sockets.target
