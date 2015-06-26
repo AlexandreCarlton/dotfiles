@@ -10,24 +10,31 @@ needs_root_rights=yes
 
 ## Current setup
 Targets are designed to group up logical units to allow easier dependency tracking.
- - window-manager.target
+The three main targets here are:
+ - desktop.target
    - aliased to default.target when enabled, so this kicks off everything.
-   - each WM has WantedBy=window-manager.target (so we can swap out other window managers)
- - xorg.target (active as soon as Xorg is ready to accept incoming connections)
-   - If you need something that requires Xorg to be launched, include After=xorg.target
-   - wants xorg.socket
-   - xinit.target requires this
- - xinit.target (essentially ~/.xinitrc)
-   - Wants pretty much all programs that are normally started in ~/.xinitrc.
+   - groups up everything needed to set up a working, graphical desktop.
+   - Generally, a service should have "WantedBy=desktop.target", unless it is a special unit.
+   - Requires both window-manager.target and a display-server.target.
+ - display-server.target (active as soon as Xorg is ready to accept incoming connections)
+   - active as soon as the server is ready to accept connections
+   - if you need the server up for a service, include "After=display-server.target"
+   - If enabled, xorg.socket is launched before this; so this will be ready
+     only if xorg.socket is. Note that if not enabled, "Before=" in xorg.socket
+     won't do anything.
+ - window-manager.target
+   - Window managers must have "WantedBy=window-manager.target".
 
-Pretty much all of these are ripped from the Arch Wiki; consult them for more information.
+sockets.target is also used to launch all sockets (which implicitly launch the
+respective service files).
+This was largely based on the Arch Wiki; consult them for more information.
 Other sources include casucci, gtmanfred, KaiSforza and Zoqueski.
 
 ## After/Wants/Requires
 To ensure everything is loaded in the right order, we place the services in order
 of the targets they want (rephrase)
- - "Wants" means the dependency is optional
- - "Requires" means the dependency is essential
+ - "Wants" means the dependency is optional - if the dependency fails, the service will continue.
+ - "Requires" means the dependency is essential - if the dependency fails, so will this.
  - "After" means the service is launched after the target/service in question. If only one of the above fields are used then the services will be launched in parallel.
 
 ## Tips for better startup time.
