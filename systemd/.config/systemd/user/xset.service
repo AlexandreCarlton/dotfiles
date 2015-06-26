@@ -1,8 +1,7 @@
-# Note - this is X-specific; if we were using wayland then this would fail.
-
 [Unit]
 Description=xset - user preference utility for X
-After=display-server.target
+Documentation=man:xset(1)
+After=xorg.socket
 
 [Service]
 Type=oneshot
@@ -14,4 +13,5 @@ RemainAfterExit=yes
 ExecStart=/usr/bin/xset b off
 
 [Install]
-WantedBy=desktop.target
+# This is X-specific; we want it only if xorg is used.
+WantedBy=xorg.socket

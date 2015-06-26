@@ -1,12 +1,12 @@
-# Note - this is X-specific; if we were using wayland then this would fail.
-
 [Unit]
 Description=xsetroot - root window parameter setting utility for X
-After=display-server.target
+Documentation=man:xsetroot(1)
+After=xorg.socket
 
 [Service]
 Type=oneshot
 ExecStart=/usr/bin/xsetroot -cursor_name left_ptr
 
 [Install]
-WantedBy=desktop.target
+# This is X-specific; we want it only if xorg is used.
+WantedBy=xorg.socket

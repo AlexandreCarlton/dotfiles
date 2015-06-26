@@ -1,12 +1,12 @@
-# Note - this is X-specific; if we were using wayland then this would fail.
-
 [Unit]
 Description=unclutter - remove idle cursor image from screen
-After=display-server.target
+Documentation=man:unclutter(1)
+After=xorg.socket
 
 [Service]
 Type=simple
 ExecStart=/usr/bin/unclutter -noevents
 
 [Install]
-WantedBy=desktop.target
+# This is X-specific; we want it only if xorg is used.
+WantedBy=xorg.socket

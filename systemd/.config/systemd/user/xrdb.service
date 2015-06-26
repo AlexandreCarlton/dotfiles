@@ -1,9 +1,7 @@
-# Note - this is X-specific; if we were using wayland then this would fail.
-
 [Unit]
 Description=xrdb - X server resource database utility
 Documentation=man:xrdb(1)
-After=display-server.target
+After=xorg.socket
 
 [Service]
 Type=oneshot
@@ -11,4 +9,5 @@ RemainAfterExit=yes
 ExecStart=/usr/bin/xrdb -load %h/.Xresources
 
 [Install]
-WantedBy=desktop.target
+# This is X-specific; we want it only if xorg is used.
+WantedBy=xorg.socket
