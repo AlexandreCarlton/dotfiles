@@ -1,6 +1,8 @@
+# Note - this is X-specific; if we were using wayland then this would fail.
+
 [Unit]
 Description=unclutter - remove idle cursor image from screen
-After=xorg.target
+After=display-server.target
 
 [Service]
 Type=simple

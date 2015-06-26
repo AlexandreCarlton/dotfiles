@@ -1,7 +1,7 @@
 [Unit]
 Description=dunst - A customizable and lightweight notification-daemon
 After=dbus.socket
-After=xorg.target
+After=display-server.target
 
 [Service]
 ExecStart=/usr/bin/dunst

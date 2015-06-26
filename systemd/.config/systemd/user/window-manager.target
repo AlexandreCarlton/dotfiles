@@ -1,5 +1,4 @@
 [Unit]
 Description=Window Manager (target)
-Requires=xorg.target
+Requires=display-server.target
 Requires=dbus.socket
-# AllowIsolate=true

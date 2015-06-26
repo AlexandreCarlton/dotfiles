@@ -1,7 +1,9 @@
+# Note - this is X-specific; if we were using wayland then this would fail.
+
 [Unit]
 Description=xrdb - X server resource database utility
 Documentation=man:xrdb(1)
-After=xorg.target
+After=display-server.target
 
 [Service]
 Type=oneshot

@@ -2,7 +2,7 @@
 Description=bspwm - Binary space partitioning window manager
 Requires=sxhkd.service
 Requires=bspwm-panel.service
-After=xorg.target
+After=display-server.target
 
 [Service]
 ExecStart=/usr/bin/bspwm

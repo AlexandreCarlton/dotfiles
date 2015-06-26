@@ -1,6 +1,6 @@
 [Unit]
 Description=sxhkd - Simple X hotkey daemon
-After=xorg.target
+After=display-server.target
 
 [Service]
 ExecStart=/usr/bin/sxhkd

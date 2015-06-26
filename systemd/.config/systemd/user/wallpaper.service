@@ -1,6 +1,6 @@
 [Unit]
 Description=feh - image viewer and cataloguer
-After=xorg.target
+After=display-server.target
 
 [Service]
 Type=oneshot

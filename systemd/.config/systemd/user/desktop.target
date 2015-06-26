@@ -1,6 +1,6 @@
 [Unit]
 Description=Desktop (target)
-Requires=xorg.target
+Requires=display-server.target
 Requires=window-manager.target
 
 [Install]

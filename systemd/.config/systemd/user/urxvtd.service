@@ -1,8 +1,8 @@
 [Unit]
 Description=RXVT-Unicode Daemon
 Requires=urxvtd.socket
-Requires=xorg.target
-After=xorg.target
+Requires=display-server.target
+After=display-server.target
 
 [Service]
 ExecStart=/usr/bin/urxvtd --opendisplay
