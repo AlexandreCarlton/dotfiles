@@ -7,7 +7,3 @@ After=display-server.target
 [Service]
 ExecStart=/usr/bin/urxvtd --opendisplay
 Restart=on-failure
-
-[Install]
-Also=urxvtd.socket
-WantedBy=desktop.target

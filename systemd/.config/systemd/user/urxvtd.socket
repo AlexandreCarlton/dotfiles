@@ -7,4 +7,4 @@ Documentation=man:urxvtd(1) man:urxvt(1)
 ListenStream=%h/.urxvt/urxvtd-%H
 
 [Install]
-WantedBy=sockets.target
+WantedBy=sockets.target desktop.target
