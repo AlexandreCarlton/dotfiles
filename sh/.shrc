@@ -21,12 +21,10 @@ fi
 . ${HOME}/.aliases
 
 # Base16-shell
-# BASE16_SCHEME="monokai"
-# BASE16_SHELL="$HOME/.config/base16-shell/base16-${BASE16_SCHEME}.sh"
-# [[ -s $BASE16_SHELL ]] && . $BASE16_SHELL
+# base16_scheme="solarized"
+# base16_file="$HOME/.config/base16/shell/base16-${base16_scheme}.dark.sh"
+# [[ -s $base16_file ]] && . $base16_file
 
 if [[ -x /usr/bin/cowsay && -x /usr/bin/fortune ]]; then
     fortune | cowsay -n -f tux
 fi
-
-# cat /etc/motd

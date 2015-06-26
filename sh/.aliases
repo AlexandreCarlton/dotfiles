@@ -43,7 +43,7 @@ alias urxvtc_stlarch='urxvtc -letsp 2 -fn "-*-gohufont-medium-*-*-*-11-*-*-*-*-*
 # Upgrade Spacemacs
 alias spupg="cd ${HOME}/.emacs.d && git pull --rebase && git submodule sync && git submodule update"
 
-# (colour) cat with syntax highlighting!
+# (colour) cat with syntax highlighting! Pipe into `nl` to get line numbers.
 # pygmentize is nicer, albeit slower
 if [ -x /usr/bin/pygmentize ]; then
     alias ccat="pygmentize -g"
