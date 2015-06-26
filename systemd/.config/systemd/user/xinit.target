@@ -1,7 +1,7 @@
 [Unit]
 Description=xinit - X Window System initializer
 Requires=xorg.target
-#Wants=wm.target
+Requires=window-manager.target
 
-#[Install]
-#Alias=default.target
+[Install]
+Alias=default.target
