@@ -10,4 +10,4 @@ Restart=on-failure
 
 [Install]
 Also=urxvtd.socket
-WantedBy=xinit.target
+WantedBy=desktop.target

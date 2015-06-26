@@ -9,4 +9,4 @@ RemainAfterExit=yes
 ExecStart=/usr/bin/xrdb -load %h/.Xresources
 
 [Install]
-WantedBy=xinit.target
+WantedBy=desktop.target

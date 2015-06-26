@@ -12,4 +12,4 @@ RemainAfterExit=yes
 ExecStart=/usr/bin/xset b off
 
 [Install]
-WantedBy=xinit.target
+WantedBy=desktop.target

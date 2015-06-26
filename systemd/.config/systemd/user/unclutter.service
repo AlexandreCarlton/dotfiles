@@ -7,4 +7,4 @@ Type=simple
 ExecStart=/usr/bin/unclutter -noevents
 
 [Install]
-WantedBy=xinit.target
+WantedBy=desktop.target

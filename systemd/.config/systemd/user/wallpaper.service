@@ -7,4 +7,4 @@ Type=oneshot
 ExecStart=/usr/bin/feh --no-fehbg --bg-fill %h/.wallpaper/PikachuEevee.png
 
 [Install]
-WantedBy=xinit.target
+WantedBy=desktop.target

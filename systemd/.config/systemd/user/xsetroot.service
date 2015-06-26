@@ -7,4 +7,4 @@ Type=oneshot
 ExecStart=/usr/bin/xsetroot -cursor_name left_ptr
 
 [Install]
-WantedBy=xinit.target
+WantedBy=desktop.target

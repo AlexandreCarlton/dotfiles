@@ -1,5 +1,5 @@
 [Unit]
-Description=xinit - X Window System initializer
+Description=Desktop (target)
 Requires=xorg.target
 Requires=window-manager.target
 
