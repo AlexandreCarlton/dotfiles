@@ -1,7 +1,5 @@
 [Unit]
 Description=RXVT-Unicode Daemon
-Requires=urxvtd.socket
-Requires=display-server.target
 After=display-server.target
 
 [Service]
