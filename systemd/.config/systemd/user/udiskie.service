@@ -2,7 +2,7 @@
 Description=Udiskie
 
 [Service]
-ExecStart=/usr/bin/udiskie
+ExecStart=/usr/bin/udiskie --verbose
 
 [Install]
 WantedBy=desktop.target

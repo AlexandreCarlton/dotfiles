@@ -4,7 +4,7 @@ After=display-server.target
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/feh --no-fehbg --bg-fill %h/.wallpaper/SonicCute.jpg
+ExecStart=/usr/bin/feh --verbose --no-fehbg --bg-fill %h/.wallpaper/SonicCute.jpg
 
 [Install]
 WantedBy=desktop.target
