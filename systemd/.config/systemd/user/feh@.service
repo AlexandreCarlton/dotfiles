@@ -1,0 +1,12 @@
+[Unit]
+Description=feh - image viewer and cataloguer
+After=display-server.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/feh --verbose --no-fehbg --bg-fill %h/.wallpaper/%I
+RemainAfterExit=yes
+
+[Install]
+# This is onl needed by xorg; weston already has settings for wallpaper.
+WantedBy=xorg.socket
