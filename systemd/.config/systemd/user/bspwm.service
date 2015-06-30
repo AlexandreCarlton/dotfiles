@@ -9,5 +9,4 @@ After=display-server.target
 ExecStart=/usr/bin/bspwm
 
 [Install]
-Also=bspwm-panel.service
-WantedBy=window-manager.target
+Alias=window-manager.service
