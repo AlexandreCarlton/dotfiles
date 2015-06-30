@@ -1,7 +1,7 @@
 [Unit]
 Description=Desktop (target)
 Requires=display-server.target
-Requires=window-manager.service
+Wants=window-manager.service
 
 [Install]
 Alias=default.target

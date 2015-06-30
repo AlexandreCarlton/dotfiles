@@ -24,15 +24,17 @@ The three main targets here are:
    - aliased to default.target when enabled, so this kicks off everything.
    - groups up everything needed to set up a working, graphical desktop.
    - Generally, a service should have "WantedBy=desktop.target", unless it is a special unit.
-   - Requires both window-manager.target and a display-server.target.
+   - Requires display-server.target and wants window-manager.service.
  - display-server.target (active as soon as Xorg is ready to accept incoming connections)
    - active as soon as the server is ready to accept connections
    - if you need the server up for a service, include "After=display-server.target"
    - If enabled, xorg.socket is launched before this; so this will be ready
      only if xorg.socket is. Note that if not enabled, "Before=" in xorg.socket
      won't do anything.
- - window-manager.target
-   - Window managers must have "WantedBy=window-manager.target".
+ - window-manager.service
+   - An alias for a given window manager service (e.g. bspwm.service).
+   - Having an alias means only one window-manager may be active (I think).
+   - Window managers must have "Alias=window-manager.service".
 
 sockets.target is also used to launch all sockets (which launch the
 respective service files on incoming connections).
@@ -59,9 +61,7 @@ In my case, boot time increased on an HDD; perhaps this is due to my (rather lim
 - Start weston-launcher as a service to be swapped in for xorg.
 - Reintroduce xorg.target to group up services like xset.
   - instead of wanting xorg.socket, we want xorg.target
-  - this target is wanted by display-server.target.
-- Remove window-manager.target, and install units with alias window-manager.service
-  - This (I think) would ensure only one WM is running as we have to symlink it.
+  - this target is required by display-server.target.
 - Use 8-bit day wallpapers
     - Change wallpaper to reflect time.
     - Requires timers and services - 1 for initial startup, and others for each time.
