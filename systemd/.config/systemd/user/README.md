@@ -8,6 +8,15 @@ allowed_users=anybody
 needs_root_rights=yes
 ```
 
+## Set the default DISPLAY
+This variable is used by any X application wanting to know which display to use:
+```sh
+$ cat /etc/systemd/user.conf
+...
+DefaultEnvironment=DISPLAY=:0
+...
+```
+
 ## Current setup
 Targets are designed to group up logical units to allow easier dependency tracking.
 The three main targets here are:
@@ -25,8 +34,8 @@ The three main targets here are:
  - window-manager.target
    - Window managers must have "WantedBy=window-manager.target".
 
-sockets.target is also used to launch all sockets (which implicitly launch the
-respective service files).
+sockets.target is also used to launch all sockets (which launch the
+respective service files on incoming connections).
 This was largely based on the Arch Wiki; consult them for more information.
 Other sources include casucci, gtmanfred, KaiSforza and Zoqueski.
 
@@ -47,21 +56,12 @@ SSDs may experience little to none (or potentially negative) increases in perfor
 In my case, boot time increased on an HDD; perhaps this is due to my (rather limited) memory.
 
 # TODO
-- Start tmux as a socket (if possible)
-  - Poettering has a nice blog post on why sockets are great.
-- Rename targets to be more descriptive
-  - wm.target to window-manager.target
-  - xorg.target to display-server.target
-    - then we enable xorg.socket or (potentially in future) wayland.service. (have them conflict with the other?)
-    - Should make xset.service etc. have Wants=xorg.socket - wayland wouldn't need them, for example.
-  - Maybe remove xinit.target? Nah, it's separate to xorg itself, but dependent on it.
-  - xinit.target should be needed by xorg.socket? that way if we switch to wayland we won't launch these x services.
-- Be more specific with targets
-  - Specify what the service is wanted by; instead of 'default.target'
-  - Note that user sessions don't respond to 'multi-user' or 'graphical' (that's for booting) - just default.
-  - we could switch out wm.target for de.target (desktop environment like gnome)
-  - don't have "Wants" in wm.target for services; but rather WantedBy in bspwm.service ; easy to enable and disable services. "Wants" for other targets is fine.
-- Change wallpaper.service to allow the filename: wallpaper@PikachuEevee,service (or similar)
+- Start weston-launcher as a service to be swapped in for xorg.
+- Reintroduce xorg.target to group up services like xset.
+  - instead of wanting xorg.socket, we want xorg.target
+  - this target is wanted by display-server.target.
+- Remove window-manager.target, and install units with alias window-manager.service
+  - This (I think) would ensure only one WM is running as we have to symlink it.
 - Use 8-bit day wallpapers
     - Change wallpaper to reflect time.
     - Requires timers and services - 1 for initial startup, and others for each time.

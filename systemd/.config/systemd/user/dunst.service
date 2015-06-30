@@ -1,5 +1,6 @@
 [Unit]
 Description=dunst - A customizable and lightweight notification-daemon
+Documentation=man:dunst(1)
 After=dbus.socket
 After=display-server.target
 

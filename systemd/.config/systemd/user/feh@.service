@@ -1,5 +1,6 @@
 [Unit]
 Description=feh - image viewer and cataloguer
+Documentation=feh(1)
 After=display-server.target
 
 [Service]

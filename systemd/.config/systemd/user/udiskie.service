@@ -1,5 +1,6 @@
 [Unit]
 Description=Udiskie
+Documentation=man:udiskie(8)
 
 [Service]
 ExecStart=/usr/bin/udiskie --verbose

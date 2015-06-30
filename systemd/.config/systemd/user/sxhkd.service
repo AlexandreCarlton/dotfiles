@@ -1,5 +1,6 @@
 [Unit]
 Description=sxhkd - Simple X hotkey daemon
+Documentation=man:sxhkd(1)
 After=display-server.target
 
 [Service]
