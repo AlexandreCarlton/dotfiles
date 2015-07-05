@@ -1,4 +1,0 @@
-[Unit]
-Description=Window Manager (target)
-Requires=display-server.target
-Requires=dbus.socket
