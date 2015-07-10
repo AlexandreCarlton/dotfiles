@@ -25,12 +25,12 @@ The three main targets here are:
    - groups up everything needed to set up a working, graphical desktop.
    - Generally, a service should have "WantedBy=desktop.target", unless it is a special unit.
    - Requires display-server.target and wants window-manager.service.
- - display-server.target (active as soon as Xorg is ready to accept incoming connections)
-   - active as soon as the server is ready to accept connections
-   - if you need the server up for a service, include "After=display-server.target"
-   - If enabled, xorg.socket is launched before this; so this will be ready
-     only if xorg.socket is. Note that if not enabled, "Before=" in xorg.socket
-     won't do anything.
+ - display-server.target
+   - Not an actual target but an alias; either x11.target or wayland.target is aliased to this. Each has:
+     - A socket (x11.socket), launched before the target to ensure services launched after the target work.
+     - At least one implementation service (xorg.service), which is aliased to the protocol target (x11.service).
+   - Active as soon as the display-server is ready to accept incoming connections
+   - If you need the server up for a service, include "After=display-server.target"
  - window-manager.service
    - An alias for a given window manager service (e.g. bspwm.service).
    - Having an alias means only one window-manager may be active (I think).
@@ -58,10 +58,8 @@ SSDs may experience little to none (or potentially negative) increases in perfor
 In my case, boot time increased on an HDD; perhaps this is due to my (rather limited) memory.
 
 # TODO
+- See if Chromium can be launched in the background to increase startup time.
 - Start weston-launcher as a service to be swapped in for xorg.
-- Reintroduce xorg.target to group up services like xset.
-  - instead of wanting xorg.socket, we want xorg.target
-  - this target is required by display-server.target.
 - Use 8-bit day wallpapers
     - Change wallpaper to reflect time.
-    - Requires timers and services - 1 for initial startup, and others for each time.
+    -z Requires timers and services - 1 for initial startup, and others for each time.

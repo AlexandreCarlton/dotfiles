@@ -1,11 +1,10 @@
 [Unit]
 Description=lemonbar - Featherweight lemon-scented bar
 Documentation=man:lemonbar(1)
-Requires=xrdb.service
+Wants=xrdb.service
 After=xrdb.service
 
 [Service]
-Environment=PANEL_FIFO=/tmp/panel-fifo
 Environment=PANEL_HEIGHT=16
 Environment=PATH=/usr/bin:%h/.bin
 ExecStart=/bin/sh %h/.bin/panel bar

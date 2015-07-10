@@ -1,7 +1,7 @@
 [Unit]
 Description=xrdb - X server resource database utility
 Documentation=man:xrdb(1)
-After=xorg.socket
+After=x11.target
 
 [Service]
 Type=oneshot
@@ -9,5 +9,5 @@ RemainAfterExit=yes
 ExecStart=/usr/bin/xrdb -load %h/.Xresources
 
 [Install]
-# This is X-specific; we want it only if xorg is used.
-WantedBy=xorg.socket
+# This is X-specific; we want it only if X is used.
+WantedBy=x11.target

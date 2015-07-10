@@ -1,6 +1,6 @@
 [Unit]
-Description=Xorg server (Socket)
-Before=display-server.target
+Description=X11 Server (Socket)
+Before=x11.target
 
 [Socket]
 ListenStream=/tmp/.X11-unix/X0

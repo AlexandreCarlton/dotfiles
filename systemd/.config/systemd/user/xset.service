@@ -1,7 +1,7 @@
 [Unit]
 Description=xset - user preference utility for X
 Documentation=man:xset(1)
-After=xorg.socket
+After=x11.target
 
 [Service]
 Type=oneshot
@@ -14,4 +14,4 @@ ExecStart=/usr/bin/xset b off
 
 [Install]
 # This is X-specific; we want it only if xorg is used.
-WantedBy=xorg.socket
+WantedBy=x11.target

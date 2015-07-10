@@ -1,8 +1,13 @@
 [Unit]
 Description=Xorg - X11R7 X server
 Documentation=man:Xorg(1)
-Requires=xorg.socket
+Requires=x11.socket
 
 [Service]
-ExecStart=/usr/bin/Xorg :0 -nolisten tcp -noreset -verbose 2 vt1
+ExecStart=/usr/bin/Xorg $DISPLAY -nolisten tcp -noreset -verbose 2 vt1
 SuccessExitStatus=0 1
+
+[Install]
+Alias=x11.service
+Also=x11.socket
+Also=x11.target

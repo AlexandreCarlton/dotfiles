@@ -1,0 +1,8 @@
+# X11 target
+# If a unit requires a display server, insert "After=display-server.target"
+# If a unit requires X specifically up and running, use "After=x11.target"
+[Unit]
+Description=X11 Server (Target)
+
+[Install]
+Alias=display-server.target

@@ -1,5 +1,5 @@
 [Unit]
-Description=Desktop (target)
+Description=Desktop (Target)
 Requires=display-server.target
 Wants=window-manager.service
 
