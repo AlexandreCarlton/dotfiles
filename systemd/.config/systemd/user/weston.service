@@ -3,11 +3,11 @@
 Description=weston - the reference Wayland server
 Documentation=man:weston(1)
 Requires=dbus.socket
-Before=display-server.target
 
 [Service]
 ExecStart=/usr/bin/weston-launch --verbose
 Restart=on-failure
 
 [Install]
-RequiredBy=display-server.target
+Alias=wayland.service
+Also=wayland.socket wayland.target

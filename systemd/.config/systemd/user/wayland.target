@@ -1,0 +1,6 @@
+# Wayland target
+[Unit]
+Description=Wayland Server (Target)
+
+[Install]
+Alias=display-server.target

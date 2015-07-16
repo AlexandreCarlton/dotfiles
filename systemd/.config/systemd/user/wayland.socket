@@ -1,0 +1,10 @@
+# We can spin up Xwayland, so should we also want x11.socket?
+[Unit]
+Description=Wayland (Socket)
+Before=wayland.target
+
+[Socket]
+ListenStream=%t/wayland-0
+
+[Install]
+WantedBy=sockets.target
