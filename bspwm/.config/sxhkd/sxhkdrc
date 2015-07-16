@@ -97,14 +97,18 @@ super + Return
 # Change the selected colour to xrdb's blue:
 # -sb $(xrdb -q | grep color4 | cut -d$'\t' -f2)
 super + space
-	dmenu_run -h $PANEL_HEIGHT
+	dmenu_run -h $PANEL_HEIGHT -p ">" -dim 0.5 -o 0.9
+
+super + q
+    pixel_lock.sh
 
 # Browser choice.
-super + shift + Return
-    midori
+#super + shift + Return
+#    midori
 
+# TODO Change this when connman_dmenu doesn't require sudo permissions anymore.
 super + n
-	sudo connman_dmenu
+    /home/alexandre/connman_dmenu/connman_dmenu
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -139,28 +143,3 @@ XF86AudioPrev
 
 XF86AudioStop
     playerctl stop
-
-
-#
-# Drop-down Conky menus from bar.
-# CHANGE THIS - Just for testing right now.
-#
-
-alt + 1
-	~/.config/bspwm/panel/toggle_conky net
-
-alt + 2
-	~/.config/bspwm/panel/toggle_conky cpu
-
-alt + 3
-	~/.config/bspwm/panel/toggle_conky mem
-
-alt + 4
-	~/.config/bspwm/panel/toggle_conky disk
-
-alt + 5
-	~/.config/bspwm/panel/toggle_conky temp
-
-alt + 6
-	~/.config/bspwm/panel/toggle_conky mpd
-
