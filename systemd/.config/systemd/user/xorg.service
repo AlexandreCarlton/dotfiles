@@ -9,5 +9,4 @@ SuccessExitStatus=0 1
 
 [Install]
 Alias=x11.service
-Also=x11.socket
-Also=x11.target
+Also=x11.socket x11.target
