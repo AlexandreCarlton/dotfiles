@@ -1,8 +1,9 @@
 [Unit]
-Description=bspwm - Binary space partitioning window manager
+Description=bspwm
 Documentation=man:bspwm(1)
 Requires=sxhkd.service
 Wants=bspwm-panel.service
+Requires=display-server.target
 After=display-server.target
 
 [Service]

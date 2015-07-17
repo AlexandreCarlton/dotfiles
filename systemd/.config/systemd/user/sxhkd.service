@@ -1,6 +1,7 @@
 [Unit]
-Description=sxhkd - Simple X hotkey daemon
+Description=sxhkd
 Documentation=man:sxhkd(1)
+Requires=display-server.target
 After=display-server.target
 
 [Service]
