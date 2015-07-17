@@ -1,6 +1,3 @@
-[submodule "X/.palettes/xresources"]
-	path = X/.palettes/xresources
-	url = git@github.com:solarized/xresources.git
 [submodule "spacemacs/.emacs.d"]
 	path = spacemacs/.emacs.d
 	url = git@github.com:syl20bnr/spacemacs.git
@@ -19,3 +16,6 @@
 [submodule "colours/.themes/Numix-Ocean"]
 	path = colours/.themes/Numix-Ocean
 	url = https://github.com/aaronjamesyoung/Numix-Ocean
+[submodule "X/.palettes/solarized"]
+	path = X/.palettes/solarized
+	url = git@github.com:solarized/xresources.git
