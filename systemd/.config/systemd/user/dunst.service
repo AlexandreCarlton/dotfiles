@@ -1,8 +1,9 @@
 [Unit]
-Description=dunst - A customizable and lightweight notification-daemon
+Description=dunst
 Documentation=man:dunst(1)
-After=dbus.socket
+Requires=display-server.target
 After=display-server.target
+After=dbus.socket
 
 [Service]
 ExecStart=/usr/bin/dunst -print
