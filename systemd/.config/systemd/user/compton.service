@@ -1,13 +1,11 @@
 [Unit]
-Description=Compton - a compositor for X11
+Description=compton
 Documentation=man:compton(1)
+Requires=x11.target
 After=x11.target
 
 [Service]
-Type=forking
-#--shadow --fading
-ExecStart=/usr/bin/compton --daemon --show-all-xerrors --clear-shadow
-
+ExecStart=/usr/bin/compton --show-all-xerrors --clear-shadow
 
 [Install]
 WantedBy=x11.target
