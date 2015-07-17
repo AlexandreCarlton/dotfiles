@@ -41,7 +41,7 @@ alias aurs="aura -As"
 alias urxvtc_stlarch='urxvtc -letsp 2 -fn "-*-gohufont-medium-*-*-*-11-*-*-*-*-*-iso10646-*","-misc-stlarch-medium-r-normal--10-100-75-75-c-80-iso10646-1"'
 
 # Upgrade Spacemacs
-alias spupg="cd ${HOME}/.emacs.d && git pull --rebase && git submodule sync && git submodule update"
+alias spupg="cd ${HOME}/.emacs.d && git pull --rebase && git submodule sync && git submodule update && cd -"
 
 # (colour) cat with syntax highlighting! Pipe into `nl` to get line numbers.
 # pygmentize is nicer, albeit slower
