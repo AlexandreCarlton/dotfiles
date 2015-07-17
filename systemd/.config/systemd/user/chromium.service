@@ -1,13 +1,10 @@
 [Unit]
-Description=chromium-browser - the web browser from Google
+Description=Chromium
 Documentation=man:chromium-browser(1)
 After=display-server.target
 
 [Service]
-#Type=forking
-#--no-startup-window
-#--log-net-log --net-log-level=0
-ExecStart=/usr/bin/chromium --enable-logging --no-displaying-insecure-content --auto-launch-at-startup --force-device-scale-factor=1
+ExecStart=/usr/bin/chromium --enable-logging --log-level=3 --no-displaying-insecure-content --auto-launch-at-startup --force-device-scale-factor=1
 Restart=on-failure
 
 [Install]
