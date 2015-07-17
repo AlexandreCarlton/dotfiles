@@ -152,12 +152,15 @@ before layers configuration."
    dotspacemacs-default-package-repository nil
    )
   ;; User initialization goes here
+  ;(setq-default evil-escape-key-sequence "jk")
   )
 
 (defun dotspacemacs/config ()
   "Configuration function.
  This function is called at the very end of Spacemacs initialization after
 layers configuration."
+  (global-linum-mode)
+  (setq neo-theme 'nerd)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
