@@ -1,6 +1,6 @@
 # We can spin up Xwayland, so should we also want x11.socket?
 [Unit]
-Description=Wayland (Socket)
+Description=Wayland Socket
 Before=wayland.target
 
 [Socket]

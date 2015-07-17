@@ -1,5 +1,5 @@
 [Unit]
-Description=Xorg - X11R7 X server
+Description=Xorg
 Documentation=man:Xorg(1)
 Requires=x11.socket
 

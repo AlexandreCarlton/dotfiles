@@ -1,5 +1,5 @@
 [Unit]
-Description=emacs - GNU project Emacs
+Description=emacs daemon
 Documentation=man:emacs(1)
 
 [Service]

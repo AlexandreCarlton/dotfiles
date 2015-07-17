@@ -1,5 +1,5 @@
 [Unit]
-Description=feh - image viewer and cataloguer
+Description=feh (wallpaper)
 Documentation=man:feh(1)
 After=x11.target
 
