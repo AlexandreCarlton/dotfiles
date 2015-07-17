@@ -1,12 +1,13 @@
 [Unit]
-Description=xsetroot - root window parameter setting utility for X
+Description=xsetroot
 Documentation=man:xsetroot(1)
+Requires=x11.target
 After=x11.target
 
 [Service]
 Type=oneshot
+RemainAfterExit=yes
 ExecStart=/usr/bin/xsetroot -cursor_name left_ptr
 
 [Install]
-# This is X-specific; we want it only if xorg is used.
-WantedBy=x11.target
+WantedBy=desktop.target

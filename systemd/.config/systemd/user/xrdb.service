@@ -1,6 +1,7 @@
 [Unit]
-Description=xrdb - X server resource database utility
+Description=xrdb
 Documentation=man:xrdb(1)
+Requires=x11.target
 After=x11.target
 
 [Service]
@@ -9,5 +10,4 @@ RemainAfterExit=yes
 ExecStart=/usr/bin/xrdb -load %h/.Xresources
 
 [Install]
-# This is X-specific; we want it only if X is used.
-WantedBy=x11.target
+WantedBy=desktop.target
