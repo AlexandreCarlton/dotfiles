@@ -1,12 +1,12 @@
 [Unit]
-Description=tmux - terminal multiplexer
+Description=tmux session (detached)
 Documentation=man:tmux(1)
 
 [Service]
-Type=forking
-ExecStart=/usr/bin/tmux new-session -d -s %u
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/tmux -v new-session -d -s %u
 ExecStop=/usr/bin/tmux kill-session -t %u
-Restart=always
 
 [Install]
 WantedBy=default.target
