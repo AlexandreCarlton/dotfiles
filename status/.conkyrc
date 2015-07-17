@@ -1,14 +1,17 @@
-short_units yes
-# Change back to "yes"
-background no
-pad_percents 3
-out_to_console yes
-out_to_x no
-update_interval 1
-# update_interval_on_battery 10
-use_xft yes
+-- vim: ts=4 sw=4 noet ai cindent syntax=lua
 
-#template0 ~/.config/bspwm/panel/toggle_conky \1
+conky.config = {
+    short_units = true,
+    background = false,
+    pad_percents = 3,
+    out_to_console = true,
+    out_to_x = false,
+    update_interval = 1,
+    use_xft = true
+}
+
+--[[
+template0 ~/.config/bspwm/panel/toggle_conky \1
 
 
 # To get the icons, launch another instance of urxvtc
@@ -22,8 +25,9 @@ use_xft yes
 # snd-mixer-oss
 
 # %{F\#fffdf6e3}Thing%{F-} \
+]]
 
-TEXT
+conky.text = [[
 S \
 CPU %{F\#fffdf6e3}${cpu cpu1} ${cpu cpu2} ${cpu cpu3} ${cpu cpu4}%{F-} \
 \
@@ -63,12 +67,10 @@ ${endif}\
 \
 \
 BAT \
+%{F\#fffdf6e3}${battery_percent}\
 ${if_existing /sys/class/power_supply/AC/online 1}\
-(C) \
-${else}\
-(D) \
-${endif}\
-%{F\#fffdf6e3}${battery_percent}%{F-} \
+C⚡\
+${endif}%{F-} \
 \
 \
 PAC %{F\#fffdf6e3}${texeci 3600 checkupdates | wc -l}%{F-} \
@@ -78,3 +80,4 @@ ORP %{F\#fffdf6e3}${texeci 3600 pacman -Qdtq | wc -l}%{F-} \
 \
 \
 ${time %a %b %d} %{F\#fffdf6e3}${time %H:%M}%{F-}
+]];
