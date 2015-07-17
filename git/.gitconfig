@@ -5,8 +5,9 @@
 	co = checkout
 	cob = checkout -b
 	d = difftool
-	ec = config --global -e 
+	ec = config --global -e
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue) <%an>%Creset' --abbrev-commit
+	stat = status -sb
 	undo = reset HEAD~1 --mixed
 	up = !git pull --rebase --prune $@ && git submodule update --init --recursive
 [diff]
