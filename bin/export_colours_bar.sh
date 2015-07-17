@@ -6,7 +6,7 @@
 
 $(xrdb -query |\
     egrep "^(URxvt)?\*(\.)?(color[0-9]+|(fore|back)ground)" |\
-    sed -e 's/URxvt\*/\*/g' | sed -e 's/\*//g' |\
+    sed -e 's/URxvt\*/\*/g' | sed -e 's/\*//g' | sed -e 's/\.//g' |\
     sed -e 's/:[\t ]\+/=/g' |\
     sed -e 's/^/export /g' |\
     sed -e 's/#/#ff/g')
