@@ -1,21 +1,21 @@
 [submodule "spacemacs/.emacs.d"]
 	path = spacemacs/.emacs.d
-	url = git@github.com:syl20bnr/spacemacs.git
+	url = git://github.com/syl20bnr/spacemacs.git
 [submodule "fish/.oh-my-fish"]
 	path = fish/.oh-my-fish
-	url = git@github.com:bpinto/oh-my-fish.git
+	url = git://github.com/bpinto/oh-my-fish.git
 [submodule "zsh/.zprezto"]
 	path = zsh/.zprezto
-	url = git@github.com:sorin-ionescu/prezto
+	url = git://github.com/sorin-ionescu/prezto
 [submodule "colours/.config/base16/shell"]
 	path = colours/.config/base16/shell
-	url = https://github.com/chriskempson/base16-shell
+	url = git://github.com/chriskempson/base16-shell
 [submodule "colours/.config/base16/xresources"]
 	path = colours/.config/base16/xresources
-	url = https://github.com/chriskempson/base16-xresources
+	url = git://github.com/chriskempson/base16-xresources
 [submodule "colours/.themes/Numix-Ocean"]
 	path = colours/.themes/Numix-Ocean
-	url = https://github.com/aaronjamesyoung/Numix-Ocean
+	url = git://github.com/aaronjamesyoung/Numix-Ocean
 [submodule "X/.palettes/solarized"]
 	path = X/.palettes/solarized
-	url = git@github.com:solarized/xresources.git
+	url = git://github.com/solarized/xresources.git
