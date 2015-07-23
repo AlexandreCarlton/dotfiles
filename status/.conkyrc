@@ -61,7 +61,7 @@ ${else}\
 ${endif}${endif}${endif} \
 ${mixer} \
 ${else}\
-${execi 1 $HOME/.bin/volume.sh} \
+ ${execi 1 $HOME/.bin/volume.sh} \
 ${endif}\
 %{F-}\
 \
