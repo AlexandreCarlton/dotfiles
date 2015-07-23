@@ -8,4 +8,4 @@ After=x11.target
 ExecStart=/usr/bin/compton --show-all-xerrors --clear-shadow
 
 [Install]
-WantedBy=x11.target
+WantedBy=desktop.target
