@@ -5,7 +5,7 @@ Documentation=man:tmux(1)
 [Service]
 Type=oneshot
 RemainAfterExit=yes
-ExecStart=/usr/bin/tmux -v new-session -d -s %u
+ExecStart=/usr/bin/tmux new-session -d -s %u
 ExecStop=/usr/bin/tmux kill-session -t %u
 
 [Install]
