@@ -4,7 +4,7 @@ Documentation=man:chromium-browser(1)
 After=display-server.target
 
 [Service]
-ExecStart=/usr/bin/chromium --enable-logging --log-level=3 --no-displaying-insecure-content --auto-launch-at-startup --force-device-scale-factor=1
+ExecStart=/usr/bin/chromium --restore-last-session --enable-logging --log-level=3 --no-displaying-insecure-content --auto-launch-at-startup --force-device-scale-factor=1
 Restart=on-failure
 
 [Install]
