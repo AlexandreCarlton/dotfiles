@@ -16,6 +16,6 @@
 [submodule "colours/.themes/Numix-Ocean"]
 	path = colours/.themes/Numix-Ocean
 	url = git://github.com/aaronjamesyoung/Numix-Ocean
-[submodule "X/.palettes/solarized"]
-	path = X/.palettes/solarized
+[submodule "X/.Xresources.d/colours/solarized"]
+	path = X/.Xresources.d/colours/solarized
 	url = git://github.com/solarized/xresources.git

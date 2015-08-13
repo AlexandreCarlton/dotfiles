@@ -1,13 +1,10 @@
 ! Include colorscheme from ~/.palettes
 
 ! Defines *{back,fore}ground, along with *color[1-15] and *cursorColor
-#include ".palettes/solarized/Xresources.dark"
+#include ".Xresources.d/colours/solarized/Xresources.dark"
 ! #include "/home/alexandre/.config/base16/xresources/base16-solarized.dark.xresources"
 
-*font:           -*-gohufont-medium-*-*-*-11-*-*-*-*-*-iso10646-*
-*boldFont:       -*-gohufont-bold-*-*-*-11-*-*-*-*-*-iso10646-*
-*italicFont:     -*-gohufont-medium-*-*-*-11-*-*-*-*-*-iso10646-*
-*boldItalicFont: -*-gohufont-bold-*-*-*-11-*-*-*-*-*-iso10646-*
+#include ".Xresources.d/fonts/gohufont-11"
 
 ! Dmenu2
 *selbackground: #268bd2
@@ -47,3 +44,19 @@ URxvt*scrollBar: false
 
 ! Do not save any lines; use Tmux
 URxvt*saveLines: 0
+
+! Font-related configuration
+
+! Do not automatically hint which would disregard existing hinting information.
+Xft.autohint: false
+! Reduce colour fringing.
+Xft.lcdfilter: lcddefault
+! Amount of font reshaping done to line up to the grid.
+Xft.hintstyle: hintfull
+! Line up font with rasterized grid.
+Xft.hinting: true
+! Increases apparent resolution of font edges that have been converted from
+! vector to bitmap via rasterization.
+Xft.antialias: true
+! Specify monitor type.
+Xft.rgba: rgb
