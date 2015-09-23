@@ -7,7 +7,7 @@ After=x11.target
 [Service]
 Type=oneshot
 RemainAfterExit=yes
-ExecStart=/usr/bin/xrdb -load %h/.Xresources
+ExecStart=/usr/bin/xrdb -merge %h/.Xresources
 
 [Install]
 WantedBy=desktop.target
