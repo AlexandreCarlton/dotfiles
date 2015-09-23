@@ -96,8 +96,13 @@ super + Return
 
 # Change the selected colour to xrdb's blue:
 # -sb $(xrdb -q | grep color4 | cut -d$'\t' -f2)
-super + space
-	dmenu_run -h $PANEL_HEIGHT -p ">" -dim 0.5 -o 0.9
+# -h $PANEL_HEIGHT -p ">" -dim 0.5 -o 0.9
+#dmenu_run -p ">"
+#super + space
+    #rofi -show run
+
+super + shift + space
+    rofi -show window
 
 super + q
     pixel_lock.sh

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-bspc monitor -d term web code media misc
+bspc monitor -d term web code media steam misc
 
 bspc config border_width            2
 bspc config window_gap              12
@@ -11,6 +11,21 @@ bspc config borderless_monocle      true
 bspc config gapless_monocle         true
 
 bspc rule -a Chromium       desktop=^2
+bspc rule -a dwb            desktop=^2
+bspc rule -a Midori         desktop=^2
+
+bspc rule -a emacs          desktop=^3
+bspc rule -a gvim           desktop=^3
+
+bspc rule -a Evince         desktop=^4
+bspc rule -a Zathura        desktop=^4
+
+bspc rule -a mpv            desktop=^4
+bspc rule -a vlc            desktop=^4
+
+bspc rule -a Steam          desktop=^5
+
+# Probably should delete this.
 bspc rule -a mplayer2       floating=on
 bspc rule -a Kupfer.py      focus=on
 bspc rule -a Screenkey      manage=off
