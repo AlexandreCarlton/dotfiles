@@ -1,0 +1,13 @@
+[Unit]
+Description=Rofi (run)
+Documentation=man:rofi(1)
+Requires=x11.target
+After=x11.target
+After=xrdb.service
+
+[Service]
+ExecStart=/usr/bin/rofi -key-run mod4-space
+
+[Install]
+WantedBy=desktop.target
+
