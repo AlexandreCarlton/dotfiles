@@ -19,3 +19,6 @@
 [submodule "X/.Xresources.d/colours/solarized"]
 	path = X/.Xresources.d/colours/solarized
 	url = git://github.com/solarized/xresources.git
+[submodule "steam/.local/share/Steam/skins/Air"]
+	path = steam/.local/share/Steam/skins/Air
+	url = git://github.com/Elundris/Air-for-Steam.git
