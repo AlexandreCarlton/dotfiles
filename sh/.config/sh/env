@@ -4,6 +4,8 @@
 
 [ -z "${LANG}" ] && export LANG='en_US.UTF-8'
 
+export ZDOTDIR="${HOME}/.config/zsh"
+
 # bspwm panel - height is used by sxhkd to get dmenu height.
 export PANEL_HEIGHT=16
 

@@ -18,7 +18,7 @@ if [ -x /usr/bin/tmux ] && [ -z "$TMUX" ]; then
     [ $TERM != "linux" ] && tmux attach
 fi
 
-. ${HOME}/.aliases
+. ${HOME}/.config/sh/aliases
 
 # Base16-shell
 # base16_scheme="solarized"

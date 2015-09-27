@@ -4,7 +4,7 @@
 [[ $- != *i* ]] && return
 
 # Attach to Tmux as early as possible.
-[[ -f ${HOME}/.shrc ]] && source ${HOME}/.shrc
+[[ -f ${HOME}/.config/sh/shrc ]] && source ${HOME}/.config/sh/shrc
 
 # oh-my-zsh
 # ZSH_THEME="avit"
