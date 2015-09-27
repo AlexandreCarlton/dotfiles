@@ -4,9 +4,6 @@
 [submodule "fish/.oh-my-fish"]
 	path = fish/.oh-my-fish
 	url = git://github.com/bpinto/oh-my-fish.git
-[submodule "zsh/.zprezto"]
-	path = zsh/.zprezto
-	url = git://github.com/sorin-ionescu/prezto
 [submodule "colours/.config/base16/shell"]
 	path = colours/.config/base16/shell
 	url = git://github.com/chriskempson/base16-shell
@@ -22,3 +19,6 @@
 [submodule "steam/.local/share/Steam/skins/Air"]
 	path = steam/.local/share/Steam/skins/Air
 	url = git://github.com/Elundris/Air-for-Steam.git
+[submodule "zsh/.config/zsh/.zprezto"]
+	path = zsh/.config/zsh/.zprezto
+	url = git://github.com/sorin-ionescu/prezto
