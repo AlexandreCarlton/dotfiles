@@ -8,3 +8,6 @@ vim/.vim/autoload/
 vim/.vim/plugged
 vim/.vim/.netrwhist
 xmonad/.xmonad/
+zsh/.config/zsh/.zcompcache
+zsh/.config/zsh/.zcompdump
+zsh/.config/zsh/.zhistory
