@@ -1,10 +1,15 @@
 [Unit]
 Description=Chromium
 Documentation=man:chromium-browser(1)
+Requisite=display-server.target
 After=display-server.target
 
 [Service]
-ExecStart=/usr/bin/chromium --restore-last-session --enable-logging --log-level=3 --no-displaying-insecure-content --auto-launch-at-startup --force-device-scale-factor=1
+ExecStart=/usr/bin/chromium --restore-last-session --enable-logging \
+  --log-level=3 --no-displaying-insecure-content --auto-launch-at-startup \
+  --force-device-scale-factor=1 --disk-cache-dir=/tmp/chromium-cache
+# Find a way to prevent asking to restore last session.
+#ExecStop=/usr/bin/pkill --oldest chromium
 Restart=on-failure
 
 [Install]
