@@ -1,0 +1,9 @@
+
+*font: xft:Roboto Mono:pixelsize=11
+*boldFont: xft:Roboto Mono:style=bold:pixelsize=11
+*italicFont: xft:Roboto Mono:italic:pixelsize=11
+*boldItalicFont: xft:Roboto Mono:style=bold:italic:pixelsize=11
+
+rofi.font: Roboto Mono 11
+
+URxvt*letterSpace: -1
