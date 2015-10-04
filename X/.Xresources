@@ -1,15 +1,7 @@
-! Include colorscheme from ~/.palettes
-
-! Defines *{back,fore}ground, along with *color[1-15] and *cursorColor
-#include ".Xresources.d/colours/solarized/Xresources.dark"
-! #include "/home/alexandre/.config/base16/xresources/base16-solarized.dark.xresources"
-
-#include ".Xresources.d/fonts/gohufont-11"
-
-! Dmenu2
-*selbackground: #268bd2
-*selforeground: #eee8d5
-
+! These files are symlinks to files in the colours and fonts folders.
+! It is necessary to create a file for a colourscheme or font, obviously.
+#include "/home/alexandre/.Xresources.d/colour"
+#include "/home/alexandre/.Xresources.d/font"
 
 ! Compile xft: Turn on/off double-buffering for xft (default enabled). On some
 ! card/driver combination enabling it slightly decreases performance, on most
