@@ -1,5 +1,5 @@
 
-all: update install-dash hacking shell-link
+all: update hacking shell desktop
 
 # Not all that useful really.
 help:
@@ -18,9 +18,8 @@ help:
 	@echo "bash			-- Install bash dotfiles (e.g. .bashrc, .bash_profile)"
 	@echo ""
 	@echo "Desktop utilities:"
+	@echo "desktop  -- Install all related desktop files"
 	@echo "bspwm		-- Install bspwm dotfiles (bspwmrc, sxhkdrc)"
-	@echo "xmonad		-- Install xmonad dotfiles (.xmonad.hs)"
-
 
 
 ##
@@ -28,84 +27,84 @@ help:
 ##
 
 update:
-	git pull --rebase
-	git submodule update --init --recursive --remote
+	#git pull --rebase
+	git submodule sync
+	git submodule update --init #--recursive --remote
 
 ##
 ## Programming utilities
 ##
-hacking: neovim-link emacs-link git-link
+hacking: neovim emacs git
 
-vim-link: update ctags-link
+vim: ctags
 	stow vim
 	vim +qall
-	#vim +"PromptlineSnapshot! ~/.shell_prompt.sh airline" +qall
 
-neovim-link: vim-link
+neovim: vim
 	ln -sf ~/.vimrc ~/.nvimrc
 	ln -sf ~/.vim ~/.nvim
 
-emacs-link:
+emacs:
 	stow emacs
 
-ctags-link:
+ctags:
 	stow ctags
 
-git-link:
+git:
 	stow git
 
 ##
 ## Shell utilities
 ##
-shell-link: zsh-link bash-link sh-link
+shell: zsh bash
 
-zsh-link: sh-link
+zsh: sh
 	stow zsh
 
-bash-link: sh-link
+bash: sh
 	stow bash
 
-sh-link:
+sh:
 	stow sh
 
 ##
 ## Desktop utilities
 ##
-desktop-link: bspwm-link xinitrc-link
+desktop: X bspwm systemd
+	systemctl --user enable desktop.target
+	systemctl --user enable chromium
+	systemctl --user enable compton
+	systemctl --user enable dunst
+	systemctl --user enable dropbox
+	systemctl --user enable wallpaper@PikachuEevee.png
+	systemctl --user enable pulseaudio
+	systemctl --user enable redshift
+	systemctl --user enable steam
+	systemctl --user enable udiskie
+	systemctl --user enable unclutter
 
-bspwm-link: conky-link X-link bin-link profile-link
+bspwm: conky X binaries systemd
 	stow bspwm
+	systemctl --user enable bspwm # includes sxhkd
 
-tmux-link: vim-link
+tmux: systemd
 	stow tmux
+	systemctl --user enable tmux
 
-bin-link:
-	$(BACKUP_AND_LINK) bin
+binaries:
+	stow binaries
 
-conky-link:
-	stow conky
+conky:
+	stow status
 
-X-link:
+X: systemd
 	stow X
+	systemctl --user enable rofi
+	systemctl --user enable urxvtd.socket
+	systemctl --user enable xorg
+	systemctl --user enable xrdb
+	systemctl --user enable bell
+	systemctl --user enable cursor
 
 systemd:
 	stow systemd
-	systemctl --user enable desktop.target
-	systemctl --user enable bspwm # includes sxhkd
-	systemctl --user enable xorg
-	# Desktop utilities.
-	systemctl --user enable chromium
-	systemctl --user enable compton
-	systemctl --user enable dbus.socket
-	systemctl --user enable dunst
-	# systemctl --user enable dropbox
-	systemctl --user enable feh@PikachuEevee.png
-	systemctl --user enable pulseaudio
-	systemctl --user enable redshift
-	systemctl --user enable tmux
-	systemctl --user enable udiskie
-	systemctl --user enable unclutter
-	systemctl --user enable urxvtd.socket
-	systemctl --user enable xrdb
-	systemctl --user enable xset
-	systemctl --user enable xsetroot
