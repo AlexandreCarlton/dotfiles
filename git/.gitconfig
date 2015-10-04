@@ -10,6 +10,12 @@
 	stat = status -sb
 	undo = reset HEAD~1 --mixed
 	up = !git pull --rebase --prune $@ && git submodule update --init --recursive
+	watch = "!clear;inotifywait --quiet -mr -e modify,move,create,delete --format  \"%f %e\" @/.git . | \
+		while read file; do \
+			clear;\
+			git status --short;\
+			git --no-pager diff --shortstat;\
+		done;"
 [diff]
 	tool = vimdiff
 [difftool]
