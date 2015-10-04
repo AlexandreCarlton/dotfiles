@@ -1,4 +1,12 @@
-include "/usr/share/themes/Numix Solarized Light/gtk-2.0/gtkrc"
-#include "~/.themes/Numix-Ocean/gtk-2.0/gtkrc"
-#include "/usr/share/themes/Paper/gtk-2.0/gtkrc"
-#include "/usr/share/themes/Gnome-Cupertino/gtk-2.0/gtkrc"
+include "/usr/share/themes/Numix Solarized/gtk-2.0/gtkrc"
+
+gtk-toolbar-icon-size=GTK_ICON_SIZE_SMALL_TOOLBAR
+
+gtk-icon-theme-name="Numix"
+gtk-theme-name="Numix Solarized"
+
+style "widget-font" {
+  font_name = "GohuFont 8"
+}
+widget_class "*" style "widget-font"
+gtk-font-name="GohuFont 8"
