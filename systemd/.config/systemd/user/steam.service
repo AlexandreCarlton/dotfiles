@@ -1,7 +1,7 @@
 [Unit]
 Description=steam
 Documentation=man:steam(6)
-Requires=display-server.target
+Requisite=display-server.target
 After=display-server.target
 
 [Service]

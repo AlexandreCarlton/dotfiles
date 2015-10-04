@@ -1,13 +1,13 @@
 [Unit]
 Description=xrdb
 Documentation=man:xrdb(1)
-Requires=x11.target
+Requisite=x11.target
 After=x11.target
 
 [Service]
 Type=oneshot
 RemainAfterExit=yes
-ExecStart=/usr/bin/xrdb -merge %h/.Xresources
+ExecStart=/usr/bin/xrdb -display $DISPLAY -merge %h/.Xresources
 
 [Install]
 WantedBy=desktop.target

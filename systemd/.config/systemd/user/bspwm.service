@@ -3,7 +3,7 @@ Description=bspwm
 Documentation=man:bspwm(1)
 Requires=sxhkd.service
 Wants=bspwm-panel.service
-Requires=display-server.target
+Requisite=display-server.target
 After=display-server.target
 
 [Service]

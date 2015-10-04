@@ -1,7 +1,7 @@
 [Unit]
 Description=sxhkd
 Documentation=man:sxhkd(1)
-Requires=display-server.target
+Requisite=display-server.target
 After=display-server.target
 
 [Service]

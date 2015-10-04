@@ -2,6 +2,7 @@
 Description=Xorg
 Documentation=man:Xorg(1)
 Requires=x11.socket
+After=x11.socket
 
 [Service]
 ExecStart=/usr/bin/Xorg $DISPLAY -nolisten tcp -noreset -verbose 2 vt1
