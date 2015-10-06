@@ -4,10 +4,12 @@
 
 [ -z "${LANG}" ] && export LANG='en_US.UTF-8'
 
-export ZDOTDIR="${HOME}/.config/zsh"
+export XDG_CONFIG_HOME="${HOME}/.config"
+
+export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
 
 # bspwm panel - height is used by sxhkd to get dmenu height.
-export PANEL_HEIGHT=16
+export PANEL_HEIGHT='16'
 
 # User-made utilities (including panel ones)
 export PATH="${HOME}/.bin:${PATH}"
@@ -24,8 +26,6 @@ export PATH="${HOME}/.linuxbrew/bin:${PATH}"
 export MANPATH="${HOME}/.linuxbrew/share/man:${MANPATH}"
 export INFOPATH="${HOME}/.linuxbrew/share/info:${INFOPATH}"
 
-export EDITOR="vim"
-export USE_EDITOR=$EDITOR
-export VISUAL=$EDITOR
-
-# export PAGER="less"
+export EDITOR='vim'
+export USE_EDITOR="${EDITOR}"
+export VISUAL="${EDITOR}"
