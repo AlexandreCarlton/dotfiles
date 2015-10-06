@@ -3,6 +3,8 @@ Description=Chromium
 Documentation=man:chromium-browser(1)
 Requisite=display-server.target
 After=display-server.target
+Wants=psd.service
+After=psd.service psd-resync.service
 
 [Service]
 ExecStart=/usr/bin/chromium --restore-last-session --enable-logging \
