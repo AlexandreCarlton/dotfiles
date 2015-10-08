@@ -1,0 +1,181 @@
+#!/bin/sh
+# vim: set foldmethod=marker:
+
+# TODO:
+# Spacemacs
+# Dunst - Bit more complex. Requires xresources file.
+
+
+# Base functions {{{
+
+# for forms of X = Y
+set_cfg_variable() {
+  key=$1
+  value=$2
+  file=$3
+  sed -i "s/^\(${key} *= *\).*/\1${value}/" "$file"
+}
+
+# for forms of X Y, perhaps indented.
+set_variable() {
+  key=$1
+  value=$2
+  file=$3
+  sed -i "s/^\( *${key} \+\).*/\1${value}/" "$file"
+
+}
+
+# }}}
+
+# GTK {{{
+
+# We assume that there is only ONE include, and it is for the gtkrc.
+change_gtk2_theme() {
+  theme=$1
+  icon=$2
+  theme_gtkrc=$3
+  gtkrc="$HOME/.gtkrc-2.0"
+
+  set_variable 'include' "\"$theme_gtkrc\"" "$gtkrc"
+  set_cfg_variable 'gtk-icon-theme-name' "\"$theme\"" "$gtkrc"
+  set_cfg_variable 'gtk-theme-name' "\"$icon\"" "$gtkrc"
+}
+
+change_gtk2_font() {
+  font=$1
+  set_cfg_variable 'gtk-font-name' "\"$font\"" "$HOME/.gtkrc-2.0"
+}
+
+change_gtk3_theme() {
+  theme=$1
+  icon=$2
+  gtkrc="$HOME/.config/gtk-3.0/settings.ini"
+
+  set_cfg_variable 'gtk-icon-theme-name' "$theme" "$gtkrc"
+  set_cfg_variable 'gtk-theme-name' "$icon" "$gtkrc"
+}
+
+change_gtk3_font() {
+  font=$1
+  set_cfg_variable 'gtk-font-name' "$font" "$HOME/.config/gtk-3.0/settings.ini"
+}
+
+
+# }}}
+
+# Tmux {{{
+set_tmux_option() {
+  option=$1
+  value=$2
+  tmux_conf="$HOME/.config/tmux/tmux.conf"
+
+  set_variable "set-option -g $option" "$value" "$tmux_conf"
+}
+
+change_tmux_dark() {
+  set_tmux_option 'status-bg' 'black'
+  set_tmux_option 'status-fg' 'white'
+  set_tmux_option 'pane-border-fg' 'black'
+  set_tmux_option 'pane-activeborder-fg' 'white'
+}
+
+change_tmux_light() {
+  set_tmux_option 'status-bg' 'white'
+  set_tmux_option 'status-fg' 'black'
+  set_tmux_option 'pane-border-fg' 'white'
+  set_tmux_option 'pane-activeborder-fg' 'black'
+}
+
+# }}}
+
+# Vim {{{
+change_vim_colourscheme() {
+  scheme=$1
+  #sed -i "s/^\(colorscheme \).*$/\1 $scheme/" $HOME/.vimrc
+  set_variable "colorscheme" "$scheme" "$HOME/.vimrc"
+  set_cfg_variable "let g:lightline\.colorscheme" "'$scheme'" "$HOME/.vimrc"
+}
+
+change_vim_background() {
+  background=$1
+  set_cfg_variable "set background" "$background" "$HOME/.vimrc"
+}
+
+# }}}
+
+# Xresources {{{
+# All that is necessary is changing a symlink; it is too gross otherwise.
+
+change_xresources_font() {
+  font=$1
+  font_file=$HOME/.Xresources.d/fonts/$font
+  if [ ! -e $font_file ]; then
+    echo "ERROR: change_xresources_font: font file '$font' does not exist."
+  fi
+  ln -sf $font_file $HOME/.Xresources.d/font
+}
+
+change_xresources_colourscheme() {
+  scheme=$1
+  scheme_file=$HOME/.Xresources.d/colours/$scheme
+  if [ ! -e $scheme_file ]; then
+    echo "ERROR: change_xresources_colourscheme: colour file '$scheme' does not exist."
+  fi
+  ln -sf $scheme_file $HOME/.Xresources.d/colour
+}
+
+#}}}
+
+# Global themes {{{
+set_solarized_dark() {
+  change_xresources_colourscheme 'solarized/Xresources.dark'
+
+  change_vim_colourscheme 'solarized'
+  change_vim_background 'dark'
+
+  # TODO: Get around this.
+  change_gtk2_theme 'Numix' 'Numix Solarized' '\/usr\/share\/themes\/Numix Solarized\/gtk-2.0\/gtkrc'
+  change_gtk3_theme 'Numix' 'Numix Solarized'
+
+  change_tmux_dark
+}
+
+set_paper_light() {
+  change_xresources_colourscheme 'paper/Xresources.light'
+
+  change_vim_colourscheme 'PaperColor'
+  change_vim_background 'light'
+
+  # TODO: Get around this.
+  change_gtk2_theme 'Paper' 'Paper' '\/usr\/share\/themes\/Paper\/gtk-2.0\/gtkrc'
+  change_gtk3_theme 'Paper' 'Paper'
+
+  change_tmux_light
+
+}
+
+set_gohufont() {
+  change_xresources_font 'gohufont-11'
+  change_gtk2_font 'GohuFont 8'
+  change_gtk3_font 'GohuFont 8'
+}
+
+set_roboto() {
+  change_xresources_font 'roboto'
+  change_gtk2_font 'Roboto 8'
+  change_gtk3_font 'Roboto 8'
+}
+
+# }}}
+
+reload_theme() {
+  xrdb -load "$HOME/.Xresources"
+  tmux source-file "$HOME/.config/tmux/tmux.conf"
+}
+
+
+set_solarized_dark
+set_gohufont
+#set_paper_light
+#set_roboto
+reload_theme
