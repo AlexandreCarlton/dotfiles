@@ -1,5 +1,5 @@
 [Unit]
-Description=xsetroot
+Description=left pointer cursor
 Documentation=man:xsetroot(1)
 Requisite=x11.target
 After=x11.target

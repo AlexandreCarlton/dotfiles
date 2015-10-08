@@ -1,5 +1,5 @@
 [Unit]
-Description=xset
+Description=bell mute
 Documentation=man:xset(1)
 Requisite=x11.target
 After=x11.target

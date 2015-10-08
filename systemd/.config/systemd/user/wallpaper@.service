@@ -1,5 +1,5 @@
 [Unit]
-Description=feh (wallpaper)
+Description=wallpaper %I
 Documentation=man:feh(1)
 Requisite=x11.target
 After=x11.target
