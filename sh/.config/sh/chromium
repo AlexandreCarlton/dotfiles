@@ -3,27 +3,27 @@
 # Useful exports and aliases for working on Chromium
 # Guess I'm not gonna use these, though.
 
-CHROMIUM_DIR="$HOME/chromium"
-DEPOT_TOOLS_DIR="$HOME/depot_tools"
+CHROMIUM_DIR="${HOME}/chromium"
+DEPOT_TOOLS_DIR="${HOME}/depot_tools"
 
-RELEASE_DIR="$CHROMIUM_DIR/src/out/Release"
-NINJA_OPTS="-j 1000 -C $RELEASE_DIR"
+release_dir="${CHROMIUM_DIR}/src/out/Release"
+ninja_opts="-j 1000 -C ${RELEASE_DIR}"
 
-if [ ! -d "$CHROMIUM_DIR" ]; then
-    echo "Could not locate Chromium folder ($CHROMIUM_DIR)."
+if [ ! -d "${CHROMIUM_DIR}" ]; then
+    echo "Could not locate Chromium folder (${CHROMIUM_DIR})."
     return
-elif [ ! -d "$DEPOT_TOOLS_DIR" ]; then
-    echo "Could not find depot_tools folder for Chromium ($DEPOT_TOOLS_DIR)."
+elif [ ! -d "${DEPOT_TOOLS_DIR}" ]; then
+    echo "Could not find depot_tools folder for Chromium (${DEPOT_TOOLS_DIR})."
     return
 fi
 
-export PATH="$PATH:$DEPOT_TOOLS_DIR"
-export GYP_GENERATORS="ninja"
+export PATH="${PATH}:${DEPOT_TOOLS_DIR}"
+export GYP_GENERATORS='ninja'
 # Speed up incremental builds (but still hit debug asserts).
-export GYP_DEFINES="component=shared_library dcheck_always_on=1"
+export GYP_DEFINES='component=shared_library dcheck_always_on=1'
 
 # TODO: Shorten these - e.g. chr, chbr, etc.
-alias chrome_refresh="cd $CHROMIUM_DIR && git checkout master && git pull && gclient sync"
-alias chrome_build_release="ninja $NINJA_OPTS chrome"
-alias chrome_launch_release="$RELEASE_DIR/chrome --no-default-browser-check"
-alias chrome_tests="ninja $NINJA_OPTS unit_tests browser_tests"
+alias chrome_refresh="cd ${CHROMIUM_DIR} && git checkout master && git pull && gclient sync"
+alias chrome_build_release="ninja ${ninja_opts} chrome"
+alias chrome_launch_release="${release_dir}/chrome --no-default-browser-check"
+alias chrome_tests="ninja ${ninja_opts} unit_tests browser_tests"
