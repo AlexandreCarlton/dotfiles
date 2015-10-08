@@ -25,6 +25,8 @@ endif
 
 let g:bundle_folder='~/.vim/plugged'
 let g:use_powerline = 0 " Use fancy glyphs?
+
+" Maybe have a setting that enables all fancy features.
 let g:use_neocomplete = 1 " Off means we have YouCompleteMe
 
 call plug#begin(g:bundle_folder)
@@ -78,9 +80,6 @@ Plug 'rhysd/vim-clang-format', { 'for': ['c', 'cpp', 'objc'], 'on': 'ClangFormat
 " Compilation support + Syntax highlighting.
 Plug 'kchmck/vim-coffee-script', {'for': 'coffee'}
 
-" Indent and syntax highlighting
-Plug 'mintplant/vim-literate-coffeescript', {'for': 'coffee'}
-
 " }}}
 
 " Colours {{{
@@ -104,8 +103,6 @@ Plug 'NLKNguyen/papercolor-theme'
 " Use 256 to enable 256-Colour mode
 " Use 16 to use Terminal's colours.
 set t_Co=256
-
-set background=dark
 
 " Set utf8 as standard encoding and en_US as standard language
 set encoding=utf-8
@@ -152,7 +149,7 @@ if g:use_neocomplete
 else
   let ycm_options = '--clang-completer --gocode-completer --omnisharp-completer ' .
                   \ '--system-libclang --system-boost'
-  Plug 'Valloric/YouCompleteMe', {'do': './install.sh ' . ycm_options, 'frozen': 1 } "{{{
+  Plug 'Valloric/YouCompleteMe', {'do': './install.py ' . ycm_options } "{{{
   let g:ycm_global_ycm_extra_conf = g:bundle_folder . '/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
   let g:ycm_always_populate_location_list = 1
   let g:ycm_add_preview_to_completeopt = 1
@@ -166,6 +163,7 @@ else
   Plug 'SirVer/UltiSnips' " {{{
   let g:UltiSnipsExpandTrigger = '<C-j>'
   " }}}
+  Plug 'honza/vim-snippets'
 endif
 
 " End certain strutures automatically.
@@ -208,6 +206,7 @@ Plug 'fatih/vim-go', {'for': 'go'}
 " }}}
 
 " Haskell {{{
+" Check out begriffs/haskell-vim-now for configs / haskell packages.
 
 " Haskell plugins
 Plug 'dag/vim2hs', {'for': 'haskell'}
@@ -529,13 +528,13 @@ Plug 'Matt-Deacalion/vim-systemd-syntax' ", {'for': 'systemd'}
 
 " Tab / Indent {{{
 " Number of spaces <Tab> counts for.
-set tabstop=4
+set tabstop=2
 
 " Number of spaces <Tab> counts when inserting <Tab>
-set softtabstop=4
+set softtabstop=2
 
 " Indent/oudent by 4 columns.
-set shiftwidth=4
+set shiftwidth=2
 
 " Always use spaces instead of tabs.
 set expandtab
@@ -630,6 +629,7 @@ call plug#end()
 
 " HAS to be set after t_Co and background - weird things happen otherwise.
 colorscheme solarized
+set background=dark
 let g:lightline.colorscheme = 'solarized'
 
 " }}}
