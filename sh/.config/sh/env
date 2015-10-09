@@ -26,6 +26,9 @@ export PATH="${HOME}/.linuxbrew/bin:${PATH}"
 export MANPATH="${HOME}/.linuxbrew/share/man:${MANPATH}"
 export INFOPATH="${HOME}/.linuxbrew/share/info:${INFOPATH}"
 
+# Force QT to use current GTK theme
+export QT_STYLE_OVERRIDE='GTK+'
+
 export EDITOR='vim'
 export USE_EDITOR="${EDITOR}"
 export VISUAL="${EDITOR}"
