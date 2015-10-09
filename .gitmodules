@@ -1,9 +1,6 @@
 [submodule "spacemacs/.emacs.d"]
 	path = spacemacs/.emacs.d
 	url = git://github.com/syl20bnr/spacemacs.git
-[submodule "fish/.oh-my-fish"]
-	path = fish/.oh-my-fish
-	url = git://github.com/bpinto/oh-my-fish.git
 [submodule "colours/.config/base16/shell"]
 	path = colours/.config/base16/shell
 	url = git://github.com/chriskempson/base16-shell
