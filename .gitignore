@@ -1,5 +1,6 @@
 emacs/.emacs.d/
 in-progress/
+psd/.config/psd/.psd.conf
 ssh/.ssh/id_rsa
 ssh/.ssh/id_rsa.pub
 ssh/.ssh/known_hosts
