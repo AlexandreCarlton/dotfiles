@@ -5,7 +5,10 @@ Requisite=x11.target
 After=x11.target
 
 [Service]
-ExecStart=/usr/bin/compton --show-all-xerrors --clear-shadow
+Type=dbus
+# Display is :0 but non-alpha characters are converted to underscores
+BusName=com.github.chjj.compton._0
+ExecStart=/usr/bin/compton -d $DISPLAY --dbus --show-all-xerrors
 
 [Install]
 WantedBy=desktop.target
