@@ -7,9 +7,6 @@
 [submodule "colours/.config/base16/xresources"]
 	path = colours/.config/base16/xresources
 	url = git://github.com/chriskempson/base16-xresources
-[submodule "colours/.themes/Numix-Ocean"]
-	path = colours/.themes/Numix-Ocean
-	url = git://github.com/aaronjamesyoung/Numix-Ocean
 [submodule "X/.Xresources.d/colours/solarized"]
 	path = X/.Xresources.d/colours/solarized
 	url = git://github.com/solarized/xresources.git
