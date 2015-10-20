@@ -10,7 +10,7 @@ bspc config split_ratio             0.52
 bspc config borderless_monocle      true
 bspc config gapless_monocle         true
 
-bspc rule -a Chromium       desktop=^2
+bspc rule -a chromium       desktop=^2
 bspc rule -a dwb            desktop=^2
 bspc rule -a Midori         desktop=^2
 
