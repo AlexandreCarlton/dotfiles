@@ -2,7 +2,7 @@
 These are my config files for easy deployment on new machines.
 
 ```bash
-    git clone git@github.com:AlexandreCarlton/dotfiles.git ~/.dotfiles
+    git clone --recursive git@github.com:AlexandreCarlton/dotfiles.git ~/.dotfiles
 ```
 Ensure your previous dotfiles are backed up before installing these new ones.
 
@@ -51,9 +51,17 @@ This would involve having a list of configs detailing the parameters, and using
 sed to inline replace the relevant fields and reload everything.
 Or, have includes for a file which is a symlink to another small config.
 This way we're only modifying symlinks.
+One way would be to have a repo dedicated entirely to hosting and switching
+between these themes.
 
 ### Replace xinit
 Xinit was used to rootlessly start Xorg, but now we have systemd! Problem is, a
 number of these things in xinit were useful. It might pay to just keep the
 sourcing of everything in xinitrc and call that via systemd.
 Or we could have a unit for each script; not as scalable, but finer grained.
+
+### Alternative browser
+Chromium is far too taxing on resources. However, I do really enjoy it's
+adblocking through uBlock and uMatrix.
+
+Enter Uzbl, which is lighter, and add Polipo (lighter than Squid) and Prixovy.
