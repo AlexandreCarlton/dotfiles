@@ -150,7 +150,9 @@
 [frame]
     width = 3
     # Get color0?
-    color = "#073642"
+    #color = "#073642"
+    # Nah, use background, keeps it same as bar.
+    color = "#002b36"
 
 [shortcuts]
 
