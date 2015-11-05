@@ -4,5 +4,7 @@ Documentation=man:urxvtd(1) man:urxvt(1)
 After=display-server.target
 
 [Service]
+# Note that this environment needs to be supplied when launching urxvtc.
+Environment=RXVT_SOCKET=%t/urxvtd-%H
 ExecStart=/usr/bin/urxvtd --opendisplay
 Restart=on-failure

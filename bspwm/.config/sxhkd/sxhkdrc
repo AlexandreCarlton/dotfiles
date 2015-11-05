@@ -92,7 +92,7 @@ super + @button{1-3}
 #
 
 super + Return
-	urxvtc
+	 RXVT_SOCKET="${XDG_RUNTIME_DIR}/urxvtd-${HOST}" urxvtc
 
 # Change the selected colour to xrdb's blue:
 # -sb $(xrdb -q | grep color4 | cut -d$'\t' -f2)
