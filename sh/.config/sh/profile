@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# Why not have ~/.profile in $HOME? After all, it is read by both bash and zsh.
+# Well, it clutters $HOME, and having .zprofile and .bash_profile source it
+# makes it clearer when it is being sourced.
+
+# Reset PATH if it gets overridden by profile/rc/login files.
+. "${HOME}/.config/sh/path"
+
+# Don't have Ctrl-S/Q mess with the terminal.
+stty -ixon
