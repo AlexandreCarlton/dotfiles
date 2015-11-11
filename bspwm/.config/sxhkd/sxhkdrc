@@ -92,28 +92,28 @@ super + @button{1-3}
 #
 
 super + Return
-	 RXVT_SOCKET="${XDG_RUNTIME_DIR}/urxvtd-${HOST}" urxvtc
+	RXVT_SOCKET="${XDG_RUNTIME_DIR}/urxvtd-${HOST}" urxvtc
 
 # Change the selected colour to xrdb's blue:
 # -sb $(xrdb -q | grep color4 | cut -d$'\t' -f2)
 # -h $PANEL_HEIGHT -p ">" -dim 0.5 -o 0.9
 #dmenu_run -p ">"
 #super + space
-    #rofi -show run
+	#rofi -show run
 
 super + shift + space
-    rofi -show window
+	rofi -show window
 
 super + q
-    pixel_lock.sh
+	pixel_lock.sh
 
 # Browser choice.
 #super + shift + Return
-#    midori
+#	midori
 
 # TODO Change this when connman_dmenu doesn't require sudo permissions anymore.
 super + n
-    /home/alexandre/connman_dmenu/connman_dmenu
+	/home/alexandre/connman_dmenu/connman_dmenu
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -138,13 +138,13 @@ XF86MonBrightnessDown
 
 # Media keys
 XF86AudioPlay
-    playerctl play-pause
+	playerctl play-pause
 
 XF86AudioNext
-    playerctl next
+	playerctl next
 
 XF86AudioPrev
-    playerctl previous
+	playerctl previous
 
 XF86AudioStop
-    playerctl stop
+	playerctl stop
