@@ -1,0 +1,30 @@
+#!/bin/sh
+
+# Set and export PATH variables
+
+# User-made utilities (including panel ones)
+PATH="${HOME}/.bin:${PATH}"
+
+# Locally-installed utilities, e.g. with pip (consider merging with above)
+PATH="${HOME}/.local/bin:${PATH}"
+LD_LIBRARY_PATH="${HOME}/.local/lib:${LD_LIBRARY_PATH}"
+
+# Cabal (Haskell)
+if [ -d "${HOME}/.cabal" ]; then
+  PATH="${HOME}/.cabal/bin:${PATH}"
+fi
+
+# Linuxbrew
+if [ -d "${HOME}/.linubrew" ]; then
+  PATH="${HOME}/.linuxbrew/bin:${PATH}"
+  PATH="${HOME}/.linuxbrew/sbin:${PATH}"
+  LD_LIBRARY_PATH="${HOME}/.linuxbrew/lib:${LD_LIBRARY_PATH}"
+  MANPATH="${HOME}/.linuxbrew/share/man:${MANPATH}"
+  INFOPATH="${HOME}/.linuxbrew/share/info:${INFOPATH}"
+fi
+
+
+export PATH
+export LD_LIBRARY_PATH
+[ -n "$MANPATH" ] && export MANPATH
+[ -n "$INFOPATH" ] && export INFOPATH
