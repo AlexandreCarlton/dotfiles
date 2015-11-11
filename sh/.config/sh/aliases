@@ -22,6 +22,7 @@ alias gd='git diff'
 # Tmux
 alias ta='tmux attach'
 alias td='tmux detach'
+alias tmux_restart='systemctl --user restart tmux'
 
 # Pacman
 alias pacin='sudo pacman -S'
@@ -38,7 +39,7 @@ alias aurs='aura -As'
 alias urxvtc_stlarch='urxvtc -letsp 2 -fn "-*-gohufont-medium-*-*-*-11-*-*-*-*-*-iso10646-*","-misc-stlarch-medium-r-normal--10-100-75-75-c-80-iso10646-1"'
 
 # Upgrade Spacemacs
-# TODO: Make this work when using 'make update' 
+# TODO: Make this work when using 'make update'
 #alias spupg="cd ${HOME}/.emacs.d && git pull --rebase && git submodule sync && git submodule update && cd -"
 
 # Helper aliases/exports when working on Chromium.
