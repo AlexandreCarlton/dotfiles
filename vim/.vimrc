@@ -23,11 +23,23 @@ if has('nvim')
 endif
 " }}}
 
+" Vim-specific settings {{{
+if !has('nvim')
+  if !isdirectory($XDG_CACHE_HOME . '/vim')
+    silent call mkdir($XDG_CACHE_HOME . '/vim', 'p')
+  endif
+  set directory=$XDG_CACHE_HOME/vim,~/,/tmp
+  set backupdir=$XDG_CACHE_HOME/vim,~/,/tmp
+  set viminfo+=n$XDG_CACHE_HOME/vim/viminfo
+  " set runtimepath=$XDG_CONFIG_HOME/vim,$XDG_CONFIG_HOME/vim,$VIM,$VIMRUNTIME
+endif
+" }}}
+
 let g:bundle_folder='~/.vim/plugged'
 let g:use_powerline = 0 " Use fancy glyphs?
 
 " Maybe have a setting that enables all fancy features.
-let g:use_neocomplete = 1 " Off means we have YouCompleteMe
+let g:use_neocomplete = 0 " Off means we have YouCompleteMe
 
 call plug#begin(g:bundle_folder)
 
