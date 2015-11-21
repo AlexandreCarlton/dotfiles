@@ -1,4 +1,6 @@
 emacs/.emacs.d/
+fish/.config/fish/fish_history
+fish/.config/fish/fishd.*
 in-progress/
 psd/.config/psd/.psd.conf
 ssh/.ssh/id_rsa
