@@ -5,7 +5,7 @@ Requires=x11.socket
 After=x11.socket
 
 [Service]
-ExecStart=/usr/bin/Xorg $DISPLAY -nolisten tcp -noreset -verbose 2 vt1
+ExecStart=/usr/bin/Xorg $DISPLAY -nolisten tcp -noreset -verbose 1 vt1
 SuccessExitStatus=0 1
 
 [Install]
