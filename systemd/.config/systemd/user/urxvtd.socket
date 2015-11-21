@@ -1,10 +1,6 @@
 [Unit]
 Description=RXVT-Unicode Daemon Socket
 Documentation=man:urxvtd(1) man:urxvt(1)
-# urxvtd.service is activated on an incoming connection;
-# however this doesn't appear to work on the first connection
-# so we launch this as well.
-Wants=urxvtd.service
 
 [Socket]
 ListenStream=%t/urxvtd-%H

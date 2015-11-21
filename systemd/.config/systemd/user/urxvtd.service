@@ -8,3 +8,7 @@ After=display-server.target
 Environment=RXVT_SOCKET=%t/urxvtd-%H
 ExecStart=/usr/bin/urxvtd --opendisplay
 Restart=on-failure
+
+[Install]
+WantedBy=desktop.target
+Also=urxvtd.socket
