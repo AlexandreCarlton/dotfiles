@@ -10,6 +10,9 @@ export XDG_DATA_HOME="${HOME}/.local/share"
 
 export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
 
+# Set ~/.spacemacs.d to ~/.config/spacemacs
+export SPACEMACSDIR="${XDG_CONFIG_HOME}/spacemacs"
+
 # bspwm panel - height is used by sxhkd to get dmenu height.
 export PANEL_HEIGHT='16'
 

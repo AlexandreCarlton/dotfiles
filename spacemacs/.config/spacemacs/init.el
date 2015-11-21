@@ -27,6 +27,8 @@
      haskell
      html
      javascript
+     latex
+     extra-langs
      markdown
      ;; org
      python
@@ -152,7 +154,7 @@ before layers configuration."
    dotspacemacs-default-package-repository nil
    )
   ;; User initialization goes here
-  ;(setq-default evil-escape-key-sequence "jk")
+  (setq-default evil-escape-key-sequence "jk")
   )
 
 (defun dotspacemacs/config ()
