@@ -3,7 +3,7 @@
 # Useful aliases
 
 # Pesky permissions
-alias ffs='eval "sudo $(fc -ln -1)"'
+alias ffs='eval "sudo -E $(fc -ln -1)"'
 
 # Start R without the startup prompt
 alias R='R --quiet'
