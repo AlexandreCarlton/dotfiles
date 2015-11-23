@@ -3,11 +3,17 @@ Description=Xorg
 Documentation=man:Xorg(1)
 Requires=x11.socket
 After=x11.socket
+# TODO Get rid of this once Xorg 1.18 figures out its race condition
+Before=x11.target
 
 [Service]
 ExecStart=/usr/bin/Xorg $DISPLAY -nolisten tcp -noreset -verbose 1 vt1
+# TODO Get rid of this once Xorg 1.18 figures out its race condition
+ExecStartPost=/usr/bin/sleep 5
 SuccessExitStatus=0 1
 
 [Install]
 Alias=x11.service
 Also=x11.socket x11.target
+# TODO Get rid of this once Xorg 1.18 figures out its race condition
+WantedBy=default.target
