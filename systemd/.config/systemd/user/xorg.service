@@ -8,8 +8,6 @@ Before=x11.target
 
 [Service]
 ExecStart=/usr/bin/Xorg $DISPLAY -nolisten tcp -noreset -verbose 1 vt1
-# TODO Get rid of this once Xorg 1.18 figures out its race condition
-ExecStartPost=/usr/bin/sleep 5
 SuccessExitStatus=0 1
 
 [Install]
