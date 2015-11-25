@@ -8,6 +8,10 @@ export XDG_CONFIG_HOME="${HOME}/.config"
 export XDG_CACHE_HOME="${HOME}/.cache"
 export XDG_DATA_HOME="${HOME}/.local/share"
 
+# startx
+export XINITRC="${XDG_CONFIG_HOME}/X11/xinitrc"
+
+# For zsh files
 export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
 
 # Set ~/.spacemacs.d to ~/.config/spacemacs
