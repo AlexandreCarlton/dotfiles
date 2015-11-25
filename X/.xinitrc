@@ -12,12 +12,6 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
     unset f
 fi
 
-# Load fonts
-xset +fp /usr/share/fonts/local &
-xset +fp /usr/share/fonts/OTF &
-xset +fp ${HOME}/.fonts &
-# fc-cache -vf
-xset fp rehash &
 
 # Remove beep
 xset b off &
@@ -31,26 +25,22 @@ xset b off &
 # See if you can get a dmenu daemon running with these parameters as well.
 
 # Set background
-sh ${HOME}/.fehbg &
+feh --verbose --no-fehbg -bg-fill ${HOME}/.wallpaper/PikachuEevee.png &
 
 # Launch URxvt Daemon (urxvtc to connect)
-# We don't launch this through systemd because we cannot execute systemctl
-# commands like reboot when logged into a setup started through systemd as the
-# client is not part of the session.
-urxvtd -q -o -f &
+urxvtd -o -f
 
-
-# UniSydney needs this for some reason
-# nm-applet &
+# Notifications
+dunst &
 
 # Dropbox daemon
 dropbox &
 
-# Automount removable drives with udisks
-udiskie &
+# Launcher
+rofi -key-run mod4-space
 
-# Better sound server, proxy to alsa
-pulseaudio --start &
+# Prevent eyes from bleeding
+redshift &
 
 # Hide cursor when not in use (move to restore)
 # Don't include a service file as this depends on xorg.
@@ -59,18 +49,11 @@ unclutter &
 # Set regular cursor
 xsetroot -cursor_name left_ptr &
 
-DEFAULT_ENVIRONMENT=bspwm
-environment=${1:-${DEFAULT_ENVIRONMENT}}
+# Tmux
+tmux -f ${HOME}/.config/tmux/tmux.conf new-session -d -s alexandre
 
-case ${environment} in
-    bspwm)
-        sxhkd &
-        exec bspwm
-        ;;
-    xmonad)
-        exec xmonad
-        ;;
-    gnome)
-        # Broken for some reason.
-        exec gnome-session
-esac
+sxhkd &
+
+${HOME}/.bin/panel bar
+
+exec bspwm
