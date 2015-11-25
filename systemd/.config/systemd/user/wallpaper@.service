@@ -6,7 +6,7 @@ After=x11.target
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/feh --verbose --no-fehbg --bg-fill %h/.wallpaper/%I
+ExecStart=/usr/bin/feh --verbose --no-fehbg --bg-fill %h/Pictures/Wallpaper/%I
 RemainAfterExit=yes
 
 [Install]
