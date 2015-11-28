@@ -1,0 +1,13 @@
+[Unit]
+Description=Xorg Delay
+Requisite=xorg.service
+After=xorg.service
+Before=x11.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/sleep 10
+
+[Install]
+WantedBy=desktop.target
