@@ -1,6 +1,7 @@
 [Unit]
 Description=RXVT-Unicode Daemon
 Documentation=man:urxvtd(1) man:urxvt(1)
+Requisite=display-server.target
 After=display-server.target
 
 [Service]

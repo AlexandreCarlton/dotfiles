@@ -1,6 +1,8 @@
 [Unit]
 Description=bspwm panel
 Documentation=man:lemonbar(1) man:conky(1)
+Requisite=display-server.target
+After=display-server.target
 Wants=xrdb.service
 After=xrdb.service
 
