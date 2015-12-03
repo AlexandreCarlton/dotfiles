@@ -1,0 +1,12 @@
+[Unit]
+Description=redshift
+Documentation=man:redshift(1)
+Requisite=display-server.target
+After=display-server.target
+
+[Service]
+ExecStart=/usr/bin/redshift -v
+Restart=on-failure
+
+[Install]
+WantedBy=desktop.target
