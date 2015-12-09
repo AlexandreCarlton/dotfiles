@@ -11,6 +11,7 @@ After=psd.service psd-resync.service
 ExecStart=/usr/bin/chromium --restore-last-session \
   --auto-launch-at-startup \
   --enable-logging --log-level=1 \
+  --top-chrome-md --enable-md-downloads \
   --force-device-scale-factor=1 --high-dpi-support=1 \
   --no-displaying-insecure-content \
   --disk-cache-dir=/tmp/chromium-cache
