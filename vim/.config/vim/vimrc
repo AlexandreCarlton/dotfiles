@@ -6,10 +6,10 @@
 " current filetype - useful for ClangFormat and gofmt
 
 " Automatic installation {{{
-if empty(glob('~/.vim/autoload/plug.vim'))
-    silent !mkdir -p ~/.vim/autoload
-    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    source ~/.vimrc
+if empty(glob('~/.config/vim/autoload/plug.vim'))
+    silent !mkdir -p ~/.config/vim/autoload
+    silent !curl -fLo ~/.config/vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    source ~/.config/vim/vimrc
     PlugInstall
 endif
 " }}}
@@ -17,25 +17,22 @@ endif
 set foldmethod=syntax
 autocmd FileType vim set foldmethod=marker
 
-" NeoVim-specific settings {{{
+" Neovim/Vim settings {{{
 if has('nvim')
   runtime! plugin/python_setup.vim
-endif
-" }}}
-
-" Vim-specific settings {{{
-if !has('nvim')
+else
+  " Directories are automatically created if they do not exist.
   if !isdirectory($XDG_CACHE_HOME . '/vim')
     silent call mkdir($XDG_CACHE_HOME . '/vim', 'p')
   endif
   set directory=$XDG_CACHE_HOME/vim,~/,/tmp
   set backupdir=$XDG_CACHE_HOME/vim,~/,/tmp
   set viminfo+=n$XDG_CACHE_HOME/vim/viminfo
-  " set runtimepath=$XDG_CONFIG_HOME/vim,$XDG_CONFIG_HOME/vim,$VIM,$VIMRUNTIME
+  set runtimepath=$XDG_CONFIG_HOME/vim,$XDG_CONFIG_HOME/vim/after,$VIM,$VIMRUNTIME
 endif
 " }}}
 
-let g:bundle_folder='~/.vim/plugged'
+let g:bundle_folder='$XDG_CONFIG_HOME/vim/plugged'
 let g:use_powerline = 0 " Use fancy glyphs?
 
 " Maybe have a setting that enables all fancy features.
@@ -159,7 +156,13 @@ if g:use_neocomplete
 
   " }}}
 else
-  let ycm_options = '--clang-completer --gocode-completer --omnisharp-completer ' .
+  " Options
+  " --clang-completer (C/C++)
+  " --omnisharp-completer (C#)
+  " --gocode-completer (Go)
+  " --system-libclang (Use system libclang instead of downloading other binary) 
+  " --system-boost (Use system boost instead of downloading)
+  let ycm_options = '--clang-completer ' .
                   \ '--system-libclang --system-boost'
   Plug 'Valloric/YouCompleteMe', {'do': './install.py ' . ycm_options } "{{{
   let g:ycm_global_ycm_extra_conf = g:bundle_folder . '/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'

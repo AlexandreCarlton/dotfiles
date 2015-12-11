@@ -17,13 +17,16 @@ export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
 # Set ~/.spacemacs.d to ~/.config/spacemacs
 export SPACEMACSDIR="${XDG_CONFIG_HOME}/spacemacs"
 
-# bspwm panel - height is used by sxhkd to get dmenu height.
+# Use vimrc in a non-default location
+export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
+
+# bspwm panel - height is used by sxhkd to get dmenu height
 export PANEL_HEIGHT='16'
 
 # Force QT to use current GTK theme
 export QT_STYLE_OVERRIDE='GTK+'
 
-# Chromium (and perhaps others) doesn't pick up on this.
+# Chromium (and perhaps others) doesn't pick up on this
 export GTK2_RC_FILES="${XDG_CONFIG_HOME}/gtk-2.0/gtkrc"
 
 export EDITOR='vim'

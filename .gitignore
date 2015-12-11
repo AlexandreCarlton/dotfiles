@@ -6,10 +6,9 @@ psd/.config/psd/.psd.conf
 ssh/.ssh/id_rsa
 ssh/.ssh/id_rsa.pub
 ssh/.ssh/known_hosts
-vim/.vim/bundle/
-vim/.vim/autoload/
-vim/.vim/plugged
-vim/.vim/.netrwhist
+vim/.config/vim/autoload/
+vim/.config/vim/plugged
+vim/.config/vim/.netrwhist
 xmonad/.xmonad/
 zsh/.config/zsh/.zcompcache
 zsh/.config/zsh/.zcompdump
