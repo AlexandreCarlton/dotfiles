@@ -65,7 +65,6 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_loc_list_height = 5
 
 " Should think about distributing these out.
-" For Fortran, use gfortran as checker
 " let g:syntastic_c_checkers = ['clang_checker', 'gcc']
 let g:syntastic_fortran_compiler = 'gfortran'
 let g:syntastic_fortran_compiler_options = '-std=f95'
@@ -79,15 +78,6 @@ Plug 'Shougo/vimproc.vim', { 'do': 'make -f make_unix.mak' }
 " C / C++ {{{
 
 Plug 'rhysd/vim-clang-format', { 'for': ['c', 'cpp', 'objc'], 'on': 'ClangFormat' }
-
-
-
-" }}}
-
-" CoffeeScript {{{
-
-" Compilation support + Syntax highlighting.
-Plug 'kchmck/vim-coffee-script', {'for': 'coffee'}
 
 " }}}
 
@@ -193,7 +183,6 @@ Plug 'dag/vim-fish', {'for': 'fish'}
 " }}}
 
 " Fortran {{{
-
 " Use free-form input (Don't assume everything is offset by 8 spaces)
 let fortran_free_source = 1
 
@@ -422,20 +411,8 @@ endif
 
 " }}}
 
-" Puppet {{{
-Plug 'rodjek/vim-puppet'
-" }}}
-
 " Rust {{{
 Plug 'rust-lang/rust.vim', {'for': 'rust'}
-" }}}
-
-" SQL (and Declarative Languages) {{{
-" Cypher/CQL syntax highlighting
-Plug 'neo4j-contrib/cypher-vim-syntax', { 'for' : 'cypher' }
-
-" Set HiveQL scripts to have SQL highlighting if no other style is defined.
-au BufRead,BufNewFile *.hql setfiletype sql
 " }}}
 
 " Statusline {{{
@@ -536,12 +513,15 @@ set laststatus=2
 
 " Systemd {{{
 
-" Systemd syntax
-Plug 'Matt-Deacalion/vim-systemd-syntax' ", {'for': 'systemd'}
+au BufNewFile,BufRead *.service set filetype=cfg
+
+au BufNewFile,BufRead *.socket set filetype=cfg
 
 " }}}
 
 " Tab / Indent {{{
+" Consider using EditorConfig for this.
+
 " Number of spaces <Tab> counts for.
 set tabstop=2
 
@@ -638,9 +618,6 @@ let g:vimfiler_as_default_explorer = 1
 call plug#end()
 
 " Colorscheme {{{
-"
-" For base16 colours, this has to be before colorscheme declaration.
-" ONLY IF using  base16-shell.
 
 " HAS to be set after t_Co and background - weird things happen otherwise.
 colorscheme solarized
