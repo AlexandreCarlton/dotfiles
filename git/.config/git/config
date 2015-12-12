@@ -1,26 +1,62 @@
 [user]
+
 	name = Alexandre Carlton
+
 	email = acar7163@uni.sydney.edu.au
+
+[core]
+
+	excludesfile = ~/.config/git/ignore_global
+
+	# Enable parallel I/O
+	preloadindex = true
+
 [alias]
+
 	co = checkout
+
 	cob = checkout -b
+
 	d = difftool
+
 	ec = config --global -e
+
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue) <%an>%Creset' --abbrev-commit
+
 	stat = status -sb
+
 	undo = reset HEAD~1 --mixed
+
 	up = !git pull --rebase --prune $@ && git submodule update --init --recursive
-	watch = "!clear;inotifywait --quiet -mr -e modify,move,create,delete --format  \"%f %e\" @/.git . | \
+
+	watch = "!clear;inotifywait --quiet -mr -e modify,move,create,delete --format \"%f %e\" @/.git . | \
 		while read file; do \
 			clear;\
 			git status --short;\
 			git --no-pager diff --shortstat;\
 		done;"
+
 [diff]
+
+	# Use more time for better diffs
+	algorithm = patience
+
+	# Detect renames and copies
+	renames = copies
+
 	tool = vimdiff
+
 [difftool]
+
 	prompt = false
-[core]
-	excludesfile = ~/.config/git/ignore_global
+
 [branch]
+
 	autosetuprebase = always
+
+[merge]
+
+	tool = vimdiff
+
+	# Add list of merged commits to generated commit
+	log = true
