@@ -1,46 +1,29 @@
 #!/bin/sh
 
 # Useful aliases
+# Try to keep this Fish-compatible, if possible.
 
 # Pesky permissions
 alias ffs='eval "sudo -E $(fc -ln -1)"'
 
-# Start R without the startup prompt
+# Start R without the startup prompt.
+
 alias R='R --quiet'
 
 # Create aliases for nmcli for easy use of wifi.
 alias nmcon='nmcli -p con up id'
 alias nmlist='nmcli -p dev wifi'
 
-# Git
-alias ga='git add'
-alias gb='git branch'
-alias gc='git commit -v'
-alias gst='git status'
-alias gd='git diff'
 
 # Tmux
 alias ta='tmux attach'
 alias td='tmux detach'
 alias tmux_restart='systemctl --user restart tmux'
 
-# Pacman
-alias pacin='sudo pacman -S'
-alias pacupg='sudo pacman -Syu'
-alias pacs='pacman -Ss'
-alias pacr='sudo pacman -Rs'
-
-# AUR (Aura)
-alias aurin='sudo aura -Ax'
-alias aurupg='sudo aura -Akuax'
-alias aurs='aura -As'
-
-# Helper alias for debugging symbols.
-alias urxvtc_stlarch='urxvtc -letsp 2 -fn "-*-gohufont-medium-*-*-*-11-*-*-*-*-*-iso10646-*","-misc-stlarch-medium-r-normal--10-100-75-75-c-80-iso10646-1"'
-
-# Upgrade Spacemacs
-# TODO: Make this work when using 'make update'
-#alias spupg="cd ${HOME}/.emacs.d && git pull --rebase && git submodule sync && git submodule update && cd -"
+# Aura bindings to match Prezto's pacman module.
+alias auri='sudo aura --aursync --unsuppress'
+alias aurU='sudo aura --aursync --diff --sysupgrade --delmakedeps --unsuppress'
+alias aurs='aura --aursync --search'
 
 # Helper aliases/exports when working on Chromium.
-# . $HOME/.chromium
+# . "${XDG_CONFIG_HOME}/sh/chromium"

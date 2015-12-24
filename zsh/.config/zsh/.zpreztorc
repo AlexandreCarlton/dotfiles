@@ -33,7 +33,9 @@ zstyle ':prezto:load' pmodule \
   'utility' \
   'completion' \
   'syntax-highlighting' \
-  'prompt'
+  'prompt' \
+  'pacman' \
+  'git'
 
 #
 # Editor
@@ -77,7 +79,8 @@ zstyle ':prezto:module:editor' dot-expansion 'yes'
 #
 
 # Set the Pacman frontend.
-# zstyle ':prezto:module:pacman' frontend 'yaourt'
+# Won't work if you need sudo on launch.
+# zstyle ':prezto:module:pacman' frontend 'aura'
 
 #
 # Prompt

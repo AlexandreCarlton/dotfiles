@@ -10,5 +10,5 @@
 # ZSH_THEME="avit"
 
 # Prezto setup
-prezto_file="${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-[[ -s $prezto_file ]] && source $prezto_file
+[[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]] \
+  && source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
