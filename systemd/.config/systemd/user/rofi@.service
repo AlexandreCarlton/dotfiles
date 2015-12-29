@@ -7,7 +7,7 @@ Wants=xrdb.service
 After=xrdb.service
 
 [Service]
-ExecStart=/usr/bin/rofi -key-run mod4-%I
+ExecStart=/usr/bin/rofi -key-run SuperL-%I
 
 [Install]
 WantedBy=desktop.target
