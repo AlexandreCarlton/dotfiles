@@ -1,13 +1,16 @@
 [Unit]
 Description=bspwm
 Documentation=man:bspwm(1)
+
 Requires=sxhkd.service
 Wants=bspwm-panel.service
-Requisite=display-server.target
-After=display-server.target
+
+Requires=x11.target
+After=x11.target
 
 [Service]
 ExecStart=/usr/bin/bspwm
 
 [Install]
 Alias=window-manager.service
+Also=x11.socket
