@@ -23,11 +23,11 @@ export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
 # bspwm panel - height is used by sxhkd to get dmenu height
 export PANEL_HEIGHT='16'
 
-# Force QT to use current GTK theme
+# Force QT5 to use current GTK theme
 export QT_STYLE_OVERRIDE='GTK+'
 
-# Chromium (and perhaps others) doesn't pick up on this
-export GTK2_RC_FILES="${XDG_CONFIG_HOME}/gtk-2.0/gtkrc"
+# Used by QT4 to know which rc to use.
+export GTK2_RC_FILES="${HOME}/.crcgtkrc-2.0"
 
 export EDITOR='vim'
 export USE_EDITOR="${EDITOR}"
