@@ -1,6 +1,5 @@
 [Unit]
 Description=X11 Server Socket
-Before=x11.target
 
 [Socket]
 ListenStream=/tmp/.X11-unix/X0

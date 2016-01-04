@@ -1,6 +1,7 @@
 [Unit]
 Description=Xorg
 Documentation=man:Xorg(1)
+
 Requires=x11.socket
 After=x11.socket
 
@@ -9,5 +10,4 @@ ExecStart=/usr/bin/Xorg $DISPLAY -nolisten tcp -noreset -verbose 3 vt1
 SuccessExitStatus=0 1
 
 [Install]
-Also=x11.socket x11.target
 WantedBy=desktop.target

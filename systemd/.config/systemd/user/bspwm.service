@@ -13,4 +13,4 @@ ExecStart=/usr/bin/bspwm
 
 [Install]
 Alias=window-manager.service
-Also=x11.socket
+Also=x11.target
