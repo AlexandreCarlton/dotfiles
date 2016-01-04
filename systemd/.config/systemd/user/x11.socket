@@ -4,6 +4,7 @@ Before=x11.target
 
 [Socket]
 ListenStream=/tmp/.X11-unix/X0
+Service=xorg.service
 
 [Install]
 WantedBy=sockets.target
