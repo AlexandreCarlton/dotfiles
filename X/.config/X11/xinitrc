@@ -17,7 +17,7 @@ fi
 xset b off &
 
 # Don't fork this; pretty crucial.
-[ -r ${HOME}/.Xresources ] && xrdb -load ${HOME}/.Xresources
+[ -f ${HOME}/.config/X11/Xresources ] && xrdb -load ${HOME}/.config/X11/Xresources &
 
 # TODO source ~/bin/export_colours.sh,
 # Start dunst specifying the colours and fonts
@@ -25,7 +25,7 @@ xset b off &
 # See if you can get a dmenu daemon running with these parameters as well.
 
 # Set background
-feh --verbose --no-fehbg -bg-fill ${HOME}/.wallpaper/PikachuEevee.png &
+feh --verbose --no-fehbg --bg-fill ${HOME}/Pictures/Wallpaper/PikachuEevee.png &
 
 # Launch URxvt Daemon (urxvtc to connect)
 urxvtd -o -f
@@ -34,10 +34,10 @@ urxvtd -o -f
 dunst &
 
 # Dropbox daemon
-dropbox &
+#dropbox &
 
 # Launcher
-rofi -key-run mod4-space
+rofi -key-run mod4-space &
 
 # Prevent eyes from bleeding
 redshift &
@@ -52,8 +52,11 @@ xsetroot -cursor_name left_ptr &
 # Tmux
 tmux -f ${HOME}/.config/tmux/tmux.conf new-session -d -s alexandre
 
+# Web browser
+chromium &
+
 sxhkd &
 
-${HOME}/.bin/panel bar
+# ${HOME}/.bin/panel bar
 
 exec bspwm
