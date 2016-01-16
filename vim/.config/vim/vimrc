@@ -35,9 +35,6 @@ endif
 let g:bundle_folder='$XDG_CONFIG_HOME/vim/plugged'
 let g:use_powerline = 0 " Use fancy glyphs?
 
-" Maybe have a setting that enables all fancy features.
-let g:use_neocomplete = 0 " Off means we have YouCompleteMe
-
 call plug#begin(g:bundle_folder)
 
 " Syntax {{{
@@ -117,59 +114,40 @@ set fileformats=unix,dos,mac
 " Autocompletion for quotes, parens, etc.
 Plug 'Raimondi/delimitMate'
 
-" Completion engine - faster startup with Vim, but slower completion
-" Use :NeoCompleteEnable if not executed on startup.
-if g:use_neocomplete
-  Plug 'Shougo/neocomplete.vim' " {{{
+" Options
+" --clang-completer (C/C++)
+" --omnisharp-completer (C#)
+" --gocode-completer (Go)
+" --tern-completer (Javascript)
+" --racer-completer (Rust)
+" --system-libclang (Use system libclang instead of downloading other binary)
+" --system-boost (Use system boost instead of downloading)
+let ycm_options = '--clang-completer ' .
+                \ '--tern-completer ' .
+                \ '--system-libclang --system-boost'
+Plug 'Valloric/YouCompleteMe', {'do': 'python2 install.py ' . ycm_options, 'on': [] } "{{{
+let g:ycm_global_ycm_extra_conf = g:bundle_folder . '/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_always_populate_location_list = 1
+let g:ycm_add_preview_to_completeopt = 1
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_confirm_extra_conf = 0
+let g:ycm_semantic_triggers = {'haskell': ['.'], 'r': ['.', '$', 're![_a-zA-Z]+[_\w]*\.']}
+ " }}}
 
-  " Run on startup?
-  let g:neocomplete#enable_at_startup = 0
+ " Snippets produced along side YouCompleteMe
+Plug 'SirVer/UltiSnips', {'on': []} " {{{
+let g:UltiSnipsExpandTrigger = '<C-j>'
+" }}}
+Plug 'honza/vim-snippets'
 
-  if !exists('g:neocomplete#force_omni_input_patterns')
-    let g:neocomplete#force_omni_input_patterns = {}
-  endif
 
-  " (Shift-) Tab Completion
-  inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-  inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
-  " }}}
-
-  " Snippets
-  Plug 'Shougo/neosnippet-snippets'
-
-  " Snippet engine - requires NeoComplete enabled
-  Plug 'Shougo/neosnippet.vim' " {{{
-
-  imap <C-j> <Plug>(neosnippet_expand_or_jump)
-  smap <C-j> <Plug>(neosnippet_expand_or_jump)
-  xmap <C-j> <Plug>(neosnippet_expand_target)
-
-  " }}}
-else
-  " Options
-  " --clang-completer (C/C++)
-  " --omnisharp-completer (C#)
-  " --gocode-completer (Go)
-  " --system-libclang (Use system libclang instead of downloading other binary) 
-  " --system-boost (Use system boost instead of downloading)
-  let ycm_options = '--clang-completer ' .
-                  \ '--system-libclang --system-boost'
-  Plug 'Valloric/YouCompleteMe', {'do': './install.py ' . ycm_options } "{{{
-  let g:ycm_global_ycm_extra_conf = g:bundle_folder . '/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-  let g:ycm_always_populate_location_list = 1
-  let g:ycm_add_preview_to_completeopt = 1
-  let g:ycm_autoclose_preview_window_after_completion = 1
-  let g:ycm_autoclose_preview_window_after_insertion = 1
-  let g:ycm_confirm_extra_conf = 0
-  let g:ycm_semantic_triggers = {'haskell': ['.'], 'r': ['.', '$', 're![_a-zA-Z]+[_\w]*\.']}
-   " }}}
-
-   " Snippets produced along side YouCompleteMe
-  Plug 'SirVer/UltiSnips' " {{{
-  let g:UltiSnipsExpandTrigger = '<C-j>'
-  " }}}
-  Plug 'honza/vim-snippets'
-endif
+" Load YCM and UltiSnips on first insert.
+augroup load_us_ycm
+  autocmd!
+  autocmd InsertEnter * call plug#load('UltiSnips', 'YouCompleteMe')
+                     \| call youcompleteme#Enable() | autocmd! load_us_ycm
+augroup END
 
 " End certain strutures automatically.
 Plug 'tpope/vim-endwise'
@@ -300,8 +278,8 @@ let g:better_whitespace_filetypes_blacklist = ['vimfiler', 'unite', 'vim-plug']
 Plug 'pangloss/vim-javascript', { 'for' : 'javascript' }
 
 " JS Tags and omnicompletion.
-Plug 'marijnh/tern_for_vim', { 'for' : 'javascript', 'do': 'npm install' } " {{{
-autocmd FileType javascript set omnifunc=tern#Complete
+" Plug 'marijnh/tern_for_vim', { 'for' : 'javascript', 'do': 'npm install' } " {{{
+" autocmd FileType javascript set omnifunc=tern#Complete
 " }}}
 
 " }}}
@@ -397,17 +375,17 @@ Plug 'plasticboy/vim-markdown', { 'for' : 'markdown' }
 " Python {{{
 
 " Python Completion - Already supplied by YouCompleteMe
-if g:use_neocomplete
-  Plug 'davidhalter/jedi-vim', {'for': 'python'} " {{{
-  " Use NeoComplete
-  autocmd FileType python setlocal omnifunc=jedi#completions
-  let g:jedi#auto_initialization = 0
-  let g:jedi#completions_enabled = 0
-  let g:jedi#auto_vim_configuration = 0
-  let g:neocomplete#force_omni_input_patterns.python =
-  \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
-  " }}}
-endif
+" if g:use_neocomplete
+"   Plug 'davidhalter/jedi-vim', {'for': 'python'} " {{{
+"   " Use NeoComplete
+"   autocmd FileType python setlocal omnifunc=jedi#completions
+"   let g:jedi#auto_initialization = 0
+"   let g:jedi#completions_enabled = 0
+"   let g:jedi#auto_vim_configuration = 0
+"   let g:neocomplete#force_omni_input_patterns.python =
+"   \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
+"   " }}}
+" endif
 
 " }}}
 
