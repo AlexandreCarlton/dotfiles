@@ -7,10 +7,9 @@
 
 " Automatic installation {{{
 if empty(glob('~/.config/vim/autoload/plug.vim'))
-    silent !mkdir -p ~/.config/vim/autoload
-    silent !curl -fLo ~/.config/vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    source ~/.config/vim/vimrc
-    PlugInstall
+    silent !curl -fLo ~/.config/vim/autoload/plug.vim --create-dirs
+      \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall | source $MYVIMRC
 endif
 " }}}
 
@@ -95,10 +94,6 @@ Plug 'tomasr/molokai'
 Plug 'matthewtodd/vim-twilight'
 Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'NLKNguyen/papercolor-theme'
-
-" Use 256 to enable 256-Colour mode
-" Use 16 to use Terminal's colours.
-set t_Co=256
 
 " Set utf8 as standard encoding and en_US as standard language
 set encoding=utf-8
@@ -576,8 +571,12 @@ call plug#end()
 " Colorscheme {{{
 
 " HAS to be set after t_Co and background - weird things happen otherwise.
-colorscheme solarized
+
+" Use 256 to enable 256-Colour mode
+" Use 16 to use Terminal's colours.
+set t_Co=256
 set background=dark
+colorscheme solarized
 let g:lightline.colorscheme = 'solarized'
 
 " }}}
