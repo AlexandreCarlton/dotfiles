@@ -1,0 +1,15 @@
+! vim:ft=xdefaults:
+
+! Do not automatically hint which would disregard existing hinting information.
+Xft.autohint: false
+! Reduce colour fringing.
+Xft.lcdfilter: lcddefault
+! Amount of font reshaping done to line up to the grid.
+Xft.hintstyle: hintfull
+! Line up font with rasterized grid.
+Xft.hinting: true
+! Increases apparent resolution of font edges that have been converted from
+! vector to bitmap via rasterization.
+Xft.antialias: true
+! Specify monitor type.
+Xft.rgba: rgb
