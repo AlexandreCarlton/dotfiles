@@ -277,11 +277,6 @@ let g:better_whitespace_filetypes_blacklist = ['vimfiler', 'unite', 'vim-plug']
 " General support
 Plug 'pangloss/vim-javascript', { 'for' : 'javascript' }
 
-" JS Tags and omnicompletion.
-" Plug 'marijnh/tern_for_vim', { 'for' : 'javascript', 'do': 'npm install' } " {{{
-" autocmd FileType javascript set omnifunc=tern#Complete
-" }}}
-
 " }}}
 
 " LaTeX {{{
@@ -373,19 +368,6 @@ Plug 'plasticboy/vim-markdown', { 'for' : 'markdown' }
 " }}}
 
 " Python {{{
-
-" Python Completion - Already supplied by YouCompleteMe
-" if g:use_neocomplete
-"   Plug 'davidhalter/jedi-vim', {'for': 'python'} " {{{
-"   " Use NeoComplete
-"   autocmd FileType python setlocal omnifunc=jedi#completions
-"   let g:jedi#auto_initialization = 0
-"   let g:jedi#completions_enabled = 0
-"   let g:jedi#auto_vim_configuration = 0
-"   let g:neocomplete#force_omni_input_patterns.python =
-"   \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
-"   " }}}
-" endif
 
 " }}}
 
@@ -522,10 +504,6 @@ set smartindent
 " Easily browse tags of source files (generated on the fly).
 " Reguires ctags and vim >= 7.0
 Plug 'majutsushi/tagbar', {'on': 'TagbarToggle'}
-
-" CoffeeScript support
-" `gem install CoffeeTags` also must be done.
-Plug 'lukaszkorecki/CoffeeTags', {'for': 'coffee', 'do': 'gem install CoffeeTags'}
 
 " Haskell (requires hasktags) {{{
 let g:tagbar_type_haskell = {
