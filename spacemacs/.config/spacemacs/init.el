@@ -38,7 +38,7 @@ values."
      markdown
      ;; org
      python
-     ;; shell
+     shell
      syntax-checking
      typescript
      )
@@ -201,6 +201,7 @@ user code."
 layers configuration. You are free to put any user code."
   (setq-default evil-escape-key-sequence "jk")
   (global-linum-mode)
+  (linum-relative-toggle)
   (setq neo-theme 'nerd)
 )
 
