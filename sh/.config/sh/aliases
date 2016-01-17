@@ -27,3 +27,6 @@ alias aurs='aura --aursync --search'
 
 # Helper aliases/exports when working on Chromium.
 # . "${XDG_CONFIG_HOME}/sh/chromium"
+
+# Aliases to edit config files
+. "${XDG_CONFIG_HOME}/sh/editrc"
