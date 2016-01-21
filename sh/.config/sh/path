@@ -15,7 +15,7 @@ if [ -d "${HOME}/.cabal" ]; then
 fi
 
 # Linuxbrew
-if [ -d "${HOME}/.linubrew" ]; then
+if [ -d "${HOME}/.linuxbrew" ]; then
   PATH="${HOME}/.linuxbrew/bin:${PATH}"
   PATH="${HOME}/.linuxbrew/sbin:${PATH}"
   LD_LIBRARY_PATH="${HOME}/.linuxbrew/lib:${LD_LIBRARY_PATH}"
