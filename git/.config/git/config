@@ -60,3 +60,7 @@
 
 	# Add list of merged commits to generated commit
 	log = true
+
+[push]
+
+	default = simple
