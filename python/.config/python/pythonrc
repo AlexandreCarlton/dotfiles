@@ -1,0 +1,31 @@
+#!/usr/bin/env python
+
+# Minimal pythonrc to run everytime we launch an interactive shell.
+# It would be better to run IPython, however.
+
+import sys
+import os
+import rlcompleter
+import readline
+import atexit
+
+
+# Tab completion
+readline.parse_and_bind('tab: complete')
+
+# History
+
+HISTFILE='{0}/.config/python/python_history'.format(os.environ['HOME'])
+
+try:
+    readline.read_history_file(HISTFILE)
+except FileNotFoundError:
+    os.mknod(HISTFILE)
+
+
+readline.set_history_length(300)
+
+def savehist():
+    readline.write_history_file(HISTFILE)
+
+atexit.register(savehist)

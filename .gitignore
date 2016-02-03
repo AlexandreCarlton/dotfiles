@@ -1,8 +1,10 @@
 emacs/.emacs.d/
 fish/.config/fish/fish_history
 fish/.config/fish/fishd.*
+ghc/.ghc/ghci_history
 in-progress/
 psd/.config/psd/.psd.conf
+python/.config/python/python_history
 ssh/.ssh/id_rsa
 ssh/.ssh/id_rsa.pub
 ssh/.ssh/known_hosts
