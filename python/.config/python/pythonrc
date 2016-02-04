@@ -19,7 +19,8 @@ HISTFILE='{0}/.config/python/python_history'.format(os.environ['HOME'])
 
 try:
     readline.read_history_file(HISTFILE)
-except FileNotFoundError:
+# FileNotFoundError is better, but exclusive to Python 3.
+except IOError:
     os.mknod(HISTFILE)
 
 
