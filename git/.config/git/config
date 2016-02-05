@@ -68,3 +68,7 @@
 [color]
 
 	ui = auto
+
+[init]
+
+	templatedir = ~/.config/git/templates
