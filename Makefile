@@ -1,26 +1,10 @@
-
-all: update hacking shell desktop
+all: update linuxbrew
 
 # Not all that useful really.
 help:
 	@echo "update		 -- Update and pull in third-party repositories"
+	@echo "ruby 		 -- Install ruby in ${HOME}/.local/bin (for linuxbrew)"
 	@echo "linuxbrew -- Install linuxbrew in ${HOME}/.linuxbrew"
-	@echo ""
-	@echo "Programming utilities:"
-	@echo "hacking   -- Install all programming dotfiles"
-	@echo "vim       -- Install vim dotfiles (.vimrc, .vim/)"
-	@echo "neovim    -- Create neovim dotfiles (.nvimrc, .nvim/)"
-	@echo "emacs     -- Install emacs dotfiles (.emacs, .emacs.d/)"
-	@echo "ctags     -- Install ctags dotfile (.ctags)"
-	@echo "git       -- Install git dotfiles (.gitconfig)"
-	@echo ""
-	@echo "Shell utilities:"
-	@echo "zsh       -- Install zsh dotfiles (e.g. .zshrc, .oh-my-zsh)"
-	@echo "bash      -- Install bash dotfiles (e.g. .bashrc, .bash_profile)"
-	@echo ""
-	@echo "Desktop utilities:"
-	@echo "desktop  -- Install all related desktop files"
-	@echo "bspwm    -- Install bspwm dotfiles (bspwmrc, sxhkdrc)"
 
 
 ##
@@ -30,88 +14,17 @@ help:
 update:
 	#git pull --rebase
 	git submodule sync
-	git submodule update --init #--recursive --remote
+	git submodule update --init --recursive --remote
 
 linuxbrew:
 	git clone git://github.com/Homebrew/linuxbrew.git ${HOME}/.linuxbrew
+	. sh/.config/sh/path
+	brew install stow
+	brew install vim
+	brew install tmux
+	brew install zsh
+	brew install the_silver_searcher
 
-##
-## Programming utilities
-##
-hacking: neovim emacs git
-
-vim: ctags
-	stow vim
-	vim +qall
-
-neovim: vim
-	ln -sf ~/.vimrc ~/.nvimrc
-	ln -sf ~/.vim ~/.nvim
-
-emacs:
-	stow emacs
-
-ctags:
-	stow ctags
-
-git:
-	stow git
-
-##
-## Shell utilities
-##
-shell: zsh bash
-
-zsh: sh
-	stow zsh
-
-bash: sh
-	stow bash
-
-sh:
-	stow sh
-
-##
-## Desktop utilities
-##
-desktop: X bspwm systemd
-	systemctl --user enable desktop.target
-	systemctl --user enable compton
-	systemctl --user enable dunst
-	systemctl --user enable dropbox
-	systemctl --user enable pulseaudio
-	systemctl --user enable redshift
-	systemctl --user enable steam
-	systemctl --user enable udiskie
-	systemctl --user enable unclutter
-
-browser: systemd
-	stow profile-sync-daemon
-	systemctl --user enable chromium
-
-bspwm: conky X binaries systemd
-	stow bspwm
-	systemctl --user enable bspwm # includes sxhkd
-
-tmux: systemd
-	stow tmux
-	systemctl --user enable tmux
-
-binaries:
-	stow binaries
-
-conky:
-	stow status
-
-X: systemd
-	stow X
-	systemctl --user enable rofi
-	systemctl --user enable urxvtd.socket
-	systemctl --user enable xorg
-	systemctl --user enable xrdb
-	systemctl --user enable bell
-	systemctl --user enable cursor
-	systemctl --user enable wallpaper@PikachuEevee.png
-
-systemd:
-	stow systemd
+# In case it is not recent enough for linuxbrew.
+ruby:
+	sh scripts/install-ruby.sh
