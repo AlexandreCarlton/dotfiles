@@ -1,17 +1,24 @@
 #!/bin/sh
 
-# Attempts to append the JIRA ticket number generated from the branch.
+# Attempts to prepend the JIRA ticket number generated from the branch.
 
+# Format of ticket number
 FORMAT='[%s]'
 
+# Pattern used to match ticket from branch
+PATTERN='^(\w+/)?(\w+-[0-9]+).*$'
+
+# Location of ticket grouped in the above regex
+LOCATION='2'
+
 matches_jira_format() {
-  printf "$1" | grep -Eq '^(.+/)?[^-]+-[^-]+.*$'
+  printf "%s" "$1" | grep --extended-regexp --quiet "${PATTERN}"
 }
 
 get_ticket_from_branch() {
   local branch="${1}"
-  printf "${branch}" |\
-    sed 's/\(.\+\/\)\?\([^-]\+-[0-9]\+\).*/\2/g' |\
+  printf "%s" "${branch}" |\
+    sed --regexp-extended "s:${PATTERN}:\\${LOCATION}:g" |\
     tr '[a-z]' '[A-Z]'
 }
 
@@ -23,6 +30,6 @@ format_ticket() {
 
 branch="$(git symbolic-ref --short HEAD)"
 if matches_jira_format "${branch}"; then
-  ticket="$(get_ticket_from_branch ${branch})"
-  sed -i.bak -e "1s/^/$(format_ticket ${ticket}) /" "$1"
+  ticket="$(get_ticket_from_branch "${branch}")"
+  sed --in-place='.bak' --expression="1s/^/$(format_ticket "${ticket}") /" "$1"
 fi
