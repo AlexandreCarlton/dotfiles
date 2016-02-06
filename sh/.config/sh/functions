@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# Functions to ease things.
+
+confirm() {
+  printf "Are you sure? [y/N] "
+  read -r response
+  echo "${response}" | grep -qE '^(y|Y|yes|YES)$'
+}
+
+# Obviously won't work with sudo; this is a helper to destroy build libraries.
+nuke() {
+  confirm && rm -rf "$*"
+}
