@@ -1,18 +1,18 @@
 [submodule "spacemacs/.emacs.d"]
 	path = spacemacs/.emacs.d
-	url = git://github.com/syl20bnr/spacemacs.git
+	url = https://github.com/syl20bnr/spacemacs.git
 [submodule "colours/.config/base16/shell"]
 	path = colours/.config/base16/shell
-	url = git://github.com/chriskempson/base16-shell
+	url = https://github.com/chriskempson/base16-shell
 [submodule "colours/.config/base16/xresources"]
 	path = colours/.config/base16/xresources
-	url = git://github.com/chriskempson/base16-xresources
+	url = https://github.com/chriskempson/base16-xresources
 [submodule "X/.Xresources.d/colours/solarized"]
 	path = X/.Xresources.d/colours/solarized
-	url = git://github.com/solarized/xresources.git
+	url = https://github.com/solarized/xresources.git
 [submodule "steam/.local/share/Steam/skins/Air"]
 	path = steam/.local/share/Steam/skins/Air
-	url = git://github.com/Elundris/Air-for-Steam.git
+	url = https://github.com/Elundris/Air-for-Steam.git
 [submodule "zsh/.config/zsh/.zprezto"]
 	path = zsh/.config/zsh/.zprezto
-	url = git://github.com/sorin-ionescu/prezto
+	url = https://github.com/sorin-ionescu/prezto
