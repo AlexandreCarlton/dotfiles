@@ -11,14 +11,11 @@ PATTERN='^(\w+/)?(\w+-[0-9]+).*$'
 # Location of ticket grouped in the above regex
 LOCATION='2'
 
-matches_jira_format() {
-  printf "%s" "$1" | grep --extended-regexp --quiet "${PATTERN}"
-}
-
+# Retrieves ticket if possible
 get_ticket_from_branch() {
   local branch="${1}"
   printf "%s" "${branch}" |\
-    sed --regexp-extended "s:${PATTERN}:\\${LOCATION}:g" |\
+    sed --regexp-extended --quiet "s:${PATTERN}:\\${LOCATION}:p" |\
     tr '[a-z]' '[A-Z]'
 }
 
@@ -29,7 +26,7 @@ format_ticket() {
 
 
 branch="$(git symbolic-ref --short HEAD)"
-if matches_jira_format "${branch}"; then
-  ticket="$(get_ticket_from_branch "${branch}")"
-  sed --in-place='.bak' --expression="1s/^/$(format_ticket "${ticket}") /" "$1"
+ticket="$(get_ticket_from_branch "${branch}")"
+if [ -n "${ticket}" ]; then
+  sed --in-place='.bak' "1s/^/$(format_ticket "${ticket}") /" "$1"
 fi
