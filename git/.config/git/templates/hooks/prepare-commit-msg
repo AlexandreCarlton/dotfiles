@@ -9,9 +9,9 @@ TICKET_FORMAT='[%s]'
 get_ticket_from_branch() {
   local branch="${1}"
   local branch_pattern='^(\w+/)?(\w+-[0-9]+).*$'
-  local ticket_pattern='\2'
+  local ticket_dest='\2'
   printf "%s" "${branch}" |\
-    sed --regexp-extended --quiet "s:${branch_pattern}:${ticket_pattern}:p" |\
+    sed --regexp-extended --quiet "s:${branch_pattern}:${ticket_dest}:p" |\
     tr '[a-z]' '[A-Z]'
 }
 
