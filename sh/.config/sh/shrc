@@ -26,6 +26,6 @@ fi
 # base16_file="$HOME/.config/base16/shell/base16-${base16_scheme}.dark.sh"
 # [[ -s $base16_file ]] && . $base16_file
 
-if [[ -x /usr/bin/cowsay && -x /usr/bin/fortune ]]; then
+if [ -x /usr/bin/cowsay ] && [ -x /usr/bin/fortune ]; then
     fortune | cowsay -n -f tux
 fi
