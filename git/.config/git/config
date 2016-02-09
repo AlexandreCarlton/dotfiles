@@ -6,7 +6,7 @@
 
 [core]
 
-	excludesfile = ~/.config/git/ignore_global
+	excludesfile = ~/.config/git/ignore
 
 	# Enable parallel I/O
 	preloadindex = true
@@ -15,17 +15,23 @@
 
 	co = checkout
 
+	# Checkout new branch
 	cob = checkout -b
 
+	# show a diff of the modified files
 	d = difftool
 
+	# Edit config
 	ec = config --global -e
 
+	# Pretty log
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue) <%an>%Creset' --abbrev-commit
 
+	# Brief status
 	stat = status -sb
 
-	undo = reset HEAD~1 --mixed
+	# Undoes most recent commit but leaves changed files as "Changes to be committed"
+	undo = reset --soft HEAD~1
 
 	up = !git pull --rebase --prune $@ && git submodule update --init --recursive
 
@@ -44,18 +50,22 @@
 	# Detect renames and copies
 	renames = copies
 
+	# Use vimdiff when using `git difftool`
 	tool = vimdiff
 
 [difftool]
 
+	# Prompts are annoying
 	prompt = false
 
 [branch]
 
+	# Set up pull to automatically rebase
 	autosetuprebase = always
 
 [merge]
 
+	# Use vimdiff when merging
 	tool = vimdiff
 
 	# Add list of merged commits to generated commit
@@ -63,10 +73,12 @@
 
 [push]
 
+	# Only push if upstream branch has same name as current one
 	default = simple
 
 [color]
 
+	# Output colour when written to the terminal
 	ui = auto
 
 [init]
