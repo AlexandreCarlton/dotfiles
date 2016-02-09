@@ -5,6 +5,12 @@
 # Format of ticket number
 TICKET_FORMAT='[%s]'
 
+# Arguments given
+COMMIT_MESSAGE_FILEPATH="${1}"
+COMMIT_TYPE="${2}"
+COMMIT_SHA="${3}"
+
+
 # Retrieves ticket if possible, returns empty string otherwise
 get_ticket_from_branch() {
   local branch="${1}"
@@ -21,12 +27,13 @@ format_ticket() {
 }
 
 insert_ticket() {
+  local filepath="${1}"
   local branch="$(git symbolic-ref --short HEAD)"
   local ticket="$(get_ticket_from_branch "${branch}")"
   if [ -n "${ticket}" ]; then
-    sed --in-place='.bak' "1s/^/$(format_ticket "${ticket}") /" "$1"
+    sed --in-place='.bak' "1s/^/$(format_ticket "${ticket}") /" "${filepath}"
   fi
 }
 
 
-insert_ticket
+insert_ticket "${COMMIT_MESSAGE_FILEPATH}"
