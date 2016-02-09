@@ -121,7 +121,6 @@ let ycm_options = '--clang-completer ' .
                 \ '--tern-completer ' .
                 \ '--system-libclang --system-boost'
 Plug 'Valloric/YouCompleteMe', {'do': 'python2 install.py ' . ycm_options, 'on': [] } "{{{
-let g:ycm_global_ycm_extra_conf = g:bundle_folder . '/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 let g:ycm_always_populate_location_list = 1
 let g:ycm_add_preview_to_completeopt = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
@@ -134,7 +133,7 @@ let g:ycm_semantic_triggers = {'haskell': ['.'], 'r': ['.', '$', 're![_a-zA-Z]+[
 " IDEA: On git pull, generate one if it doesn't exist (and is supported, e.g.
 " CMakeLists exist).
 " Run config_gen.py <PROJECT_DIR> or :YcmGenerateConfig
-Plug 'rdnetto/YCM-Generator', {'branch': 'stable'}
+Plug 'rdnetto/YCM-Generator', {'branch': 'stable', 'on': 'YcmGenerateConfig'}
 
 
  " Snippets produced along side YouCompleteMe
