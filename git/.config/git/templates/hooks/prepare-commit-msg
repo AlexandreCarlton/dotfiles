@@ -2,28 +2,29 @@
 
 # Attempts to prepend the JIRA ticket number generated from the branch.
 
-# Format of ticket number
-TICKET_FORMAT='[%s]'
+# Format of ticket number; \1 represents the ticket
+TICKET_FORMAT='[\1]'
 
-# Arguments given
+# Arguments given to script
 COMMIT_MESSAGE_FILEPATH="${1}"
 COMMIT_TYPE="${2}"
 COMMIT_SHA="${3}"
 
 
-# Retrieves ticket if possible, returns empty string otherwise
+# Returns empty string on failure
 get_ticket_from_branch() {
   local branch="${1}"
   local branch_pattern='^(\w+/)?(\w+-[0-9]+).*$'
   local ticket_dest='\2'
-  printf "%s" "${branch}" |\
+  printf '%s' "${branch}" |\
     sed --regexp-extended --quiet "s:${branch_pattern}:${ticket_dest}:p" |\
-    tr '[a-z]' '[A-Z]'
+    tr '[:lower:]' '[:upper:]'
 }
 
 format_ticket() {
   local ticket="${1}"
-  printf "${TICKET_FORMAT}" "${ticket}"
+  printf '%s' "${ticket}" |\
+    sed --regexp-extended "s/(.*)/${TICKET_FORMAT}/"
 }
 
 insert_ticket() {
@@ -34,6 +35,5 @@ insert_ticket() {
     sed --in-place='.bak' "1s/^/$(format_ticket "${ticket}") /" "${filepath}"
   fi
 }
-
 
 insert_ticket "${COMMIT_MESSAGE_FILEPATH}"
