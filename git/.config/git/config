@@ -21,19 +21,19 @@
 	# show a diff of the modified files
 	d = difftool
 
-	# Edit config
-	edit-config = config --global -e
-
 	# Pretty log
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue) <%an>%Creset' --abbrev-commit
 
 	# Brief status
-	stat = status -sb
+	st = status -sb
+
+	# Edit config
+	edit-config = config --global -e
 
 	# Undoes most recent commit but leaves changed files as "Changes to be committed"
-	undo = reset --soft HEAD~1
+	undo-last-commit = reset --soft HEAD~1
 
-  # Unstage changes
+	# Unstage changes
 	unstage = reset HEAD
 
 	up = !git pull --rebase --prune $@ && git submodule update --init --recursive
@@ -74,6 +74,13 @@
 	# Add list of merged commits to generated commit
 	log = true
 
+[init]
+
+	# Where we store things like hooks
+	templatedir = ~/.config/git/templates
+
+# Git 2.0 Defaults
+
 [push]
 
 	# Only push if upstream branch has same name as current one
@@ -83,7 +90,3 @@
 
 	# Output colour when written to the terminal
 	ui = auto
-
-[init]
-
-	templatedir = ~/.config/git/templates
