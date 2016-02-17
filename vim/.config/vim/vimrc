@@ -267,9 +267,20 @@ let g:numbers_exclude = ['unite', 'tagbar', 'startify', 'gundo', 'vimshell', 'w3
 
 " }}}
 
-" Show trailing whitespace - fix with :StripWhitespace
-Plug 'ntpeters/vim-better-whitespace' " {{{
-let g:better_whitespace_filetypes_blacklist = ['vimfiler', 'unite', 'vim-plug']
+" Listen to ~/.editorconfig to set indenting styles for different languages.
+" Also includes trimming whitespace, etc.
+Plug 'editorconfig/editorconfig-vim' " {{{
+
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+
+if filereadable('/usr/lib/libeditorconfig.so')
+  " Requires editor-config-core-c, get it from the AUR or linuxbrew
+  let g:EditorConfig_core_mode = 'external_command'
+else
+  " If unavailable, set to python_external
+  let g:EditorConfig_core_mode = 'python_external'
+endif
+
 " }}}
 
 " }}}
@@ -505,9 +516,6 @@ set expandtab
 
 " Smart autoindenting when starting a new line.
 set smartindent
-
-" Listen to ~/.editorconfig to set indenting styles for different languages.
-Plug 'editorconfig/editorconfig-vim'
 
 " }}}
 
