@@ -1,5 +1,4 @@
 " Alexandre's vimrc
-" Somewhat optimised for quick startup.
 "
 " TODO: Make mappings for formatting
 " for example, make a function that calls the relevant format function for the
@@ -32,16 +31,17 @@ endif
 " }}}
 
 let g:bundle_folder='$XDG_CONFIG_HOME/vim/plugged'
-let g:use_powerline = 0 " Use fancy glyphs?
+let g:use_glyphs = 0 " Use fancy glyphs?
 
 call plug#begin(g:bundle_folder)
 
 " Syntax {{{
+" TODO: Use NeoMake instead of Syntastic once NeoVim is ready.
 
 " Use ']l' and '[l' to cycle through errors (with vim-unimpaired)
 Plug 'scrooloose/syntastic' " {{{
 " Use nicer symbols (given in the docs).
-if g:use_powerline
+if g:use_glyphs
     let g:syntastic_error_symbol = '✗'
     let g:syntastic_warning_symbol = '⚠'
 else
@@ -50,10 +50,10 @@ else
 endif
 
 " Active mode runs SyntasticCheck on save or opened; passive does not.
-let g:syntastic_mode_map = { 'mode': 'passive',
+let g:syntastic_mode_map = { 'mode': 'active',
                            \ 'active_filetypes': [],
                            \ 'passive_filetypes': [] }
-let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_open = 1
 let g:syntastic_always_populate_loc_list = 1
 " Automatically open when errors detected, close when none are detected.
 let g:syntastic_auto_loc_list = 1
@@ -490,7 +490,6 @@ au BufNewFile,BufRead *.socket set filetype=cfg
 " }}}
 
 " Tab / Indent {{{
-" Consider using EditorConfig for this.
 
 " Number of spaces <Tab> counts for.
 set tabstop=2
@@ -506,6 +505,9 @@ set expandtab
 
 " Smart autoindenting when starting a new line.
 set smartindent
+
+" Listen to ~/.editorconfig to set indenting styles for different languages.
+Plug 'editorconfig/editorconfig-vim'
 
 " }}}
 
