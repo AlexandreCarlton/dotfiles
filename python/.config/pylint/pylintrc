@@ -1,0 +1,9 @@
+# vim:ft=cfg:
+
+[FORMAT]
+
+# Maximum characters allowed on a line; 79 is  PEP-8 conformant.
+max-line-length=79
+
+# Allow body of an if statement to be on the same line.
+single-line-if-stmt=no
