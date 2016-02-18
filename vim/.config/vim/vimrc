@@ -52,8 +52,12 @@ endif
 " Active mode runs SyntasticCheck on save or opened; passive does not.
 let g:syntastic_mode_map = { 'mode': 'active',
                            \ 'active_filetypes': [],
-                           \ 'passive_filetypes': [] }
-let g:syntastic_check_on_open = 1
+                           \ 'passive_filetypes': ['c', 'cpp'] }
+" Check on open.
+let g:syntastic_check_on_open = 0
+" Check on close.
+let g:syntastic_check_on_wq = 0
+" Update location-list automatically.
 let g:syntastic_always_populate_loc_list = 1
 " Automatically open when errors detected, close when none are detected.
 let g:syntastic_auto_loc_list = 1
@@ -107,7 +111,7 @@ set fileformats=unix,dos,mac
 " Completion {{{
 
 " Autocompletion for quotes, parens, etc.
-Plug 'Raimondi/delimitMate'
+Plug 'jiangmiao/auto-pairs'
 
 " Options
 " --clang-completer (C/C++)
@@ -273,7 +277,7 @@ Plug 'editorconfig/editorconfig-vim' " {{{
 
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
-if filereadable('/usr/lib/libeditorconfig.so')
+if executable('editorconfig')
   " Requires editor-config-core-c, get it from the AUR or linuxbrew
   let g:EditorConfig_core_mode = 'external_command'
 else
@@ -347,9 +351,6 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 map <C-h> <C-w>h
-
-" Sublime-style autoindent
-imap {<CR> {<CR>}<C-o>O
 
 " Change leader to space to allow easier transitioning with spacemacs.
 let mapleader=" "
