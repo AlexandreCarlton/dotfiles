@@ -11,6 +11,10 @@ export XDG_DATA_HOME="${HOME}/.local/share"
 # For zsh files
 export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
 
+# TODO: Create a new file "xdg_dirs" for stuff like this.
+# Prevent less from storing history in .lesshst file
+export LESSHISTFILE="${XDG_CACHE_HOME}/less/history"
+
 # Set ~/.spacemacs.d to ~/.config/spacemacs
 export SPACEMACSDIR="${XDG_CONFIG_HOME}/spacemacs"
 

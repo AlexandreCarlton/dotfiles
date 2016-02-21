@@ -9,12 +9,18 @@ PATH="${HOME}/.bin:${PATH}"
 PATH="${HOME}/.local/bin:${PATH}"
 LD_LIBRARY_PATH="${HOME}/.local/lib:${LD_LIBRARY_PATH}"
 
+
 # Cabal (Haskell)
 if [ -d "${HOME}/.cabal" ]; then
   PATH="${HOME}/.cabal/bin:${PATH}"
 fi
 
-# Linuxbrew
+# Gem (Ruby)
+if [ -d "${HOME}/.gem/ruby/2.3.0" ]; then
+  PATH="${HOME}/.gem/ruby/2.3.0/bin:${PATH}"
+fi
+
+# Linuxbrew (if you're sadistic enough to not instead use Nix)
 if [ -d "${HOME}/.linuxbrew" ]; then
   PATH="${HOME}/.linuxbrew/bin:${PATH}"
   PATH="${HOME}/.linuxbrew/sbin:${PATH}"

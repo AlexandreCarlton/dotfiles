@@ -7,9 +7,10 @@
 # Reset PATH if it gets overridden by profile/rc/login files.
 . "${HOME}/.config/sh/path"
 
-# TODO: Create a new file "xdg_dirs" for stuff like this.
-# Prevent less from storing history in .lesshst file
-LESSHISTFILE="${XDG_CACHE_HOME}/less/history"
+# Source Nix user profile.
+if [ -s "${HOME}/.nix-profile/etc/profile.d/nix.sh" ]; then
+  . "${HOME}/.nix-profile/etc/profile.d/nix.sh"
+fi
 
 # Don't have Ctrl-S/Q mess with the terminal.
 stty -ixon
