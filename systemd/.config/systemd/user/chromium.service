@@ -17,7 +17,6 @@ ExecStart=/usr/bin/chromium --restore-last-session \
   --disk-cache-dir=/tmp/chromium-cache
 # Find a way to prevent asking to restore last session.
 ExecStop=/usr/bin/pkill --oldest --signal TERM -f chromium
-Restart=on-failure
 
 [Install]
 WantedBy=desktop.target
