@@ -36,15 +36,6 @@
 	# Unstage changes
 	unstage = reset HEAD
 
-	up = !git pull --rebase --prune $@ && git submodule update --init --recursive
-
-	watch = "!clear;inotifywait --quiet -mr -e modify,move,create,delete --format \"%f %e\" @/.git . | \
-		while read file; do \
-			clear;\
-			git status --short;\
-			git --no-pager diff --shortstat;\
-		done;"
-
 [diff]
 
 	# Use more time for better diffs
@@ -63,8 +54,21 @@
 
 [branch]
 
-	# Set up pull to automatically rebase
+	# When a new branch is created, set up pull to automatically rebase.
 	autosetuprebase = always
+
+[pull]
+
+	# Automatically rebase on pull, placing local commits on top of pulled ones.
+	rebase = true
+
+[rebase]
+
+	# Automatically create temporary stash before rebasing it and popping it
+	# afterwards.
+	# Combined with automatic rebase on pull, this means we can pull on dirty
+	# trees.
+	autoStash = true
 
 [merge]
 
