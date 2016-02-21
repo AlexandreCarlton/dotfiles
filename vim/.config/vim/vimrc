@@ -77,8 +77,6 @@ Plug 'Shougo/vimproc.vim', { 'do': 'make -f make_unix.mak' }
 
 " C / C++ {{{
 
-Plug 'rhysd/vim-clang-format', { 'for': ['c', 'cpp', 'objc'], 'on': 'ClangFormat' }
-
 " }}}
 
 " Colours {{{
@@ -234,8 +232,11 @@ set ignorecase
 " Make searches case-senstive with the inclusion of an upper-case character.
 set smartcase
 
-" Highlight search results (<C-l> to clear highlighting)
-set hlsearch
+" Highlight searches as you type in a pattern.
+set incsearch
+
+" Don't highlight previous search results.
+set nohlsearch
 
 " When buffer is abandoned it becomes hidden.
 set hidden
@@ -260,6 +261,9 @@ Plug 'chrisbra/Recover.vim'
 
 " Display marks in the gutter
 Plug 'kshenoy/vim-signature'
+
+" Automatically format with what's available
+Plug 'Chiel92/vim-autoformat', {'on': 'Autoformat'}
 
 " Intelligent number toggling.
 Plug 'myusuf3/numbers.vim', " {{{
@@ -316,14 +320,22 @@ let g:LatexBox_quickfix = 2
 
 " Mappings {{{
 
-" Aligns text
-Plug 'godlygeek/tabular'
+" Align text with 'gaip='
+Plug 'junegunn/vim-easy-align' " {{{
+" Start interactive EasyAlign in visual mode.
+xmap ga <Plug>(EasyAlign)
+" Start interactive EasyAlign for motion/text object.
+nmap ga <Plug>(EasyAlign)
+" }}}
 
-" Easier way of navigating - <Leader>ww to activate.
-Plug 'Lokaltog/vim-easymotion'
+" Easier way of navigating - s{char}{char}, ; to go to next match.
+Plug 'justinmk/vim-sneak', "{{{
+" Act like Easy-motion.
+let g:sneak#streak = 1
+"}}}
 
-" Easier commenting - <Leader>c<Space> to toggle comment
-Plug 'scrooloose/nerdcommenter'
+" Use gcc to toggle comments.
+Plug 'tpope/vim-commentary'
 
 " Defaults everyone can agree on.
 Plug 'tpope/vim-sensible'
@@ -335,7 +347,7 @@ Plug 'tpope/vim-surround'
 " e.g. ]b for next buffer
 Plug 'tpope/vim-unimpaired'
 
-" Rapidly these keys (instead of Esc) to go Normal mode.
+" Rapidly press these keys (instead of Esc) to go Normal mode.
 inoremap jk <Esc>
 inoremap kj <Esc>
 
@@ -369,7 +381,7 @@ nnoremap <Leader>rl :VimuxRunLastCommand<cr>
 nnoremap <Leader>ua :Unite grep:.<cr>
 nnoremap <Leader>uf :Unite -start-insert file_rec/async:!<cr>
 nnoremap <Leader>f :VimFilerExplorer<cr>
-nnoremap <Leader>yf :YcmCompleter Fixit<cr>
+nnoremap <Leader>yf :YcmCompleter FixIt<cr>
 nnoremap <Leader>yg :YcmCompleter GoToDefinitionElseDeclaration<cr>
 
 " }}}
@@ -509,7 +521,7 @@ set tabstop=2
 " Number of spaces <Tab> counts when inserting <Tab>
 set softtabstop=2
 
-" Indent/oudent by 4 columns.
+" Indent/outdent by specified number of columns.
 set shiftwidth=2
 
 " Always use spaces instead of tabs.
@@ -565,8 +577,8 @@ let g:tagbar_type_haskell = {
 
 " Tmux {{{
 
-" Send commands to Tmux pane
-Plug 'benmills/vimux', {'on': ['VimuxPromptCommand', 'VimuxRunLastCommand'] }
+" Send make commands to Tmux pane
+Plug 'tpope/vim-dispatch', {'on': ['Make', 'Dispatch', 'Start'] }
 
 " Syntax highlighting
 Plug 'Keithbsmiley/tmux.vim'
@@ -574,7 +586,7 @@ Plug 'Keithbsmiley/tmux.vim'
 " }}}
 
 " Unite (and plugins that depend on it) {{{
-Plug 'Shougo/unite.vim'
+Plug 'Shougo/unite.vim', {'on': 'Unite'}
 
 Plug 'Shougo/vimfiler.vim', {'on': 'VimFilerExplorer'}
 let g:vimfiler_as_default_explorer = 1
