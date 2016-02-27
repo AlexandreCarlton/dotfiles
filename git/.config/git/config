@@ -30,6 +30,9 @@
 	# Edit config
 	edit-config = config --global -e
 
+	# Reverts any changes to a file
+	restore-file = checkout --
+
 	# Undoes most recent commit but leaves changed files as "Changes to be committed"
 	undo-last-commit = reset --soft HEAD~1
 
@@ -77,6 +80,9 @@
 
 	# Add list of merged commits to generated commit
 	log = true
+
+	#	Always create a commit when merging, even when we can fast-forward it
+	ff = false
 
 [init]
 
