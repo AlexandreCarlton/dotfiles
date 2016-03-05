@@ -1,0 +1,17 @@
+
+[Default Applications]
+application/pdf=mupdf.desktop
+image/bmp=sxiv.desktop
+image/gif=sxiv.desktop
+image/jpeg=sxiv.desktop
+image/jpg=sxiv.desktop
+image/png=sxiv.desktop
+text/html=chromium.desktop
+video/mp4=mpv.desktop
+video/webm=mpv.desktop
+video/x-avi=mpv.desktop
+video/x-matroska=mpv.desktop
+x-scheme-handler/http=chromium.desktop
+x-scheme-handler/https=chromium.desktop
+x-scheme-handler/about=chromium.desktop
+x-scheme-handler/unknown=chromium.desktop
