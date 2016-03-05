@@ -11,7 +11,7 @@ COMMIT_SHA="${3}"
 # Returns empty string on failure
 get_ticket_from_branch() {
   local branch="${1}"
-  local branch_pattern='^([[:lower:]]{0,30}/)?([[:upper:]]+-[[:digit:]]+)(-[[:lower:]]+)+$'
+  local branch_pattern='^([[:lower:]]{0,30}/)?([[:upper:]]{2,}-[[:digit:]]+)(-[[:alnum:]]+)+$'
   local ticket_dest='\2'
   printf '%s' "${branch}" |\
     sed --regexp-extended --quiet "s:${branch_pattern}:${ticket_dest}:p"
