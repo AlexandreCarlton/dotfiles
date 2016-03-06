@@ -21,12 +21,10 @@ export SPACEMACSDIR="${XDG_CONFIG_HOME}/spacemacs"
 # Use vimrc in a non-default location
 export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
 
-# bspwm panel - height is used by sxhkd to get dmenu height
-export PANEL_HEIGHT='16'
-
-# Use non-default pythonrc and pylintrc
+# Python
 export PYTHONSTARTUP="${XDG_CONFIG_HOME}/python/pythonrc"
 export PYLINTRC="${XDG_CONFIG_HOME}/pylint/pylintrc"
+export PYLINTHOME="${XDG_CONFIG_HOME}/pylint/pylint.d"
 
 # Force QT5 to use current GTK theme
 export QT_STYLE_OVERRIDE='GTK+'
