@@ -33,9 +33,17 @@ zstyle ':prezto:load' pmodule \
   'utility' \
   'completion' \
   'syntax-highlighting' \
+  'autosuggestions' \
   'prompt' \
   'pacman' \
   'git'
+
+#
+# Autosuggestions
+#
+
+# Set the query found color.
+# zstyle ':prezto:module:autosuggestions:color' found ''
 
 #
 # Editor
@@ -125,8 +133,9 @@ zstyle ':prezto:module:syntax-highlighting' highlighters \
   'main' \
   'brackets' \
   'pattern' \
-  'root'
-  #'cursor' # Cursor partially disappears when over a character.
+  'line' \
+  'root' \
+  'cursor'
 #
 # Set syntax highlighting styles.
 # zstyle ':prezto:module:syntax-highlighting' styles \
