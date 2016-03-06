@@ -5,16 +5,22 @@ root = true
 [*]
 char_set = utf-8
 end_of_line = lf
-insert_final_newline = true
-indent_style = space
 indent_size = 2
+indent_style = space
+insert_final_newline = true
 trim_trailing_whitespace = true
 
+[{bspwmrc,sxhkdrc}]
+indent_size = 2
+indent_style = tab
+
+[{**/git/,.git}config]
+indent_style = tab
+
+[{M,m}akefile]
+indent_style = tab
+
 [*.py]
+indent_size = 4
+indent_style = space
 max_line_length = 79
-
-[Makefile]
-indent_style = tab
-
-[gitconfig]
-indent_style = tab
