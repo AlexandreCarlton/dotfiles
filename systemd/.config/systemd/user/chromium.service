@@ -8,10 +8,13 @@ After=psd.service psd-resync.service
 
 [Service]
 # force-device and high-dpi is to account for libpng error.
+# Also add --enable-md-history when they start working.
 ExecStart=/usr/bin/chromium --restore-last-session \
   --auto-launch-at-startup \
   --enable-logging --log-level=1 \
   --top-chrome-md --enable-md-downloads \
+  --enable-md-extensions \
+  --enable-fast-unload --enable-tab-audio-muting \
   --force-device-scale-factor=1 --high-dpi-support=1 \
   --no-displaying-insecure-content \
   --disk-cache-dir=/tmp/chromium-cache
