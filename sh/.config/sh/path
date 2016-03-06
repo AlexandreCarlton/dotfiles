@@ -2,10 +2,9 @@
 
 # Set and export PATH variables
 
-# User-made utilities (including panel ones)
-PATH="${HOME}/.bin:${PATH}"
 
-# Locally-installed utilities, e.g. with pip (consider merging with above)
+# User-created utilities like shell scripts, or
+# locally-installed utilities, e.g. with pip
 PATH="${HOME}/.local/bin:${PATH}"
 LD_LIBRARY_PATH="${HOME}/.local/lib:${LD_LIBRARY_PATH}"
 
