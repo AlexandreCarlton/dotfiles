@@ -1,5 +1,5 @@
 #!/bin/bash
 
-[[ -f ${XDG_CONFIG_HOME}/sh/env ]] && . ${XDG_CONFIG_HOME}/sh/env
-[[ -f ${XDG_CONFIG_HOME}/sh/profile ]] && . ${XDG_CONFIG_HOME}/sh/profile
-[[ -f ${HOME}/.bashrc ]] && . ${HOME}/.bashrc
+[[ -f "${HOME}/.config/sh/env" ]] && source "${HOME}/.config/sh/env"
+[[ -f "${HOME}/.config/sh/profile" ]] && source "${HOME}/.config/sh/profile"
+[[ -f "${HOME}/.bashrc" ]] && source "${HOME}/.bashrc"
