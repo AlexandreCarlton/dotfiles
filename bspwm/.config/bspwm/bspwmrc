@@ -1,5 +1,7 @@
 #!/bin/sh
 
+. "${HOME}/.config/bspwm/lemonbar.conf"
+
 bspc monitor -d term web code media steam misc
 
 bspc config border_width            2
@@ -25,8 +27,5 @@ bspc rule -a vlc            desktop=^4
 
 bspc rule -a Steam          desktop=^5
 
-# Probably should delete this.
-bspc rule -a mplayer2       floating=on
-bspc rule -a Kupfer.py      focus=on
-bspc rule -a Screenkey      manage=off
-bspc rule -a Conky          sticky=on manage=off lower=on
+bspc config top_padding "${PANEL_HEIGHT}"
+bspc control --subscribe > "${XDG_RUNTIME_DIR}/lightstatus-fifo"
