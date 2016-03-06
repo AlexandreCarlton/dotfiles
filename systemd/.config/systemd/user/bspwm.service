@@ -3,7 +3,9 @@ Description=bspwm
 Documentation=man:bspwm(1)
 
 Requires=sxhkd.service
-Wants=bspwm-panel.service
+
+Requires=lightstatus.socket
+After=lightstatus.socket
 
 Requires=x11.target
 After=x11.target

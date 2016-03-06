@@ -1,0 +1,15 @@
+[Unit]
+Description=lightstatus
+
+Requires=lemonbar.socket
+After=lemonbar.socket
+
+Requires=lightstatus.socket
+After=lightstatus.socket
+
+[Service]
+ExecStart=/usr/local/bin/lightstatus -o %t/lemonbar-fifo
+StandardInput=socket
+
+[Install]
+WantedBy=desktop.target

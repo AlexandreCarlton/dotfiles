@@ -1,0 +1,8 @@
+[Unit]
+Description=lightstatus socket
+
+[Socket]
+ListenFIFO=%t/lightstatus-fifo
+
+[Install]
+WantedBy=sockets.target
