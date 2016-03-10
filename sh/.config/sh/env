@@ -32,6 +32,8 @@ export QT_STYLE_OVERRIDE='GTK+'
 # Used by QT4 to know which rc to use.
 export GTK2_RC_FILES="${HOME}/.gtkrc-2.0"
 
+export CCACHE_CONFIGPATH="${XDG_CONFIG_HOME}/ccache.conf"
+
 export EDITOR='vim'
 export USE_EDITOR="${EDITOR}"
 export VISUAL="${EDITOR}"
