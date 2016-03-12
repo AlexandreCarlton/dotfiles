@@ -26,6 +26,9 @@ export PYTHONSTARTUP="${XDG_CONFIG_HOME}/python/pythonrc"
 export PYLINTRC="${XDG_CONFIG_HOME}/pylint/pylintrc"
 export PYLINTHOME="${XDG_CONFIG_HOME}/pylint/pylint.d"
 
+# Tmux - consider appending '/tmux' if we need more than one instance.
+export TMUX_TMPDIR="${XDG_RUNTIME_DIR}"
+
 # Force QT5 to use current GTK theme
 export QT_STYLE_OVERRIDE='GTK+'
 
