@@ -5,8 +5,8 @@ Requisite=display-server.target
 After=display-server.target
 
 [Service]
-# Fixes sound problems; note that lib32 is for 32-bit systems.
-Environment=LD_PRELOAD=/usr/lib32/libasound.so.2:/usr/lib/libasound.so.2
+# Fixes sound problems; /usr/lib32/libasound.so.2 is for 32-bit systems.
+Environment=LD_PRELOAD=/usr/lib/libasound.so.2
 ExecStart=/usr/bin/steam
 ExecStop=/usr/bin/pkill -9 -F %h/.steampid
 
