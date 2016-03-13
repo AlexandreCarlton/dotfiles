@@ -79,6 +79,10 @@ Plug 'Shougo/vimproc.vim', { 'do': 'make -f make_unix.mak' }
 
 " }}}
 
+" CMake {{{
+autocmd FileType cmake setlocal commentstring=#\ %s
+" }}}
+
 " Colours {{{
 
 " Needs respective setting in Xresources if using xterm or urxvt.
@@ -160,7 +164,10 @@ Plug 'tpope/vim-endwise'
 
 " }}}
 
-" Fish {{{
+" Shell {{{
+
+" Set default shell; plugins may not work if using fish as user-shell.
+set shell=/bin/sh
 
 Plug 'dag/vim-fish', {'for': 'fish'}
 
@@ -255,8 +262,8 @@ set colorcolumn=80
 " Handles csv files.
 Plug 'chrisbra/csv.vim', { 'for' : 'csv' }
 
-" Browse the Undo Tree with :UB
-Plug 'chrisbra/histwin.vim', { 'on' : 'UB' }
+" Peek at the Undo tree.
+Plug 'mbbill/undotree', {'on': 'UndotreeToggle'}
 
 " More options (like diff) when dealing with swp files.
 Plug 'chrisbra/Recover.vim'
@@ -331,13 +338,13 @@ nmap ga <Plug>(EasyAlign)
 " }}}
 
 " Easier way of navigating - s{char}{char}, ; to go to next match.
-Plug 'justinmk/vim-sneak', "{{{
+Plug 'justinmk/vim-sneak' "{{{
 " Act like Easy-motion.
 let g:sneak#streak = 1
 "}}}
 
 " Use gcc to toggle comments.
-Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-commentary' ", {'on': '<Plug>Commentary'}
 
 " Defaults everyone can agree on.
 Plug 'tpope/vim-sensible'
@@ -502,7 +509,7 @@ endfunction
 
 " }}}
 
-" Show statusline on all windows
+" Show statusline on all windows - done by sensible
 set laststatus=2
 
 " }}}
@@ -588,20 +595,20 @@ Plug 'Keithbsmiley/tmux.vim'
 " }}}
 
 " Unite (and plugins that depend on it) {{{
-Plug 'Shougo/unite.vim', {'on': 'Unite'}
+Plug 'Shougo/unite.vim', {'on': ['Unite', 'VimFilerExplorer']}
 
 Plug 'Shougo/vimfiler.vim', {'on': 'VimFilerExplorer'}
 let g:vimfiler_as_default_explorer = 1
 
 " Use ag or ack if available
-"if executable('ag')
-  "let g:unite_source_grep_command = 'ag'
-  "" let g:source_grep_default_opts = '--line-numbers --nocolor --nogroup'
-"elseif executable('ack')
-  "let g:unite_source_grep_command = 'ack'
-"elseif executable('ack-grep')
-  "let g:unite_source_grep_command = 'ack-grep'
-"endif
+" if executable('ag')
+"   let g:unite_source_grep_command = 'ag'
+"   let g:source_grep_default_opts = '--line-numbers --nocolor --nogroup'
+" elseif executable('ack')
+"   let g:unite_source_grep_command = 'ack'
+" elseif executable('ack-grep')
+"   let g:unite_source_grep_command = 'ack-grep'
+" endif
 
 
 " }}}
