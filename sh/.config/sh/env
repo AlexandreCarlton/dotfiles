@@ -11,6 +11,9 @@ export XDG_DATA_HOME="${HOME}/.local/share"
 # For zsh files
 export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
 
+# Bspwm
+export BSPWM_SOCKET="${XDG_RUNTIME_DIR}/bspwm-${HOST}"
+
 # TODO: Create a new file "xdg_dirs" for stuff like this.
 # Prevent less from storing history in .lesshst file
 export LESSHISTFILE="${XDG_CACHE_HOME}/less/history"
@@ -39,6 +42,7 @@ export CCACHE_CONFIGPATH="${XDG_CONFIG_HOME}/ccache.conf"
 
 # Urxvt - consider, like tmux, making another folder for extra daemons.
 export RXVT_SOCKET="${XDG_RUNTIME_DIR}/urxvtd-${HOST}"
+
 
 export EDITOR='vim'
 export USE_EDITOR="${EDITOR}"
