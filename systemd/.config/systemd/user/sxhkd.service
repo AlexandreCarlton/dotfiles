@@ -3,7 +3,6 @@ Description=sxhkd
 Documentation=man:sxhkd(1)
 Requisite=display-server.target
 After=display-server.target
-Wants=rofi@space.service
 
 [Service]
 ExecStart=/usr/bin/sxhkd
