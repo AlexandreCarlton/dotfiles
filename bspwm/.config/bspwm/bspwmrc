@@ -28,4 +28,4 @@ bspc rule -a vlc            desktop=^4
 bspc rule -a Steam          desktop=^5
 
 bspc config top_padding "${PANEL_HEIGHT}"
-bspc control --subscribe > "${XDG_RUNTIME_DIR}/lightstatus-fifo"
+bspc subscribe > "${XDG_RUNTIME_DIR}/lightstatus-fifo" &
