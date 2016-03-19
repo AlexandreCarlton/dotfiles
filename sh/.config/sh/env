@@ -11,6 +11,12 @@ export XDG_DATA_HOME="${HOME}/.local/share"
 # For zsh files
 export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
 
+# When a GTK3 app is launched, dbus spawns:
+# - at-spi-bus-launcher
+# - at-spi2-registryd
+# We disable this as it is not needed.
+export NO_AT_BRIDGE='1'
+
 # Bspwm
 export BSPWM_SOCKET="${XDG_RUNTIME_DIR}/bspwm-${HOST}"
 
