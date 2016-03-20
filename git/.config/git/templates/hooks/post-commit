@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# This hook is invoked after 'git commit' succeeds.
+
+.git/hooks/create-tags-file &

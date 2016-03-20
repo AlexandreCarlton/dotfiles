@@ -1,0 +1,19 @@
+#!/bin/sh
+
+# Create a tags file in .git for the versioned files.
+# This .git/tags file will automatically be picked up by fugitive.vim.
+
+# TODO: If there are other {pid}.tags files, kill these processes.
+
+git_dir="$(git rev-parse --git-dir)"
+pid="$$"
+trap 'rm -f "${git_dir}/${pid}.tags"' EXIT
+
+git ls-files |\
+  ctags -L - \
+    --exclude=.git \
+    --links \
+    --tag-relative \
+    -f "${git_dir}/${pid}.tags"
+
+mv "${git_dir}/${pid}.tags" "${git_dir}/tags"

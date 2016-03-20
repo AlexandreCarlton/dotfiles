@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# Invoked by methods that rewrite commits:
+# - git commit --amend
+# - git rebase
+
+COMMAND_USED="$1"
+
+case "${COMMAND_USED}" in
+  rebase)
+    exec .git/hooks/post-merge
+    ;;
+esac
