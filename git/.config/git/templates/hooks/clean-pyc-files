@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# Cleans all *.pyc files.
+# Switching branches may change .py files but won't touch the .pyc ones.
+# This may lead us to importing modules from another branch.
+# We force a clean to avoid this bug.
+
+find -L . -name '*.pyc' -delete

@@ -4,3 +4,4 @@
 # Not this also applies after a 'git clone'.
 
 .git/hooks/create-tags-file &
+.git/hooks/clean-pyc-files
