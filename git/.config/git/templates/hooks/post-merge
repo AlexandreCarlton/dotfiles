@@ -3,4 +3,4 @@
 # Invoked on a git merge
 # This also includes a git pull with default settings
 
-.git/hooks/create-tags-file &
+"${GIT_DIR}/hooks/create-tags-file" &

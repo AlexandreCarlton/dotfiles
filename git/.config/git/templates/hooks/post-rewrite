@@ -8,6 +8,6 @@ COMMAND_USED="$1"
 
 case "${COMMAND_USED}" in
   rebase)
-    exec .git/hooks/post-merge
+    exec "${GIT_DIR}/hooks/post-merge"
     ;;
 esac
