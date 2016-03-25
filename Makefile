@@ -49,10 +49,13 @@ development:
 	stow sh
 	stow spacemacs
 	stow ssh
-	stow systemd
 	stow tmux
 	stow vim
 	stow zsh
+
+development-systemd:
+	stow systemd
+	systemctl --user enable tmux
 
 # TODO: Find a way to ensure stow is in $PATH
 desktop: development
@@ -71,3 +74,26 @@ desktop: development
 	stow steam
 	stow X
 	stow zathura
+
+desktop-systemd: desktop development-systemd
+	stow systemd
+	systemctl --user enable desktop.target
+	systemctl --user enable bell
+	systemctl --user enable bspwm
+	systemctl --user enable chromium
+	systemctl --user enable cursor
+	systemctl --user enable dunst
+	systemctl --user enable lightstatus.socket
+	systemctl --user enable lemonbar.socket
+	systemctl --user enable redshift
+	systemctl --user enable unclutter
+	systemctl --user enable wallpaper@PikachuEevee.png
+	systemctl --user enable urxvtd.socket
+	systemctl --user enable xrdb
+	# Eagerly launch things
+	systemctl --user enable lightstatus.service
+	systemctl --user enable lemonbar.service
+	systemctl --user enable urxvtd.service
+	systemctl --user enable xorg
+	# Hack until systemd fixes xorg socket activation in systemd
+	systemctl --user enable xorg-delay@1
