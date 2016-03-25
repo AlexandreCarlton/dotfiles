@@ -73,9 +73,20 @@ let g:syntastic_haskell_checkers = ['ghc_mod']
 
 " Allows asynchronous execution (great for syntax checkers)
 Plug 'Shougo/vimproc.vim', { 'do': 'make -f make_unix.mak' }
+
+" }}}
+
+" Ansible {{{
+
+" Syntax highlighting
+Plug 'pearofducks/ansible-vim'
+
 " }}}
 
 " C / C++ {{{
+
+" Syntax highlighting
+Plug 'octol/vim-cpp-enhanced-highlight', {'for': ['c', 'cpp']}
 
 " }}}
 
@@ -126,7 +137,7 @@ Plug 'jiangmiao/auto-pairs'
 let ycm_options = '--clang-completer ' .
                 \ '--tern-completer ' .
                 \ '--system-libclang --system-boost'
-Plug 'Valloric/YouCompleteMe', {'do': 'python2 install.py ' . ycm_options, 'on': [] } "{{{
+Plug 'Valloric/YouCompleteMe', {'do': 'python2 install.py ' . ycm_options, 'on': []} "{{{
 let g:ycm_always_populate_location_list = 1
 let g:ycm_add_preview_to_completeopt = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
@@ -150,7 +161,6 @@ let g:UltiSnipsExpandTrigger = '<C-j>'
 " }}}
 
 Plug 'honza/vim-snippets'
-
 
 " Load YCM and UltiSnips on first insert.
 augroup load_us_ycm
@@ -192,6 +202,9 @@ let g:gitgutter_sign_modified_removed = '~-'
 
 " Git Wrapper.
 Plug 'tpope/vim-fugitive'
+
+" Syntax highlighting
+Plug 'tpope/vim-git'
 
 " }}}
 
