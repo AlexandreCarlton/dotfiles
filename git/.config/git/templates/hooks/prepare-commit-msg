@@ -1,34 +1,7 @@
 #!/bin/sh
 
-# Attempts to prepend the JIRA ticket number generated from the branch.
-
-# Arguments given to script
 COMMIT_MESSAGE_FILEPATH="${1}"
 COMMIT_TYPE="${2}"
 COMMIT_SHA="${3}"
 
-
-# Returns empty string on failure
-get_ticket_from_branch() {
-  local branch="${1}"
-  local branch_pattern='^([[:lower:]]{0,30}/)?([[:upper:]]{2,}-[[:digit:]]+)(-[[:alnum:]]+)+$'
-  local ticket_dest='\2'
-  printf '%s' "${branch}" |\
-    sed --regexp-extended --quiet "s:${branch_pattern}:${ticket_dest}:p"
-}
-
-format_ticket() {
-  ticket="${1}"
-  printf '[%s]' "${ticket}"
-}
-
-insert_ticket() {
-  local filepath="${1}"
-  local branch="$(git symbolic-ref --short HEAD)"
-  local ticket="$(get_ticket_from_branch "${branch}")"
-  if [ -n "${ticket}" ]; then
-    sed --in-place='.bak' "1s/^/$(format_ticket "${ticket}") /" "${filepath}"
-  fi
-}
-
-insert_ticket "${COMMIT_MESSAGE_FILEPATH}"
+"${GIT_DIR}/hooks/insert-jira-ticket" "${COMMIT_MESSAGE_FILEPATH}"
