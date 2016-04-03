@@ -4,6 +4,5 @@
 --recurse=yes
 --tag-relative=yes
 
---c++-kinds=+px
 
 --langmap=Lisp:+.clj
