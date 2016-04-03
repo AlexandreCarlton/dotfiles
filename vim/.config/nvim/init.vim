@@ -5,8 +5,8 @@
 " current filetype - useful for ClangFormat and gofmt
 
 " Automatic installation {{{
-if empty(glob('~/.config/vim/autoload/plug.vim'))
-    silent !curl -fLo ~/.config/vim/autoload/plug.vim --create-dirs
+if empty(glob('$XDG_CONFIG_HOME/nvim/autoload/plug.vim'))
+    silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
       \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     autocmd VimEnter * PlugInstall | source $MYVIMRC
 endif
@@ -19,18 +19,30 @@ autocmd FileType vim set foldmethod=marker
 if has('nvim')
   runtime! plugin/python_setup.vim
 else
-  " Directories are automatically created if they do not exist.
   if !isdirectory($XDG_CACHE_HOME . '/vim')
     silent call mkdir($XDG_CACHE_HOME . '/vim', 'p')
   endif
-  set directory=$XDG_CACHE_HOME/vim,~/,/tmp
-  set backupdir=$XDG_CACHE_HOME/vim,~/,/tmp
+  " Can't share viminfo with Neovim unfortunately.
   set viminfo+=n$XDG_CACHE_HOME/vim/viminfo
-  set runtimepath=$XDG_CONFIG_HOME/vim,$XDG_CONFIG_HOME/vim/after,$VIM,$VIMRUNTIME
+
+  " Directories are automatically created if they do not exist.
+  " Set Neovim defaults,as that is ultimately where we're heading.
+  if !isdirectory($XDG_DATA_HOME . '/nvim')
+    silent call mkdir($XDG_DATA_HOME . '/nvim/swap', 'p')
+    silent call mkdir($XDG_DATA_HOME . '/nvim/backup', 'p')
+    silent call mkdir($XDG_DATA_HOME . '/nvim/view', 'p')
+    silent call mkdir($XDG_DATA_HOME . '/nvim/undo', 'p')
+  endif
+  set directory=$XDG_DATA_HOME/nvim/swap//
+  set backupdir=.,$XDG_DATA_HOME/nvim/backup
+  set viewdir=$XDG_DATA_HOME/nvim/view
+  set undodir=$XDG_DATA_HOME/nvim/undo
+  set runtimepath+=$XDG_CONFIG_HOME/nvim,$XDG_CONFIG_HOME/nvim/after
 endif
 " }}}
+set undofile
 
-let g:bundle_folder='$XDG_CONFIG_HOME/vim/plugged'
+let g:bundle_folder='$XDG_CONFIG_HOME/nvim/plugged'
 let g:use_glyphs = 0 " Use fancy glyphs?
 
 call plug#begin(g:bundle_folder)
@@ -145,7 +157,7 @@ let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_semantic_triggers = {'haskell': ['.'], 'r': ['.', '$', 're![_a-zA-Z]+[_\w]*\.']}
 " Run ctags --fields=+l and YCM will look at tags files.
-let g:ycm_collect_identifiers_from_tags_files = 1
+" let g:ycm_collect_identifiers_from_tags_files = 1
  " }}}
 
 " Generate .ycm_extra_conf.py
@@ -163,11 +175,12 @@ let g:UltiSnipsExpandTrigger = '<C-j>'
 Plug 'honza/vim-snippets'
 
 " Load YCM and UltiSnips on first insert.
-augroup load_us_ycm
-  autocmd!
-  autocmd InsertEnter * call plug#load('UltiSnips', 'YouCompleteMe')
-                     \| call youcompleteme#Enable() | autocmd! load_us_ycm
-augroup END
+" TODO: Make this into a function so I can activate on demand.
+" augroup load_us_ycm
+"   autocmd!
+"   autocmd InsertEnter * call plug#load('UltiSnips', 'YouCompleteMe')
+"                      \| call youcompleteme#Enable() | autocmd! load_us_ycm
+" augroup END
 
 " End certain strutures automatically.
 Plug 'tpope/vim-endwise'

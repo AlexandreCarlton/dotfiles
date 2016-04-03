@@ -5,13 +5,14 @@ ghc/.ghc/ghci_history
 in-progress/
 psd/.config/psd/.psd.conf
 python/.config/python/python_history
+python/.config/pylint/pylint.d
 ssh/.ssh/id_rsa
 ssh/.ssh/id_rsa.pub
 ssh/.ssh/known_hosts
 systemd/.config/systemd/user/*.wants
-vim/.config/vim/autoload/
-vim/.config/vim/plugged
-vim/.config/vim/.netrwhist
+vim/.config/nvim/autoload/
+vim/.config/nvim/plugged
+vim/.config/nvim/.netrwhist
 xmonad/.xmonad/
 zsh/.config/zsh/.zcompcache
 zsh/.config/zsh/.zcompdump
