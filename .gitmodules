@@ -16,3 +16,6 @@
 [submodule "zsh/.config/zsh/.zprezto"]
 	path = zsh/.config/zsh/.zprezto
 	url = https://github.com/sorin-ionescu/prezto
+[submodule "tmux/.config/tmux/plugins/tpm"]
+	path = tmux/.config/tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm

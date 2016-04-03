@@ -10,6 +10,7 @@ ssh/.ssh/id_rsa
 ssh/.ssh/id_rsa.pub
 ssh/.ssh/known_hosts
 systemd/.config/systemd/user/*.wants
+tmux/.config/tmux/plugins/*
 vim/.config/nvim/autoload/
 vim/.config/nvim/plugged
 vim/.config/nvim/.netrwhist
