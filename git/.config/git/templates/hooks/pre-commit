@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# Uncomment this and insert the relevant testing command to enable pre-commit
+# checks.
+
+# "${GIT_DIR}/hooks/test-build-before-commit" 'make'
+# exit_status="$?"
+# if [ "${exit_status}" -ne '0' ] ; then
+#   exit "${exit_status}"
+# fi
