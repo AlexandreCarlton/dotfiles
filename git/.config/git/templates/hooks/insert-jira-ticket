@@ -13,17 +13,12 @@ get_ticket_from_branch() {
     sed --regexp-extended --quiet "s:${branch_pattern}:${ticket_dest}:p"
 }
 
-format_ticket() {
-  ticket="${1}"
-  printf '[%s]' "${ticket}"
-}
-
 insert_ticket() {
   local filepath="${1}"
   local branch="$(git symbolic-ref --short HEAD)"
   local ticket="$(get_ticket_from_branch "${branch}")"
   if [ -n "${ticket}" ]; then
-    sed --in-place "1s/^/$(format_ticket "${ticket}") /" "${filepath}"
+    sed --in-place "s/# Resolves:/Resolves: "${ticket}"/" "${filepath}"
   fi
 }
 
