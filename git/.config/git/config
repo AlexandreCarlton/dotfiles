@@ -71,7 +71,7 @@
 	# afterwards.
 	# Combined with automatic rebase on pull, this means we can pull on dirty
 	# trees.
-	autoStash = true
+	# autoStash = true
 
 [merge]
 
