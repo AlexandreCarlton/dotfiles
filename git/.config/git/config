@@ -100,3 +100,8 @@
 
 	# Output colour when written to the terminal
 	ui = auto
+
+[commit]
+
+	# Default commit message
+	template = /home/alexandre/.config/git/templates/commit_message
