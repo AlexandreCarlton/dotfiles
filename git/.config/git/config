@@ -104,4 +104,4 @@
 [commit]
 
 	# Default commit message
-	template = /home/alexandre/.config/git/templates/commit_message
+	template = ~/.config/git/templates/commit_message
