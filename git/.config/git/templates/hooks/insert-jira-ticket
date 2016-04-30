@@ -18,7 +18,7 @@ insert_ticket() {
   local branch="$(git symbolic-ref --short HEAD)"
   local ticket="$(get_ticket_from_branch "${branch}")"
   if [ -n "${ticket}" ]; then
-    sed --in-place "s/# Resolves:/Resolves: "${ticket}"/" "${filepath}"
+    sed --in-place "s/# References:/References "${ticket}"/" "${filepath}"
   fi
 }
 
