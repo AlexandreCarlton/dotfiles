@@ -6,6 +6,9 @@ in-progress/
 psd/.config/psd/.psd.conf
 python/.config/python/python_history
 python/.config/pylint/pylint.d
+retroarch/.config/retroarch/cores
+retroarch/.config/retroarch/database
+retroarch/.config/retroarch/content_history.lpl
 ssh/.ssh/id_rsa
 ssh/.ssh/id_rsa.pub
 ssh/.ssh/known_hosts
