@@ -12,7 +12,6 @@ if empty(glob('$XDG_CONFIG_HOME/nvim/autoload/plug.vim'))
 endif
 " }}}
 
-set foldmethod=syntax
 autocmd FileType vim set foldmethod=marker
 
 " Neovim/Vim settings {{{
@@ -150,11 +149,11 @@ Plug 'honza/vim-snippets'
 
 " Load YCM and UltiSnips on first insert.
 " TODO: Make this into a function so I can activate on demand.
-" augroup load_us_ycm
-"   autocmd!
-"   autocmd InsertEnter * call plug#load('UltiSnips', 'YouCompleteMe')
-"                      \| call youcompleteme#Enable() | autocmd! load_us_ycm
-" augroup END
+augroup load_us_ycm
+  autocmd!
+  autocmd InsertEnter * call plug#load('UltiSnips', 'YouCompleteMe')
+                     \| call youcompleteme#Enable() | autocmd! load_us_ycm
+augroup END
 
 " End certain strutures automatically.
 Plug 'tpope/vim-endwise'
