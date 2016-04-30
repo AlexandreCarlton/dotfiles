@@ -47,40 +47,14 @@ let g:use_glyphs = 0 " Use fancy glyphs?
 
 call plug#begin(g:bundle_folder)
 
-" Syntax {{{
-" TODO: Use NeoMake instead of Syntastic once NeoVim is ready.
-
 " Use ']l' and '[l' to cycle through errors (with vim-unimpaired)
-Plug 'scrooloose/syntastic' " {{{
-" Use nicer symbols (given in the docs).
-if g:use_glyphs
-    let g:syntastic_error_symbol = '✗'
-    let g:syntastic_warning_symbol = '⚠'
-else
-    let g:syntastic_error_symbol = 'x'
-    let g:syntastic_warning_symbol = '!'
-endif
-
-" Active mode runs SyntasticCheck on save or opened; passive does not.
-let g:syntastic_mode_map = { 'mode': 'active',
-                           \ 'active_filetypes': [],
-                           \ 'passive_filetypes': ['c', 'cpp'] }
-" Check on open.
-let g:syntastic_check_on_open = 0
-" Check on close.
-let g:syntastic_check_on_wq = 0
-" Update location-list automatically.
-let g:syntastic_always_populate_loc_list = 1
-" Automatically open when errors detected, close when none are detected.
-let g:syntastic_auto_loc_list = 1
-" Set the size of the error window to be smaller.
-let g:syntastic_loc_list_height = 5
-
-" Should think about distributing these out.
-" let g:syntastic_c_checkers = ['clang_checker', 'gcc']
-let g:syntastic_fortran_compiler = 'gfortran'
-let g:syntastic_fortran_compiler_options = '-std=f95'
-let g:syntastic_haskell_checkers = ['ghc_mod']
+Plug 'benekastah/neomake' " {{{
+autocmd! BufWritePost * Neomake
+" Open loclist when adding entries, preserving cursor
+let g:neomake_open_list = 2
+let g:neomake_list_height = 5
+let g:neomake_error_sign = {'text': 'x', 'texthl': 'ErrorMsg'}
+let g:neomake_warning_sign = {'text': '!', 'texthl': 'WarningMsg'}
 " }}}
 
 " Allows asynchronous execution (great for syntax checkers)
@@ -477,7 +451,7 @@ let g:lightline = {
     \     ['fugitive', 'gitgutter', 'filename']
     \   ],
     \   'right': [
-    \     ['syntastic', 'lineinfo'],
+    \     ['neomake', 'lineinfo'],
     \     ['percent'],
     \     ['fileformat', 'fileencoding', 'filetype'],
     \   ]
@@ -496,8 +470,10 @@ let g:lightline = {
     \   'mode': 'MyMode',
     \   'fugitive': 'MyFugitive',
     \   'gitgutter': 'MyGitGutter',
+    \   'neomake': 'neomake#statusline#LoclistStatus',
     \ },
     \ 'component_type': {
+    \   'neomake': 'error',
     \   'syntastic': 'error',
     \ },
     \ 'separator': { 'left': '', 'right': '' },
