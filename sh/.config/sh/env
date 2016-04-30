@@ -30,6 +30,9 @@ export SPACEMACSDIR="${XDG_CONFIG_HOME}/spacemacs"
 # Use vimrc in a non-default location
 export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/nvim/init.vim" | source $MYVIMRC'
 
+# Npm
+export NPM_CONFIG_USERCONFIG="${XDG_CONFIG_HOME}/npm/npmrc"
+
 # Python
 export PYTHONSTARTUP="${XDG_CONFIG_HOME}/python/pythonrc"
 export PYLINTRC="${XDG_CONFIG_HOME}/pylint/pylintrc"
