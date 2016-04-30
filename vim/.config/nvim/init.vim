@@ -229,21 +229,28 @@ Plug 'fatih/vim-go', {'for': 'go'}
 " Haskell {{{
 " Check out begriffs/haskell-vim-now for configs / haskell packages.
 
-" Haskell plugins
-Plug 'dag/vim2hs', {'for': 'haskell'}
+" Syntax highlighting & indentation for Haskell/Cabal
+Plug 'neovimhaskell/haskell-vim', {'for': 'haskell'}
 
-" Haskell plugin to display error messages
+" Haskell plugins
+" Plug 'dag/vim2hs', {'for': 'haskell'}
+
+" Haskell plugin that can display:
+"  - type of sub-expressions (what we chiefly use it for)
+"  - warnings/errors
+"  - expansion of splices
+"  - Insert split function cases
 " Needs vimproc.vim and ghc-mod
-Plug 'eagletmt/ghcmod-vim', {'for': 'haskell'}
+Plug 'eagletmt/ghcmod-vim', {'on': 'GhcModType'}
 
 " Completion plugin for Haskell using ghc-mod
 Plug 'eagletmt/neco-ghc', {'for': 'haskell'} " {{{
-let g:necoghc_enable_detailed_browse = 1
+let g:necoghc_enable_detailed_browse = 0
 autocmd FileType haskell set omnifunc=necoghc#omnifunc " YouCompleteMe/NeoComplete
 " }}}
 
 " Hoogle (Haskell query plugin)
-Plug 'Twinside/vim-hoogle', {'for': 'haskell'}
+Plug 'Twinside/vim-hoogle', {'on': 'Hoogle'}
 
 " }}}
 
