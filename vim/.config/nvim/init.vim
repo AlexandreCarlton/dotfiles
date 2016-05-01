@@ -46,6 +46,8 @@ let g:use_glyphs = 0 " Use fancy glyphs?
 
 call plug#begin(g:bundle_folder)
 
+" Syntax {{{
+
 " Use ']l' and '[l' to cycle through errors (with vim-unimpaired)
 Plug 'benekastah/neomake' " {{{
 autocmd! BufWritePost * Neomake
@@ -239,8 +241,13 @@ Plug 'othree/html5.vim', { 'for': ['html', 'xhtml'] }
 
 " Interface {{{
 
-" General settings {{{
-"
+" Exclude quickfix list from buffer navigation.
+augroup qf
+  autocmd!
+  autocmd FileType qf set nobuflisted
+augroup END
+
+
 " Make searches case-insensitive.
 set ignorecase
 
@@ -263,7 +270,6 @@ set cursorline
 
 " Highlight nth column as a guideline for maximum space
 set colorcolumn=80
-" }}}
 
 " Handles csv files.
 Plug 'chrisbra/csv.vim', { 'for' : 'csv' }
