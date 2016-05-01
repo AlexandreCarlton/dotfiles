@@ -25,10 +25,10 @@
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue) <%an>%Creset' --abbrev-commit
 
 	# Brief status
-	st = status -sb
+	st = status --branch --short
 
 	# Edit config
-	edit-config = config --global -e
+	edit-config = config --global --edit
 
 	# Reverts any changes to a file
 	restore-file = checkout --
