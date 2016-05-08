@@ -393,18 +393,17 @@ nnoremap <Leader>bn :bnext<cr>
 nnoremap <Leader>bp :bprevious<cr>
 nnoremap <Leader>bd :bdelete<cr>
 
-nnoremap <Leader>tt :TagbarToggle<cr>
-nnoremap <Leader>ts :SyntasticToggleMode<cr>
-nnoremap <Leader>en :NeoCompleteEnable<cr>
+" Plugin mappings - keybindings are influenced by the first thing I think of
+" when trying to use it
+nnoremap <Leader>tb :TagbarToggle<cr>
 nnoremap <Leader>tggh :GitGutterLineHighlightsToggle<cr>
-nnoremap <Leader>rc :VimuxPromptCommand<cr>
-nnoremap <Leader>rl :VimuxRunLastCommand<cr>
-nnoremap <Leader>ua :Unite grep:.<cr>
-nnoremap <Leader>uf :Unite -start-insert file_rec/async:!<cr>
-nnoremap <Leader>f :VimFilerExplorer<cr>
-nnoremap <Leader>yf :YcmCompleter FixIt<cr>
+nnoremap <Leader>gr :Grepper<cr>
+nnoremap <Leader>ud :UndotreeToggle<cr>
+nnoremap <Leader>fe :VimFilerExplorer<cr>
+nnoremap <Leader>fzf :FZF<cr>
+nnoremap <Leader>fi :YcmCompleter FixIt<cr>
 " Consider nnoremap <buffer> <silent> <C-]> :YcmCompleter GoTo<cr>
-nnoremap <Leader>yg :YcmCompleter GoTo<cr>
+nnoremap <Leader>gt :YcmCompleter GoTo<cr>
 
 " }}}
 
@@ -430,6 +429,26 @@ Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
 
 " Rust {{{
 Plug 'rust-lang/rust.vim', {'for': 'rust'}
+" }}}
+
+" Searching (& Exploring) {{{
+
+" General interface to many useful things
+Plug 'Shougo/unite.vim', {'on': ['Unite', 'VimFilerExplorer']}
+
+" File explorer (depends on Unite)
+Plug 'Shougo/vimfiler.vim', {'on': 'VimFilerExplorer'}
+let g:vimfiler_as_default_explorer = 1
+
+" Fuzy searh finder
+" Due to its frankly shocking directory layout, we use our package manager to
+" download fzf.
+Plug 'junegunn/fzf'
+
+" Grep things easily, autodetects tools
+" Asynchronous support with neovim
+Plug 'mhinz/vim-grepper'
+
 " }}}
 
 " Statusline {{{
@@ -589,25 +608,6 @@ Plug 'tpope/vim-dispatch', {'on': ['Make', 'Dispatch', 'Start'] }
 
 " Syntax highlighting
 Plug 'Keithbsmiley/tmux.vim'
-
-" }}}
-
-" Unite (and plugins that depend on it) {{{
-Plug 'Shougo/unite.vim', {'on': ['Unite', 'VimFilerExplorer']}
-
-Plug 'Shougo/vimfiler.vim', {'on': 'VimFilerExplorer'}
-let g:vimfiler_as_default_explorer = 1
-
-" Use ag or ack if available
-" if executable('ag')
-"   let g:unite_source_grep_command = 'ag'
-"   let g:source_grep_default_opts = '--line-numbers --nocolor --nogroup'
-" elseif executable('ack')
-"   let g:unite_source_grep_command = 'ack'
-" elseif executable('ack-grep')
-"   let g:unite_source_grep_command = 'ack-grep'
-" endif
-
 
 " }}}
 
