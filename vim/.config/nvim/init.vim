@@ -8,7 +8,11 @@
 if empty(glob('$XDG_CONFIG_HOME/nvim/autoload/plug.vim'))
     silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
       \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    if executable('pip')
+      silent !pip install --user neovim
+    endif
     autocmd VimEnter * PlugInstall | source $MYVIMRC
+
 endif
 " }}}
 
@@ -50,7 +54,7 @@ call plug#begin(g:bundle_folder)
 
 " Use ']l' and '[l' to cycle through errors (with vim-unimpaired)
 Plug 'benekastah/neomake' " {{{
-autocmd! BufWritePost * Neomake
+autocmd! BufEnter,BufWritePost * Neomake
 " Open loclist when adding entries, preserving cursor
 let g:neomake_open_list = 2
 let g:neomake_list_height = 5
@@ -342,7 +346,7 @@ let g:LatexBox_quickfix = 2
 " Mappings {{{
 
 " Align text with 'gaip='
-Plug 'junegunn/vim-easy-align' " {{{
+Plug 'junegunn/vim-easy-align', {'on': ['<Plug>EasyAlign', 'EasyAlign']} " {{{
 " Start interactive EasyAlign in visual mode.
 xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for motion/text object.
@@ -487,9 +491,6 @@ let g:lightline = {
     \   'filetype': '%{strlen(&ft) ? &ft : "no ft"}',
     \   'tagbar': '%{exists("*tagbar#currenttag") ? tagbar#currenttag("%s", "", "f") : ""}',
     \ },
-    \ 'component_expand': {
-    \   'syntastic': 'SyntasticStatuslineFlag',
-    \ },
     \ 'component_function': {
     \   'mode': 'MyMode',
     \   'fugitive': 'MyFugitive',
@@ -498,7 +499,6 @@ let g:lightline = {
     \ },
     \ 'component_type': {
     \   'neomake': 'error',
-    \   'syntastic': 'error',
     \ },
     \ 'separator': { 'left': '', 'right': '' },
     \ 'subseparator': { 'left': '|', 'right': '|' }
