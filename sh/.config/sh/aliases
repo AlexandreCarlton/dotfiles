@@ -27,6 +27,11 @@ alias auri='sudo aura --aursync --unsuppress'
 alias aurU='sudo aura --aursync --diff --sysupgrade --delmakedeps --unsuppress'
 alias aurs='aura --aursync --search'
 
+# fasd
+eval "$(fasd --init posix-alias)"
+alias v="f -e ${VISUAL}"
+alias o='a -e xdg-open'
+
 # Helper aliases/exports when working on Chromium.
 # . "${XDG_CONFIG_HOME}/sh/chromium"
 

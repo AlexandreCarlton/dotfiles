@@ -36,6 +36,7 @@ zstyle ':prezto:load' pmodule \
   'autosuggestions' \
   'prompt' \
   'pacman' \
+  'fasd' \
   'git'
 
 #
