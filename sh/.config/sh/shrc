@@ -10,12 +10,14 @@
 # Attach to existing tmux session if not already in one.
 # Doing this early prevents the original shell from executing everything
 # beneath until the user detaches.
-if [ -x /usr/bin/tmux ] && [ -z "$TMUX" ]; then
+if test -x /usr/bin/tmux  && test -z "${TMUX}" ; then
     # Bug: On login, this automatically attaches to the linux console
     # which is marginally smaller than the rxvt terminal.
     # Since tmux's window decreases to the smallest one, our window is small
     # until we detach the old linux connection.
-    [ $TERM != "linux" ] && tmux attach
+    if test "${TERM}" != 'linux'; then
+      tmux attach
+    fi
 fi
 
 . "${HOME}/.config/sh/aliases"
@@ -26,6 +28,6 @@ fi
 # base16_file="$HOME/.config/base16/shell/base16-${base16_scheme}.dark.sh"
 # [[ -s $base16_file ]] && . $base16_file
 
-if [ -x /usr/bin/cowsay ] && [ -x /usr/bin/fortune ]; then
+if test -x /usr/bin/cowsay  && test -x /usr/bin/fortune ; then
     fortune | cowsay -n -f tux
 fi

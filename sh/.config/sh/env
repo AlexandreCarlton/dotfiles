@@ -2,11 +2,18 @@
 
 # Set environment variables
 
-[ -z "${LANG}" ] && export LANG='en_US.UTF-8'
+if test -z "${LANG}" ; then
+  export LANG='en_US.UTF-8'
+fi
 
 export XDG_CONFIG_HOME="${HOME}/.config"
 export XDG_CACHE_HOME="${HOME}/.cache"
 export XDG_DATA_HOME="${HOME}/.local/share"
+
+# Editing
+export EDITOR='vim'
+export USE_EDITOR="${EDITOR}"
+export VISUAL="${EDITOR}"
 
 # For zsh files
 export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
@@ -28,7 +35,7 @@ export LESSHISTFILE="${XDG_CACHE_HOME}/less/history"
 export SPACEMACSDIR="${XDG_CONFIG_HOME}/spacemacs"
 
 # Use vimrc in a non-default location
-export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/nvim/init.vim" | source $MYVIMRC'
+export VIMINIT='let $MYVIMRC="${XDG_CONFIG_HOME}/nvim/init.vim" | source $MYVIMRC'
 
 # Npm
 export NPM_CONFIG_USERCONFIG="${XDG_CONFIG_HOME}/npm/npmrc"
@@ -52,11 +59,7 @@ export CCACHE_CONFIGPATH="${XDG_CONFIG_HOME}/ccache.conf"
 # Urxvt - consider, like tmux, making another folder for extra daemons.
 export RXVT_SOCKET="${XDG_RUNTIME_DIR}/urxvtd-${HOST}"
 
-
-export EDITOR='vim'
-export USE_EDITOR="${EDITOR}"
-export VISUAL="${EDITOR}"
-
 export BROWSER='chromium'
 
-. "${HOME}/.config/sh/path"
+# Remove this, put a note at the top saying it should go in profile?
+. "${XDG_CONFIG_HOME}/sh/path"

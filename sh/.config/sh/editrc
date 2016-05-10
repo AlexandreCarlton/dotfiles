@@ -4,8 +4,8 @@
 # having to type out its XDG path).
 # Also to prevent exiting a file and opening it up again with sudo.
 
-if [ -z ${EDITOR} ]; then
-  export ${EDITOR}='vim'
+if test -z "${EDITOR}" ; then
+  export EDITOR='vim'
 fi
 
 alias vimrc="${EDITOR} ${XDG_CONFIG_HOME}/nvim/init.vim"

@@ -4,10 +4,10 @@
 # Try to keep this Fish-compatible, if possible.
 
 # Pesky permissions
+# This won't work in fish, unfortunately.
 alias ffs='eval "sudo -E $(fc -ln -1)"'
 
 # Start R without the startup prompt.
-
 alias R='R --quiet'
 
 # Tmux
@@ -21,6 +21,7 @@ alias aurU='sudo aura --aursync --diff --sysupgrade --delmakedeps --unsuppress'
 alias aurs='aura --aursync --search'
 
 # fasd
+# This won't work in fish either.
 eval "$(fasd --init posix-alias)"
 alias v="f -e ${VISUAL}"
 alias o='a -e xdg-open'

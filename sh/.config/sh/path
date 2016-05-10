@@ -10,17 +10,17 @@ LD_LIBRARY_PATH="${HOME}/.local/lib:${LD_LIBRARY_PATH}"
 
 
 # Cabal (Haskell)
-if [ -d "${HOME}/.cabal" ]; then
+if test -d "${HOME}/.cabal" ; then
   PATH="${HOME}/.cabal/bin:${PATH}"
 fi
 
 # Gem (Ruby)
-if [ -d "${HOME}/.gem/ruby/2.3.0" ]; then
+if test -d "${HOME}/.gem/ruby/2.3.0" ; then
   PATH="${HOME}/.gem/ruby/2.3.0/bin:${PATH}"
 fi
 
 # Linuxbrew (if you're sadistic enough to not instead use Nix)
-if [ -d "${HOME}/.linuxbrew" ]; then
+if test -d "${HOME}/.linuxbrew" ; then
   PATH="${HOME}/.linuxbrew/bin:${PATH}"
   PATH="${HOME}/.linuxbrew/sbin:${PATH}"
   LD_LIBRARY_PATH="${HOME}/.linuxbrew/lib:${LD_LIBRARY_PATH}"
@@ -31,5 +31,9 @@ fi
 
 export PATH
 export LD_LIBRARY_PATH
-[ -n "$MANPATH" ] && export MANPATH
-[ -n "$INFOPATH" ] && export INFOPATH
+if test -n "${MANPATH}" ; then
+  export MANPATH
+fi
+if test -n "${INFOPATH}" ; then
+  export INFOPATH
+fi

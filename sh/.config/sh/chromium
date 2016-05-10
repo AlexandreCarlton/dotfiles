@@ -9,10 +9,10 @@ DEPOT_TOOLS_DIR="${HOME}/depot_tools"
 release_dir="${CHROMIUM_DIR}/src/out/Release"
 ninja_opts="-j 1000 -C ${RELEASE_DIR}"
 
-if [ ! -d "${CHROMIUM_DIR}" ]; then
+if test ! -d "${CHROMIUM_DIR}" ; then
     echo "Could not locate Chromium folder (${CHROMIUM_DIR})."
     return
-elif [ ! -d "${DEPOT_TOOLS_DIR}" ]; then
+elif test ! -d "${DEPOT_TOOLS_DIR}" ; then
     echo "Could not find depot_tools folder for Chromium (${DEPOT_TOOLS_DIR})."
     return
 fi

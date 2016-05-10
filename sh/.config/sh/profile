@@ -8,7 +8,7 @@
 . "${HOME}/.config/sh/path"
 
 # Source Nix user profile.
-if [ -s "${HOME}/.nix-profile/etc/profile.d/nix.sh" ]; then
+if test -s "${HOME}/.nix-profile/etc/profile.d/nix.sh" ; then
   . "${HOME}/.nix-profile/etc/profile.d/nix.sh"
 fi
 
