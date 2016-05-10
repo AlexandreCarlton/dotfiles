@@ -21,7 +21,6 @@ if test -x /usr/bin/tmux  && test -z "${TMUX}" ; then
 fi
 
 . "${HOME}/.config/sh/aliases"
-. "${HOME}/.config/sh/functions"
 
 # Base16-shell
 # base16_scheme="solarized"
