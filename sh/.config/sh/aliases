@@ -10,13 +10,6 @@ alias ffs='eval "sudo -E $(fc -ln -1)"'
 
 alias R='R --quiet'
 
-# Create aliases for nmcli for easy use of wifi.
-alias nmcon='nmcli -p con up id'
-alias nmlist='nmcli -p dev wifi'
-
-# Neovim
-[ -n "$(command -v nvim)" ] && alias vim='nvim'
-
 # Tmux
 alias ta='tmux attach'
 alias td='tmux detach'
