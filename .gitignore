@@ -1,6 +1,9 @@
 emacs/.emacs.d/
+fish/.config/fish/completions/
+fish/.config/fish/conf.d/
 fish/.config/fish/fish_history
 fish/.config/fish/fishd.*
+fish/.config/fish/functions/
 ghc/.ghc/ghci_history
 in-progress/
 psd/.config/psd/.psd.conf

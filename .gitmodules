@@ -19,6 +19,3 @@
 [submodule "tmux/.config/tmux/plugins/tpm"]
 	path = tmux/.config/tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
-[submodule "fish/.local/share/fisherman"]
-	path = fish/.local/share/fisherman
-	url = https://github.com/fisherman/fisherman
