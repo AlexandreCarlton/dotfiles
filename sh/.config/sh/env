@@ -44,6 +44,8 @@ export NPM_CONFIG_USERCONFIG="${XDG_CONFIG_HOME}/npm/npmrc"
 export PYTHONSTARTUP="${XDG_CONFIG_HOME}/python/pythonrc"
 export PYLINTRC="${XDG_CONFIG_HOME}/pylint/pylintrc"
 export PYLINTHOME="${XDG_CONFIG_HOME}/pylint/pylint.d"
+# Unfortunately both data and config are in this directory.
+export IPYTHONDIR="${XDG_CONFIG_HOME}/ipython"
 
 # Tmux - consider appending '/tmux' if we need more than one instance.
 export TMUX_TMPDIR="${XDG_RUNTIME_DIR}"
