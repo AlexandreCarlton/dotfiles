@@ -324,6 +324,9 @@ endif
 
 " }}}
 
+" Sane buffer deletion on :Sayonara
+Plug 'mhinz/vim-sayonara', {'on': 'Sayonara'}
+
 " }}}
 
 " JavaScript {{{
@@ -416,6 +419,7 @@ nnoremap <Leader>fzf :FZF<cr>
 nnoremap <Leader>fi :YcmCompleter FixIt<cr>
 " Consider nnoremap <buffer> <silent> <C-]> :YcmCompleter GoTo<cr>
 nnoremap <Leader>gt :YcmCompleter GoTo<cr>
+nnoremap <Leader>q :Sayonara<cr>
 
 " }}}
 
