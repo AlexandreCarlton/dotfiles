@@ -459,7 +459,9 @@ Plug 'mhinz/vim-grepper'
 
 " Better buffertab
 Plug 'ap/vim-buftabline' " {{{
-let g:buftabline_show = 1 " Only show if there are 2 or more buffers.
+let g:buftabline_show = 2 " Always show buffers (less disjointed on enter)
+let g:buftabline_numbers = 1 " Show buffer numbers in label
+let g:buftabline_indicators = 1 " Show buffer state in label
 " }}}
 
 " Even more lightweight and configurable than airline
