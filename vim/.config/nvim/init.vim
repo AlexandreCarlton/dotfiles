@@ -488,6 +488,7 @@ let g:lightline = {
     \   'lineinfo': '%3l:%-2c',
     \   'readonly': '%{&readonly ? "RO" : ""}',
     \   'fileencoding': '%{strlen(&fenc) ? &fenc : &enc}',
+    \   'filename': '%{expand("%:p:.")}',
     \   'filetype': '%{strlen(&ft) ? &ft : "no ft"}',
     \   'tagbar': '%{exists("*tagbar#currenttag") ? tagbar#currenttag("%s", "", "f") : ""}',
     \ },
