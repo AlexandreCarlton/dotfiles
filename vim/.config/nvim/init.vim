@@ -55,11 +55,19 @@ call plug#begin(g:bundle_folder)
 " Use ']l' and '[l' to cycle through errors (with vim-unimpaired)
 Plug 'benekastah/neomake' " {{{
 autocmd! BufEnter,BufWritePost * Neomake
+
+" Have YouCompleteMe handle syntax checking for C-family languages
+let g:neomake_c_enabled_makers = []
+let g:neomake_cpp_enabled_makers = []
+let g:neomake_objc_enabled_makers = []
+let g:neomake_objcpp_enabled_makers = []
+
 " Open loclist when adding entries, preserving cursor
 let g:neomake_open_list = 2
 let g:neomake_list_height = 5
 let g:neomake_error_sign = {'text': 'x', 'texthl': 'ErrorMsg'}
 let g:neomake_warning_sign = {'text': '!', 'texthl': 'WarningMsg'}
+
 " }}}
 
 " Allows asynchronous execution (great for syntax checkers)
