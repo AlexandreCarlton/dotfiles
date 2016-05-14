@@ -7,8 +7,8 @@
 [submodule "colours/.config/base16/xresources"]
 	path = colours/.config/base16/xresources
 	url = https://github.com/chriskempson/base16-xresources
-[submodule "X/.Xresources.d/colours/solarized"]
-	path = X/.Xresources.d/colours/solarized
+[submodule "X/.config/X11/colours/solarized"]
+	path = X/.config/X11/colours/solarized
 	url = https://github.com/solarized/xresources.git
 [submodule "steam/.local/share/Steam/skins/Air"]
 	path = steam/.local/share/Steam/skins/Air

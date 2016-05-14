@@ -1,7 +1,7 @@
 ! These files are symlinks to files in the colours and fonts folders.
 ! It is necessary to create a file for a colourscheme or font, obviously.
-#include "/home/alexandre/.Xresources.d/colour"
-#include "/home/alexandre/.Xresources.d/font"
+#include "/home/alexandre/.config/X11/colour"
+#include "/home/alexandre/.config/X11/font"
 
 #include "/home/alexandre/.config/X11/URxvt"
 
