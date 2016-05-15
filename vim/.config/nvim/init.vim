@@ -418,7 +418,7 @@ nnoremap <Leader>tggh :GitGutterLineHighlightsToggle<cr>
 nnoremap <Leader>gr :Grepper<cr>
 nnoremap <Leader>ud :UndotreeToggle<cr>
 nnoremap <Leader>fe :VimFilerExplorer<cr>
-nnoremap <Leader>fzf :FZF<cr>
+nnoremap <Leader>ff :FZF<cr>
 nnoremap <Leader>fi :YcmCompleter FixIt<cr>
 " Consider nnoremap <buffer> <silent> <C-]> :YcmCompleter GoTo<cr>
 nnoremap <Leader>gt :YcmCompleter GoTo<cr>
