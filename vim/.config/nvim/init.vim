@@ -403,6 +403,9 @@ map <C-h> <C-w>h
 " Change leader to space to allow easier transitioning with spacemacs.
 let mapleader=" "
 
+" Press 'q' to close quickfix/location lists, similar to VimFiler/TagBar
+autocmd FileType qf map <buffer> q :quit<cr>
+
 " Buffers; alternatively, [b or ]b
 nnoremap <Leader>bn :bnext<cr>
 nnoremap <Leader>bp :bprevious<cr>
