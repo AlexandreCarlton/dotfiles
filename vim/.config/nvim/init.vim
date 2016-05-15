@@ -44,6 +44,8 @@ else
 endif
 " }}}
 set undofile
+" Where we save bookmarks and history.
+let g:netrw_home='$XDG_CACHE_HOME/nvim'
 
 let g:bundle_folder='$XDG_CONFIG_HOME/nvim/plugged'
 let g:use_glyphs = 0 " Use fancy glyphs?
