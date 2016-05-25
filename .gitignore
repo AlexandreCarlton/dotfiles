@@ -7,8 +7,6 @@ fish/.config/fish/functions/
 ghc/.ghc/ghci_history
 in-progress/
 psd/.config/psd/.psd.conf
-python/.config/python/python_history
-python/.config/pylint/pylint.d
 retroarch/.config/retroarch/cores
 retroarch/.config/retroarch/database
 retroarch/.config/retroarch/content_history.lpl

@@ -14,8 +14,7 @@ import atexit
 readline.parse_and_bind('tab: complete')
 
 # History
-
-HISTFILE='{0}/.config/python/python_history'.format(os.environ['HOME'])
+HISTFILE='{0}/python/history'.format(os.environ['XDG_DATA_HOME'])
 
 try:
     readline.read_history_file(HISTFILE)

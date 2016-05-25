@@ -42,8 +42,8 @@ export NPM_CONFIG_USERCONFIG="${XDG_CONFIG_HOME}/npm/npmrc"
 
 # Python
 export PYTHONSTARTUP="${XDG_CONFIG_HOME}/python/pythonrc"
-export PYLINTRC="${XDG_CONFIG_HOME}/pylint/pylintrc"
-export PYLINTHOME="${XDG_CONFIG_HOME}/pylint/pylint.d"
+# This folder is automatically created for you.
+export PYLINTHOME="${XDG_DATA_HOME}/pylint"
 # Unfortunately both data and config are in this directory.
 export IPYTHONDIR="${XDG_CONFIG_HOME}/ipython"
 
