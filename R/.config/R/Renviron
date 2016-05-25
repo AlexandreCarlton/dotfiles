@@ -1,0 +1,3 @@
+R_PROFILE_USER="${XDG_CONFIG_HOME}/R/Rprofile"
+R_LIBS_USER="${XDG_DATA_HOME}/R/library"
+R_HISTFILE="${XDG_DATA_HOME}/R/Rhistory"

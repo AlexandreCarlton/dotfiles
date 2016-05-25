@@ -1,0 +1,21 @@
+# vim:ft=r:
+
+# Set default CRAN repo so we don't have to pick every time.
+local({r <- getOption("repos")
+       r["CRAN"] <- "http://cran.csiro.au"
+       options(repos=r)})
+
+# Prevent strings in data frame from being automatically converted to factor
+# variables. For more info, see:
+# http://simplystatistics.org/2015/07/24/stringsasfactors-an-unauthorized-biography
+options(stringsAsFactors=FALSE)
+
+# Prefer printing in fixed (as opposed to exponential) notation.
+options(scipen=10)
+
+# Limit what you can print so you don't wait for a dataframe to finish
+# displaying.
+options(max.print=100)
+
+# Don't show graphics menus (like when selecting a CRAN mirror).
+options(menu.graphics=FALSE)

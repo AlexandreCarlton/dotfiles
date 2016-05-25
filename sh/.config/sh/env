@@ -47,6 +47,9 @@ export PYLINTHOME="${XDG_CONFIG_HOME}/pylint/pylint.d"
 # Unfortunately both data and config are in this directory.
 export IPYTHONDIR="${XDG_CONFIG_HOME}/ipython"
 
+# R
+export R_ENVIRON_USER="${XDG_CONFIG_HOME}/R/Renviron"
+
 # Tmux - consider appending '/tmux' if we need more than one instance.
 export TMUX_TMPDIR="${XDG_RUNTIME_DIR}"
 
