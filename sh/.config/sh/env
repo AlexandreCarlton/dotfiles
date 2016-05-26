@@ -67,6 +67,9 @@ export CCACHE_CONFIGPATH="${XDG_CONFIG_HOME}/ccache.conf"
 # Urxvt - consider, like tmux, making another folder for extra daemons.
 export RXVT_SOCKET="${XDG_RUNTIME_DIR}/urxvtd-${HOST}"
 
+# X11
+export XAUTHORITY="${XDG_RUNTIME_DIR}/X11/Xauthority"
+
 export BROWSER='chromium'
 
 # Remove this, put a note at the top saying it should go in profile?
