@@ -27,6 +27,9 @@ export NO_AT_BRIDGE='1'
 # Bspwm
 export BSPWM_SOCKET="${XDG_RUNTIME_DIR}/bspwm-${HOST}"
 
+# Ctags
+export CTAGS="--options=${XDG_CONFIG_HOME}/ctags.conf"
+
 # TODO: Create a new file "xdg_dirs" for stuff like this.
 # Prevent less from storing history in .lesshst file
 export LESSHISTFILE="${XDG_CACHE_HOME}/less/history"
