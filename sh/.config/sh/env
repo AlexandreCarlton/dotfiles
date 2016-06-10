@@ -1,11 +1,21 @@
 #!/bin/sh
 
 # Set environment variables
+# As a general rule of thumb, the applications should be configured in files
+# instead of environment variables; as such, these merely force the applications
+# in question to point to the correct files (which then set everything else).
+
+
+# TODO: Split these out into an environment.d/ folder and source all files
+# present in it, so we only export the relevant variables for folders we have
+# stowed.
 
 if test -z "${LANG}" ; then
   export LANG='en_US.UTF-8'
 fi
 
+# Consider using xdg-user-dirs if a major application needs it.
+# It creates these directories in early login phase.
 export XDG_CONFIG_HOME="${HOME}/.config"
 export XDG_CACHE_HOME="${HOME}/.cache"
 export XDG_DATA_HOME="${HOME}/.local/share"
@@ -14,6 +24,9 @@ export XDG_DATA_HOME="${HOME}/.local/share"
 export EDITOR='vim'
 export USE_EDITOR="${EDITOR}"
 export VISUAL="${EDITOR}"
+
+# Browsing
+export BROWSER='chromium'
 
 # For zsh files
 export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
@@ -62,6 +75,7 @@ export QT_STYLE_OVERRIDE='GTK+'
 # Used by QT4 to know which rc to use.
 export GTK2_RC_FILES="${HOME}/.gtkrc-2.0"
 
+# Ccache
 export CCACHE_CONFIGPATH="${XDG_CONFIG_HOME}/ccache.conf"
 
 # Distcc
@@ -72,8 +86,6 @@ export RXVT_SOCKET="${XDG_RUNTIME_DIR}/urxvtd-${HOST}"
 
 # X11
 export XAUTHORITY="${XDG_RUNTIME_DIR}/X11/Xauthority"
-
-export BROWSER='chromium'
 
 # Remove this, put a note at the top saying it should go in profile?
 . "${XDG_CONFIG_HOME}/sh/path"
