@@ -64,6 +64,9 @@ export GTK2_RC_FILES="${HOME}/.gtkrc-2.0"
 
 export CCACHE_CONFIGPATH="${XDG_CONFIG_HOME}/ccache.conf"
 
+# Distcc
+export DISTCC_DIR="${XDG_RUNTIME_DIR}/distcc"
+
 # Urxvt - consider, like tmux, making another folder for extra daemons.
 export RXVT_SOCKET="${XDG_RUNTIME_DIR}/urxvtd-${HOST}"
 
