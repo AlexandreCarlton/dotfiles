@@ -19,3 +19,7 @@ options(max.print=100)
 
 # Don't show graphics menus (like when selecting a CRAN mirror).
 options(menu.graphics=FALSE)
+
+
+# TODO: Load dplyr & ggplot2
+# dplyr: http://www.onthelambda.com/2014/02/10/how-dplyr-replaced-my-most-common-r-idioms
