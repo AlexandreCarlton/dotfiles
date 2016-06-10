@@ -375,6 +375,10 @@ let g:sneak#streak = 1
 " Use gcc to toggle comments.
 Plug 'tpope/vim-commentary' ", {'on': '<Plug>Commentary'}
 
+" Better sed with Subvert
+" Allows changing of snake, mixed and camel case.
+Plug 'tpope/vim-abolish'
+
 " Defaults everyone can agree on.
 Plug 'tpope/vim-sensible'
 
