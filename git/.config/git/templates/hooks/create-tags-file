@@ -11,9 +11,9 @@ trap 'rm -f "${git_dir}/${pid}.tags"' EXIT
 
 git ls-files |\
   ctags -L - \
-    --exclude=.git \
     --links \
     --tag-relative \
+    --recurse=no \
     -f "${git_dir}/${pid}.tags"
 
 mv "${git_dir}/${pid}.tags" "${git_dir}/tags"
