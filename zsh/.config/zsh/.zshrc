@@ -10,3 +10,7 @@
 # Prezto setup
 [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]] \
   && source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+
+
+# Consider using Zim, seems to be a more minimal Prezto.
+# Or Zgen, as we can add plugins from other frameworks; way more flexible.
