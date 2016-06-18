@@ -1,9 +1,0 @@
-[Unit]
-Description=udiskie
-Documentation=man:udiskie(8)
-
-[Service]
-ExecStart=/usr/bin/udiskie --verbose
-
-[Install]
-WantedBy=desktop.target
