@@ -108,3 +108,6 @@
 
 	# Default commit message
 	template = ~/.config/git/templates/commit_message
+
+	# Always show the diff in the commit message (commented out)
+	verbose = true
