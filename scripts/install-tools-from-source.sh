@@ -4,8 +4,6 @@
 # Useful for when we're on a reaaaally old server.
 # Like, who even uses RHEL5 anymore?
 
-# Assumes all tar extracted folders are of the form <binary>-<version>
-
 BASE_FOLDER="${HOME}/extracted_tarballs"
 PREFIX="${HOME}/.local"
 
@@ -17,6 +15,9 @@ get_url() {
   case "${binary}" in
     'fish')
       url="https://fishshell.com/files/${version}/fish-${version}.tar.gz"
+      ;;
+    'libevent')
+      url="https://github.com/libevent/libevent/releases/download/release-${version}-stable/libevent-${version}-stable.tar.gz"
       ;;
     'stow')
       url="$(gnu_url 'stow' "${version}")"
@@ -41,11 +42,20 @@ gnu_url() {
     "${binary}" "${binary}" "${version}"
 }
 
+get_folder_from_url() {
+  local url="${1}"
+  # TODO: Make more flexible if necessary; see commit log for this line.
+  local pattern='.*/([a-z]+-[0-9.]+[a-z\-]*)\.tar\.gz.*'
+  local folder='\1'
+  printf '%s' "${url}" |\
+    sed --regexp-extended --quiet "s|${pattern}|${folder}|p"
+}
+
 create_build_folder() {
   local url="${1}"
   printf 'Downloading and extracting %s...\n' "${url}"
   cd "${BASE_FOLDER}" || exit
-  # --silent
+
   curl --silent --location "${url}" |\
     tar --extract --gzip
 }
@@ -62,14 +72,18 @@ make_folder() {
 
 install_from_url() {
   local url="${1}"
-  local folder="${2}"
-  local configure_options="${@:3}"
+  local configure_options="${@:2}"
 
-  if [ ! -d "${folder}" ]; then
+  local folder="$(get_folder_from_url "${url}")"
+  if [ -z "${folder}" ]; then
+    printf 'Could not extract folder name from url "%s".\n' "${url}"
+    return
+  elif [ ! -d "${folder}" ]; then
     create_build_folder "${url}"
   else
     printf 'Folder %s already present, skipping download and extraction...\n' "${folder}"
   fi
+
   make_folder "${folder}" "${configure_options}"
 }
 
@@ -78,11 +92,10 @@ install_binary() {
   local version="${2}"
   local configure_options="${@:3}"
 
-  local folder="${binary}-${version}"
   local url
   url="$(get_url "${binary}" "${version}")"
   if [ -n "${url}" ]; then
-    install_from_url "${url}" "${folder}" "${configure_options}"
+    install_from_url "${url}" "${configure_options}"
   else
     printf 'No configuration for %s configured; skipping.\n' "${binary}"
   fi
@@ -91,6 +104,7 @@ install_binary() {
 
 # mkdir -p "${BASE_FOLDER}"
 # install_binary 'stow' '2.2.2'
+# install_binary 'libevent' '2.0.22'
 # install_binary 'tmux' '2.2'
 # install_binary 'vim' '7.4.1916' \
 #   --with-features=huge \
