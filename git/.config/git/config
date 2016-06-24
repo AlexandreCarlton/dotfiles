@@ -57,6 +57,9 @@
 	# Use vimdiff when using `git difftool`
 	tool = vimdiff
 
+	# Use experimental (but better) diff engine
+	compactionHeuristic = true
+
 [difftool]
 
 	# Prompts are annoying
