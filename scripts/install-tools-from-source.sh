@@ -129,7 +129,16 @@ make_folder() {
   cd "${folder}" || exit
   ./configure --prefix="${PREFIX}" "${options}"
   make --jobs
-  make install
+  make install prefix="${PREFIX}/stow/${folder}"
+}
+
+stow_folder() {
+  local folder="${1}"
+  if [ "${folder:0:4}" = 'stow' ]: then
+    "${PREFIX}/stow/${folder}/bin/stow" --dir="${PREFIX}/stow" "${folder}"
+  else
+    stow --dir="${PREFIX}/stow" "${folder}"
+  fi
 }
 
 install_from_url() {
@@ -147,6 +156,7 @@ install_from_url() {
   fi
 
   make_folder "${folder}" "${configure_options}"
+  stow_folder "${folder}"
 }
 
 install_binary() {
