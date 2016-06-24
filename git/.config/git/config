@@ -11,6 +11,9 @@
 	# Enable parallel I/O
 	preloadindex = true
 
+	# Use a custom viewer; install with pacman or npm.
+	pager = diff-so-fancy | less --tabs=2 -RFX
+
 [alias]
 
 	co = checkout
