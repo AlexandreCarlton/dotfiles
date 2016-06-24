@@ -1,7 +1,10 @@
 #!/bin/sh
 
-# Locally installs several useful utilities from source
-# Useful for when we're on a reaaaally old server (and Linuxbrew won't save you)
+# It would be nice if we could detect if the script was being sourced or executed.
+
+# Provides functions to locally install utilities from source
+# Useful for when we're on a reaaaally old server
+# (when even Linuxbrew won't save you)
 # Like, who even uses RHEL5 anymore?
 
 
@@ -9,11 +12,6 @@
 BASE_FOLDER="${HOME}/Source"
 PREFIX="${HOME}/.local"
 
-
-# Other relevant variables that may need setting.
-PYTHON="$(which python)" # Needed for cmake
-# CC=
-# CXX=
 
 # Man I really wish you could fall-through in POSIX.
 get_url() {
@@ -184,52 +182,3 @@ install_binary() {
     printf 'No configuration for %s configured; skipping.\n' "${binary}"
   fi
 }
-
-install_clang() {
-  local version="${1}"
-
-  local llvm_url="http://llvm.org/releases/${version}/llvm-${version}.src.tar.xz"
-  local clang_url="http://llvm.org/releases/${version}/cfe-${version}.src.tar.xz"
-  local extra_url="http://llvm.org/releases/${version}/clang-tools-extra-${version}.src.tar.xz"
-
-  local llvm_folder="$(get_folder_from_url "${llvm_url}")"
-
-  cd "${BASE_FOLDER}"
-  extract_tar_folder_from_url "${llvm_url}"
-  extract_tar_folder_from_url "${clang_url}" "${llvm_folder}/tools/clang"
-  extract_tar_folder_from_url "${extra_url}" "${llvm_folder}/tools/clang/tools/extra"
-
-  make_folder "${llvm_folder}" -DPYTHON_EXECUTABLE=${PYTHON}
-  stow_folder "${folder}"
-}
-
-
-# install_binary 'stow' '2.2.2'
-# install_binary 'xz' '5.2.2'
-# install_binary 'tar' '1.29'
-# install_binary 'libevent' '2.0.22'
-# install_binary 'tmux' '2.2'
-# install_binary 'vim' '7.4.1916' \
-#   --with-features=huge \
-#   --enable-multibyte \
-#   --enable-rubyinterp \
-#   --enable-pythoninterp \
-#   --with-python-config-dir="${HOME}/.local/lib/python2.7/config" \
-#   --enable-luainterp \
-#   --enable-cscope \
-#   --disable-gui \
-#   --without-x
-#   # --enable-perlinterp # Perl support is weird.
-# install_binary 'zsh' '5.2'
-
-# install_binary 'pcre' '8.39' \
-#   --enable-unicode-properties \
-#   --enable-pcre16 \
-#   --enable-pcre32 \
-#   --enable-pcregrep-libz \
-#   --enable-pcregrep-libbz2
-# install_binary 'the_silver_searcher' '0.32.0'
-
-# install_binary 'xz' '5.2.2'
-# install_clang '3.8.0'
-
