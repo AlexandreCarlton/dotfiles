@@ -33,3 +33,14 @@ URxvt*scrollBar: false
 
 ! Do not save any lines; use Tmux
 URxvt*saveLines: 0
+
+! Install xclip to use the clipboard
+! URxvt.perl-ext-common: default,clipboard
+
+! Mimic paste keybinding of other terminal emulators
+! You can normally copy and paste with Ctrl-Alt-{C,V}
+! URxvt.keysym.Shift-Ctrl-V: perl:clipboard:paste
+
+! Turn off ISO 14755 mode; which is what is triggered on Ctrl+Shift
+! URxvt.iso14755: false
+! URxvt.iso14755_52: false
