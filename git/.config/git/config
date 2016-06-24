@@ -11,6 +11,10 @@
 	# Enable parallel I/O
 	preloadindex = true
 
+	# Have a global hooks path so we don't have to re-init on every change
+	# But it means we can't cusstomise hooks per project.
+	# hooksPath = ~/.config/git/hooks
+
 	# Use a custom viewer; install with pacman or npm.
 	pager = diff-so-fancy | less --tabs=2 -RFX
 
