@@ -25,6 +25,9 @@ get_url() {
     'fish')
       url="https://fishshell.com/files/${version}/fish-${version}.tar.gz"
       ;;
+    'git')
+      url="https://www.kernel.org/pub/software/scm/git/git-${version}.tar.gz"
+      ;;
     'libevent')
       url="https://github.com/libevent/libevent/releases/download/release-${version}-stable/libevent-${version}-stable.tar.gz"
       ;;

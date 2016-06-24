@@ -31,3 +31,4 @@ install_binary 'vim' '7.4.1916' \
   # --enable-perlinterp # Perl support is weird.
 
 install_binary 'zsh' '5.2'
+install_binary 'git' '2.9.0'
