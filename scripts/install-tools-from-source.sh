@@ -1,11 +1,16 @@
 #!/bin/sh
 
 # Locally installs several useful utilities from source
-# Useful for when we're on a reaaaally old server.
+# Useful for when we're on a reaaaally old server (and Linuxbrew won't save you)
 # Like, who even uses RHEL5 anymore?
 
-BASE_FOLDER="${HOME}/extracted_tarballs"
+
+# Modify as necessary
+BASE_FOLDER="${HOME}/Source"
 PREFIX="${HOME}/.local"
+PYTHON="$(which python)" # Needed for cmake
+# CC=
+# CXX=
 
 # Man I really wish you could fall-through in POSIX.
 get_url() {
@@ -158,6 +163,35 @@ install_binary() {
   fi
 }
 
+# Installing clang is a bit complex and thus warrants its own function.
+# If possible we'll refactor this later.
+# To extract in one line:
+# mkdir <folder> && tar <blah>.tar.gz -C <folder> --strip-components=1
+# - -C changes to a specified folder, and strip-components=1 strips away the first part of the thing.
+
+install_clang() {
+  local version="${1}"
+
+  local llvm_url="http://llvm.org/releases/${version}/llvm-${version}.src.tar.xz"
+  local llvm_folder="$(get_folder_from_url "${llvm_url}")"
+  local clang_url="http://llvm.org/releases/${version}/cfe-${version}.src.tar.xz"
+  local clang_folder="$(get_folder_from_url "${clang_url}")"
+  local extra_url="http://llvm.org/releases/${version}/clang-tools-extra-${version}.src.tar.xz"
+  local extra_folder="$(get_folder_from_url "${extra_url}")"
+
+  cd "${BASE_FOLDER}"
+  extract_tar_from_url_to_folder "${llvm_url}" llvm
+  extract_tar_from_url_to_folder "${clang_url}" llvm/tools/clang
+  extract_tar_from_url_to_folder "${extra_url}" llvm/tools/clang/tools/extra
+
+  # TODO: make a cmake_folder function which does something similar to make_folder
+  mkdir -p llvm/build
+  cd llvm/build
+  cmake .. -DPYTHON_EXECUTABLE=${PYTHON} -DCMAKE_INSTALL_PREFIX="${PREFIX}"
+  #make -j
+  #make install
+}
+
 
 # mkdir -p "${BASE_FOLDER}"
 # install_binary 'stow' '2.2.2'
@@ -177,3 +211,15 @@ install_binary() {
 #   --without-x
 #   # --enable-perlinterp # Perl support is weird.
 # install_binary 'zsh' '5.2'
+
+# install_binary 'pcre' '8.39' \
+#   --enable-unicode-properties \
+#   --enable-pcre16 \
+#   --enable-pcre32 \
+#   --enable-pcregrep-libz \
+#   --enable-pcregrep-libbz2
+# install_binary 'the_silver_searcher' '0.32.0'
+
+# install_binary 'xz' '5.2.2'
+# install_clang '3.8.0'
+
