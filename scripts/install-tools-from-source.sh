@@ -13,20 +13,35 @@ get_url() {
   local version="${2}"
   local url
   case "${binary}" in
+    'coreutils')
+      url="$(gnu_url 'coreutils')"
+      ;;
     'fish')
       url="https://fishshell.com/files/${version}/fish-${version}.tar.gz"
       ;;
     'libevent')
       url="https://github.com/libevent/libevent/releases/download/release-${version}-stable/libevent-${version}-stable.tar.gz"
       ;;
+    'pcre')
+      url="http://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-${version}.tar.gz"
+      ;;
     'stow')
       url="$(gnu_url 'stow' "${version}")"
+      ;;
+    'tar')
+      url="$(gnu_url 'tar' "${version}")"
+      ;;
+    'the_silver_searcher')
+      url="http://geoff.greer.fm/ag/releases/the_silver_searcher-${version}.tar.gz"
       ;;
     'tmux')
       url="https://github.com/tmux/tmux/releases/download/${version}/tmux-${version}.tar.gz"
       ;;
     'vim')
       url="https://github.com/vim/vim/archive/v${version}.tar.gz"
+      ;;
+    'xz')
+      url="http://tukaani.org/xz/xz-${version}.tar.gz"
       ;;
     'zsh')
       url="http://sourceforge.net/projects/zsh/files/zsh/${version}/zsh-${version}.tar.gz/download"
@@ -45,7 +60,7 @@ gnu_url() {
 get_folder_from_url() {
   local url="${1}"
   # TODO: Make more flexible if necessary; see commit log for this line.
-  local pattern='.*/([a-z]+-[0-9.]+[a-z\-]*)\.tar\.gz.*'
+  local pattern='.*/([a-z]+-[0-9.]+[a-z\-]*)\.tar\..*'
   local folder='\1'
   printf '%s' "${url}" |\
     sed --regexp-extended --quiet "s|${pattern}|${folder}|p"
@@ -146,6 +161,8 @@ install_binary() {
 
 # mkdir -p "${BASE_FOLDER}"
 # install_binary 'stow' '2.2.2'
+# install_binary 'xz' '5.2.2'
+# install_binary 'tar' '1.29'
 # install_binary 'libevent' '2.0.22'
 # install_binary 'tmux' '2.2'
 # install_binary 'vim' '7.4.1916' \
