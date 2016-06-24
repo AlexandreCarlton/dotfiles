@@ -51,13 +51,55 @@ get_folder_from_url() {
     sed --regexp-extended --quiet "s|${pattern}|${folder}|p"
 }
 
+get_tar_extenion_from_url() {
+  local url="${1}"
+  printf '%s' "${url}" |\
+    sed --regexp-extended --quiet 's;.*\.tar\.((gz|bz2|xz)).*;\1;p'
+}
+
+get_tar_filter_from_url() {
+  local url="${1}"
+  local extension
+  extension="$(get_tar_extenion_from_url "${url}")"
+
+  local filter=''
+  case "${extension}" in
+    'gz')
+      filter='gzip'
+      ;;
+    'xz')
+      filter='xz'
+      ;;
+    'bz2')
+      filter='bzip2'
+      ;;
+  esac
+  printf '%s' "${filter}"
+}
+
+# TODO Rename to extract_tar_from_url
+# And make extract_tar_from_url_to_folder - has the -C --strip-components (useful for clang)
 create_build_folder() {
   local url="${1}"
   printf 'Downloading and extracting %s...\n' "${url}"
   cd "${BASE_FOLDER}" || exit
-
+  local filter="$(get_tar_filter_from_url "${url}")"
+  # TODO: Assumes we got non-empty string; account for this.
   curl --silent --location "${url}" |\
-    tar --extract --gzip
+    tar --extract "--${filter}"
+}
+
+extract_tar_from_url_to_folder() {
+  local url="${1}"
+  local folder="${2}"
+  # TODO: Should we change to base folder?
+  cd "${BASE_FOLDER}" || exit
+  local filter="$(get_tar_filter_from_url "${url}")"
+
+  mkdir -p "${folder}"
+  curl --silent --location "${url}" |\
+    tar --extract "--${filter}" \
+        --directory="${folder}" --strip-components=1
 }
 
 make_folder() {
