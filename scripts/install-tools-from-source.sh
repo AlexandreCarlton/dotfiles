@@ -8,6 +8,9 @@
 # Modify as necessary
 BASE_FOLDER="${HOME}/Source"
 PREFIX="${HOME}/.local"
+
+
+# Other relevant variables that may need setting.
 PYTHON="$(which python)" # Needed for cmake
 # CC=
 # CXX=
@@ -97,29 +100,28 @@ get_tar_filter_from_url() {
   printf '%s' "${filter}"
 }
 
-# TODO Rename to extract_tar_from_url
-# And make extract_tar_from_url_to_folder - has the -C --strip-components (useful for clang)
-create_build_folder() {
+extract_tar_folder_from_url() {
   local url="${1}"
+  local folder="${2}" # Optional
+  if [ -n "${folder}" ]; then
+    mkdir -p "${folder}"
+    local extra_options="--directory=${folder} --strip-components=1"
+  else
+    local extra_options=""
+    printf 'No folder name provided for %s, using default...\n' "${url}"
+  fi
+
+  mkdir -p "${BASE_FOLDER}"
+  cd "${BASE_FOLDER}"
+
+  # TODO: We currently assume a non-empty filter.
+  local filter
+  filter="$(get_tar_filter_from_url "${url}")"
+
   printf 'Downloading and extracting %s...\n' "${url}"
-  cd "${BASE_FOLDER}" || exit
-  local filter="$(get_tar_filter_from_url "${url}")"
-  # TODO: Assumes we got non-empty string; account for this.
-  curl --silent --location "${url}" |\
-    tar --extract "--${filter}"
-}
-
-extract_tar_from_url_to_folder() {
-  local url="${1}"
-  local folder="${2}"
-  # TODO: Should we change to base folder?
-  cd "${BASE_FOLDER}" || exit
-  local filter="$(get_tar_filter_from_url "${url}")"
-
-  mkdir -p "${folder}"
   curl --silent --location "${url}" |\
     tar --extract "--${filter}" \
-        --directory="${folder}" --strip-components=1
+        "${extra_options}"
 }
 
 make_folder() {
@@ -127,14 +129,22 @@ make_folder() {
   local options="${@:2}"
 
   cd "${folder}" || exit
-  ./configure --prefix="${PREFIX}" "${options}"
+  if [ -e 'CMakeLists.txt' ]; then
+    mkdir build
+    cd build
+    cmake .. -DCMAKE_INSTALL_PREFIX="${PREFIX}" "${options}"
+  else
+    ./configure --prefix="${PREFIX}" "${options}"
+  fi
+
   make --jobs
+  # TODO: Check if we should be using DESTDIR instead.
   make install prefix="${PREFIX}/stow/${folder}"
 }
 
 stow_folder() {
   local folder="${1}"
-  if [ "${folder:0:4}" = 'stow' ]: then
+  if [ "${folder:0:4}" = 'stow' ]; then
     "${PREFIX}/stow/${folder}/bin/stow" --dir="${PREFIX}/stow" "${folder}"
   else
     stow --dir="${PREFIX}/stow" "${folder}"
@@ -145,12 +155,14 @@ install_from_url() {
   local url="${1}"
   local configure_options="${@:2}"
 
-  local folder="$(get_folder_from_url "${url}")"
+  local folder
+  folder="$(get_folder_from_url "${url}")"
+
   if [ -z "${folder}" ]; then
     printf 'Could not extract folder name from url "%s".\n' "${url}"
     return
   elif [ ! -d "${folder}" ]; then
-    create_build_folder "${url}"
+    extract_tar_folder_from_url "${url}"
   else
     printf 'Folder %s already present, skipping download and extraction...\n' "${folder}"
   fi
@@ -173,37 +185,25 @@ install_binary() {
   fi
 }
 
-# Installing clang is a bit complex and thus warrants its own function.
-# If possible we'll refactor this later.
-# To extract in one line:
-# mkdir <folder> && tar <blah>.tar.gz -C <folder> --strip-components=1
-# - -C changes to a specified folder, and strip-components=1 strips away the first part of the thing.
-
 install_clang() {
   local version="${1}"
 
   local llvm_url="http://llvm.org/releases/${version}/llvm-${version}.src.tar.xz"
-  local llvm_folder="$(get_folder_from_url "${llvm_url}")"
   local clang_url="http://llvm.org/releases/${version}/cfe-${version}.src.tar.xz"
-  local clang_folder="$(get_folder_from_url "${clang_url}")"
   local extra_url="http://llvm.org/releases/${version}/clang-tools-extra-${version}.src.tar.xz"
-  local extra_folder="$(get_folder_from_url "${extra_url}")"
+
+  local llvm_folder="$(get_folder_from_url "${llvm_url}")"
 
   cd "${BASE_FOLDER}"
-  extract_tar_from_url_to_folder "${llvm_url}" llvm
-  extract_tar_from_url_to_folder "${clang_url}" llvm/tools/clang
-  extract_tar_from_url_to_folder "${extra_url}" llvm/tools/clang/tools/extra
+  extract_tar_folder_from_url "${llvm_url}"
+  extract_tar_folder_from_url "${clang_url}" "${llvm_folder}/tools/clang"
+  extract_tar_folder_from_url "${extra_url}" "${llvm_folder}/tools/clang/tools/extra"
 
-  # TODO: make a cmake_folder function which does something similar to make_folder
-  mkdir -p llvm/build
-  cd llvm/build
-  cmake .. -DPYTHON_EXECUTABLE=${PYTHON} -DCMAKE_INSTALL_PREFIX="${PREFIX}"
-  #make -j
-  #make install
+  make_folder "${llvm_folder}" -DPYTHON_EXECUTABLE=${PYTHON}
+  stow_folder "${folder}"
 }
 
 
-# mkdir -p "${BASE_FOLDER}"
 # install_binary 'stow' '2.2.2'
 # install_binary 'xz' '5.2.2'
 # install_binary 'tar' '1.29'
