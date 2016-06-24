@@ -11,9 +11,6 @@
 	# Enable parallel I/O
 	preloadindex = true
 
-	# Have a global hooks path so we don't have to re-init on every change
-	hooksPath = ~/.config/git/hooks
-
 [alias]
 
 	co = checkout
