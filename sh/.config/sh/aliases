@@ -4,9 +4,9 @@
 # Try to keep this Fish-compatible, if possible.
 
 # I mess up. A lot.
-if test -n "$(command -v thefuck)" ; then
-  eval "$(thefuck --alias ffs)"
-fi
+# Retrieved using `thefuck --alias ffs`; this got ridiculously slow.
+alias ffs='TF_CMD=$(TF_ALIAS=ffs PYTHONIOENCODING=utf-8 TF_SHELL_ALIASES=$(alias) thefuck $(fc -ln -1 | tail -n 1)) && eval $TF_CMD && print -s $TF_CMD'
+
 
 # Start R without the startup prompt.
 alias R='R --quiet'
@@ -25,9 +25,27 @@ alias aurs='aura --aursync --search'
 alias enable-distcc='ccache --set-config=prefix_command=distcc'
 alias disable-distcc='ccache --set-config=prefix_command='
 
-# fasd
-# This won't work in fish either.
-eval "$(fasd --init posix-alias)"
+# fasd - generated using `fasd --init posix-alias`
+alias a='fasd -a'
+alias s='fasd -si'
+alias sd='fasd -sid'
+alias sf='fasd -sif'
+alias d='fasd -d'
+alias f='fasd -f'
+# function to execute built-in cd
+fasd_cd() {
+  if [ $# -le 1 ]; then
+    fasd "$@"
+  else
+    local _fasd_ret="$(fasd -e 'printf %s' "$@")"
+    [ -z "$_fasd_ret" ] && return
+    [ -d "$_fasd_ret" ] && cd "$_fasd_ret" || printf %s\n "$_fasd_ret"
+  fi
+}
+alias z='fasd_cd -d'
+alias zz='fasd_cd -d -i'
+
+
 alias v="f -e ${VISUAL}"
 alias o='a -e xdg-open'
 
