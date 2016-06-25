@@ -40,14 +40,18 @@ linuxbrew:
 
 development:
 	stow ccache
+	stow chromium
 	stow ctags
 	stow editorconfig
 	stow ghc
 	stow git
 	stow htop
+	stow javascript
 	stow python
+	stow R
 	stow sh
 	stow spacemacs
+	stow systemd
 	stow ssh
 	stow tmux
 	stow vim
@@ -63,10 +67,12 @@ desktop: development
 	stow bspwm
 	stow colours
 	stow dunst
+	stow fish
 	stow fontconfig
 	stow gtk
 	stow mime
 	stow mpv
+	stow pacman
 	stow psd
 	stow qt
 	stow redshift
