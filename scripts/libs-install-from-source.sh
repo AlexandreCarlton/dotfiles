@@ -31,6 +31,9 @@ get_url() {
     'libevent')
       url="https://github.com/libevent/libevent/releases/download/release-${version}-stable/libevent-${version}-stable.tar.gz"
       ;;
+    'libiconv')
+      url="$(gnu_url 'libiconv')"
+      ;;
     'pcre')
       url="http://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-${version}.tar.gz"
       ;;

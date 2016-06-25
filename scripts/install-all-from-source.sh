@@ -8,7 +8,9 @@ install_binary 'xz' '5.2.2'
 install_binary 'tar' '1.29'
 
 install_binary 'libevent' '2.0.22'
-install_binary 'tmux' '2.2'
+install_binary 'tmux' '2.2' \
+  CFLAGS="-I${PREFIX}/include" \
+  LDFLAGS="-L${PREFIX}/lib"
 
 install_binary 'pcre' '8.39' \
   --enable-unicode-properties \
@@ -18,6 +20,7 @@ install_binary 'pcre' '8.39' \
   --enable-pcregrep-libbz2
 install_binary 'the_silver_searcher' '0.32.0'
 
+install_binary 'libiconv' '1.14'
 install_binary 'vim' '7.4.1916' \
   --with-features=huge \
   --enable-multibyte \
