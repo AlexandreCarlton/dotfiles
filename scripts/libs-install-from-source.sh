@@ -20,7 +20,7 @@ get_url() {
   local url
   case "${binary}" in
     'coreutils')
-      url="$(gnu_url 'coreutils')"
+      url="$(gnu_url 'coreutils' "${version}")"
       ;;
     'fish')
       url="https://fishshell.com/files/${version}/fish-${version}.tar.gz"
@@ -32,10 +32,19 @@ get_url() {
       url="https://github.com/libevent/libevent/releases/download/release-${version}-stable/libevent-${version}-stable.tar.gz"
       ;;
     'libiconv')
-      url="$(gnu_url 'libiconv')"
+      url="$(gnu_url 'libiconv' "${version}")"
+      ;;
+    'libtool')
+      url="$(gnu_url 'libtool' "${version}")"
+      ;;
+    'nodejs')
+      url="https://nodejs.org/dist/v${version}/node-v${version}-linux-x64.tar.xz"
       ;;
     'pcre')
       url="http://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-${version}.tar.gz"
+      ;;
+    'python')
+      url="https://www.python.org/ftp/python/${version}/Python-${version}.tar.xz"
       ;;
     'stow')
       url="$(gnu_url 'stow' "${version}")"
@@ -50,7 +59,7 @@ get_url() {
       url="https://github.com/tmux/tmux/releases/download/${version}/tmux-${version}.tar.gz"
       ;;
     'vim')
-      url="https://github.com/vim/vim/archive/v${version}.tar.gz"
+      url="http://ftp.vim.org/vim/unix/vim-${version}.tar.bz2"
       ;;
     'xz')
       url="http://tukaani.org/xz/xz-${version}.tar.gz"
@@ -72,12 +81,13 @@ gnu_url() {
 get_folder_from_url() {
   local url="${1}"
   # TODO: Make more flexible if necessary; see commit log for this line.
-  local pattern='.*/([a-z]+-[0-9.]+[a-z\-]*)\.tar\..*'
+  local pattern='.*/.+\.tar.*'
   local folder='\1'
   printf '%s' "${url}" |\
     sed --regexp-extended --quiet "s|${pattern}|${folder}|p"
 }
 
+# TODO:
 get_tar_extenion_from_url() {
   local url="${1}"
   printf '%s' "${url}" |\
@@ -136,9 +146,9 @@ make_folder() {
   if [ -e 'CMakeLists.txt' ]; then
     mkdir build
     cd build
-    cmake .. -DCMAKE_INSTALL_PREFIX="${PREFIX}" "${options}"
+    cmake .. -DCMAKE_INSTALL_PREFIX="${PREFIX}" ${options}
   else
-    ./configure --prefix="${PREFIX}" "${options}"
+    ./configure --prefix="${PREFIX}" ${options}
   fi
 
   make --jobs
