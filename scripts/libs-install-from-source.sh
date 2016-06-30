@@ -81,7 +81,7 @@ gnu_url() {
 get_folder_from_url() {
   local url="${1}"
   # TODO: Make more flexible if necessary; see commit log for this line.
-  local pattern='.*/.+\.tar.*'
+  local pattern='.*/(.+)\.tar.*'
   local folder='\1'
   printf '%s' "${url}" |\
     sed --regexp-extended --quiet "s|${pattern}|${folder}|p"
@@ -135,7 +135,7 @@ extract_tar_folder_from_url() {
   printf 'Downloading and extracting %s...\n' "${url}"
   curl --silent --location "${url}" |\
     tar --extract "--${filter}" \
-        "${extra_options}"
+        ${extra_options}
 }
 
 make_folder() {

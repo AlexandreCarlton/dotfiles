@@ -7,7 +7,8 @@ install_binary 'stow' '2.2.2'
 install_binary 'libtool' '2.4.6'
 
 install_binary 'xz' '5.2.2'
-install_binary 'tar' '1.29'
+install_binary 'tar' '1.29' \
+  CPPFLAGS='-fgnu89-inline'
 
 # If we want Vim using a modern Python we should install one.
 install_binary 'python' '2.7.12'
