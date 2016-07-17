@@ -2,7 +2,7 @@
 These are my config files for easy deployment on new machines.
 
 ```bash
-    git clone --recursive git@github.com:AlexandreCarlton/dotfiles.git ~/.dotfiles
+    git clone --recursive --shallow-submodules git@github.com:AlexandreCarlton/dotfiles.git ~/.dotfiles
 ```
 Ensure your previous dotfiles are backed up before installing these new ones.
 
