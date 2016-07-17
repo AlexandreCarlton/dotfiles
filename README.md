@@ -22,15 +22,19 @@ As you can probably tell, I'm a big fan of
 
 If you wish to change this, then the following files will need to be edited:
 
+ - ~/.config/bspwm/lemonbar.conf
  - ~/.config/dunst/dunstrc
- - ~/.gtkrc-2.0
  - ~/.config/gtk-3.0/settings.ini
- - ~/.spacemacs
- - ~/.vimrc
- - ~/.Xresources
+ - ~/.config/htop/htoprc (We won't need to use 'Broken Gray')
+ - ~/.config/nvim/init.vim
+ - ~/.config/spacemacs/init.el
+ - ~/.config/Trolltech.conf
+ - ~/.config/X11/Xresources
+ - ~/.gtkrc-2.0
+ - ~/.local/share/konsole/Alexandre.profile
 
 Fontwise, I'm using GohuFont and changing this requires editing all
-the aforementioned files bar ~/.vimrc.
+the aforementioned files bar `init.vim` and `htoprc`.
 At some point I'll add this as a submodule to ~/.fonts.
 Right now I'm not using Powerline fonts; they were too much trouble to get
 working with URxvt (I had to install a second patched-font which was rather
