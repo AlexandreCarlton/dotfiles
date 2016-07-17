@@ -78,8 +78,11 @@ export GTK2_RC_FILES="${HOME}/.gtkrc-2.0"
 # Ccache
 export CCACHE_CONFIGPATH="${XDG_CONFIG_HOME}/ccache.conf"
 
-# Distcc
-export DISTCC_DIR="${XDG_RUNTIME_DIR}/distcc"
+# Distcc - this specifies hosts!
+export DISTCC_DIR="${XDG_CONFIG_HOME}/distcc"
+
+# Store Packer ISOs in a common directory (not in the current project)
+export PACKER_CACHE_DIR="${XDG_CACHE_HOME}/packer"
 
 # Urxvt - consider, like tmux, making another folder for extra daemons.
 export RXVT_SOCKET="${XDG_RUNTIME_DIR}/urxvtd-${HOST}"
