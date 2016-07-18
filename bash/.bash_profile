@@ -2,6 +2,10 @@
 
 custom_shell="${HOME}/.local/bin/zsh"
 
+export PATH="${HOME}/.local/bin:${PATH}"
+export LD_LIBRARY_PATH="${HOME}/.local/lib:${LD_LIBRARY_PATH}"
+
+
 if [[ $- == *i* ]]; then
   if [[ -x "${custom_shell}" ]]; then
     exec "${custom_shell}" -l
