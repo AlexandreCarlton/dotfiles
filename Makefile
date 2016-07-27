@@ -43,7 +43,7 @@ development:
 	stow chromium
 	stow ctags
 	stow editorconfig
-	stow ghc
+	stow --no-folding ghc
 	stow git
 	stow htop
 	stow javascript
@@ -51,11 +51,11 @@ development:
 	stow R
 	stow sh
 	stow spacemacs
-	stow systemd
-	stow ssh
-	stow tmux
-	stow vim
-	stow zsh
+	stow --no-folding systemd
+	stow --no-folding ssh
+	stow --no-folding tmux
+	stow --no-folding vim
+	stow --no-folding zsh
 
 development-systemd:
 	stow systemd
@@ -63,11 +63,11 @@ development-systemd:
 
 # TODO: Find a way to ensure stow is in $PATH
 desktop: development
-	stow binaries
+	stow --no-folding binaries
 	stow bspwm
 	stow colours
 	stow dunst
-	stow fish
+	stow --no-folding fish
 	stow fontconfig
 	stow gtk
 	stow mime
@@ -76,7 +76,7 @@ desktop: development
 	stow psd
 	stow qt
 	stow redshift
-	stow retroarch
+	stow --no-folding retroarch
 	stow steam
 	stow X
 	stow zathura
