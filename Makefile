@@ -79,6 +79,7 @@ desktop: development
 	stow --no-folding retroarch
 	stow steam
 	stow X
+	stow --no-folding wallpaper
 	stow zathura
 
 desktop-systemd: desktop development-systemd
