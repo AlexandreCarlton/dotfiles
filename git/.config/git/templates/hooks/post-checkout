@@ -1,7 +1,0 @@
-#!/bin/sh
-
-# This hook is invoked after 'git checkout' succeeds.
-# Note this also applies after a 'git clone'.
-
-"${GIT_DIR}/hooks/create-tags-file" &
-"${GIT_DIR}/hooks/clean-pyc-files"

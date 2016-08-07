@@ -1,7 +1,0 @@
-#!/bin/sh
-
-COMMIT_MESSAGE_FILEPATH="${1}"
-COMMIT_TYPE="${2}"
-COMMIT_SHA="${3}"
-
-"${GIT_DIR}/hooks/insert-jira-ticket" "${COMMIT_MESSAGE_FILEPATH}"
