@@ -451,11 +451,11 @@ Plug 'tpope/vim-vinegar'
 " Fuzy searh finder
 " Due to its frankly shocking directory layout, we use our package manager to
 " download fzf.
-Plug 'junegunn/fzf'
+Plug 'junegunn/fzf', {'on': 'FZF'}
 
 " Grep things easily, autodetects tools
 " Asynchronous support with neovim
-Plug 'mhinz/vim-grepper'
+Plug 'mhinz/vim-grepper', {'on': 'Grepper'}
 
 " }}}
 
