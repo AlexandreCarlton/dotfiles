@@ -12,7 +12,6 @@ if empty(glob('$XDG_CONFIG_HOME/nvim/autoload/plug.vim'))
       silent !pip install --user neovim
     endif
     autocmd VimEnter * PlugInstall | source $MYVIMRC
-
 endif
 " }}}
 
@@ -133,7 +132,8 @@ Plug 'jiangmiao/auto-pairs'
 let ycm_options = '--clang-completer ' .
                 \ '--tern-completer ' .
                 \ '--system-libclang --system-boost'
-Plug 'Valloric/YouCompleteMe', {'do': 'python2 install.py ' . ycm_options, 'on': []} "{{{
+Plug 'Valloric/YouCompleteMe', {'do': 'python2 install.py ' . ycm_options,
+                              \ 'for': ['c', 'cpp', 'python', 'haskell', 'go', 'javascript'] } "{{{
 let g:ycm_always_populate_location_list = 1
 let g:ycm_add_preview_to_completeopt = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
@@ -141,7 +141,7 @@ let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_semantic_triggers = {'haskell': ['.'], 'r': ['.', '$', 're![_a-zA-Z]+[_\w]*\.']}
 " Run ctags --fields=+l and YCM will look at tags files.
-" let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_collect_identifiers_from_tags_files = 1
  " }}}
 
 " Generate .ycm_extra_conf.py
@@ -150,21 +150,12 @@ let g:ycm_semantic_triggers = {'haskell': ['.'], 'r': ['.', '$', 're![_a-zA-Z]+[
 " Run config_gen.py <PROJECT_DIR> or :YcmGenerateConfig
 Plug 'rdnetto/YCM-Generator', {'branch': 'stable', 'on': 'YcmGenerateConfig'}
 
-
  " Snippets produced along side YouCompleteMe
-Plug 'SirVer/UltiSnips', {'on': []} " {{{
+Plug 'SirVer/UltiSnips' " {{{
 let g:UltiSnipsExpandTrigger = '<C-j>'
 " }}}
 
 Plug 'honza/vim-snippets'
-
-" Load YCM and UltiSnips on first insert.
-" TODO: Make this into a function so I can activate on demand.
-augroup load_us_ycm
-  autocmd!
-  autocmd InsertEnter * call plug#load('UltiSnips', 'YouCompleteMe')
-                     \| call youcompleteme#Enable() | autocmd! load_us_ycm
-augroup END
 
 " End certain strutures automatically.
 Plug 'tpope/vim-endwise'
