@@ -105,21 +105,7 @@ autocmd FileType cmake setlocal commentstring=#\ %s
 
 " Colours {{{
 
-" Needs respective setting in Xresources if using xterm or urxvt.
-Plug 'chriskempson/base16-vim' " {{{
-let base16colorspace=256
-let g:base16_shell_path='~/.config/base16/shell'
-" }}}
-
-" Base16 has some weird deviations (compare Solarized), hence these plugins.
 Plug 'altercation/vim-colors-solarized'
-Plug 'jnurmine/Zenburn'
-Plug 'nanotech/jellybeans.vim'
-Plug 'whatyouhide/vim-gotham'
-Plug 'tomasr/molokai'
-Plug 'matthewtodd/vim-twilight'
-Plug 'chriskempson/vim-tomorrow-theme'
-Plug 'NLKNguyen/papercolor-theme'
 
 " Set utf8 as standard encoding and en_US as standard language
 set encoding=utf-8
