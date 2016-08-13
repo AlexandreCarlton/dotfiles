@@ -301,7 +301,7 @@ Plug 'myusuf3/numbers.vim', " {{{
 " Odd things happen without this.
 set number
 " List of items to exclude from being numbered.
-let g:numbers_exclude = ['unite', 'tagbar', 'startify', 'gundo', 'vimshell', 'w3m']
+let g:numbers_exclude = ['tagbar', 'undotree']
 
 " }}}
 
@@ -419,7 +419,7 @@ nnoremap <Leader>tggh :GitGutterLineHighlightsToggle<cr>
 nnoremap <Leader>gr :Grepper<cr>
 nnoremap <Leader>* :Grepper -cword -noprompt<cr>
 nnoremap <Leader>ud :UndotreeToggle<cr>
-nnoremap <Leader>fe :VimFilerExplorer<cr>
+nnoremap <Leader>fe :Vexplore<cr>
 nnoremap <Leader>ff :FZF<cr>
 nnoremap <Leader>fi :YcmCompleter FixIt<cr>
 " Consider nnoremap <buffer> <silent> <C-]> :YcmCompleter GoTo<cr>
@@ -454,12 +454,8 @@ Plug 'rust-lang/rust.vim', {'for': 'rust'}
 
 " Searching (& Exploring) {{{
 
-" General interface to many useful things
-Plug 'Shougo/unite.vim', {'on': ['Unite', 'VimFilerExplorer']}
-
-" File explorer (depends on Unite)
-Plug 'Shougo/vimfiler.vim', {'on': 'VimFilerExplorer'}
-let g:vimfiler_as_default_explorer = 1
+" Augment built-in directory browser; press '~' to go home.
+Plug 'tpope/vim-vinegar'
 
 " Fuzy searh finder
 " Due to its frankly shocking directory layout, we use our package manager to
