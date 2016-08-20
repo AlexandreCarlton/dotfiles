@@ -1,40 +1,45 @@
-## Octocat's global .gitignore
+## Global .gitignore for common files I frequently find.
 ## For a more complete list, visit https://github.com/github/gitignore
 
-# Compiled source #
-###################
-*.com
-*.class
-*.dll
-*.exe
+# C/C++ #
+#########
+*.d
 *.o
-*.so
+*.obj
+*.out
 
-# Packages #
-############
-# it's better to unpack these files and commit the raw source
-# git has its own built in compression methods
-*.7z
-*.dmg
-*.gz
-*.iso
-*.jar
-*.rar
-*.tar
+# Emacs #
+#########
+*~
+\#*\#
+*_flymake.*
+flycheck_*.el
+.projectile
+.\#*
+
+# Logs and data #
+#################
+*.log
+*.log.bz2
+*.pcap
 *.zip
 
-# Logs and databases #
-######################
-*.log
-*.sql
-*.sqlite
+# Python #
+##########
+__pycache__/
+*.py[cod]
+.venv
+.virtualenv
 
-# OS generated files #
-######################
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
+# Vagrant #
+###########
+.vagrant/
+
+# Vim #
+#######
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+.netrwhist
+*~
+tags
+cscope.out
