@@ -26,7 +26,8 @@ values."
      ;; ----------------------------------------------------------------
      auto-completion
      better-defaults
-     c-c++
+     (c-c++ :variables
+            c-c++-enable-clang-support t)
      ess
      (git :variables
           git-gutter-use-fringe t)
@@ -43,6 +44,7 @@ values."
      syntax-checking
      typescript
      version-control
+     ycmd
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -261,6 +263,14 @@ you should place your code here."
   (global-linum-mode)
   ;(linum-relative-toggle)
   (setq neo-theme 'nerd)
+
+  ; YCM is only loaded for C++ by default.
+  (add-hook 'c-mode-hook 'ycmd-mode)
+  ; Use Vim's installation of ycmd.
+  (set-variable 'ycmd-server-command
+                '("python" "~/.config/nvim/plugged/YouCompleteMe/third_party/ycmd/ycmd/__main__.py"))
+  ; Automatically load project-specific configurations in this folder.
+  (set-variable 'ycmd-extra-conf-whitelist '("~/Code/*"))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
