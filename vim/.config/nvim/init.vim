@@ -194,6 +194,9 @@ Plug 'tpope/vim-fugitive'
 " Syntax highlighting
 Plug 'tpope/vim-git'
 
+" Git commit browser
+Plug 'junegunn/gv.vim', {'on': 'GV'}
+
 " }}}
 
 " Go {{{
@@ -315,6 +318,10 @@ endif
 " Sane buffer deletion on :Sayonara
 Plug 'mhinz/vim-sayonara', {'on': 'Sayonara'}
 
+" Execute unix shell commands from Vim.
+Plug 'tpope/vim-eunuch', {'on': ['Remove', 'Unlink', 'Move', 'Rename', 'Chmod',
+                               \ 'Mkdir', 'Find', 'Locate', 'Wall',
+                               \ 'SudoWrite', 'SudoEdit']}
 " }}}
 
 " JavaScript {{{
