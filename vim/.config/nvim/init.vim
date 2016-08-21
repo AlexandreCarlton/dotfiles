@@ -118,8 +118,9 @@ set fileformats=unix,dos,mac
 " Completion {{{
 
 " Autocompletion for quotes, parens, etc.
-" Try ervandew/matchem?
-Plug 'jiangmiao/auto-pairs'
+Plug 'raimondi/delimitMate' " {{{
+let delimitMate_expand_cr = 1
+" }}}
 
 " Options
 " --clang-completer (C/C++)
