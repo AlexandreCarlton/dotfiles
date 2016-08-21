@@ -71,6 +71,10 @@ let g:neomake_cpp_enabled_makers = []
 let g:neomake_objc_enabled_makers = []
 let g:neomake_objcpp_enabled_makers = []
 
+" Generally have only one linter (otherwise they tend to report the same
+" thing)
+let g:neomake_python_enabled_makers = ['pylint']
+
 " Open loclist when adding entries, preserving cursor
 let g:neomake_open_list = 2
 let g:neomake_list_height = 5
