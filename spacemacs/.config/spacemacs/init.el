@@ -263,7 +263,7 @@ you should place your code here."
   (add-hook 'c-mode-hook 'ycmd-mode)
   ; Use Vim's installation of ycmd.
   (set-variable 'ycmd-server-command
-                '("python" "~/.config/nvim/plugged/YouCompleteMe/third_party/ycmd/ycmd/__main__.py"))
+                '("python" "~/.config/nvim/plugged/YouCompleteMe/third_party/ycmd/ycmd"))
   ; Automatically load project-specific configurations in this folder.
   (set-variable 'ycmd-extra-conf-whitelist '("~/Code/*"))
   )
