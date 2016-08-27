@@ -467,7 +467,12 @@ Plug 'rust-lang/rust.vim', {'for': 'rust'}
 " Searching (& Exploring) {{{
 
 " Augment built-in directory browser; press '~' to go home.
-Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-vinegar' " {{{
+
+" Use a tree-style view.
+let g:netrw_liststyle = 3
+
+" }}}
 
 " Fuzy searh finder
 " Due to its frankly shocking directory layout, we use our package manager to
