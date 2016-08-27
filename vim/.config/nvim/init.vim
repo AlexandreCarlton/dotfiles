@@ -206,6 +206,9 @@ Plug 'tpope/vim-git'
 " Git commit browser
 Plug 'junegunn/gv.vim', {'on': 'GV'}
 
+" Enable spell-check on git commits
+autocmd Filetype gitcommit set spell
+
 " }}}
 
 " Go {{{
@@ -259,6 +262,8 @@ augroup qf
   autocmd FileType qf set nobuflisted
 augroup END
 
+" Use Australian spelling if enabled
+set spelllang=en_au
 
 " Make searches case-insensitive.
 set ignorecase
