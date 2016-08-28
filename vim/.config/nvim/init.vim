@@ -317,7 +317,7 @@ let g:numbers_exclude = ['tagbar', 'undotree']
 " Also includes trimming whitespace, etc.
 Plug 'editorconfig/editorconfig-vim' " {{{
 
-let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'tarfile::.*']
 
 if executable('editorconfig')
   " Requires editor-config-core-c, get it from the AUR or linuxbrew
