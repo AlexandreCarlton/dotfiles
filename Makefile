@@ -43,6 +43,7 @@ development:
 	stow chromium
 	stow ctags
 	stow editorconfig
+	stow --no-folding fish
 	stow --no-folding ghc
 	stow git
 	stow htop
@@ -67,7 +68,6 @@ desktop: development
 	stow bspwm
 	stow colours
 	stow dunst
-	stow --no-folding fish
 	stow fontconfig
 	stow gtk
 	stow konsole
