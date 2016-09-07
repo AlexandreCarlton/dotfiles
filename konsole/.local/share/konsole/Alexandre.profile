@@ -1,5 +1,5 @@
 [Appearance]
-ColorScheme=Solarized
+ColorScheme=Solarized Dark
 
 [Cursor Options]
 CursorShape=1
