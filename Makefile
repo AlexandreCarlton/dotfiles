@@ -70,6 +70,7 @@ desktop: development
 	stow --no-folding fish
 	stow fontconfig
 	stow gtk
+	stow konsole
 	stow mime
 	stow mpv
 	stow pacman
