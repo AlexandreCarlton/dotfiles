@@ -137,8 +137,7 @@ let delimitMate_expand_cr = 1
 let ycm_options = '--clang-completer ' .
                 \ '--tern-completer ' .
                 \ '--system-libclang --system-boost'
-Plug 'Valloric/YouCompleteMe', {'do': 'python2 install.py ' . ycm_options,
-                              \ 'for': ['c', 'cpp', 'python', 'haskell', 'go', 'javascript'] } "{{{
+Plug 'Valloric/YouCompleteMe', {'do': 'python2 install.py ' . ycm_options} " {{{
 let g:ycm_always_populate_location_list = 1
 let g:ycm_add_preview_to_completeopt = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
