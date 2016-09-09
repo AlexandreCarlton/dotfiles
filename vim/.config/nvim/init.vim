@@ -654,7 +654,7 @@ call plug#end()
 " Use 16 to use Terminal's colours.
 set t_Co=256
 set background=dark
-colorscheme solarized
+silent! colorscheme solarized
 let g:lightline.colorscheme = 'solarized'
 
 " }}}
