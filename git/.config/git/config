@@ -91,9 +91,6 @@
 	# Add list of merged commits to generated commit
 	log = true
 
-	#	Always create a commit when merging, even when we can fast-forward it
-	ff = false
-
 [init]
 
 	# Where we store things like hooks
