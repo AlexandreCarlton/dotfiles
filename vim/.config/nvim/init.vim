@@ -148,7 +148,7 @@ let g:ycm_semantic_triggers = {'haskell': ['.'], 'r': ['.', '$', 're![_a-zA-Z]+[
 let g:ycm_collect_identifiers_from_tags_files = 1
 " Set backup ycm extra conf; aims to be generic (though we should still
 " generate our own special one).
-let g:ycm_global_ycm_extra_conf = '/home/alexandre/.config/nvim/global_ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = $XDG_CONFIG_HOME . '/nvim/global_ycm_extra_conf.py'
 
  " }}}
 
