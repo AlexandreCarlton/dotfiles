@@ -179,6 +179,13 @@ Plug 'dag/vim-fish', {'for': 'fish'}
 
 " }}}
 
+" Docker {{{
+
+" Provides snippets and highlights popular bash commands
+Plug 'ekalinin/Dockerfile.vim'
+
+" }}}
+
 " Fortran {{{
 " Use free-form input (Don't assume everything is offset by 8 spaces)
 let fortran_free_source = 1
