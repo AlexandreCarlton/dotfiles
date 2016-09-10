@@ -1,0 +1,50 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure(2) do |config|
+
+  config.vm.box = 'centos/7'
+
+  config.vm.provider 'virtualbox' do |vb|
+    vb.cpus = 2
+    vb.memory = 2048
+  end
+
+  config.vm.provision 'shell', inline: <<-SHELL
+
+    # Enable desktop environment
+    yum -y groups install "KDE Plasma Workspaces"
+    systemctl set-default graphical.target
+
+    # Standard tooling
+    yum -y install epel-release
+    yum -y install zsh vim ctags git stow the_silver_searcher
+    yum -y install python python-devel python34 python34-devel
+
+    # YouCompleteMe dependencies
+    yum -y install ccache cmake boost boost-devel \
+      ftp://rpmfind.net/linux/fedora/linux/releases/24/Everything/x86_64/os/Packages/l/llvm-libs-3.8.0-1.fc24.x86_64.rpm \
+      ftp://rpmfind.net/linux/fedora/linux/updates/24/x86_64/c/clang-libs-3.8.0-2.fc24.x86_64.rpm \
+      ftp://rpmfind.net/linux/fedora/linux/updates/24/x86_64/c/clang-3.8.0-2.fc24.x86_64.rpm
+
+  SHELL
+
+
+  config.vm.provision 'shell', privileged: false, inline: <<-SHELL
+
+    # Dotfile deployment
+    git clone --recursive https://github.com/AlexandreCarlton/dotfiles.git ${HOME}/.dotfiles
+    make -C ${HOME}/.dotfiles development
+
+    # Special kde configuration
+    rm -f ${HOME}/.kde/share/config/konsolerc
+    stow --dir=${HOME}/.dotfiles konsole
+
+    # Install vim plugins, sourcing a special script since our vimrc is in a
+    # custom location.
+    source ~/.config/sh/env
+    vim +PlugInstall +qall
+
+  SHELL
+
+end
