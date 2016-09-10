@@ -136,8 +136,8 @@ let delimitMate_expand_cr = 1
 " --system-boost (Use system boost instead of downloading)
 let ycm_options = '--clang-completer ' .
                 \ '--tern-completer ' .
-                \ '--system-libclang --system-boost'
-Plug 'Valloric/YouCompleteMe', {'do': 'python2 install.py ' . ycm_options} " {{{
+                \ '--system-libclang'
+Plug 'Valloric/YouCompleteMe', {'do': './install.py ' . ycm_options} " {{{
 let g:ycm_always_populate_location_list = 1
 let g:ycm_add_preview_to_completeopt = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
