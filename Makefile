@@ -45,6 +45,8 @@ development:
 	stow editorconfig
 	stow --no-folding fish
 	stow --no-folding ghc
+	# It is crucial there is no folding for git otherwise our templates will be
+	# symlinks to invalid locations.
 	stow git
 	stow htop
 	stow javascript
