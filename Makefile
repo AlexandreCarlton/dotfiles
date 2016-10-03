@@ -39,7 +39,7 @@ linuxbrew:
 	brew install the_silver_searcher
 
 development:
-	stow ccache
+	stow --no-folding ccache
 	stow chromium
 	stow ctags
 	stow editorconfig
