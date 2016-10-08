@@ -66,6 +66,9 @@ export IPYTHONDIR="${XDG_CONFIG_HOME}/ipython"
 # R
 export R_ENVIRON_USER="${XDG_CONFIG_HOME}/R/Renviron"
 
+# Disable warnings for 'local' in POSIX mode - even dash implements it!
+export SHELLCHECK_OPTS='--exclude=SC2039'
+
 # Tmux - consider appending '/tmux' if we need more than one instance.
 export TMUX_TMPDIR="${XDG_RUNTIME_DIR}"
 
