@@ -75,9 +75,6 @@ let g:neomake_objcpp_enabled_makers = []
 " thing)
 let g:neomake_python_enabled_makers = ['pylint']
 
-" Open loclist when adding entries, preserving cursor
-let g:neomake_open_list = 2
-let g:neomake_list_height = 5
 let g:neomake_error_sign = {'text': 'x', 'texthl': 'ErrorMsg'}
 let g:neomake_warning_sign = {'text': '!', 'texthl': 'WarningMsg'}
 
