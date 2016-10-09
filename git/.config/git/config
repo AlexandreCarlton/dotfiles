@@ -18,6 +18,10 @@
 	# Use a custom viewer; install with pacman or npm.
 	pager = diff-so-fancy | less --tabs=2 -RFX
 
+	# Force conversion of line endings to LF on check-in (but prevent conversion
+	# to CRLF on check-out).
+	autocrlf = input
+
 [alias]
 
 	co = checkout
