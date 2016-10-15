@@ -73,7 +73,8 @@ export SHELLCHECK_OPTS='--exclude=SC2039'
 export TMUX_TMPDIR="${XDG_RUNTIME_DIR}"
 
 # Force QT5 to use current GTK theme
-export QT_STYLE_OVERRIDE='GTK+'
+# Requires the qt5-styleplugins (AUR) package.
+export QT_STYLE_OVERRIDE='gtk2'
 
 # Used by QT4 to know which rc to use.
 export GTK2_RC_FILES="${HOME}/.gtkrc-2.0"
