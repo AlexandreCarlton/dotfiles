@@ -511,7 +511,7 @@ let g:lightline = {
     \     ['fugitive', 'gitgutter', 'filename']
     \   ],
     \   'right': [
-    \     ['neomake', 'lineinfo'],
+    \     ['neomake', 'ycm', 'lineinfo'],
     \     ['percent'],
     \     ['fileformat', 'fileencoding', 'filetype'],
     \   ]
@@ -528,10 +528,12 @@ let g:lightline = {
     \   'mode': 'MyMode',
     \   'fugitive': 'MyFugitive',
     \   'gitgutter': 'MyGitGutter',
-    \   'neomake': 'neomake#statusline#LoclistStatus',
+    \   'neomake': 'MyNeomake',
+    \   'ycm': 'MyYCM',
     \ },
     \ 'component_type': {
     \   'neomake': 'error',
+    \   'ycm': 'error',
     \ },
     \ 'separator': { 'left': '', 'right': '' },
     \ 'subseparator': { 'left': '|', 'right': '|' }
@@ -573,6 +575,27 @@ function! MyMode()
        \ &ft == 'unite' ? 'Unite' :
        \ &ft == 'vimfiler' ? 'VimFiler' :
        \ lightline#mode()
+endfunction
+
+function! MyNeomake()
+  let counts = neomake#statusline#LoclistCounts()
+  let warning = get(counts, 'W', 0)
+  let error = get(counts, 'E', 0)
+  if [warning, error] != [0, 0]
+    return 'W:' . error . ' E:' . warning
+  else
+    return ''
+  endif
+endfunction
+
+function! MyYCM()
+  let warning = youcompleteme#GetWarningCount()
+  let error = youcompleteme#GetErrorCount()
+  if [warning, error] != [0, 0]
+    return 'W:' . error . ' E:' . warning
+  else
+    return ''
+  endif
 endfunction
 " }}}
 
