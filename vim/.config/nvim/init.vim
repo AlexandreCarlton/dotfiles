@@ -56,14 +56,8 @@ call plug#begin(g:bundle_folder)
 " Use ']l' and '[l' to cycle through errors (with vim-unimpaired)
 Plug 'benekastah/neomake' " {{{
 
-if has('nvim')
-  " On the fly checking so it constantly updates.
-  autocmd! TextChanged,TextChangedI * Neomake
-  " autocmd! BufWritePost * Neomake
-else
-  " Only check on save to reduce hanging.
-  autocmd! BufWritePost * Neomake
-endif
+" Execute linter on save
+autocmd! BufWritePost * Neomake
 
 " Have YouCompleteMe handle syntax checking for C-family languages
 let g:neomake_c_enabled_makers = []
