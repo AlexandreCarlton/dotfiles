@@ -71,6 +71,8 @@ let g:neomake_python_enabled_makers = ['pylint']
 
 let g:neomake_error_sign = {'text': 'x', 'texthl': 'ErrorMsg'}
 let g:neomake_warning_sign = {'text': '!', 'texthl': 'WarningMsg'}
+let g:neomake_message_sign = {'text': 'm', 'texthl': 'NeomakeMessageSign'}
+let g:neomake_info_sign = {'text': 'i', 'texthl': 'TODO'}
 
 " }}}
 
