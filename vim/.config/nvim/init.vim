@@ -132,9 +132,6 @@ let ycm_options = '--clang-completer ' .
                 \ '--system-libclang'
 Plug 'Valloric/YouCompleteMe', {'do': './install.py ' . ycm_options} " {{{
 let g:ycm_always_populate_location_list = 1
-let g:ycm_add_preview_to_completeopt = 1
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_semantic_triggers = {'haskell': ['.'], 'r': ['.', '$', 're![_a-zA-Z]+[_\w]*\.']}
 " Run ctags --fields=+l and YCM will look at tags files.
