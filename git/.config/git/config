@@ -22,6 +22,10 @@
 	# to CRLF on check-out).
 	autocrlf = input
 
+	# Use a central location for hooks so we don't have to keep re-initialising
+	# every repo when we update our hooks.
+	hooksPath = ~/.config/git/hooks
+
 [alias]
 
 	co = checkout

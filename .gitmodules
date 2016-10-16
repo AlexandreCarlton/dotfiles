@@ -14,5 +14,5 @@
 	path = tmux/.config/tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
 [submodule "git/.config/git/templates/hooks"]
-	path = git/.config/git/templates/hooks
+	path = git/.config/git/hooks
 	url = https://github.com/AlexandreCarlton/git-hooks
