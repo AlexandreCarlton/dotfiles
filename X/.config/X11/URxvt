@@ -42,5 +42,5 @@ URxvt*saveLines: 0
 ! URxvt.keysym.Shift-Ctrl-V: perl:clipboard:paste
 
 ! Turn off ISO 14755 mode; which is what is triggered on Ctrl+Shift
-! URxvt.iso14755: false
-! URxvt.iso14755_52: false
+URxvt.iso14755: false
+URxvt.iso14755_52: false
