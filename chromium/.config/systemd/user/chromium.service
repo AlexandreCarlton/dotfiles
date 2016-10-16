@@ -9,17 +9,19 @@ After=psd.service psd-resync.service
 [Service]
 # force-device and high-dpi is to account for libpng error.
 # Also add --enable-md-history when they start working.
-ExecStart=/usr/bin/chromium --restore-last-session \
+ExecStart=/usr/bin/chromium --service \
+  --restore-last-session \
   --auto-launch-at-startup \
+  --enable-tcp-fastopen \
   --enable-logging --log-level=1 \
-  --top-chrome-md --enable-md-downloads \
-  --enable-md-extensions \
+  --top-chrome-md --secondary-ui-md \
+  --enable-md-downloads --enable-md-extensions \
   --enable-fast-unload --enable-tab-audio-muting \
   --force-device-scale-factor=1 --high-dpi-support=1 \
   --no-displaying-insecure-content \
   --disk-cache-dir=%t/chromium-cache
 # Find a way to prevent asking to restore last session.
-ExecStop=/usr/bin/pkill --oldest --signal TERM -f chromium
+# ExecStop=/usr/bin/pkill --oldest --signal TERM -f chromium
 
 [Install]
 WantedBy=desktop.target
