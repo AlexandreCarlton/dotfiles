@@ -566,14 +566,17 @@ endfunction
 function! MyMode()
   let fname = expand('%:t')
   return fname == '__Tagbar__' ? 'Tagbar' :
-       \ lightline#mode() == 'NORMAL' ? 'N' :
+       \ lightline#mode() == 'COMMAND' ? 'C' :
        \ lightline#mode() == 'INSERT' ? 'I' :
-       \ lightline#mode() == 'VISUAL' ? 'V' :
-       \ lightline#mode() == 'V-LINE' ? 'V' :
-       \ lightline#mode() == 'V-BLOCK' ? 'V' :
+       \ lightline#mode() == 'NORMAL' ? 'N' :
        \ lightline#mode() == 'REPLACE' ? 'R' :
-       \ &ft == 'unite' ? 'Unite' :
-       \ &ft == 'vimfiler' ? 'VimFiler' :
+       \ lightline#mode() == 'SELECT' ? 'S' :
+       \ lightline#mode() == 'S-BLOCK' ? 'S' :
+       \ lightline#mode() == 'S-LINE' ? 'S' :
+       \ lightline#mode() == 'TERMINAL' ? 'T' :
+       \ lightline#mode() == 'VISUAL' ? 'V' :
+       \ lightline#mode() == 'V-BLOCK' ? 'V' :
+       \ lightline#mode() == 'V-LINE' ? 'V' :
        \ lightline#mode()
 endfunction
 
