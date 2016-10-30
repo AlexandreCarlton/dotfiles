@@ -51,6 +51,10 @@ let g:use_glyphs = 0 " Use fancy glyphs?
 
 call plug#begin(g:bundle_folder)
 
+" Defaults everyone can agree on.
+" Defined up here so other plugins can benefit from settings
+Plug 'tpope/vim-sensible'
+
 " Syntax {{{
 
 " Use ']l' and '[l' to cycle through errors (with vim-unimpaired)
@@ -385,9 +389,6 @@ Plug 'tpope/vim-commentary' ", {'on': '<Plug>Commentary'}
 " Better sed with Subvert
 " Allows changing of snake, mixed and camel case.
 Plug 'tpope/vim-abolish'
-
-" Defaults everyone can agree on.
-Plug 'tpope/vim-sensible'
 
 " Easily change surroundings (e.g. tags) in pairs.
 Plug 'tpope/vim-surround'
