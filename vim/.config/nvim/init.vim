@@ -289,9 +289,6 @@ set hidden
 " cursor is sent their (so it is highlighted automatically).
 set cursorline
 
-" Highlight nth column as a guideline for maximum space
-set colorcolumn=80
-
 " Handles csv files.
 Plug 'chrisbra/csv.vim', { 'for' : 'csv' }
 
@@ -323,6 +320,9 @@ Plug 'editorconfig/editorconfig-vim' " {{{
 
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'tarfile::.*']
 
+" Color the column corresponding the maximum line length (+1)
+let g:EditorConfig_max_line_indicator = 'line'
+
 if executable('editorconfig')
   " Requires editor-config-core-c, get it from the AUR or linuxbrew
   let g:EditorConfig_core_mode = 'external_command'
@@ -330,6 +330,10 @@ else
   " If unavailable, set to python_external
   let g:EditorConfig_core_mode = 'python_external'
 endif
+
+" Don't the current line if it was already longer than the allowed width when
+" the user started editing it.
+set formatoptions+=l
 
 " }}}
 
