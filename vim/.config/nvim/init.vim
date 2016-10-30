@@ -120,7 +120,7 @@ set fileformats=unix,dos,mac
 
 " Autocompletion for quotes, parens, etc.
 Plug 'raimondi/delimitMate' " {{{
-let delimitMate_expand_cr = 1
+let g:delimitMate_expand_cr = 1
 " }}}
 
 " Options
