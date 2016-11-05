@@ -68,7 +68,6 @@ development-systemd:
 desktop: development
 	stow --no-folding binaries
 	stow bspwm
-	stow colours
 	stow dunst
 	stow fontconfig
 	stow gtk
