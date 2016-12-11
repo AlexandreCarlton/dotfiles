@@ -50,7 +50,7 @@ development:
 	stow git
 	stow htop
 	stow javascript
-	stow python
+	stow --no-folding python
 	stow R
 	stow sh
 	stow spacemacs
