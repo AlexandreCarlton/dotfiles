@@ -37,27 +37,38 @@ values."
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
+
+     ;; General
      auto-completion
      better-defaults
-     (c-c++ :variables
-            c-c++-enable-clang-support t)
-     ess
-     (git :variables
-          git-gutter-use-fringe t)
-     haskell
-     html
-     javascript
-     latex
-     extra-langs
-     markdown
-     ;; org
-     python
-     shell
      spell-checking
      syntax-checking
-     typescript
-     version-control
      ycmd
+
+     ;; Languges
+     (c-c++ :variables
+            c-c++-enable-clang-support t)
+     haskell
+     markdown
+     python
+     shell-scripts
+
+     ;; DevOps
+     ansible
+     vagrant
+     yaml
+
+     ;; Git
+     (version-control :variables
+                      version-control-diff-tool 'diff-hl
+                      version-control-global-margin t)
+     git
+
+     ;; Vim
+     evil-commentary
+     evil-snipe
+     vim-empty-lines
+     vinegar
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
