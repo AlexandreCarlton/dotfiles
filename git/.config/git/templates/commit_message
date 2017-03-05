@@ -1,5 +1,4 @@
 
-# ^-------- 50 character subject line ---------^ #
+# ^------ If applied, this commit will... -----^ #
 
-# v------------------------ 72 character body -----------------------v #
-# References:
+# v----------------- Why is this change being made? -----------------v #
