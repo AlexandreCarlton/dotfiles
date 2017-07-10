@@ -142,6 +142,9 @@ let g:ycm_collect_identifiers_from_tags_files = 1
 " generate our own special one).
 let g:ycm_global_ycm_extra_conf = $XDG_CONFIG_HOME . '/nvim/global_ycm_extra_conf.py'
 
+" Use first python in PATH - allows for virtualenv to kick in
+let g:ycm_python_binary_path = 'python'
+
  " }}}
 
 " Generate .ycm_extra_conf.py
