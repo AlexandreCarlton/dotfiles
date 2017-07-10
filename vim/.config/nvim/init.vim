@@ -132,6 +132,7 @@ let g:delimitMate_expand_cr = 1
 " --system-libclang (Use system libclang instead of downloading other binary)
 " --system-boost (Use system boost instead of downloading)
 let ycm_options = '--clang-completer ' .
+                \ '--gocode-completer ' .
                 \ '--tern-completer ' .
                 \ '--system-libclang'
 Plug 'Valloric/YouCompleteMe', {'do': './install.py ' . ycm_options} " {{{
@@ -217,7 +218,23 @@ autocmd Filetype gitcommit set spell
 
 " Go {{{
 " Batteries included go support (including completion)
-Plug 'fatih/vim-go', {'for': 'go'}
+Plug 'fatih/vim-go', {'for': 'go'} " {{{
+
+" Disable completions - provided by YouCompleteMe
+let g:go_gocode_propose_builtins = 0
+
+" Let EditorConfig handle this
+let g:go_highlight_space_tab_error = 0
+let g:go_highlight_trailing_whitespace_error = 0
+
+" Let our default linter plugin handle errors
+let g:go_metalinter_autosave = 0
+
+" Don't auto format on save - erroring with EditorConfig
+let g:go_fmt_autosave = 0
+
+
+" }}}
 " }}}
 
 " Haskell {{{
