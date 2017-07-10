@@ -56,27 +56,20 @@ call plug#begin(g:bundle_folder)
 Plug 'tpope/vim-sensible'
 
 " Syntax {{{
-
+" Checks the buffer in addition to on save (unlike NeoMake)
 " Use ']l' and '[l' to cycle through errors (with vim-unimpaired)
-Plug 'benekastah/neomake' " {{{
-
-" Execute linter on save
-autocmd! BufWritePost * Neomake
+Plug 'w0rp/ale'
 
 " Have YouCompleteMe handle syntax checking for C-family languages
-let g:neomake_c_enabled_makers = []
-let g:neomake_cpp_enabled_makers = []
-let g:neomake_objc_enabled_makers = []
-let g:neomake_objcpp_enabled_makers = []
+let g:ale_linters = { 'c': [], 'cpp': [],  }
 
 " Generally have only one linter (otherwise they tend to report the same
 " thing)
-let g:neomake_python_enabled_makers = ['pylint']
+let g:ale_linters['python'] = ['pylint']
 
-let g:neomake_error_sign = {'text': 'x', 'texthl': 'ErrorMsg'}
-let g:neomake_warning_sign = {'text': '!', 'texthl': 'WarningMsg'}
-let g:neomake_message_sign = {'text': 'm', 'texthl': 'NeomakeMessageSign'}
-let g:neomake_info_sign = {'text': 'i', 'texthl': 'TODO'}
+" Be consistent with YouCompleteMe
+let g:ale_sign_error = 'x'
+let g:ale_sign_warning = '!'
 
 " }}}
 
@@ -533,7 +526,7 @@ let g:lightline = {
     \     ['fugitive', 'gitgutter', 'filename']
     \   ],
     \   'right': [
-    \     ['neomake', 'ycm', 'lineinfo'],
+    \     ['ale', 'ycm', 'lineinfo'],
     \     ['percent'],
     \     ['fileformat', 'fileencoding', 'filetype'],
     \   ]
@@ -550,11 +543,11 @@ let g:lightline = {
     \   'mode': 'MyMode',
     \   'fugitive': 'MyFugitive',
     \   'gitgutter': 'MyGitGutter',
-    \   'neomake': 'MyNeomake',
+    \   'ale': 'MyALE',
     \   'ycm': 'MyYCM',
     \ },
     \ 'component_type': {
-    \   'neomake': 'error',
+    \   'ale': 'error',
     \   'ycm': 'error',
     \ },
     \ 'separator': { 'left': '', 'right': '' },
@@ -602,12 +595,12 @@ function! MyMode()
        \ lightline#mode()
 endfunction
 
-function! MyNeomake()
-  let counts = neomake#statusline#LoclistCounts()
-  let warning = get(counts, 'W', 0)
-  let error = get(counts, 'E', 0)
-  if [warning, error] != [0, 0]
-    return 'W:' . error . ' E:' . warning
+function! MyALE()
+  let l:counts = ale#statusline#Count(bufnr(''))
+  let l:errors = l:counts.error + l:counts.style_error
+  let l:warnings = l:counts.warning + l:counts.style_warning
+  if [l:warnings, l:errors] != [0, 0]
+    return 'E:' . l:errors . ' W:' . l:warnings
   else
     return ''
   endif
