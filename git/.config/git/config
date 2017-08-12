@@ -123,3 +123,9 @@
 
 	# Always show the diff in the commit message (commented out)
 	verbose = true
+
+[hub]
+
+	# hub is a command-line wrapper useful for GitHub.
+	# See https://hub.github.com
+	protocol = ssh
