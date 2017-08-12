@@ -129,3 +129,8 @@
 	# hub is a command-line wrapper useful for GitHub.
 	# See https://hub.github.com
 	protocol = ssh
+
+[include]
+
+	# Use Optiver configuration if present, which should override the settings here.
+	path = ~/.config/optiver/git/config
