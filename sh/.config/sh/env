@@ -89,7 +89,7 @@ export DISTCC_DIR="${XDG_CONFIG_HOME}/distcc"
 export PACKER_CACHE_DIR="${XDG_CACHE_HOME}/packer"
 
 # Urxvt - consider, like tmux, making another folder for extra daemons.
-export RXVT_SOCKET="${XDG_RUNTIME_DIR}/urxvtd-${HOST}"
+export RXVT_SOCKET="${XDG_RUNTIME_DIR}/urxvtd"
 
 # X11
 export XAUTHORITY="${XDG_RUNTIME_DIR}/X11/Xauthority"

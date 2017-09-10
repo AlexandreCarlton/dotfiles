@@ -3,7 +3,7 @@ Description=RXVT-Unicode Daemon Socket
 Documentation=man:urxvtd(1) man:urxvt(1)
 
 [Socket]
-ListenStream=%t/urxvtd-%H
+ListenStream=%t/urxvtd
 
 [Install]
 WantedBy=sockets.target

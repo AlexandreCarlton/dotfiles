@@ -7,7 +7,7 @@ After=display-server.target
 
 [Service]
 # Note that this environment needs to be supplied when launching urxvtc.
-Environment=RXVT_SOCKET=%t/urxvtd-%H
+Environment=RXVT_SOCKET=%t/urxvtd
 ExecStart=/usr/bin/urxvtd --opendisplay
 Restart=on-failure
 
