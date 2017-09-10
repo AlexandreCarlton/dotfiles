@@ -38,7 +38,7 @@ export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
 export NO_AT_BRIDGE='1'
 
 # Bspwm
-export BSPWM_SOCKET="${XDG_RUNTIME_DIR}/bspwm-${HOST}"
+export BSPWM_SOCKET="${XDG_RUNTIME_DIR}/bspwm"
 
 # Ctags
 export CTAGS="--options=${XDG_CONFIG_HOME}/ctags.conf"
