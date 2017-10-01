@@ -1,5 +1,31 @@
 #!/usr/bin/env python
+
+# Minimal pythonrc to run everytime we launch an interactive shell.
+# It would be better to run IPython, however.
+
+import sys
+import os
+import rlcompleter
+import readline
+import atexit
+
+
+# Tab completion
+readline.parse_and_bind('tab: complete')
+
+# History
+HISTFILE='{0}/python/history'.format(os.environ['XDG_DATA_HOME'])
+
 try:
-    __IPYTHON__
-except NameError:
-    print("\nPlease install and use IPython with:\n\tpip install --user ipython")
+    readline.read_history_file(HISTFILE)
+# FileNotFoundError is better, but exclusive to Python 3.
+except IOError:
+    os.mknod(HISTFILE)
+
+
+readline.set_history_length(300)
+
+def savehist():
+    readline.write_history_file(HISTFILE)
+
+atexit.register(savehist)
