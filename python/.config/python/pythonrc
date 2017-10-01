@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
-# Minimal pythonrc to run everytime we launch an interactive shell.
-# It would be better to run IPython, however.
+"""Minimal pythonrc to run everytime we launch an interactive shell."""
 
 import sys
 import os
@@ -13,19 +12,15 @@ import atexit
 # Tab completion
 readline.parse_and_bind('tab: complete')
 
-# History
-HISTFILE='{0}/python/history'.format(os.environ['XDG_DATA_HOME'])
-
+# History - load on launch and save on exit.
+HISTORY_FILENAME = '{0}/python/history'.format(os.environ['XDG_DATA_HOME'])
 try:
-    readline.read_history_file(HISTFILE)
-# FileNotFoundError is better, but exclusive to Python 3.
+    readline.read_history_file(HISTORY_FILENAME)
 except IOError:
-    os.mknod(HISTFILE)
-
-
+    if not os.path.isdir(os.path.dirname(HISTORY_FILENAME)):
+        os.makedirs(os.path.dirname(HISTORY_FILENAME))
 readline.set_history_length(300)
+atexit.register(lambda: readline.write_history_file(HISTORY_FILENAME))
 
-def savehist():
-    readline.write_history_file(HISTFILE)
-
-atexit.register(savehist)
+# Clean up (leaving in readline so that we can write to the history file)
+del atexit, os, rlcompleter, sys
