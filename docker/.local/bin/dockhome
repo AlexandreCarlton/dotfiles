@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# Launches a container:
+#  - injecting in the current host user into the container
+#  - mapping in the host's working directory into the container's home directory.
+# Useful when using Docker to build applications.
+
+docker run \
+	--interactive --tty \
+	--rm \
+	--user "$(id --user):$(id --group)" \
+	--privileged \
+	--volume /etc/passwd:/etc/passwd:ro \
+	--volume /etc/group:/etc/group:ro \
+	--volume "$(pwd):/home/$(id --user --name)" \
+	--workdir "/home/$(id --user --name)" \
+	"$@"

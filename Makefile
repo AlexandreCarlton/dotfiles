@@ -42,6 +42,7 @@ development:
 	stow --no-folding ccache
 	stow chromium
 	stow ctags
+	stow docker
 	stow editorconfig
 	stow --no-folding fish
 	stow --no-folding ghc
