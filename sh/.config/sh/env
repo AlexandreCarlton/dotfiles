@@ -1,98 +1,20 @@
 #!/bin/sh
 
-# Set environment variables
-# As a general rule of thumb, the applications should be configured in files
-# instead of environment variables; as such, these merely force the applications
-# in question to point to the correct files (which then set everything else).
+# TODO: Rename to load-pam-env, load this in profile.
 
-
-# TODO: Split these out into an environment.d/ folder and source all files
-# present in it, so we only export the relevant variables for folders we have
-# stowed.
-
-if test -z "${LANG}" ; then
-  export LANG='en_US.UTF-8'
+# Load ~/.pam_environment if pam_env.so does not have user_readenv=1.
+# Necessary on certain Linux distros.
+if [ -z "${PAM_ENV_LOADED}" ]; then
+	grep -v '^$' "${HOME}/.pam_environment" \
+	  | grep -v '^#' \
+	  | sed -r 's/ +DEFAULT//' \
+	  | sed -r 's/@\{HOME\}/$\{HOME\}/' \
+	  | sed -r 's/@\{SHELL\}/$\{SHELL\}/' \
+	  | while read -r line; do
+	    export "$(echo "${line}" | envsubst)"
+	  done
 fi
 
-# Consider using xdg-user-dirs if a major application needs it.
-# It creates these directories in early login phase.
-export XDG_CONFIG_HOME="${HOME}/.config"
-export XDG_CACHE_HOME="${HOME}/.cache"
-export XDG_DATA_HOME="${HOME}/.local/share"
-
-# Editing
-export EDITOR='vim'
-export USE_EDITOR="${EDITOR}"
-export VISUAL="${EDITOR}"
-
-# Browsing
-export BROWSER='chromium'
-
-# For zsh files
-export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
-
-# When a GTK3 app is launched, dbus spawns:
-# - at-spi-bus-launcher
-# - at-spi2-registryd
-# We disable this as it is not needed.
-export NO_AT_BRIDGE='1'
-
-# Bspwm
-export BSPWM_SOCKET="${XDG_RUNTIME_DIR}/bspwm"
-
-# Ctags
-export CTAGS="--options=${XDG_CONFIG_HOME}/ctags.conf"
-
-# TODO: Create a new file "xdg_dirs" for stuff like this.
-# Prevent less from storing history in .lesshst file
-export LESSHISTFILE="${XDG_CACHE_HOME}/less/history"
-
-# Set ~/.spacemacs.d to ~/.config/spacemacs
-export SPACEMACSDIR="${XDG_CONFIG_HOME}/spacemacs"
-
-# Use vimrc in a non-default location
-export VIMINIT='let $MYVIMRC="${XDG_CONFIG_HOME}/nvim/init.vim" | source $MYVIMRC'
-
-# Npm
-export NPM_CONFIG_USERCONFIG="${XDG_CONFIG_HOME}/npm/npmrc"
-
-# Python
-export PYTHONSTARTUP="${XDG_CONFIG_HOME}/python/pythonrc"
-# This folder is automatically created for you.
-export PYLINTHOME="${XDG_DATA_HOME}/pylint"
-# Unfortunately both data and config are in this directory.
-export IPYTHONDIR="${XDG_CONFIG_HOME}/ipython"
-
-# R
-export R_ENVIRON_USER="${XDG_CONFIG_HOME}/R/Renviron"
-
-# Disable warnings for 'local' in POSIX mode - even dash implements it!
-export SHELLCHECK_OPTS='--exclude=SC2039'
-
-# Tmux - consider appending '/tmux' if we need more than one instance.
-export TMUX_TMPDIR="${XDG_RUNTIME_DIR}"
-
-# Force QT5 to use current GTK theme
-# Requires the qt5-styleplugins (AUR) package.
-export QT_STYLE_OVERRIDE='gtk2'
-
-# Used by QT4 to know which rc to use.
-export GTK2_RC_FILES="${HOME}/.gtkrc-2.0"
-
-# Ccache
-export CCACHE_CONFIGPATH="${XDG_CONFIG_HOME}/ccache.conf"
-
-# Distcc - this specifies hosts!
-export DISTCC_DIR="${XDG_CONFIG_HOME}/distcc"
-
-# Store Packer ISOs in a common directory (not in the current project)
-export PACKER_CACHE_DIR="${XDG_CACHE_HOME}/packer"
-
-# Urxvt - consider, like tmux, making another folder for extra daemons.
-export RXVT_SOCKET="${XDG_RUNTIME_DIR}/urxvtd"
-
-# X11
-export XAUTHORITY="${XDG_RUNTIME_DIR}/X11/Xauthority"
-
+# TODO: Stick PATH into ~/.pam_environment.
 # Remove this, put a note at the top saying it should go in profile?
 . "${XDG_CONFIG_HOME}/sh/path"

@@ -3,8 +3,6 @@ Description=tmux session (detached)
 Documentation=man:tmux(1)
 
 [Service]
-# Consider appending '/tmux' if we need more than one instance.
-Environment=TMUX_TMPDIR=%t
 #ExecStartPre=/usr/bin/mkdir -p "${TMUX_TMPDIR}"
 ExecStart=/usr/bin/tmux -f %h/.config/tmux/tmux.conf new-session -d -s %u
 ExecStop=/usr/bin/tmux kill-session -t %u

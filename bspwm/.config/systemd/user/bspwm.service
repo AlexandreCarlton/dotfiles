@@ -11,7 +11,6 @@ Requires=x11.target
 After=x11.target
 
 [Service]
-Environment=BSPWM_SOCKET=%t/bspwm
 ExecStart=/usr/bin/bspwm
 
 [Install]
