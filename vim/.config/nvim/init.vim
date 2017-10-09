@@ -693,6 +693,11 @@ Plug 'Keithbsmiley/tmux.vim'
 
 " }}}
 
+" TODO: Use $XDG_CONFIG_HOME if possible.
+if filereadable(glob('~/.config/nvim/optiver.vim'))
+  source ~/.config/nvim/optiver.vim
+endif
+
 call plug#end()
 
 " Colorscheme {{{
