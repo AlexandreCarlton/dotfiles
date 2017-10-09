@@ -7,17 +7,12 @@
 # Linux where /bin and /sbin are just symlinks to /usr/bin.
 # As such, test -x /usr/bin/${util} works just as well.
 
-# Attach to existing tmux session if not already in one.
+# Attach to existing tmux session if not already in one, or create one if one does not exist.
 # Doing this early prevents the original shell from executing everything
 # beneath until the user detaches.
-if test -x /usr/bin/tmux  && test -z "${TMUX}" ; then
-    # Bug: On login, this automatically attaches to the linux console
-    # which is marginally smaller than the rxvt terminal.
-    # Since tmux's window decreases to the smallest one, our window is small
-    # until we detach the old linux connection.
-    if test "${TERM}" != 'linux'; then
-      tmux attach
-    fi
+if [ -n "$(command -v tmux)" ] && [ -z "${TMUX}" ] && [ "${TERM}" != 'linux' ]; then
+	# if the session 'alexandre' already exists, tmux attaches to it; otherwise, it creates a new one.
+	tmux new-session -A -s alexandre
 fi
 
 . "${HOME}/.config/sh/aliases"
