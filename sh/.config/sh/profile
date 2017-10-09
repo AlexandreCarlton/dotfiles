@@ -7,9 +7,8 @@
 # Reset PATH if it gets overridden by profile/rc/login files.
 . "${HOME}/.config/sh/path"
 
-# Source Nix user profile.
-if test -s "${HOME}/.nix-profile/etc/profile.d/nix.sh" ; then
-  . "${HOME}/.nix-profile/etc/profile.d/nix.sh"
+if [ -r "${XDG_CONFIG_HOME}/sh/optiver-profile" ]; then
+	. "${XDG_CONFIG_HOME}/sh/optiver-profile"
 fi
 
 # Don't have Ctrl-S/Q mess with the terminal.
