@@ -503,7 +503,7 @@ let g:netrw_liststyle = 3
 " Fuzy searh finder
 " Due to its frankly shocking directory layout, we use our package manager to
 " download fzf.
-Plug 'junegunn/fzf', {'on': 'FZF'}
+Plug 'junegunn/fzf.vim'
 
 " Grep things easily, autodetects tools
 " Asynchronous support with neovim
