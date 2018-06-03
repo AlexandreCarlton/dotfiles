@@ -475,6 +475,9 @@ autocmd FileType markdown set spell
 " godlygeek/tabular MUST come before this.
 Plug 'plasticboy/vim-markdown', { 'for' : 'markdown' }
 
+" Mediawiki syntax highlighting
+Plug 'chikamichi/mediawiki.vim'
+
 " }}}
 
 " Python {{{
