@@ -61,7 +61,7 @@ Plug 'tpope/vim-sensible'
 Plug 'w0rp/ale'
 
 " Have YouCompleteMe handle syntax checking for C-family languages
-let g:ale_linters = { 'c': [], 'cpp': [],  }
+let g:ale_linters = { 'c': [], 'cpp': [] }
 
 " Generally have only one linter (otherwise they tend to report the same
 " thing)
@@ -120,13 +120,13 @@ let g:delimitMate_expand_cr = 1
 " --clang-completer (C/C++)
 " --omnisharp-completer (C#)
 " --gocode-completer (Go)
-" --tern-completer (Javascript)
+" --java-completer (Java)
+" --js-completer (Javascript)
 " --racer-completer (Rust)
 " --system-libclang (Use system libclang instead of downloading other binary)
 " --system-boost (Use system boost instead of downloading)
 let ycm_options = '--clang-completer ' .
                 \ '--gocode-completer ' .
-                \ '--tern-completer ' .
                 \ '--system-libclang'
 Plug 'Valloric/YouCompleteMe', {'do': './install.py ' . ycm_options} " {{{
 let g:ycm_always_populate_location_list = 1
