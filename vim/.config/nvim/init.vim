@@ -152,13 +152,7 @@ let g:ycm_python_binary_path = 'python'
 
  " }}}
 
-" Generate .ycm_extra_conf.py
-" IDEA: On git pull, generate one if it doesn't exist (and is supported, e.g.
-" CMakeLists exist).
-" Run config_gen.py <PROJECT_DIR> or :YcmGenerateConfig
-Plug 'rdnetto/YCM-Generator', {'branch': 'stable', 'on': 'YcmGenerateConfig'}
-
- " Snippets produced along side YouCompleteMe
+" Snippets produced along side YouCompleteMe
 Plug 'SirVer/UltiSnips' " {{{
 let g:UltiSnipsExpandTrigger = '<C-j>'
 " }}}

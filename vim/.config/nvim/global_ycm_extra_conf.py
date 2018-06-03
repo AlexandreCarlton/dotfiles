@@ -14,7 +14,7 @@ COMMON_FLAGS = [
     '-D', 'DEBUG',
 
     '-isystem', '/usr/include',
-    '-isystem', '/usr/local/include'
+    '-isystem', '/usr/local/include',
 
     '-I', '.'
 ]
@@ -22,7 +22,8 @@ COMMON_FLAGS = [
 CPP_FLAGS = [
     '-std=c++11',
     '-x', 'c++',
-    '-fexceptions'
+    '-fexceptions',
+    '-I', '/usr/include/c++/8.1.0'
 ]
 
 C_FLAGS = [
@@ -33,11 +34,11 @@ C_FLAGS = [
 
 def is_c_file(filename):
     basename, extension = os.path.splitext(filename)
-    if extension == 'h':
+    if extension == '.h':
         if os.path.exists(basename + '.c'):
             return True
         # If it's a lone header file we assume it's a C++ file for simplicity.
-    elif extension == 'c':
+    elif extension == '.c':
         return True
     return False
 
