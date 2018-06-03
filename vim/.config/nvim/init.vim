@@ -451,7 +451,7 @@ nnoremap <Leader>bd :bdelete<cr>
 " when trying to use it
 nnoremap <Leader>tb :TagbarToggle<cr>
 nnoremap <Leader>tggh :GitGutterLineHighlightsToggle<cr>
-nnoremap <Leader>gr :Grepper<cr>
+nnoremap <Leader>/ :Grepper<cr>
 nnoremap <Leader>* :Grepper -cword -noprompt<cr>
 nnoremap <Leader>ud :UndotreeToggle<cr>
 nnoremap <Leader>fe :Vexplore<cr>
