@@ -680,9 +680,6 @@ let g:tagbar_type_haskell = {
 " Send make commands to Tmux pane
 Plug 'tpope/vim-dispatch', {'on': ['Make', 'Dispatch', 'Start'] }
 
-" Syntax highlighting
-Plug 'Keithbsmiley/tmux.vim'
-
 " }}}
 
 " TODO: Use $XDG_CONFIG_HOME if possible.
