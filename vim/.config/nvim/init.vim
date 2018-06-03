@@ -358,6 +358,14 @@ Plug 'tpope/vim-eunuch', {'on': ['Remove', 'Unlink', 'Move', 'Rename', 'Chmod',
                                \ 'SudoWrite', 'SudoEdit']}
 " }}}
 
+" Java {{{
+
+" Yeah, no.
+" If I want to do Java development, I'll do it in IntelliJ.
+" You could leverage eclimd if you're desperate, which I dockerised a while back.
+
+" }}}
+
 " JavaScript {{{
 
 " General support
