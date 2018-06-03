@@ -371,6 +371,12 @@ Plug 'tpope/vim-eunuch', {'on': ['Remove', 'Unlink', 'Move', 'Rename', 'Chmod',
 " General support
 Plug 'pangloss/vim-javascript', { 'for' : 'javascript' }
 
+" CoffeeScript
+" Plug 'kchmck/vim-coffee-script', {'for': 'coffee'}
+
+" TypeScript
+" Plug 'leafgarland/typescript-vim', {'for': 'typescript'}
+
 " }}}
 
 " LaTeX {{{
@@ -485,6 +491,9 @@ Plug 'chikamichi/mediawiki.vim'
 " Python {{{
 
 Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
+
+" Virtualenv manipulation
+" Plug 'jmcantrell/vim-virtualenv', {'on': ['VirtualEnvList', 'VirtualEnvActivate']}
 
 " }}}
 
