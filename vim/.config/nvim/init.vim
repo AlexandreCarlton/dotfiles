@@ -632,14 +632,6 @@ set laststatus=2
 
 " }}}
 
-" Systemd {{{
-
-au BufNewFile,BufRead *.service set filetype=cfg
-
-au BufNewFile,BufRead *.socket set filetype=cfg
-
-" }}}
-
 " Tags {{{
 
 " Easily browse tags of source files (generated on the fly).
