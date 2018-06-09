@@ -8,8 +8,10 @@ Requires=lightstatus.socket
 After=lightstatus.socket
 
 [Service]
-ExecStart=/usr/local/bin/lightstatus -o %t/lemonbar-fifo
+ExecStart=/usr/local/bin/lightstatus
 StandardInput=socket
+# TODO: It would be better if we could use fd:lemonbar.socket, but that doesn't seem to be working.
+StandardOutput=file:%t/lemonbar-fifo
 
 [Install]
 WantedBy=desktop.target
