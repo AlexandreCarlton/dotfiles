@@ -1,6 +1,0 @@
-[Unit]
-Description=Desktop Target
-Wants=window-manager.service
-
-[Install]
-Alias=default.target

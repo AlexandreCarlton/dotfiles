@@ -1,12 +1,12 @@
 [Unit]
 Description=redshift
 Documentation=man:redshift(1)
-Requisite=display-server.target
-After=display-server.target
+PartOf=graphical-session.target
+After=graphical-session-pre.target
 
 [Service]
 ExecStart=/usr/bin/redshift
 Restart=on-failure
 
 [Install]
-WantedBy=desktop.target
+WantedBy=graphical-session.target

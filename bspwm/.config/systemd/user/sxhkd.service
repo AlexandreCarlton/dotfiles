@@ -1,8 +1,8 @@
 [Unit]
 Description=sxhkd
 Documentation=man:sxhkd(1)
-Requisite=display-server.target
-After=display-server.target
+PartOf=graphical-session.target
+After=graphical-session-pre.target
 
 [Service]
 ExecStart=/usr/bin/sxhkd

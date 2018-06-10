@@ -1,11 +1,11 @@
 [Unit]
 Description=unclutter
 Documentation=man:unclutter(1)
-Requisite=x11.target
-After=x11.target
+PartOf=graphical-session.target
+After=graphical-session-pre.target
 
 [Service]
 ExecStart=/usr/bin/unclutter -noevents
 
 [Install]
-WantedBy=desktop.target
+WantedBy=graphical-session.target

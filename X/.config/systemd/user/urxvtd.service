@@ -1,9 +1,9 @@
 [Unit]
 Description=RXVT-Unicode Daemon
 Documentation=man:urxvtd(1) man:urxvt(1)
+PartOf=graphical-session.target
+After=graphical-session-pre.target
 Requires=urxvtd.socket
-Requisite=display-server.target
-After=display-server.target
 
 [Service]
 # Note that this environment needs to be supplied when launching urxvtc.
@@ -11,5 +11,5 @@ ExecStart=/usr/bin/urxvtd --opendisplay
 Restart=on-failure
 
 [Install]
-WantedBy=desktop.target
+WantedBy=graphical-session.target
 Also=urxvtd.socket

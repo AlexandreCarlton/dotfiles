@@ -1,8 +1,8 @@
 [Unit]
 Description=bell mute
 Documentation=man:xset(1)
-Requisite=x11.target
-After=x11.target
+PartOf=graphical-session.target
+After=graphical-session-pre.target
 
 [Service]
 Type=oneshot
@@ -14,4 +14,4 @@ RemainAfterExit=yes
 ExecStart=/usr/bin/xset b off
 
 [Install]
-WantedBy=desktop.target
+WantedBy=graphical-session.target

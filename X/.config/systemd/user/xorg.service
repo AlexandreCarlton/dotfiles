@@ -1,13 +1,10 @@
 [Unit]
 Description=Xorg
 Documentation=man:Xorg(1)
-
-Requires=x11.socket
-After=x11.socket
+PartOf=graphical-session.target
 
 [Service]
-ExecStart=/usr/bin/Xorg $DISPLAY -nolisten tcp -noreset -verbose 3 vt1
+ExecStart=/usr/bin/Xorg $DISPLAY -nolisten tcp -noreset -verbose 20 vt1
+# Xorg looks for 'lib/xorg/protocol.txt', so we set the pwd to account for that.
+WorkingDirectory=/usr
 SuccessExitStatus=0 1
-
-[Install]
-WantedBy=desktop.target

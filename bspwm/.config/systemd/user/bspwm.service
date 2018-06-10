@@ -1,18 +1,11 @@
 [Unit]
 Description=bspwm
 Documentation=man:bspwm(1)
-
-Requires=sxhkd.service
-
+PartOf=graphical-session.target
+# TODO: We should create a bspc.service that sends its output into lightstatus, not in the config.
 Requires=lightstatus.socket
 After=lightstatus.socket
-
-Requires=x11.target
-After=x11.target
+After=graphical-session-pre.target
 
 [Service]
 ExecStart=/usr/bin/bspwm
-
-[Install]
-Alias=window-manager.service
-Also=x11.target

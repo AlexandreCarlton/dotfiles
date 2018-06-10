@@ -1,17 +1,10 @@
 [Unit]
 Description=lemonbar
 Documentation=man:lemonbar(1)
-
-Requires=display-server.target
-After=display-server.target
-
-Requires=lemonbar.socket
-After=lemonbar.socket
+PartOf=graphical-session.target
+After=graphical-session-pre.target
 
 [Service]
 EnvironmentFile=/home/alexandre/.config/bspwm/lemonbar.conf
 StandardInput=socket
 ExecStart=/usr/bin/lemonbar -gx"${PANEL_HEIGHT}" -f "${MAIN_FONT}" -f "${ICON_FONT}" -F "${FOREGROUND}" -B "${BACKGROUND}"
-
-[Install]
-WantedBy=desktop.target

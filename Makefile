@@ -62,7 +62,7 @@ development:
 	stow --no-folding zsh
 
 development-systemd:
-	stow systemd
+	stow --no-folding systemd
 	systemctl --user enable tmux
 
 # TODO: Find a way to ensure stow is in $PATH
@@ -86,8 +86,7 @@ desktop: development
 	stow zathura
 
 desktop-systemd: desktop development-systemd
-	stow systemd
-	systemctl --user enable desktop.target
+	stow --no-folding systemd
 	systemctl --user enable bell
 	systemctl --user enable bspwm
 	systemctl --user enable chromium
@@ -101,9 +100,7 @@ desktop-systemd: desktop development-systemd
 	systemctl --user enable urxvtd.socket
 	systemctl --user enable xrdb
 	# Eagerly launch things
-	systemctl --user enable lightstatus.service
-	systemctl --user enable lemonbar.service
 	systemctl --user enable urxvtd.service
-	systemctl --user enable xorg
+	systemctl --user enable x11.socket
 	# Hack until systemd fixes xorg socket activation in systemd
-	systemctl --user enable xorg-delay@1
+	systemctl --user enable xorg-delay@5

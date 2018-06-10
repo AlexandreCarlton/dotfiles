@@ -1,8 +1,8 @@
 [Unit]
 Description=left pointer cursor
 Documentation=man:xsetroot(1)
-Requisite=x11.target
-After=x11.target
+PartOf=graphical-session.target
+After=graphical-session-pre.target
 
 [Service]
 Type=oneshot
@@ -10,4 +10,4 @@ RemainAfterExit=yes
 ExecStart=/usr/bin/xsetroot -cursor_name left_ptr
 
 [Install]
-WantedBy=desktop.target
+WantedBy=graphical-session.target

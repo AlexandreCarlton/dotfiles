@@ -1,11 +1,9 @@
 [Unit]
 Description=lightstatus
-
 Requires=lemonbar.socket
 After=lemonbar.socket
-
-Requires=lightstatus.socket
-After=lightstatus.socket
+PartOf=graphical-session.target
+After=graphical-session-pre.target
 
 [Service]
 ExecStart=/usr/local/bin/lightstatus
@@ -14,4 +12,4 @@ StandardInput=socket
 StandardOutput=file:%t/lemonbar-fifo
 
 [Install]
-WantedBy=desktop.target
+WantedBy=graphical-session.target

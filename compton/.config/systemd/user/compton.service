@@ -1,8 +1,8 @@
 [Unit]
 Description=compton
 Documentation=man:compton(1)
-Requisite=x11.target
-After=x11.target
+PartOf=graphical-session.target
+After=graphical-session-pre.target
 
 [Service]
 Type=dbus
@@ -11,4 +11,4 @@ BusName=com.github.chjj.compton._0
 ExecStart=/usr/bin/compton -d $DISPLAY --dbus --show-all-xerrors
 
 [Install]
-WantedBy=desktop.target
+WantedBy=graphical-session.target

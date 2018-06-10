@@ -1,8 +1,8 @@
 [Unit]
 Description=Rofi (run)
 Documentation=man:rofi(1)
-Requisite=x11.target
-After=x11.target
+PartOf=graphical-session.target
+After=graphical-session-pre.target
 Wants=xrdb.service
 After=xrdb.service
 
@@ -10,5 +10,4 @@ After=xrdb.service
 ExecStart=/usr/bin/rofi -key-run SuperL-%I
 
 [Install]
-WantedBy=desktop.target
-
+WantedBy=graphical-session.target

@@ -1,8 +1,8 @@
 [Unit]
 Description=wallpaper %I
 Documentation=man:feh(1)
-Requisite=x11.target
-After=x11.target
+PartOf=graphical-session.target
+After=graphical-session-pre.target
 
 [Service]
 Type=oneshot
@@ -11,4 +11,4 @@ RemainAfterExit=yes
 
 [Install]
 # This is only needed by xorg; weston already has settings for wallpaper.
-WantedBy=desktop.target
+WantedBy=graphical-session.target

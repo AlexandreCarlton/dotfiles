@@ -18,35 +18,47 @@ DefaultEnvironment=DISPLAY=:0
 ```
 
 ## Current setup
-Targets are designed to group up logical units to allow easier dependency tracking.
-The three main targets here are:
- - desktop.target
-   - aliased to default.target when enabled, so this kicks off everything.
-   - groups up everything needed to set up a working, graphical desktop.
-   - Generally, a service should have "WantedBy=desktop.target", unless it is a special unit.
-   - Requires display-server.target and wants window-manager.service.
- - display-server.target
-   - Not an actual target but an alias; either x11.target or wayland.target is aliased to this. Each has:
-     - A socket (x11.socket), launched before the target to ensure services launched after the target work.
-     - At least one implementation service (xorg.service), which is aliased to the protocol target (x11.service).
-   - Active as soon as the display-server is ready to accept incoming connections
-   - If you need the server up for a service, include "After=display-server.target"
- - window-manager.service
-   - An alias for a given window manager service (e.g. bspwm.service).
-   - Having an alias means only one window-manager may be active (I think).
-   - Window managers must have "Alias=window-manager.service".
+Our setup includes:
 
-sockets.target is also used to launch all sockets (which launch the
+- a `bspwm-session.target` that `BindsTo=graphical-session.target`.
+  The latter is a special unit that is active whenever any graphical session is
+  running, and is ready once all of its dependent units are active.
+  In this case, `bspwm-session.target` fires up the main services needed to
+  start a bspwm session so they do not need to be enabled individually.
+
+- Units that require a graphical session up and running should have:
+  - `PartOf=graphical-session.target` so that stopping and restarting
+    `graphical-session.target` brings down these services too.
+  - `Requires=graphical-session-pre.target` and
+  - `After=graphical-session-pre.target` so that we may guarantee we have
+    everything we need to start up the session.
+  Note that `graphical-session-pre.target` is responsible for loading all the
+  services necessary to start a session, but for some reason is not
+  automatically enabled (hence the `Requires=`).
+
+- `graphical-session-pre.target` would preferably have consisted of setting up
+  `x11.socket`, but unfortunately we need to start up `xorg` eagerly to prevent
+  clients from deadlocking.
+  We thus have `xorg-delay@` service to fire up `xorg` before
+  `graphical-session-pre.target` is ready.
+
+ - Units that require a `graphical-session` but are independent of the session
+   (e.g. `dunst`, `redshift`) should also have
+   `WantedBy=graphical-session.target`, so that they may be restarted/stopped
+   with the graphical session.
+
+`sockets.target` is also used to launch all sockets (which launch the
 respective service files on incoming connections).
-This was largely based on the Arch Wiki; consult them for more information.
-Other sources include casucci, gtmanfred, KaiSforza and Zoqueski.
+Enabling sockets cost us practically nothing, and so should be pretty much
+always enabled.
 
 ## After/Wants/Requires
 To ensure everything is loaded in the right order, we place the services in order
-of the targets they want (rephrase)
- - "Wants" means the dependency is optional - if the dependency fails, the service will continue.
- - "Requires" means the dependency is essential - if the dependency fails, so will this.
- - "After" means the service is launched after the target/service in question. If only one of the above fields are used then the services will be launched in parallel.
+of the targets they want:
+ - `Wants` means the dependency is optional - if the dependency fails, the service will continue.
+ - `Requires` means the dependency is essential - if the dependency fails, so will this.
+ - `After` means the service is launched after the target/service in question.
+   If only one of the above fields are used then the services will be launched in parallel.
 
 ## Tips for better startup time.
 If using an HDD (and running Arch), install `systemd-readahead` from the AUR, and run:
