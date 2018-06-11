@@ -4,15 +4,10 @@
 
 # Load ~/.pam_environment if pam_env.so does not have user_readenv=1.
 # Necessary on certain Linux distros.
-if [ -z "${PAM_ENV_LOADED}" ]; then
-	grep -v '^$' "${HOME}/.pam_environment" \
-	  | grep -v '^#' \
-	  | sed -r 's/ +DEFAULT//' \
-	  | sed -r 's/@\{HOME\}/$\{HOME\}/' \
-	  | sed -r 's/@\{SHELL\}/$\{SHELL\}/' \
-	  | while read -r line; do
-	    export "$(echo "${line}" | envsubst)"
-	  done
+if [ -z "${SYSTEMD_ENVIRONMENTD_LOADED}" ]; then
+  for conf in "${HOME}"/.config/environment.d/*.conf; do
+    . "${conf}"
+  done
 fi
 
 # TODO: Stick PATH into ~/.pam_environment.
