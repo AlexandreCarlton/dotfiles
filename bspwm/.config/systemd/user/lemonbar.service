@@ -5,6 +5,6 @@ PartOf=graphical-session.target
 After=graphical-session-pre.target
 
 [Service]
-EnvironmentFile=/home/alexandre/.config/bspwm/lemonbar.conf
+EnvironmentFile=%h/.config/bspwm/lemonbar.conf
 StandardInput=socket
 ExecStart=/usr/bin/lemonbar -gx"${PANEL_HEIGHT}" -f "${MAIN_FONT}" -f "${ICON_FONT}" -F "${FOREGROUND}" -B "${BACKGROUND}"
