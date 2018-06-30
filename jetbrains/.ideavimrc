@@ -1,2 +1,20 @@
+let mapleader = ' '
+
+" case of letters is ignored unless a capital is entered.
+set ignorecase
+set smartcase
+
+" Easy way to go back to Normal mode.
 inoremap jk <Esc>
 inoremap kj <Esc>
+
+" vim-gitgutter emulation
+nnoremap [c :action VcsShowPrevChangeMarker<cr>
+nnoremap ]c :action VcsShowNextChangeMarker<cr>
+
+" location-list navigation for errors (vim-unimpaired + ale)
+nnoremap ]l :action GotoNextError<cr>
+nnoremap [l :action GotoPreviousError<cr>
+
+" Searching
+nnoremap <leader>/ :action FindInPath<cr>
