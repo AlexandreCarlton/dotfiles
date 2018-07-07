@@ -16,5 +16,9 @@ nnoremap ]c :action VcsShowNextChangeMarker<cr>
 nnoremap ]l :action GotoNextError<cr>
 nnoremap [l :action GotoPreviousError<cr>
 
+" Buffer switching (vim-unimpaired)
+nnoremap ]b :action NextTab<cr>
+nnoremap [b :action PreviousTab<cr>
+
 " Searching
 nnoremap <leader>/ :action FindInPath<cr>
