@@ -44,3 +44,8 @@ __pycache__/
 tags
 cscope.*
 .ycm_extra_conf.py
+
+# Jetbrains #
+#############
+.idea
+*.iml
