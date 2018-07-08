@@ -3,6 +3,33 @@
 
 all: update desktop-systemd
 
+# TODO: Make this a macro? with params for no-folding, and enabling.
+bspwm: X
+	stow --no-folding bspwm
+	systemctl --user enable bspwm-session.target
+.PHONY: bspwm
+
+chromium:
+	stow --no-folding chromium
+	systemctl --user enable chromium
+.PHONY: chromium
+
+X:
+	stow --no-folding X
+	systemctl --user enable \
+		bell \
+		cursor \
+		unclutter \
+		urxvtd.socket \
+		xrdb \
+		x11.socket
+	# Start eagerly since we always use it.
+	systemctl --user enable urxvtd
+	# Hack to ensure xorg is started up before applications connect to it.
+	# (Socket activation is broken.)
+	systemctl --user enable xorg-delay@5
+.PHONY: X
+
 update-submodules:
 	#git pull --rebase
 	git submodule sync
@@ -38,9 +65,8 @@ development-systemd:
 	systemctl --user enable tmux
 
 # TODO: Find a way to ensure stow is in $PATH
-desktop: development
+desktop: bspwm chromium development
 	stow --no-folding binaries
-	stow bspwm
 	stow dunst
 	stow fontconfig
 	stow gtk
@@ -60,8 +86,6 @@ desktop: development
 desktop-systemd: desktop development-systemd
 	stow --no-folding systemd
 	systemctl --user enable bell
-	systemctl --user enable bspwm
-	systemctl --user enable chromium
 	systemctl --user enable cursor
 	systemctl --user enable dunst
 	systemctl --user enable lightstatus.socket
