@@ -3,3 +3,7 @@ jobs:
     - stage: Install dotfiles
       script:
         - make
+
+addons:
+  apt_packages:
+    - stow
