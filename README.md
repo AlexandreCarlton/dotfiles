@@ -1,4 +1,7 @@
 # Alexandre's dotfiles
+
+[![Build Status](https://travis-ci.com/AlexandreCarlton/dotfiles.svg?branch=master)](https://travis-ci.com/AlexandreCarlton/dotfiles)
+
 These are my config files for easy deployment on new machines.
 
 ```bash

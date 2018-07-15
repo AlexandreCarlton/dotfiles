@@ -1,7 +1,7 @@
 
 .PHONY = all update desktop development
 
-all: update desktop-systemd
+all: development desktop
 
 # TODO: Make this a macro? with params for no-folding, and enabling.
 bspwm: X
