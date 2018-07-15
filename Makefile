@@ -10,14 +10,23 @@ test:
 		--tag=alexandrecarlton/dotfiles \
 		.
 	docker run \
+		--detach \
+		--name=dotfiles-fixture \
 		--rm \
 		--mount=type=bind,source=$(shell pwd),destination=/home/alexandre/.dotfiles,readonly \
 		--mount=type=bind,source=/sys/fs/cgroup,destination=/sys/fs/cgroup,readonly \
 		--mount=type=tmpfs,tmpfs-size=512M,destination=/run \
 		--mount=type=tmpfs,tmpfs-size=256M,destination=/tmp \
 		--workdir=/home/alexandre/.dotfiles \
-		alexandrecarlton/dotfiles \
+		alexandrecarlton/dotfiles
+	# Afford the container time to start up.
+	sleep 10
+	docker exec \
+		--tty \
+		dotfiles-fixture \
 			'make'
+	docker kill dotfiles-fixture
+.PHONY: test
 
 # TODO: Make this a macro? with params for no-folding, and enabling.
 bspwm: X
