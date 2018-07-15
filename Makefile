@@ -3,6 +3,22 @@
 
 all: development desktop
 
+test:
+	docker build \
+		--build-arg user=alexandre \
+		--pull \
+		--tag=alexandrecarlton/dotfiles \
+		.
+	docker run \
+		--rm \
+		--mount=type=bind,source=$(shell pwd),destination=/home/alexandre/.dotfiles,readonly \
+		--mount=type=bind,source=/sys/fs/cgroup,destination=/sys/fs/cgroup,readonly \
+		--mount=type=tmpfs,tmpfs-size=512M,destination=/run \
+		--mount=type=tmpfs,tmpfs-size=256M,destination=/tmp \
+		--workdir=/home/alexandre/.dotfiles \
+		alexandrecarlton/dotfiles \
+			'make'
+
 # TODO: Make this a macro? with params for no-folding, and enabling.
 bspwm: X
 	stow --no-folding bspwm
@@ -24,7 +40,9 @@ X:
 		xrdb \
 		x11.socket
 	# Start eagerly since we always use it.
-	systemctl --user enable urxvtd
+	# This failed with:
+	#     Failed to enable unit, refusing to operate on linked unit file urxvtd.socket
+	# systemctl --user enable urxvtd
 	# Hack to ensure xorg is started up before applications connect to it.
 	# (Socket activation is broken.)
 	systemctl --user enable xorg-delay@5

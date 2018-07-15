@@ -1,9 +1,10 @@
+sudo: required
+
+services:
+  - docker
+
 jobs:
   include:
-    - stage: Install dotfiles
+    - stage: Test dotfile installation
       script:
-        - make
-
-addons:
-  apt_packages:
-    - stow
+        - make test
