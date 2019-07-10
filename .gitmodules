@@ -7,9 +7,6 @@
 [submodule "steam/.local/share/Steam/skins/Air"]
 	path = steam/.local/share/Steam/skins/Air
 	url = https://github.com/outsetini/Air-for-Steam.git
-[submodule "zsh/.config/zsh/.zprezto"]
-	path = zsh/.config/zsh/.zprezto
-	url = https://github.com/sorin-ionescu/prezto
 [submodule "git/.config/git/templates/hooks"]
 	path = git/.config/git/hooks
 	url = https://github.com/AlexandreCarlton/git-hooks
