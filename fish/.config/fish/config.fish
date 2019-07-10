@@ -1,12 +1,17 @@
 # This is sourced after conf.d/*.
 
-# Tweak the pure theme (requires fisher - https://git.io/fisher)
-# brblack is invisible in solarized (dark), so we set the pure theme's colors differently.
-set -g pure_color_git_branch (set_color normal)
-set -g pure_color_git_dirty (set_color normal)
+# We wrap stty within `--is-interactive` as fisher will hang otherwise.
+if status --is-interactive
 
-for aliases in $HOME/.config/fish/aliases/*
-  source $aliases
+  # Tweak the pure theme (requires fisher - https://git.io/fisher)
+  # brblack is invisible in solarized (dark), so we set the pure theme's colors differently.
+  set -g pure_color_git_branch (set_color normal)
+  set -g pure_color_git_dirty (set_color normal)
+
+  for aliases in $HOME/.config/fish/aliases/*
+    source $aliases
+  end
+
+  # Disable Ctrl-S freezing the terminal
+  stty -ixon
 end
-
-stty -ixon
