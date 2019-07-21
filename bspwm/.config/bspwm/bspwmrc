@@ -12,11 +12,12 @@ bspc config gapless_monocle         true
 bspc config focus_by_distance				true
 bspc config history_aware_focus			true
 
-bspc rule -a chromium       desktop='^2'
+bspc rule -a Chromium       desktop='^2'
 bspc rule -a Midori         desktop='^2'
 
 bspc rule -a emacs          desktop='^3'
 bspc rule -a gvim           desktop='^3'
+bspc rule -a jetbrains-idea-ce desktop='^3'
 
 bspc rule -a Evince         desktop='^4'
 bspc rule -a Zathura        desktop='^4'
