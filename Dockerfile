@@ -1,7 +1,9 @@
 FROM alexandrecarlton/systemd:latest
 
-RUN pacman --sync --noconfirm \
+RUN pacman --sync --refresh --refresh --upgrade && \
+    pacman --sync --noconfirm \
       make \
+      vim \
       stow
 
 ARG user
