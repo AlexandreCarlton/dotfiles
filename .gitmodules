@@ -1,6 +1,3 @@
-[submodule "spacemacs/.emacs.d"]
-	path = spacemacs/.emacs.d
-	url = https://github.com/syl20bnr/spacemacs.git
 [submodule "X/.config/X11/colours/solarized"]
 	path = X/.config/X11/colours/solarized
 	url = https://github.com/solarized/xresources.git
