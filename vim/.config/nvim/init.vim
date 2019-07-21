@@ -116,47 +116,50 @@ Plug 'raimondi/delimitMate' " {{{
 let g:delimitMate_expand_cr = 1
 " }}}
 
-" Options
-" --clang-completer (C/C++)
-" --omnisharp-completer (C#)
-" --gocode-completer (Go)
-" --java-completer (Java)
-" --js-completer (Javascript)
-" --racer-completer (Rust)
-" --system-libclang (Use system libclang instead of downloading other binary)
-" --system-boost (Use system boost instead of downloading)
-let ycm_options = '--clang-completer ' .
-                \ '--gocode-completer ' .
-                \ '--system-libclang'
-Plug 'Valloric/YouCompleteMe', {'do': './install.py ' . ycm_options} " {{{
-let g:ycm_always_populate_location_list = 1
-let g:ycm_confirm_extra_conf = 0
+" LSP client for editor-agnostic support.
+Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
 
-" Add completion preview, and automatically close it when done
-let g:ycm_add_preview_to_completeopt = 1
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_autoclose_preview_window_after_insertion = 1
+" Let w0rp/ale handle diagnostics
+let g:LanguageClient_diagnosticsEnable = 0
 
-let g:ycm_error_symbol = 'x'
-let g:ycm_warning_symbol = '!'
+let g:LanguageClient_serverCommands = {
+    \ 'python': ['/usr/bin/pyls']
+    \ }
+let g:LanguageClient_hasSnippetSupport = 1
 
-let g:ycm_semantic_triggers = {'haskell': ['.'], 'r': ['.', '$', 're![_a-zA-Z]+[_\w]*\.']}
-" Run ctags --fields=+l and YCM will look at tags files.
-let g:ycm_collect_identifiers_from_tags_files = 1
-" Set backup ycm extra conf; aims to be generic (though we should still
-" generate our own special one).
-let g:ycm_global_ycm_extra_conf = $XDG_CONFIG_HOME . '/nvim/global_ycm_extra_conf.py'
+" Mimimalist autocompletion framework - leverages omnifunc (augmented by LanguageClient-neovim).
+Plug 'lifepillar/vim-mucomplete' " {{{
 
-" Use first python in PATH - allows for virtualenv to kick in
-let g:ycm_python_binary_path = 'python'
+" Recommended basic setup
+set completeopt+=menuone,noselect
+set completeopt-=preview
+set shortmess+=c
+set belloff+=ctrlg
 
- " }}}
+let g:mucomplete#enable_auto_at_startup = 1
 
-" Snippets produced along side YouCompleteMe
-Plug 'SirVer/UltiSnips' " {{{
-let g:UltiSnipsExpandTrigger = '<C-j>'
+" Recommended for LanguageClient-neovim
+let g:mucomplete#completion_delay = 10
+let g:mucomplete#reopen_immediately = 0
+
+" Add UltiSnips and tags as sources.
+let g:mucomplete#chains = {
+	\ 'default' : ['path', 'ulti', 'omni', 'keyn', 'tags', 'dict', 'uspl'],
+	\ }
+
+" Configure a minimal mapping set to avoid conflicts with other plugins
+" (*cough* UltiSnips)
+let g:mucomplete#no_mappings = 1
+imap <tab> <plug>(MUcompleteFwd)
+imap <s-tab> <plug>(MUcompleteBwd)
 " }}}
 
+" Snippet engine
+Plug 'SirVer/UltiSnips' " {{{
+let g:UltiSnipsExpandTrigger="<c-j>"
+" }}}
+
+" Snippet sources
 Plug 'honza/vim-snippets'
 
 " End certain strutures automatically.
@@ -214,9 +217,6 @@ autocmd Filetype gitcommit set spell
 " Go {{{
 " Batteries included go support (including completion)
 Plug 'fatih/vim-go', {'for': 'go'} " {{{
-
-" Disable completions - provided by YouCompleteMe
-let g:go_gocode_propose_builtins = 0
 
 " Let EditorConfig handle this
 let g:go_highlight_space_tab_error = 0
