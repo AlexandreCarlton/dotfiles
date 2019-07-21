@@ -73,9 +73,6 @@ let g:ale_sign_warning = '!'
 
 " }}}
 
-" Allows asynchronous execution (great for syntax checkers)
-Plug 'Shougo/vimproc.vim', { 'do': 'make -f make_unix.mak' }
-
 " }}}
 
 " Ansible {{{
@@ -122,6 +119,9 @@ Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.s
 " Let w0rp/ale handle diagnostics
 let g:LanguageClient_diagnosticsEnable = 0
 
+" Other LSPs:
+" haskell-ide-engine
+" gopls
 let g:LanguageClient_serverCommands = {
     \ 'python': ['/usr/bin/pyls']
     \ }
@@ -168,9 +168,6 @@ Plug 'tpope/vim-endwise'
 " }}}
 
 " Shell {{{
-
-" Set default shell; plugins may not work if using fish as user-shell.
-set shell=/bin/sh
 
 Plug 'dag/vim-fish', {'for': 'fish'}
 
@@ -233,30 +230,9 @@ let g:go_fmt_autosave = 0
 " }}}
 
 " Haskell {{{
-" Check out begriffs/haskell-vim-now for configs / haskell packages.
 
 " Syntax highlighting & indentation for Haskell/Cabal
 Plug 'neovimhaskell/haskell-vim', {'for': 'haskell'}
-
-" Haskell plugins
-" Plug 'dag/vim2hs', {'for': 'haskell'}
-
-" Haskell plugin that can display:
-"  - type of sub-expressions (what we chiefly use it for)
-"  - warnings/errors
-"  - expansion of splices
-"  - Insert split function cases
-" Needs vimproc.vim and ghc-mod
-Plug 'eagletmt/ghcmod-vim', {'on': 'GhcModType'}
-
-" Completion plugin for Haskell using ghc-mod
-Plug 'eagletmt/neco-ghc', {'for': 'haskell'} " {{{
-let g:necoghc_enable_detailed_browse = 0
-autocmd FileType haskell set omnifunc=necoghc#omnifunc " YouCompleteMe/NeoComplete
-" }}}
-
-" Hoogle (Haskell query plugin)
-Plug 'Twinside/vim-hoogle', {'on': 'Hoogle'}
 
 " }}}
 
@@ -297,12 +273,7 @@ set nohlsearch
 set hidden
 
 " Highlight current row
-" Works really nicely with TagBar - press p over a function definition and the
-" cursor is sent their (so it is highlighted automatically).
 set cursorline
-
-" Handles csv files.
-Plug 'chrisbra/csv.vim', { 'for' : 'csv' }
 
 " Peek at the Undo tree.
 Plug 'mbbill/undotree', {'on': 'UndotreeToggle'}
@@ -313,16 +284,13 @@ Plug 'chrisbra/Recover.vim'
 " Display marks in the gutter
 Plug 'kshenoy/vim-signature'
 
-" Automatically format with what's available
-Plug 'Chiel92/vim-autoformat', {'on': 'Autoformat'}
-
 " Intelligent number toggling.
 Plug 'myusuf3/numbers.vim', " {{{
 
 " Odd things happen without this.
 set number
 " List of items to exclude from being numbered.
-let g:numbers_exclude = ['tagbar', 'undotree']
+let g:numbers_exclude = ['undotree']
 
 " }}}
 
@@ -335,13 +303,11 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'tarfile::.*']
 " Color the column corresponding the maximum line length (+1)
 let g:EditorConfig_max_line_indicator = 'line'
 
-if executable('editorconfig')
-  " Requires editor-config-core-c, get it from the AUR or linuxbrew
-  let g:EditorConfig_core_mode = 'external_command'
-else
-  " If unavailable, set to python_external
-  let g:EditorConfig_core_mode = 'python_external'
-endif
+" Support for this was removed; see #121 on editorconfig-vim for any update.
+" if executable('editorconfig')
+"   " Requires editorconfig-core-c
+"   let g:EditorConfig_core_mode = 'external_command'
+" endif
 
 " Don't the current line if it was already longer than the allowed width when
 " the user started editing it.
@@ -358,24 +324,13 @@ Plug 'tpope/vim-eunuch', {'on': ['Remove', 'Unlink', 'Move', 'Rename', 'Chmod',
                                \ 'SudoWrite', 'SudoEdit']}
 " }}}
 
-" Java {{{
-
-" Yeah, no.
-" If I want to do Java development, I'll do it in IntelliJ.
-" You could leverage eclimd if you're desperate, which I dockerised a while back.
-
-" }}}
-
 " JavaScript {{{
 
-" General support
+" Syntax and indent support
 Plug 'pangloss/vim-javascript', { 'for' : 'javascript' }
 
-" CoffeeScript
-" Plug 'kchmck/vim-coffee-script', {'for': 'coffee'}
-
 " TypeScript
-" Plug 'leafgarland/typescript-vim', {'for': 'typescript'}
+Plug 'leafgarland/typescript-vim', {'for': 'typescript'}
 
 " }}}
 
@@ -387,13 +342,7 @@ au BufNewFile,BufRead *.tex set filetype=tex
 autocmd FileType tex set spell
 
 " LaTeX Plugin
-Plug 'LaTeX-Box-Team/LaTeX-Box', {'for': ['plaintex', 'context', 'latex', 'rnoweb', 'tex']} " {{{
-" Quickfix window opened automatically if not empty, cursor stays in current
-" window
-let g:LatexBox_quickfix = 2
-
-" }}}
-
+Plug 'lervag/vimtex'
 
 " }}}
 
@@ -438,36 +387,19 @@ nnoremap k gk
 " Centre the found match.
 nnoremap n nzz
 
-" Allow for easier window navigation
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
-map <C-h> <C-w>h
-
 " Change leader to space to allow easier transitioning with spacemacs.
 let mapleader=" "
 
 " Press 'q' to close quickfix/location lists, similar to VimFiler/TagBar
 autocmd FileType qf map <buffer> q :quit<cr>
 
-" Buffers; alternatively, [b or ]b
-nnoremap <Leader>bn :bnext<cr>
-nnoremap <Leader>bp :bprevious<cr>
-nnoremap <Leader>bd :bdelete<cr>
-
 " Plugin mappings - keybindings are influenced by the first thing I think of
 " when trying to use it
-nnoremap <Leader>tb :TagbarToggle<cr>
-nnoremap <Leader>tggh :GitGutterLineHighlightsToggle<cr>
 nnoremap <Leader>/ :Grepper<cr>
 nnoremap <Leader>* :Grepper -cword -noprompt<cr>
 nnoremap <Leader>ud :UndotreeToggle<cr>
 nnoremap <Leader>fe :Vexplore<cr>
 nnoremap <Leader>ff :FZF<cr>
-nnoremap <Leader>fi :YcmCompleter FixIt<cr>
-" Consider nnoremap <buffer> <silent> <C-]> :YcmCompleter GoTo<cr>
-nnoremap <Leader>gt :YcmCompleter GoTo<cr>
-nnoremap <Leader>q :Sayonara<cr>
 
 " }}}
 
@@ -488,12 +420,13 @@ Plug 'chikamichi/mediawiki.vim'
 
 " }}}
 
+" Nginx {{{
+Plug 'chr4/nginx.vim'
+" }}}
+
 " Python {{{
 
 Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
-
-" Virtualenv manipulation
-" Plug 'jmcantrell/vim-virtualenv', {'on': ['VirtualEnvList', 'VirtualEnvActivate']}
 
 " }}}
 
@@ -535,7 +468,6 @@ let g:buftabline_indicators = 1 " Show buffer state in label
 " Get bufferline in the tabline
 Plug 'itchyny/lightline.vim' " {{{
 
-" Don't use tagbar for now; it's slow and I can't justify using it.
 " Don't set colorscheme here; set it with the actual colorscheme down below
 " to facilitate switching.
 let g:lightline = {
@@ -548,7 +480,7 @@ let g:lightline = {
     \     ['fugitive', 'gitgutter', 'filename']
     \   ],
     \   'right': [
-    \     ['ale', 'ycm', 'lineinfo'],
+    \     ['ale', 'lineinfo'],
     \     ['percent'],
     \     ['fileformat', 'fileencoding', 'filetype'],
     \   ]
@@ -559,18 +491,15 @@ let g:lightline = {
     \   'fileencoding': '%{strlen(&fenc) ? &fenc : &enc}',
     \   'filename': '%{expand("%:p:.")}',
     \   'filetype': '%{strlen(&ft) ? &ft : "no ft"}',
-    \   'tagbar': '%{exists("*tagbar#currenttag") ? tagbar#currenttag("%s", "", "f") : ""}',
     \ },
     \ 'component_function': {
     \   'mode': 'MyMode',
     \   'fugitive': 'MyFugitive',
     \   'gitgutter': 'MyGitGutter',
     \   'ale': 'MyALE',
-    \   'ycm': 'MyYCM',
     \ },
     \ 'component_type': {
     \   'ale': 'error',
-    \   'ycm': 'error',
     \ },
     \ 'separator': { 'left': '', 'right': '' },
     \ 'subseparator': { 'left': '|', 'right': '|' }
@@ -628,62 +557,12 @@ function! MyALE()
   endif
 endfunction
 
-function! MyYCM()
-  let warning = youcompleteme#GetWarningCount()
-  let error = youcompleteme#GetErrorCount()
-  if [warning, error] != [0, 0]
-    return 'W:' . error . ' E:' . warning
-  else
-    return ''
-  endif
-endfunction
 " }}}
 
 " }}}
 
 " Show statusline on all windows - done by sensible
 set laststatus=2
-
-" }}}
-
-" Tags {{{
-
-" Easily browse tags of source files (generated on the fly).
-" Reguires ctags and vim >= 7.0
-Plug 'majutsushi/tagbar', {'on': 'TagbarToggle'}
-
-" Haskell (requires hasktags) {{{
-let g:tagbar_type_haskell = {
-    \ 'ctagsbin'  : 'hasktags',
-    \ 'ctagsargs' : '-x -c -o-',
-    \ 'kinds'     : [
-        \  'm:modules:0:1',
-        \  'd:data: 0:1',
-        \  'd_gadt: data gadt:0:1',
-        \  't:type names:0:1',
-        \  'nt:new types:0:1',
-        \  'c:classes:0:1',
-        \  'cons:constructors:1:1',
-        \  'c_gadt:constructor gadt:1:1',
-        \  'c_a:constructor accessors:1:1',
-        \  'ft:function types:1:1',
-        \  'fi:function implementations:0:1',
-        \  'o:others:0:1'
-    \ ],
-    \ 'sro'        : '.',
-    \ 'kind2scope' : {
-        \ 'm' : 'module',
-        \ 'c' : 'class',
-        \ 'd' : 'data',
-        \ 't' : 'type'
-    \ },
-    \ 'scope2kind' : {
-        \ 'module' : 'm',
-        \ 'class'  : 'c',
-        \ 'data'   : 'd',
-        \ 'type'   : 't'
-    \ }
-\ }
 
 " }}}
 
@@ -695,11 +574,6 @@ let g:tagbar_type_haskell = {
 Plug 'tpope/vim-dispatch', {'on': ['Make', 'Dispatch', 'Start'] }
 
 " }}}
-
-" TODO: Use $XDG_CONFIG_HOME if possible.
-if filereadable(glob('~/.config/nvim/optiver.vim'))
-  source ~/.config/nvim/optiver.vim
-endif
 
 call plug#end()
 
