@@ -1,9 +1,6 @@
 [submodule "X/.config/X11/colours/solarized"]
 	path = X/.config/X11/colours/solarized
 	url = https://github.com/solarized/xresources.git
-[submodule "steam/.local/share/Steam/skins/Air"]
-	path = steam/.local/share/Steam/skins/Air
-	url = https://github.com/outsetini/Air-for-Steam.git
 [submodule "git/.config/git/templates/hooks"]
 	path = git/.config/git/hooks
 	url = https://github.com/AlexandreCarlton/git-hooks
