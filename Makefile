@@ -1,6 +1,3 @@
-
-.PHONY = all update desktop development
-
 all: development desktop
 
 test:
@@ -28,19 +25,52 @@ test:
 	docker kill dotfiles-fixture
 .PHONY: test
 
-# TODO: Make this a macro? with params for no-folding, and enabling.
 bspwm: X
-	stow --no-folding bspwm
+	stow bspwm
 	systemctl --user enable bspwm-session.target
 .PHONY: bspwm
 
 chromium:
-	stow --no-folding chromium
+	stow chromium
 	systemctl --user enable chromium
 .PHONY: chromium
 
+dunst:
+	stow dunst
+	systemctl --user enable dunst
+.PHONY: dunst
+
+jetbrains:
+	stow jetbrains
+	# systemctl --user enable intellij-idea-ce
+.PHONY: jetbrains
+
+redshift:
+	stow redshift
+	systemctl --user enable redshift
+.PHONY: redshift
+
+steam:
+	stow steam
+	# systemctl --user enable steam
+.PHONY: steam
+
+tmux:
+	stow tmux
+	systemctl --user enable tmux
+.PHONY: tmux
+
+vim:
+	stow vim
+	vim +PlugInstall +qall
+.PHONY: vim
+
+wallpaper:
+	stow wallpaper
+	systemctl --user enable wallpaper@PikachuEevee.png
+
 X:
-	stow --no-folding X
+	stow X
 	systemctl --user enable \
 		bell \
 		cursor \
@@ -62,68 +92,32 @@ update-submodules:
 	git submodule sync
 	git submodule update --init --recursive --remote
 
-development:
-	stow --no-folding ccache
-	stow chromium
+development: jetbrains tmux vim
 	stow ctags
 	stow docker
+	stow fzf
 	stow go
 	stow editorconfig
-	stow --no-folding fish
-	stow --no-folding ghc
-	# It is crucial there is no folding for git otherwise our templates will be
-	# symlinks to invalid locations.
+	stow fish
+	stow ghc
 	stow git
 	stow less
 	stow htop
 	stow javascript
-	stow --no-folding python
-	stow R
+	stow python
 	stow sh
-	stow spacemacs
-	stow --no-folding systemd
-	stow --no-folding ssh
-	stow --no-folding tmux
-	stow --no-folding vim
-	stow --no-folding zsh
+	stow systemd
+	stow ssh
 
-development-systemd:
-	stow --no-folding systemd
-	systemctl --user enable tmux
-
-# TODO: Find a way to ensure stow is in $PATH
-desktop: bspwm chromium development
-	stow --no-folding binaries
+desktop: development bspwm chromium dunst redshift wallpaper X
+	stow binaries
 	stow dunst
 	stow fontconfig
 	stow gtk
-	stow konsole
 	stow mime
 	stow mpv
 	stow pacman
 	stow psd
 	stow qt
-	stow redshift
-	stow --no-folding retroarch
-	stow steam
-	stow X
-	stow --no-folding wallpaper
+	stow retroarch
 	stow zathura
-
-desktop-systemd: desktop development-systemd
-	stow --no-folding systemd
-	systemctl --user enable bell
-	systemctl --user enable cursor
-	systemctl --user enable dunst
-	systemctl --user enable lightstatus.socket
-	systemctl --user enable lemonbar.socket
-	systemctl --user enable redshift
-	systemctl --user enable unclutter
-	systemctl --user enable wallpaper@PikachuEevee.png
-	systemctl --user enable urxvtd.socket
-	systemctl --user enable xrdb
-	# Eagerly launch things
-	systemctl --user enable urxvtd.service
-	systemctl --user enable x11.socket
-	# Hack until systemd fixes xorg socket activation in systemd
-	systemctl --user enable xorg-delay@5
