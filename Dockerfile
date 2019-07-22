@@ -1,6 +1,6 @@
 FROM alexandrecarlton/systemd:latest
 
-RUN pacman --sync --refresh --refresh --upgrade && \
+RUN pacman --sync --refresh --refresh --sysupgrade --noconfirm && \
     pacman --sync --noconfirm \
       make \
       vim \
