@@ -102,7 +102,7 @@ development: jetbrains tmux vim
 	stow git
 	stow less
 	stow htop
-	stow javascript
+	stow npm
 	stow python
 	stow sh
 	stow systemd
