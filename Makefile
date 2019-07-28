@@ -62,7 +62,6 @@ tmux:
 
 vim:
 	stow vim
-	vim +PlugInstall +qall
 .PHONY: vim
 
 wallpaper:
