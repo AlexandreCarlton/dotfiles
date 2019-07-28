@@ -1,5 +1,5 @@
 [Unit]
-Description=IntelliJ IDEA Community Edition
+Description=IntelliJ IDEA Ultimate Edition
 PartOf=graphical-session.target
 After=graphical-session-pre.target
 
@@ -7,7 +7,7 @@ After=graphical-session-pre.target
 # JDK GUI applications don't play so well with window managers,
 # so we set this variable to circumvent it.
 Environment=_JAVA_AWT_WM_NONREPARENTING=1
-ExecStart=/usr/bin/idea.sh
+ExecStart=/opt/intellij-idea-ultimate-edition/bin/idea.sh
 
 [Install]
 WantedBy=graphical-session.target
