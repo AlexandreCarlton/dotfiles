@@ -141,7 +141,7 @@ let g:mucomplete#reopen_immediately = 0
 
 " Add UltiSnips and tags as sources.
 let g:mucomplete#chains = {
-	\ 'default' : ['path', 'ulti', 'omni', 'keyn', 'tags', 'dict', 'uspl'],
+	\ 'default' : ['path', 'ulti', 'omni', 'keyn', 'tags'],
 	\ }
 
 " Configure a minimal mapping set to avoid conflicts with other plugins
