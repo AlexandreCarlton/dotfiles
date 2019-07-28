@@ -4,3 +4,5 @@ alias rm 'rm -i'
 alias mv 'mv -i'
 alias cp 'cp -i'
 alias ln 'ln -i'
+
+alias mkdir 'mkdir -p'
