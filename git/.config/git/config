@@ -2,7 +2,7 @@
 
 	name = Alexandre Carlton
 
-	email = acar7163@uni.sydney.edu.au
+	email = alexandre.nikolei.carlton@gmail.com
 
 [core]
 
@@ -13,7 +13,7 @@
 
 	# Have a global hooks path so we don't have to re-init on every change
 	# But it means we can't cusstomise hooks per project.
-	# hooksPath = ~/.config/git/hooks
+	hooksPath = ~/.config/git/hooks
 
 	# Use a custom viewer; install with pacman or npm.
 	pager = diff-so-fancy | less --tabs=2 -RFX
@@ -21,10 +21,6 @@
 	# Force conversion of line endings to LF on check-in (but prevent conversion
 	# to CRLF on check-out).
 	autocrlf = input
-
-	# Use a central location for hooks so we don't have to keep re-initialising
-	# every repo when we update our hooks.
-	hooksPath = ~/.config/git/hooks
 
 [alias]
 
@@ -129,8 +125,3 @@
 	# hub is a command-line wrapper useful for GitHub.
 	# See https://hub.github.com
 	protocol = ssh
-
-[include]
-
-	# Use Optiver configuration if present, which should override the settings here.
-	path = ~/.config/optiver/git/config
