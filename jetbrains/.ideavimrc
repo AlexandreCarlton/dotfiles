@@ -1,3 +1,6 @@
+" See for a list of actions:
+" https://github.com/JetBrains/intellij-community/blob/master/platform/platform-resources/src/idea/LangActions.xml
+
 let mapleader = ' '
 
 " case of letters is ignored unless a capital is entered.
@@ -22,3 +25,6 @@ nnoremap [b :action PreviousTab<cr>
 
 " Searching
 nnoremap <leader>/ :action FindInPath<cr>
+
+" easymotion/vim-sneak emulation
+nnoremap s :action AceAction<CR>
