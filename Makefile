@@ -60,10 +60,6 @@ tmux:
 	systemctl --user enable tmux
 .PHONY: tmux
 
-vim:
-	stow vim
-.PHONY: vim
-
 wallpaper:
 	stow wallpaper
 	systemctl --user enable wallpaper@PikachuEevee.png
@@ -91,7 +87,7 @@ update-submodules:
 	git submodule sync
 	git submodule update --init --recursive --remote
 
-development: jetbrains tmux vim
+development: jetbrains tmux
 	stow ctags
 	stow docker
 	stow fzf
@@ -107,6 +103,7 @@ development: jetbrains tmux vim
 	stow sh
 	stow systemd
 	stow ssh
+	stow vim
 
 desktop: development bspwm chromium dunst redshift wallpaper X
 	stow binaries
