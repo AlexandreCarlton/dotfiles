@@ -331,6 +331,12 @@ Plug 'leafgarland/typescript-vim', {'for': 'typescript'}
 
 " }}}
 
+" Kotlin {{{
+
+Plug 'udalov/kotlin-vim'
+
+" }}}
+
 " LaTeX {{{
 
 au BufNewFile,BufRead *.tex set filetype=tex
