@@ -4,9 +4,6 @@ PartOf=graphical-session.target
 After=graphical-session-pre.target
 
 [Service]
-# JDK GUI applications don't play so well with window managers,
-# so we set this variable to circumvent it.
-Environment=_JAVA_AWT_WM_NONREPARENTING=1
 ExecStart=/usr/bin/idea.sh
 
 [Install]
