@@ -1,0 +1,7 @@
+*font: xft:Hack:size=8
+*boldFont: xft:Hack:style=Bold:size=8,xft:Material Icons:size=8
+*italicFont: xft:Hack:style=Italic:size=8,xft:Material Icons:size=8
+*boldItalicFont: xft:Hack:style=Bold Italic:size=8,xft:Material Icons:size=8
+
+
+rofi.font: Hack 8
