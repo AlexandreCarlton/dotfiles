@@ -1,0 +1,141 @@
+; vim:ft=dosini
+; To use icons, fire up urxvt with;
+; urxvt -fn "xft:Font Awesome 5 Free Solid:style=Regular:size=8"
+
+[colors]
+background = #002b36
+background-alt = #073642
+foreground = #93a1a1
+foreground-alt = #eee8d5
+primary = #ffb52a
+secondary = #e60053
+alert = #bd2c40
+red = #dc322f
+
+[bar/main]
+;monitor = ${env:MONITOR:HDMI-1}
+width = 100%
+height = 24
+fixed-center = false
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+padding-left = 0
+padding-right = 2
+
+module-margin-left = 0
+module-margin-right = 2
+
+font-0 = Hack:size=8
+font-1 = Font Awesome 5 Free Solid:style=Regular:size=8
+font-2 = Font Awesome 5 Free Regular:style=Regular:size=8
+font-3 = Font Awesome 5 Brands Regular:style=Regular:size=8
+
+modules-left = bspwm
+modules-center =
+modules-right = memory volume battery wireless date
+
+wm-restack = bspwm
+
+[module/volume]
+type = internal/alsa
+label-muted = 
+label-muted-foreground = ${colors.foreground-alt}
+format-volume = <ramp-volume> <label-volume>
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+ramp-volume-foreground = ${colors.foreground-alt}
+
+[module/battery]
+type = internal/battery
+full-at=99
+format-charging = <ramp-capacity> <label-charging>
+format-discharging = <ramp-capacity> <label-discharging>
+format-full = <ramp-capacity> <label-full>
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-foreground = ${colors.foreground-alt}
+
+[module/bspwm]
+type = internal/bspwm
+
+enable-click = false
+enable-scroll = false
+
+label-focused = %icon%
+label-focused-background = ${colors.background-alt}
+label-focused-padding = 2
+
+label-occupied = %icon%
+label-occupied-padding = 2
+label-occupied-foreground = ${colors.foreground-alt}
+
+label-urgent = %icon%
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 2
+
+label-empty = %icon%
+label-empty-foreground = ${colors.foreground}
+label-empty-padding = 2
+
+ws-icon-0 = term;
+ws-icon-1 = web;
+ws-icon-2 = code;
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground-alt}
+label = %gb_used%
+
+[module/wireless]
+type = internal/network
+interface = wlp8s0
+interval = 1.0
+
+format-connected = <ramp-signal> <label-connected>
+label-connected = %essid%
+
+label-disconnected =
+label-disconnected-foreground = ${colors.alert}
+
+ramp-signal-0 = 
+ramp-signal-foreground = ${colors.foreground-alt}
+
+[module/date]
+type = internal/date
+interval = 5
+
+time = %H:%M
+
+format-prefix = " "
+format = <label>
+label = %time%
+format-prefix-foreground = ${colors.foreground-alt}
+
+[module/temperature]
+type = internal/temperature
+thermal-zone = 0
+warn-temperature = 60
+
+format = <ramp> <label>
+format-warn = <ramp> <label-warn>
+
+label = %temperature%
+label-warn = %temperature%
+label-warn-foreground = ${colors.secondary}
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-foreground = ${colors.foreground-alt}
+
+[global/wm]
+margin-top = 0
+margin-bottom = 0

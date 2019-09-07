@@ -1,0 +1,9 @@
+[Unit]
+Description=lemonbar
+Documentation=https://github.com/polybar/polybar/wiki
+PartOf=graphical-session.target
+After=graphical-session-pre.target
+After=bspwm.service
+
+[Service]
+ExecStart=/usr/bin/polybar main
