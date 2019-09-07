@@ -4,7 +4,7 @@ PartOf=graphical-session.target
 After=graphical-session-pre.target
 
 [Service]
-ExecStart=/usr/bin/idea.sh
+ExecStart=/usr/bin/idea
 
 [Install]
 WantedBy=graphical-session.target
