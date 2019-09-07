@@ -1,6 +1,8 @@
 ! These files are symlinks to files in the colours and fonts folders.
 ! It is necessary to create a file for a colourscheme or font, obviously.
 #include "colour"
+
+#include "font_size"
 #include "font"
 
 #include "URxvt"
