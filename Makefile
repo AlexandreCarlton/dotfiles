@@ -24,6 +24,7 @@ development:
 	stow ssh
 	stow tmux
 	stow vim
+.PHONY: development
 
 desktop: development
 	stow binaries
@@ -43,3 +44,8 @@ desktop: development
 	stow wallpaper
 	stow X
 	stow zathura
+.PHONY: desktop
+
+hidpi:
+	stow --override=.config hidpi
+.PHONY: hidpi
