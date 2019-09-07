@@ -35,6 +35,7 @@ desktop: development
 	stow mime
 	stow mpv
 	stow pacman
+	stow polybar
 	stow psd
 	stow redshift
 	stow qt
