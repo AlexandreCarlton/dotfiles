@@ -67,6 +67,11 @@ type = internal/bspwm
 enable-click = false
 enable-scroll = false
 
+label-focused-occupied = %icon%
+label-focused-occupied-background = ${colors.background-alt}
+label-focused-occupied-foreground = ${colors.foreground-alt}
+label-focused-occupied-padding = 2
+
 label-focused = %icon%
 label-focused-background = ${colors.background-alt}
 label-focused-padding = 2

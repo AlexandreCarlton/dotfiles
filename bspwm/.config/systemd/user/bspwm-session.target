@@ -7,15 +7,10 @@ BindsTo=graphical-session.target
 Requires=graphical-session-pre.target
 After=graphical-session-pre.target
 
-# TODO: We currently pipe bspc into the fifo directly which is a bit clunky.
-# We should have a separate service that sends it into something.
-# Wants=bspc.service
 Wants=bspwm.service
 Wants=sxhkd.service
-# These should already be activated by sockets.target but we list them as a defensive measure.
+Wants=polybar.service
 Wants=x11.socket
-Wants=lightstatus.socket
-Wants=lemonbar.socket
 
 # Not sure how else to make this active.
 [Install]

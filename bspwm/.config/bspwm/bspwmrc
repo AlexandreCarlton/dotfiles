@@ -1,6 +1,6 @@
 #!/bin/sh
 
-bspc monitor -d term web code media steam misc
+bspc monitor --reset-desktops term web code
 
 bspc config border_width            2
 bspc config window_gap              12
@@ -12,21 +12,5 @@ bspc config gapless_monocle         true
 bspc config focus_by_distance				true
 bspc config history_aware_focus			true
 
-bspc rule -a Chromium       desktop='^2'
-bspc rule -a Midori         desktop='^2'
-
-bspc rule -a emacs          desktop='^3'
-bspc rule -a gvim           desktop='^3'
-bspc rule -a jetbrains-idea-ce desktop='^3'
-
-bspc rule -a Evince         desktop='^4'
-bspc rule -a Zathura        desktop='^4'
-
-bspc rule -a mpv            desktop='^4'
-bspc rule -a vlc            desktop='^4'
-
-bspc rule -a Steam          desktop='^5'
-
-. "${HOME}/.config/bspwm/lemonbar.conf"
-bspc config top_padding "${PANEL_HEIGHT}"
-bspc subscribe > "${XDG_RUNTIME_DIR}/lightstatus-fifo" &
+bspc rule -a Chromium desktop='web'
+bspc rule -a jetbrains-idea-ce desktop='code'

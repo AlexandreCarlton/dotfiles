@@ -1,9 +1,0 @@
-[Unit]
-Description=lemonbar socket
-Documentation=man:lemonbar(1)
-
-[Socket]
-ListenFIFO=%t/lemonbar-fifo
-
-[Install]
-WantedBy=sockets.target
