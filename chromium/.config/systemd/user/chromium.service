@@ -8,7 +8,8 @@ After=graphical-session-pre.target
 
 [Service]
 ExecStart=/usr/bin/chromium \
-  --disk-cache-dir=%t/chromium-cache
+  --disk-cache-dir=%t/chromium-cache \
+  --force-device-scale-factor=${CHROMIUM_FORCE_DEVICE_SCALE_FACTOR}
 # Find a way to prevent asking to restore last session.
 ; ExecStop=/usr/bin/pkill --oldest --signal TERM -f chromium
 
