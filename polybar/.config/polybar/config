@@ -15,7 +15,6 @@ red = #dc322f
 [bar/main]
 ;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
-height = 24
 fixed-center = false
 
 background = ${colors.background}
@@ -27,10 +26,7 @@ padding-right = 2
 module-margin-left = 0
 module-margin-right = 2
 
-font-0 = Hack:size=8
-font-1 = Font Awesome 5 Free Solid:style=Regular:size=8
-font-2 = Font Awesome 5 Free Regular:style=Regular:size=8
-font-3 = Font Awesome 5 Brands Regular:style=Regular:size=8
+include-file = ~/.config/polybar/font
 
 modules-left = bspwm
 modules-center =

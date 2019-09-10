@@ -1,0 +1,6 @@
+[bar/main]
+height = 24
+font-0 = Hack:size=8
+font-1 = Font Awesome 5 Free Solid:style=Regular:size=8
+font-2 = Font Awesome 5 Free Regular:style=Regular:size=8
+font-3 = Font Awesome 5 Brands Regular:style=Regular:size=8
