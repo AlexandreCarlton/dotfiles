@@ -1,4 +1,4 @@
-set font "gohufont 11"
+set font "Hack 8"
 
 set default-bg "#002b36"
 set default-fg "#839496"
