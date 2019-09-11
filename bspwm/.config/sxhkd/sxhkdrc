@@ -31,13 +31,6 @@ XF86AudioLowerVolume
 XF86AudioMute
 	amixer -q sset Master toggle
 
-# Brightness settings
-XF86MonBrightnessUp
-	xbacklight -inc 10
-
-XF86MonBrightnessDown
-	xbacklight -dec 10
-
 # Media keys
 XF86AudioPlay
 	playerctl play-pause
