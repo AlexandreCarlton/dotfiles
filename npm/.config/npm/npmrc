@@ -1,2 +1,2 @@
-prefix=${HOME}/.local
-cache=${HOME}/.cache/npm
+prefix=${XDG_DATA_HOME}/npm
+cache=${XDG_CACHE_HOME}/npm
