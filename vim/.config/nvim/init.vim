@@ -43,10 +43,7 @@ set undofile
 " Where we save bookmarks and history.
 let g:netrw_home='$XDG_CACHE_HOME/nvim'
 
-let g:bundle_folder='$XDG_CONFIG_HOME/nvim/plugged'
-let g:use_glyphs = 0 " Use fancy glyphs?
-
-call plug#begin(g:bundle_folder)
+call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 
 " Defaults everyone can agree on.
 " Defined up here so other plugins can benefit from settings
@@ -57,14 +54,6 @@ Plug 'tpope/vim-sensible'
 " Use ']l' and '[l' to cycle through errors (with vim-unimpaired)
 Plug 'w0rp/ale'
 
-" Have YouCompleteMe handle syntax checking for C-family languages
-let g:ale_linters = { 'c': [], 'cpp': [] }
-
-" Generally have only one linter (otherwise they tend to report the same
-" thing)
-let g:ale_linters['python'] = ['pylint']
-
-" Be consistent with YouCompleteMe
 let g:ale_sign_error = 'x'
 let g:ale_sign_warning = '!'
 
@@ -402,7 +391,7 @@ nnoremap <Leader>/ :Grepper<cr>
 nnoremap <Leader>* :Grepper -cword -noprompt<cr>
 nnoremap <Leader>ud :UndotreeToggle<cr>
 nnoremap <Leader>fe :Vexplore<cr>
-nnoremap <Leader>ff :FZF<cr>
+nnoremap <Leader>ff :GFiles<cr>
 
 " }}}
 
@@ -454,7 +443,12 @@ Plug 'junegunn/fzf.vim'
 
 " Grep things easily, autodetects tools
 " Asynchronous support with neovim
-Plug 'mhinz/vim-grepper', {'on': 'Grepper'}
+Plug 'mhinz/vim-grepper' " {{{
+
+" All we need is ripgrep.
+let g:grepper = { 'tools': ['rg'] }
+
+" }}}
 
 " }}}
 
