@@ -6,4 +6,5 @@ After=graphical-session-pre.target
 After=bspwm.service
 
 [Service]
+Environment=MONITOR=%I
 ExecStart=/usr/bin/polybar main

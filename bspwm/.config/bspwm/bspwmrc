@@ -12,3 +12,8 @@ bspc config gapless_monocle         true
 
 bspc rule -a Chromium desktop='web'
 bspc rule -a jetbrains-idea-ce desktop='code'
+bspc rule -a jetbrains-idea desktop='code'
+
+for monitor in $(polybar --list-monitors | cut -d: -f1); do
+	systemctl --user start "polybar@$monitor"
+done

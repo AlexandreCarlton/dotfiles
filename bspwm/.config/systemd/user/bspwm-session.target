@@ -9,7 +9,6 @@ After=graphical-session-pre.target
 
 Wants=bspwm.service
 Wants=sxhkd.service
-Wants=polybar.service
 Wants=x11.socket
 
 # Not sure how else to make this active.
