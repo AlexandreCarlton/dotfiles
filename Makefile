@@ -27,7 +27,6 @@ development:
 .PHONY: development
 
 desktop: development
-	stow binaries
 	stow bspwm
 	stow chromium
 	stow dunst

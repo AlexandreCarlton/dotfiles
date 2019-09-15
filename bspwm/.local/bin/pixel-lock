@@ -11,7 +11,7 @@
 screenshot=$(mktemp --tmpdir XXXX.png)
 trap 'rm $screenshot' EXIT
 
-scrot "${screenshot}"
+scrot --overwrite "${screenshot}"
 gm mogrify -scale 10% -scale 1005% "${screenshot}"
 i3lock --ignore-empty-password \
        --nofork \

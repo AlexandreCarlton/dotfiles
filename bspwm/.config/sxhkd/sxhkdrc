@@ -19,7 +19,7 @@ super + Escape
 
 # lock the screen
 super + q
-	~/.local/bin/pixel_lock.sh
+	pixel-lock
 
 # Volume settings
 XF86AudioRaiseVolume
