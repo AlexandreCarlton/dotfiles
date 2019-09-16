@@ -1,0 +1,12 @@
+include "/usr/share/themes/NumixSolarizedLightBlue/gtk-2.0/gtkrc"
+
+gtk-toolbar-icon-size=GTK_ICON_SIZE_SMALL_TOOLBAR
+
+gtk-icon-theme-name="Numix"
+gtk-theme-name="NumixSolarizedLightBlue"
+
+style "widget-font" {
+  font_name = "GohuFont 8"
+}
+widget_class "*" style "widget-font"
+gtk-font-name="GohuFont 8"
