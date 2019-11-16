@@ -16,4 +16,8 @@ if status --is-interactive
 
   # Disable Ctrl-S freezing the terminal
   stty -ixon
+
+  # Suppress the greeting (Welcome to fish, the friendly interactive shell)
+  set --universal fish_greeting
+
 end
