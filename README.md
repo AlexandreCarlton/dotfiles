@@ -30,7 +30,6 @@ If you wish to change this, then the following files will need to be edited:
  - ~/.config/spacemacs/init.el
  - ~/.config/Trolltech.conf
  - ~/.config/X11/Xresources
- - ~/.gtkrc-2.0
 
 Fontwise, I'm using Hack (bitmap fonts don't work so well on HiDPI screens) and
 changing this requires editing all the aforementioned files bar `init.vim` and
