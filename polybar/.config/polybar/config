@@ -97,7 +97,7 @@ label = %gb_used%
 
 [module/wireless]
 type = internal/network
-interface = wlp8s0
+interface = wlan0
 interval = 1.0
 
 format-connected = <ramp-signal> <label-connected>
