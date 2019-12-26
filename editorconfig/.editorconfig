@@ -5,13 +5,8 @@ root = true
 [*]
 char_set = utf-8
 end_of_line = lf
-indent_size = 2
-indent_style = space
 insert_final_newline = true
 trim_trailing_whitespace = true
-
-[*.md]
-max_line_length = 79
 
 [{bspwmrc,sxhkdrc}]
 indent_size = 2
@@ -23,14 +18,37 @@ indent_style = tab
 [*.go]
 indent_style = tab
 
-[*.y{,a}ml]
-indent_size = 2
+[*.groovy]
 indent_style = space
+indent_size = 4
+continuation_indent_size = 8
+
+[*.java]
+indent_style = space
+indent_size = 4
+continuation_indent_size = 8
+
+[*.kt]
+indent_size = 4
+continuation_indent_size = 4
 
 [{M,m}akefile]
 indent_style = tab
 
-[{pythonrc,*.py}]
+[*.md]
+max_line_length = 79
+indent_size = 2
+indent_style = space
+
+[{BUILD,pythonrc,*.py}]
 indent_size = 4
 indent_style = space
 max_line_length = 79
+
+[*.sh]
+indent_size = 2
+indent_style = space
+
+[*.y{,a}ml]
+indent_size = 2
+indent_style = space
