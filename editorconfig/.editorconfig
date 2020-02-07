@@ -16,6 +16,8 @@ indent_style = tab
 indent_style = tab
 
 [*.go]
+indent_size = 2
+continuation_indent_size = 4
 indent_style = tab
 
 [*.groovy]
@@ -25,10 +27,11 @@ continuation_indent_size = 8
 
 [*.java]
 indent_style = space
-indent_size = 4
-continuation_indent_size = 8
+indent_size = 2
+continuation_indent_size = 4
 
 [*.kt]
+indent_style = space
 indent_size = 4
 continuation_indent_size = 4
 
