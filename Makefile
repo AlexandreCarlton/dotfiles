@@ -17,6 +17,7 @@ development:
 	stow jetbrains
 	stow less
 	stow htop
+	stow maven
 	stow npm
 	stow python
 	stow sh
