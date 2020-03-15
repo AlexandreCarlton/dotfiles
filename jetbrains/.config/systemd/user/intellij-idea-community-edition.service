@@ -4,7 +4,7 @@ PartOf=graphical-session.target
 After=graphical-session-pre.target
 
 [Service]
-ExecStart=/usr/bin/idea
+ExecStart=/opt/intellij-idea-ce/bin/idea.sh
 
 [Install]
 WantedBy=graphical-session.target
