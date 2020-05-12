@@ -2,9 +2,6 @@
 Description=bspwm
 Documentation=man:bspwm(1)
 PartOf=graphical-session.target
-# TODO: We should create a bspc.service that sends its output into lightstatus, not in the config.
-Requires=lightstatus.socket
-After=lightstatus.socket
 After=graphical-session-pre.target
 
 [Service]
