@@ -391,7 +391,7 @@ nnoremap <Leader>/ :Grepper<cr>
 nnoremap <Leader>* :Grepper -cword -noprompt<cr>
 nnoremap <Leader>ud :UndotreeToggle<cr>
 nnoremap <Leader>fe :Vexplore<cr>
-nnoremap <Leader>ff :GFiles<cr>
+nnoremap <Leader>ff :FZF<cr>
 
 " }}}
 
