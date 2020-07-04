@@ -1,0 +1,7 @@
+[Unit]
+Description=Prune all images created more than %i ago
+Documentation=man:docker-image-prune(1) https://docs.docker.com/engine/reference/commandline/image_prune/
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/docker image prune --force --all --filter='until=%i'

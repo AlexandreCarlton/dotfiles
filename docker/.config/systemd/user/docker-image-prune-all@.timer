@@ -1,0 +1,8 @@
+[Unit]
+Description=Prune docker images weekly
+
+[Timer]
+OnCalendar=weekly
+
+[Install]
+WantedBy=timers.target
