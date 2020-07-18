@@ -30,7 +30,7 @@ include-file = ~/.config/polybar/font
 
 modules-left = bspwm
 modules-center =
-modules-right = memory volume battery wireless date
+modules-right = memory filesystem volume battery wireless date
 
 wm-restack = bspwm
 
@@ -94,6 +94,12 @@ interval = 2
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 label = %gb_used%
+
+[module/filesystem]
+type = internal/fs
+mount-0 = /
+
+label-mounted = %mountpoint% %percentage_used%%
 
 [module/wireless]
 type = internal/network
