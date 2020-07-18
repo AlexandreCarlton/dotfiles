@@ -151,4 +151,4 @@ super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
 Print
-	scrot "$HOME/Pictures/Screenshots/%Y-%m-%d_%H%M%S.png"
+	mkdir -p ~/Pictures/Screenshots && flameshot gui --path ~/Pictures/Screenshots
