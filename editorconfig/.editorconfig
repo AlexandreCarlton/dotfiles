@@ -52,6 +52,10 @@ max_line_length = 79
 indent_size = 2
 indent_style = space
 
+[*.xml]
+indent_size = 2
+indent_style = space
+
 [*.y{,a}ml]
 indent_size = 2
 indent_style = space
