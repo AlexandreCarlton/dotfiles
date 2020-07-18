@@ -7,6 +7,9 @@ let mapleader = ' '
 set ignorecase
 set smartcase
 
+" tpope's vim-commentary (gc{motion})
+set commentary
+
 " Easy way to go back to Normal mode.
 inoremap jk <Esc>
 inoremap kj <Esc>
