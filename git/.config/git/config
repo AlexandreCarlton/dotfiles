@@ -15,8 +15,8 @@
 	# But it means we can't cusstomise hooks per project.
 	hooksPath = ~/.config/git/hooks
 
-	# Use a custom viewer; install with pacman or npm.
-	pager = diff-so-fancy | less --tabs=2 -RFX
+	# Use a custom viewer; see https://github.com/dandavison/delta
+	pager = delta
 
 	# Force conversion of line endings to LF on check-in (but prevent conversion
 	# to CRLF on check-out).
