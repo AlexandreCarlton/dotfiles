@@ -406,6 +406,7 @@ autocmd FileType markdown set spell
 " Markdown runtime files
 " godlygeek/tabular MUST come before this.
 Plug 'plasticboy/vim-markdown', { 'for' : 'markdown' }
+let g:vim_markdown_folding_disabled = 1
 
 " Mediawiki syntax highlighting
 Plug 'chikamichi/mediawiki.vim'
