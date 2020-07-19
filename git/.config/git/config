@@ -125,3 +125,7 @@
 	# hub is a command-line wrapper useful for GitHub.
 	# See https://hub.github.com
 	protocol = ssh
+
+[include]
+	# Include work-related overrides (email, etc.)
+	path = ~/.config/git/work-config
