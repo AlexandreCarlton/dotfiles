@@ -1,6 +1,7 @@
 ; vim:ft=dosini
 ; To use icons, fire up urxvt with;
 ; urxvt -fn "xft:Font Awesome 5 Free Solid:style=Regular:size=8"
+; This requires oft-font-awesome to be installed.
 
 [colors]
 background = #002b36
@@ -99,7 +100,9 @@ label = %gb_used%
 type = internal/fs
 mount-0 = /
 
-label-mounted = %mountpoint% %percentage_used%%
+format-mounted-prefix = " "
+format-mounted-prefix-foreground = ${colors.foreground-alt}
+label-mounted = %percentage_used%%
 
 [module/wireless]
 type = internal/network
