@@ -23,13 +23,13 @@ super + q
 
 # Volume settings
 XF86AudioRaiseVolume
-	amixer -q sset Master 5+ unmute
+	pactl set-sink-mute @DEFAULT_SINK@ false; pactl set-sink-volume @DEFAULT_SINK@ +5%
 
 XF86AudioLowerVolume
-	amixer -q sset Master 5-
+	pactl set-sink-volume @DEFAULT_SINK@ -5%
 
 XF86AudioMute
-	amixer -q sset Master toggle
+	pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 # Media keys
 XF86AudioPlay
