@@ -2,7 +2,7 @@
 
 # Set default CRAN repo so we don't have to pick every time.
 local({r <- getOption("repos")
-       r["CRAN"] <- "http://cran.csiro.au"
+       r["CRAN"] <- "https://cran.csiro.au"
        options(repos=r)})
 
 # Prevent strings in data frame from being automatically converted to factor
