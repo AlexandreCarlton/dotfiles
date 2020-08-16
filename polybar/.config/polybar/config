@@ -31,7 +31,7 @@ include-file = ~/.config/polybar/font
 
 modules-left = bspwm
 modules-center =
-modules-right = memory filesystem volume battery wireless date
+modules-right = memory filesystem volume battery updates wireless date
 
 wm-restack = bspwm
 
@@ -145,6 +145,18 @@ ramp-0 = 
 ramp-1 = 
 ramp-2 = 
 ramp-foreground = ${colors.foreground-alt}
+
+[module/updates]
+type = custom/script
+
+# sh -c [exec]
+exec = updates=$(checkupdates | wc -l); [ "$updates" -gt 0 ] && echo "$updates"
+
+# Update every hour
+interval = 1800
+
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground-alt}
 
 [global/wm]
 margin-top = 0
