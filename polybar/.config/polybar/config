@@ -150,7 +150,7 @@ ramp-foreground = ${colors.foreground-alt}
 type = custom/script
 
 # sh -c [exec]
-exec = updates=$(checkupdates | wc -l); [ "$updates" -gt 0 ] && echo "$updates"
+exec = updates=$(checkupdates 2>/dev/null | wc -l); [ "$updates" -gt 0 ] && echo "$updates"
 
 # Update every hour
 interval = 1800
