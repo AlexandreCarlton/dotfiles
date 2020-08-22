@@ -11,6 +11,8 @@ font:
     style: Italic
   bold_italic:
     style: Italic
+  offset:
+    x: -1
 
 scrolling:
   # Tmux handles this for us.
