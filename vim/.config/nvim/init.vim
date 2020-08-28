@@ -14,31 +14,9 @@ endif
 
 autocmd FileType vim set foldmethod=marker
 
-" Neovim/Vim settings {{{
-if has('nvim')
-  runtime! plugin/python_setup.vim
-else
-  if !isdirectory($XDG_CACHE_HOME . '/vim')
-    silent call mkdir($XDG_CACHE_HOME . '/vim', 'p')
-  endif
-  " Can't share viminfo with Neovim unfortunately.
-  set viminfo+=n$XDG_CACHE_HOME/vim/viminfo
+" Neovim/Vim settings
+runtime! plugin/python_setup.vim
 
-  " Directories are automatically created if they do not exist.
-  " Set Neovim defaults,as that is ultimately where we're heading.
-  if !isdirectory($XDG_DATA_HOME . '/nvim')
-    silent call mkdir($XDG_DATA_HOME . '/nvim/swap', 'p')
-    silent call mkdir($XDG_DATA_HOME . '/nvim/backup', 'p')
-    silent call mkdir($XDG_DATA_HOME . '/nvim/view', 'p')
-    silent call mkdir($XDG_DATA_HOME . '/nvim/undo', 'p')
-  endif
-  set directory=$XDG_DATA_HOME/nvim/swap//
-  set backupdir=.,$XDG_DATA_HOME/nvim/backup
-  set viewdir=$XDG_DATA_HOME/nvim/view
-  set undodir=$XDG_DATA_HOME/nvim/undo
-  set runtimepath+=$XDG_CONFIG_HOME/nvim,$XDG_CONFIG_HOME/nvim/after
-endif
-" }}}
 set undofile
 " Where we save bookmarks and history.
 let g:netrw_home='$XDG_CACHE_HOME/nvim'
