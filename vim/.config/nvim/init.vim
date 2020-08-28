@@ -295,6 +295,7 @@ autocmd FileType tex set spell
 
 " LaTeX Plugin
 Plug 'lervag/vimtex'
+let g:tex_flavor = 'latex'
 
 " }}}
 
