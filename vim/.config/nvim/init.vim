@@ -89,7 +89,6 @@ let g:LanguageClient_diagnosticsEnable = 0
 let g:LanguageClient_serverCommands = {
     \ 'python': ['/usr/bin/pyls']
     \ }
-let g:LanguageClient_hasSnippetSupport = 1
 
 " Mimimalist autocompletion framework - leverages omnifunc (augmented by LanguageClient-neovim).
 Plug 'lifepillar/vim-mucomplete' " {{{
@@ -106,16 +105,7 @@ let g:mucomplete#enable_auto_at_startup = 1
 let g:mucomplete#completion_delay = 10
 let g:mucomplete#reopen_immediately = 0
 
-" Add UltiSnips and tags as sources.
-let g:mucomplete#chains = {
-	\ 'default' : ['path', 'omni', 'keyn', 'tags'],
-	\ }
-
-" Configure a minimal mapping set to avoid conflicts with other plugins
-" (*cough* UltiSnips)
-let g:mucomplete#no_mappings = 1
-imap <tab> <plug>(MUcompleteFwd)
-imap <s-tab> <plug>(MUcompleteBwd)
+let g:mucomplete#chains = { 'default' : ['path', 'omni', 'keyn', 'tags'] }
 " }}}
 
 " End certain strutures automatically.
