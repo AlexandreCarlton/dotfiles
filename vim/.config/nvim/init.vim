@@ -108,7 +108,7 @@ let g:mucomplete#reopen_immediately = 0
 
 " Add UltiSnips and tags as sources.
 let g:mucomplete#chains = {
-	\ 'default' : ['path', 'ulti', 'omni', 'keyn', 'tags'],
+	\ 'default' : ['path', 'omni', 'keyn', 'tags'],
 	\ }
 
 " Configure a minimal mapping set to avoid conflicts with other plugins
@@ -117,14 +117,6 @@ let g:mucomplete#no_mappings = 1
 imap <tab> <plug>(MUcompleteFwd)
 imap <s-tab> <plug>(MUcompleteBwd)
 " }}}
-
-" Snippet engine
-Plug 'SirVer/UltiSnips' " {{{
-let g:UltiSnipsExpandTrigger="<c-j>"
-" }}}
-
-" Snippet sources
-Plug 'honza/vim-snippets'
 
 " End certain strutures automatically.
 Plug 'tpope/vim-endwise'
@@ -563,5 +555,6 @@ set t_Co=256
 set background=dark
 silent! colorscheme solarized
 let g:lightline.colorscheme = 'solarized'
-
+" Ensure gutter has same column as background
+highlight clear SignColumn
 " }}}
