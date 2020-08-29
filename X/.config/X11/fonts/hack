@@ -1,8 +1,0 @@
-*font: xft:Hack:size=FONT_SIZE
-*boldFont: xft:Hack:style=Bold:size=FONT_SIZE
-*italicFont: xft:Hack:style=Italic:size=FONT_SIZE
-*boldItalicFont: xft:Hack:style=Bold Italic:size=FONT_SIZE
-
-rofi.font: Hack FONT_SIZE
-
-URxvt.letterSpace: -1

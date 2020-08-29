@@ -1,7 +1,0 @@
-
-*font:           -*-gohufont-medium-*-*-*-11-*-*-*-*-*-iso10646-*
-*boldFont:       -*-gohufont-bold-*-*-*-11-*-*-*-*-*-iso10646-*
-*italicFont:     -*-gohufont-medium-*-*-*-11-*-*-*-*-*-iso10646-*
-*boldItalicFont: -*-gohufont-bold-*-*-*-11-*-*-*-*-*-iso10646-*
-
-rofi.font: Gohufont 11
