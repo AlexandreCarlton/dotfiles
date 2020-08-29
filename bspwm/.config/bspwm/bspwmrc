@@ -10,9 +10,11 @@ bspc config split_ratio             0.52
 bspc config borderless_monocle      true
 bspc config gapless_monocle         true
 
+# Use `xprop | rg WM_CLASS` to find the classname of an application
 bspc rule -a Chromium desktop='web'
 bspc rule -a jetbrains-idea-ce desktop='code'
 bspc rule -a jetbrains-idea desktop='code'
+bspc rule -a Steam desktop=code state=floating follow=no
 
 for monitor in $(polybar --list-monitors | cut -d: -f1); do
 	systemctl --user restart "polybar@$monitor"
