@@ -44,6 +44,12 @@ XF86AudioPrev
 XF86AudioStop
 	playerctl stop
 
+XF86MonBrightnessUp
+	xbacklight -inc 10
+
+XF86MonBrightnessDown
+	xbacklight -dec 10
+
 #
 # bspwm hotkeys
 #
