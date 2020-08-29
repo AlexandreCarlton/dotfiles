@@ -20,4 +20,11 @@ if status --is-interactive
   # Suppress the greeting (Welcome to fish, the friendly interactive shell)
   set --universal fish_greeting
 
+  # See CTRL-R / CTRL-T
+  fzf_key_bindings
+
+  # Some applications require JAVA_HOME; however, we may need to change it,
+  # which is why it is not set from environment.d
+  set -gx JAVA_HOME /usr/lib/jvm/default
+
 end
