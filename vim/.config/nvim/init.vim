@@ -78,6 +78,7 @@ let g:delimitMate_expand_cr = 1
 " }}}
 
 " LSP client for editor-agnostic support.
+" TODO: Look into neovim's inbuilt support when 0.5.0
 Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
 
 " Let w0rp/ale handle diagnostics
@@ -85,9 +86,10 @@ let g:LanguageClient_diagnosticsEnable = 0
 
 " Other LSPs:
 " haskell-ide-engine
-" gopls
 let g:LanguageClient_serverCommands = {
-    \ 'python': ['/usr/bin/pyls']
+    \ 'go': ['gopls'],
+    \ 'python': ['pyls'],
+    \ 'sh': ['bash-language-server', 'start'],
     \ }
 
 " Mimimalist autocompletion framework - leverages omnifunc (augmented by LanguageClient-neovim).
@@ -101,11 +103,12 @@ set belloff+=ctrlg
 
 let g:mucomplete#enable_auto_at_startup = 1
 
-" Recommended for LanguageClient-neovim
+" The default is 2, we want this immediately
+let g:mucomplete#minimum_prefix_length = 2
+
+" Recommended when using LanguageClient-neovim
 let g:mucomplete#completion_delay = 10
 let g:mucomplete#reopen_immediately = 0
-
-let g:mucomplete#chains = { 'default' : ['path', 'omni', 'keyn', 'tags'] }
 " }}}
 
 " End certain strutures automatically.
@@ -353,6 +356,9 @@ nnoremap <Leader>* :Grepper -cword -noprompt<cr>
 nnoremap <Leader>ud :UndotreeToggle<cr>
 nnoremap <Leader>fe :Vexplore<cr>
 nnoremap <Leader>ff :FZF<cr>
+
+nmap <C-]> <Plug>(lcn-definition)
+nmap K <Plug>(lcn-hover)
 
 " }}}
 
