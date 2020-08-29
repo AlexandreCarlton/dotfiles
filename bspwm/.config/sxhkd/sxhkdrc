@@ -19,7 +19,7 @@ super + Escape
 
 # lock the screen
 super + q
-	i3lock-fancy-rapid 5 pixel 5
+	i3lock-fancy-rapid 10 pixel 10
 
 # Volume settings
 XF86AudioRaiseVolume
