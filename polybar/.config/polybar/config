@@ -1,6 +1,4 @@
 ; vim:ft=dosini
-; To use icons, fire up urxvt with;
-; urxvt -fn "xft:Font Awesome 5 Free Solid:style=Regular:size=8"
 ; This requires oft-font-awesome to be installed.
 
 [colors]
