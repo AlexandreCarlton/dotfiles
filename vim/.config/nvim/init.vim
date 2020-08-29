@@ -161,21 +161,6 @@ autocmd Filetype gitcommit set spell
 " }}}
 
 " Go {{{
-" Batteries included go support (including completion)
-Plug 'fatih/vim-go', {'for': 'go'} " {{{
-
-" Let EditorConfig handle this
-let g:go_highlight_space_tab_error = 0
-let g:go_highlight_trailing_whitespace_error = 0
-
-" Let our default linter plugin handle errors
-let g:go_metalinter_autosave = 0
-
-" Don't auto format on save - erroring with EditorConfig
-let g:go_fmt_autosave = 0
-
-
-" }}}
 " }}}
 
 " Haskell {{{
