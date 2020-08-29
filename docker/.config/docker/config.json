@@ -1,4 +1,3 @@
 {
-  "credsStore": "pass",
-	"detachKeys": "ctrl-q,ctrl-q"
+  "detachKeys": "ctrl-q,ctrl-q"
 }
