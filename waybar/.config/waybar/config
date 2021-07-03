@@ -13,6 +13,7 @@
     "disk",
     "pulseaudio",
     "battery",
+    "custom/updates",
     "network",
     "clock#time"
   ],
@@ -82,5 +83,13 @@
       "default": ["", "", ""]
     },
   },
+
+  "custom/updates": {
+    // Runs with sh -c
+    // We have this elaborate logic so that we don't see anything if we're up to date.
+    "exec": "updates=$(checkupdates 2>/dev/null | wc -l); [ \"$updates\" -gt 0 ] && echo \"$updates\"",
+    "format": " {}",
+    "interval": 1800,
+  }
 
 }
