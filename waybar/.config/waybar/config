@@ -1,0 +1,86 @@
+{
+  // vim:ft=json5
+  // vim:sw=2:ts=2:et:
+  "height": 30,
+
+  "modules-left": [
+    "sway/workspaces",
+    "sway/mode"
+  ],
+
+  "modules-right": [
+    "memory",
+    "disk",
+    "pulseaudio",
+    "battery",
+    "network",
+    "clock#time"
+  ],
+
+  "sway/workspaces": {
+    "disable-scroll": true,
+    "all-outputs": true,
+    "format": "{icon}",
+    "format-icons": {
+      "1": "",
+      "2": "",
+      "3": ""
+    }
+  },
+
+  // man waybar-battery
+  "battery": {
+    "format": "{icon} {capacity}%",
+    "format-icons": ["", "", "", "", ""],
+    "full-at": 98,
+    "states": {
+      "warning": 30,
+      "critical": 15
+    }
+  },
+
+  // man waybar-clock
+  "clock#time": {
+    "tooltip": false,
+    // See https://howard‐hinnant.github.io/date/date.html#to_stream_formatting
+    "format": "<b></b> {:%H:%M}"
+  },
+
+  // man waybar-disk
+  "disk": {
+    "format": "<b> </b>{percentage_used}%",
+    "states": {
+      "warning": 85,
+      "critical": 90
+    }
+  },
+
+  // man waybar-memory
+  "memory": {
+    "interval": 5,
+    "format": "<b></b> {used:0.2f} GiB",
+    "states": {
+      "warning": 70,
+      "critical": 90
+    }
+  },
+
+  // man waybar-network
+  "network": {
+    "interval": 1,
+    "format-wifi": "<b></b> {essid}",
+    "format-disconnected": "",
+    "tooltip": false,
+  },
+
+  // man waybar-pulseaudio
+  "pulseaudio": {
+    "interval": 1,
+    "format": "<b>{icon}</b> {volume}%",
+    "format-muted": "",
+    "format-icons": {
+      "default": ["", "", ""]
+    },
+  },
+
+}
