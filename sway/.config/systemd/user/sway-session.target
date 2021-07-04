@@ -1,0 +1,12 @@
+# Note that this is not what we fire to start sway, the order is:
+# - sway.service
+# - sway-session.target
+# - everything else
+# sway will start sway-session.target to avoid race conditions.
+
+[Unit]
+Description=Sway Session
+# BindsTo=sway.service // if sway dies, take down this target
+BindsTo=graphical-session.target
+Requires=graphical-session-pre.target
+After=graphical-session-pre.target

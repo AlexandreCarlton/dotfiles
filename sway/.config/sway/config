@@ -21,10 +21,9 @@ set $term alacritty
 set $menu rofi -show run
 
 ### Output configuration
-#
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg ~/Pictures/Wallpaper/PikachuEevee.png fill
-#
+
+# Wallpaper is handled by swaybg@.service.
+
 # Example configuration:
 #
 #   output HDMI-A-1 resolution 1920x1080 position 1920,0
@@ -36,16 +35,7 @@ output * bg ~/Pictures/Wallpaper/PikachuEevee.png fill
 ### Locking configuration
 
 bindsym $mod+q exec swaylock
-
-# TODO: Doesn't work? :(
-# Listens for idle activity:
-#  - lock your screen after 300 seconds of inactivity
-#  - then turn off displays after another 300 seconds (turn your screens back on when resumed)
-#  - lock your screen before your computer goes to sleep.
-exec swayidle -w \
-         timeout 300 'swaylock -f -c 000000' \
-         timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-         before-sleep 'swaylock -f -c 000000'
+# See swayidle.service for autolocking
 
 ### Input configuration
 #
@@ -94,7 +84,11 @@ exec swayidle -w \
 
     # Brightness is already handled by... something. Not sure what.
 
-#
+    # Hide cursor after 5 seconds
+    seat * hide_cursor 5000
+
+    gaps inner 5
+
 # Moving around:
 #
     # Move your focus around
@@ -207,15 +201,19 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-#
-# Status Bar:
-#
-# Read `man 5 sway-bar` for more information about this section.
-bar {
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    status_command waybar
-}
+# Dunst keybindings to dismiss / restore notifications
+bindsym ctrl+space exec makoctl dismiss
+bindsym ctrl+grave exec makoctl restore
 
+# Printscreen
+bindsym Print exec 'slurp | grim -g - - | swappy -f -'
 
+# Import all environment variables sway sets into systemd so other services can use it.
 include /etc/sway/config.d/*
+
+# Register that we've started sway so that we can start other things depending on it
+# This includes:
+#  - waybar (statusbar)
+#  - mako (TODO to ensure that takes precendence over other notification daemons if present, like dunst)
+#  - swaybg (wallpaper)
+exec systemctl --user start sway-session.target
