@@ -1,0 +1,55 @@
+* {
+	/* Reset borders / padding */
+	border: none;
+	border-radius: 0;
+	min-height: 0;
+	margin: 0;
+	padding: 0;
+}
+
+/* Applies to entire bar */
+#waybar {
+	/* `otf-font-awesome` is required to be installed for icons */
+	font-family: Hack, "Font Awesome 5 Free", sans-serif;
+	font-size: 13px;
+	background-color: #002b36;
+	color: #93a1a1;
+}
+
+/* All modules */
+#battery,
+#clock,
+#disk,
+#memory,
+#network,
+#custom-updates,
+#pulseaudio {
+	padding-left: 0.75em;
+	padding-right: 0.75em;
+}
+
+.warning {
+	background-color: #cb4b16;
+	color: #eee8d5;
+}
+
+.critical {
+	background-color: #dc322f;
+	color: #eee8d5;
+}
+
+#workspaces button {
+	background-color: #002b36;
+	color: #93a1a1;
+	padding-left: 1.5em;
+	padding-right: 1.5em;
+}
+
+#workspaces button.focused {
+	background-color: #073642;
+	color: #eee8d5;
+}
+
+#workspaces button.urgent {
+	background-color: #bd2c40
+}

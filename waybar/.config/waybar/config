@@ -37,23 +37,25 @@
     "states": {
       "warning": 30,
       "critical": 15
-    }
+    },
+    "tooltip": false,
   },
 
   // man waybar-clock
   "clock#time": {
-    "tooltip": false,
     // See https://howard‐hinnant.github.io/date/date.html#to_stream_formatting
-    "format": "<b></b> {:%H:%M}"
+    "format": "<b></b> {:%H:%M}",
+    "tooltip": false,
   },
 
   // man waybar-disk
   "disk": {
-    "format": "<b> </b>{percentage_used}%",
+    "format": "<b></b> {percentage_used}%",
     "states": {
       "warning": 85,
       "critical": 90
-    }
+    },
+    "tooltip": false,
   },
 
   // man waybar-memory
@@ -63,7 +65,8 @@
     "states": {
       "warning": 70,
       "critical": 90
-    }
+    },
+    "tooltip": false,
   },
 
   // man waybar-network
@@ -82,6 +85,7 @@
     "format-icons": {
       "default": ["", "", ""]
     },
+    "tooltip": false,
   },
 
   "custom/updates": {
@@ -90,6 +94,7 @@
     "exec": "updates=$(checkupdates 2>/dev/null | wc -l); [ \"$updates\" -gt 0 ] && echo \"$updates\"",
     "format": " {}",
     "interval": 1800,
+    "tooltip": false,
   }
 
 }
