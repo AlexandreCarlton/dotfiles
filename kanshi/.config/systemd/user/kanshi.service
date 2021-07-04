@@ -1,0 +1,10 @@
+[Unit]
+Description=kanshi - dynamic output configuration
+Documentation=man:kanshi(1)
+PartOf=graphical-session.target
+
+[Service]
+ExecStart=/usr/bin/kanshi
+
+[Install]
+WantedBy=sway-session.target
