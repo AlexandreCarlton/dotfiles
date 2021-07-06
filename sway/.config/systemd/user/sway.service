@@ -1,0 +1,16 @@
+[Unit]
+Description=sway
+Documentation=man:sway(1)
+PartOf=graphical-session.target
+After=graphical-session-pre.target
+
+[Service]
+# https://git.sr.ht/~kennylevinsen/seatd/tree/master/item/libseat/libseat.c#L45
+Environment=LIBSEAT_BACKEND=logind
+# Magic variables that seem to be required to start sway via systemd
+Environment=XDG_CURRENT_DESKTOP=sway
+Environment=XDG_SESSION_TYPE=wayland
+ExecStart=/usr/bin/sway --verbose
+
+[Install]
+WantedBy=default.target
