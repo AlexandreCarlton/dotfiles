@@ -12,6 +12,11 @@ trim_trailing_whitespace = true
 indent_size = 2
 indent_style = tab
 
+# https://google.github.io/styleguide/htmlcssguide.html
+[*.css]
+indent_size = 2
+indent_style = tab
+
 [{**/git/,.git}config]
 indent_style = tab
 
@@ -31,6 +36,11 @@ continuation_indent_size = 8
 indent_style = space
 indent_size = 2
 continuation_indent_size = 4
+
+# https://google.github.io/styleguide/jsoncstyleguide.xml
+[*.json,*.json5]
+indent_style = space
+indent_size = 2
 
 # https://ktlint.github.io/
 [{*.kt,*.kts}]
