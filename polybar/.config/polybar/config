@@ -29,12 +29,12 @@ include-file = ~/.config/polybar/font
 
 modules-left = bspwm
 modules-center =
-modules-right = memory filesystem volume battery updates wireless date
+modules-right = memory filesystem volume battery temperature updates wireless date
 
 wm-restack = bspwm
 
 [module/volume]
-type = internal/alsa
+type = internal/pulseaudio
 label-muted = 
 label-muted-foreground = ${colors.foreground-alt}
 format-volume = <ramp-volume> <label-volume>
@@ -139,9 +139,11 @@ label = %temperature%
 label-warn = %temperature%
 label-warn-foreground = ${colors.secondary}
 
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-3 = 
+ramp-4 = 
 ramp-foreground = ${colors.foreground-alt}
 
 [module/updates]
