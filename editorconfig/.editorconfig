@@ -37,6 +37,11 @@ indent_style = space
 indent_size = 2
 continuation_indent_size = 4
 
+# https://google.github.io/styleguide/jsguide.html
+[*.js]
+indent_style = space
+indent_size = 2
+
 # https://google.github.io/styleguide/jsoncstyleguide.xml
 [*.json,*.json5]
 indent_style = space
@@ -56,11 +61,21 @@ max_line_length = 79
 indent_size = 2
 indent_style = space
 
+# https://www.nginx.com/resources/wiki/start/topics/examples/full/
+[nginx.conf]
+indent_size = 2
+indent_style = space
+
 # https://www.python.org/dev/peps/pep-0008/
 [{pythonrc,*.py}]
 indent_size = 4
 indent_style = space
 max_line_length = 79
+
+# https://developers.google.com/protocol-buffers/docs/style
+[*.proto]
+indent_size = 2
+indent_style = space
 
 [{BUILD,WORKSPACE}]
 indent_size = 4
@@ -68,6 +83,15 @@ indent_style = space
 
 # https://google.github.io/styleguide/shell.xml
 [*.sh]
+indent_size = 2
+indent_style = space
+
+# https://www.terraform.io/docs/language/syntax/style.html
+[*.tf]
+indent_size = 2
+indent_style = space
+
+[*.tsx]
 indent_size = 2
 indent_style = space
 
