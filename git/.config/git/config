@@ -129,3 +129,8 @@
 [include]
 	# Include work-related overrides (email, etc.)
 	path = ~/.config/git/work-config
+
+[fetch]
+	# Automatically remove remote-tracking references that
+	# no longer exist on the remote (e.g. deleted branches).
+	prune = true
