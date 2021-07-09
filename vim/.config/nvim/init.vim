@@ -19,9 +19,9 @@ runtime! plugin/python_setup.vim
 
 set undofile
 " Where we save bookmarks and history.
-let g:netrw_home='$XDG_CACHE_HOME/nvim'
+let g:netrw_home='$HOME/.cache/nvim'
 
-call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
+call plug#begin('$HOME/.config/nvim/plugged')
 
 " Defaults everyone can agree on.
 " Defined up here so other plugins can benefit from settings
@@ -170,6 +170,10 @@ Plug 'neovimhaskell/haskell-vim', {'for': 'haskell'}
 
 " }}}
 
+" i3 {{{
+Plug 'mboughaba/i3config.vim'
+" }}}
+
 " HTML / CSS {{{
 "
 " CSS3 Syntax support to built-in CSS syntax
@@ -265,6 +269,9 @@ Plug 'pangloss/vim-javascript', { 'for' : 'javascript' }
 
 " TypeScript
 Plug 'leafgarland/typescript-vim', {'for': 'typescript'}
+
+" JSON5
+Plug 'gutenye/json5.vim'
 
 " }}}
 
