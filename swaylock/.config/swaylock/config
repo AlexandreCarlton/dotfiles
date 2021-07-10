@@ -2,3 +2,32 @@
 screenshots
 indicator
 effect-blur=10x4
+# clock
+
+# Transitiion
+fade-in=1
+# Only require password after 5s in case we auto-lock while watching something
+grace=5
+
+# Universal appearance
+font=Hack
+font-size=24
+line-uses-ring
+
+# Default appearance
+ring-color=#073642
+inside-color=#002b36
+
+# Verifying appearance
+ring-ver-color=#268bd2
+inside-ver-color=#268bd2
+
+# Wrong appearance
+ring-wrong-color=#cb4b16
+inside-wrong-color=#dc322f
+
+# Typing
+key-hl-color=#268bd2
+bs-hl-color=#dc322f
+# Match ring color
+separator-color=#073642
