@@ -1,0 +1,9 @@
+
+profile working_from_home {
+  output "Sharp Corporation 0x148D 0x00000000" position 0,0
+  output "Samsung Electric Company S24D300 0x00005B45" position 1920,0
+
+  exec swaymsg workspace 1, move workspace to output '"Sharp Corporation 0x148D 0x00000000"'
+  exec swaymsg workspace 2, move workspace to output '"Samsung Electric Company S24D300 0x00005B45"'
+  exec swaymsg workspace 3, move workspace to output '"Samsung Electric Company S24D300 0x00005B45"'
+}
