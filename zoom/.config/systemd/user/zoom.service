@@ -1,0 +1,12 @@
+[Unit]
+Description=zoom
+Documentation=https://zoom.us
+
+[Service]
+#See https://github.com/flathub/uz.zoom.Zoom/issues/24
+Environment=QT_QPA_PLATFORM=xcb
+Environment=XDG_CURRENT_DESKTOP=gnome
+ExecStart=/usr/bin/zoom
+
+[Install]
+WantedBy=graphical-session.target
