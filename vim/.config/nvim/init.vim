@@ -253,9 +253,6 @@ set formatoptions+=l
 
 " }}}
 
-" Sane buffer deletion on :Sayonara
-Plug 'mhinz/vim-sayonara', {'on': 'Sayonara'}
-
 " Execute unix shell commands from Vim.
 Plug 'tpope/vim-eunuch', {'on': ['Remove', 'Unlink', 'Move', 'Rename', 'Chmod',
                                \ 'Mkdir', 'Find', 'Locate', 'Wall',
