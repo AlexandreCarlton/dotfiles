@@ -152,9 +152,6 @@ Plug 'tpope/vim-fugitive'
 " Syntax highlighting
 Plug 'tpope/vim-git'
 
-" Git commit browser
-Plug 'junegunn/gv.vim', {'on': 'GV'}
-
 " Enable spell-check on git commits
 autocmd Filetype gitcommit set spell
 
