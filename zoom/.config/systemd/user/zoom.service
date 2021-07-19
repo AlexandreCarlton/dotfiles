@@ -4,8 +4,13 @@ Documentation=https://zoom.us
 
 [Service]
 #See https://github.com/flathub/uz.zoom.Zoom/issues/24
-Environment=QT_QPA_PLATFORM=xcb
-Environment=XDG_CURRENT_DESKTOP=gnome
+# Environment=QT_QPA_PLATFORM=xcb
+# Environment=XDG_CURRENT_DESKTOP=gnome
+
+# Most apps we want to share run on X (Chromium + IntelliJ)
+# To share them, we force zoom to run with X.
+# When Chromium and IntelliJ both support wayland natively we can use the above config.
+Environment=XDG_SESSION_TYPE=x11
 ExecStart=/usr/bin/zoom
 
 [Install]
