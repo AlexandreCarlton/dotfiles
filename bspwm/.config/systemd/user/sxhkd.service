@@ -1,8 +1,0 @@
-[Unit]
-Description=sxhkd
-Documentation=man:sxhkd(1)
-PartOf=graphical-session.target
-After=graphical-session-pre.target
-
-[Service]
-ExecStart=/usr/bin/sxhkd

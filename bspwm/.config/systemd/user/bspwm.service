@@ -1,8 +1,0 @@
-[Unit]
-Description=bspwm
-Documentation=man:bspwm(1)
-PartOf=graphical-session.target
-After=graphical-session-pre.target
-
-[Service]
-ExecStart=/usr/bin/bspwm
