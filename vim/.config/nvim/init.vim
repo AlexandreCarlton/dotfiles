@@ -1,8 +1,8 @@
 " Alexandre's vimrc
 "
-" TODO: Make mappings for formatting
-" for example, make a function that calls the relevant format function for the
-" current filetype - useful for ClangFormat and gofmt
+" TODO: Simplify to lua, strip out most plugins
+
+" Add treesitter then a 'syntax highlighting' for anything not covered.
 
 " Automatic installation {{{
 if empty(glob('$HOME/.config/nvim/autoload/plug.vim'))
@@ -27,29 +27,82 @@ call plug#begin('$HOME/.config/nvim/plugged')
 " Defined up here so other plugins can benefit from settings
 Plug 'tpope/vim-sensible'
 
+" When neovim 0.6 arrives we should move to treesitter
+" See https://github.com/nvim-treesitter/nvim-treesitter#supported-languages
+" Languages (Syntax) {{{
+
+" Ansible
+Plug 'pearofducks/ansible-vim'
+
+" C / C++
+Plug 'octol/vim-cpp-enhanced-highlight', {'for': ['c', 'cpp']}
+
+" Docker (+ snippets)
+Plug 'ekalinin/Dockerfile.vim'
+
+" Fish
+Plug 'dag/vim-fish', {'for': 'fish'}
+
+" Git
+Plug 'tpope/vim-git'
+
+" Haskell ( + indentation)
+Plug 'neovimhaskell/haskell-vim', {'for': 'haskell'}
+
+" i3
+Plug 'mboughaba/i3config.vim'
+
+" JavaScript
+Plug 'pangloss/vim-javascript', { 'for' : 'javascript' }
+
+" JSON5
+Plug 'gutenye/json5.vim'
+
+" Kotlin
+Plug 'udalov/kotlin-vim'
+
+" LaTeX
+Plug 'lervag/vimtex' " {{{
+let g:tex_flavor = 'latex'
+au BufNewFile,BufRead *.tex set filetype=tex
+autocmd FileType tex set spell
+" }}}
+
+" Markdown
+Plug 'plasticboy/vim-markdown', { 'for' : 'markdown' } " {{{
+let g:vim_markdown_folding_disabled = 1
+" Set relevant files with markdown extensions to be MarkDown.
+au BufNewFile,BufRead *.md,*.mkd set filetype=markdown
+" Spell check markdown files.
+autocmd FileType markdown set spell
+" }}}
+
+" Mediawiki
+Plug 'chikamichi/mediawiki.vim'
+
+" Nginx
+Plug 'chr4/nginx.vim'
+
+" Python PEP-8 indent
+Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
+
+" Rust
+Plug 'rust-lang/rust.vim', {'for': 'rust'}
+
+" TypeScript
+Plug 'leafgarland/typescript-vim', {'for': 'typescript'}
+
+" }}}
+
 " Syntax {{{
 " Checks the buffer in addition to on save (unlike NeoMake)
 " Use ']l' and '[l' to cycle through errors (with vim-unimpaired)
-Plug 'w0rp/ale'
+Plug 'w0rp/ale' " {{{
 
 let g:ale_sign_error = 'x'
 let g:ale_sign_warning = '!'
 
 " }}}
-
-" }}}
-
-" Ansible {{{
-
-" Syntax highlighting
-Plug 'pearofducks/ansible-vim'
-
-" }}}
-
-" C / C++ {{{
-
-" Syntax highlighting
-Plug 'octol/vim-cpp-enhanced-highlight', {'for': ['c', 'cpp']}
 
 " }}}
 
@@ -116,28 +169,6 @@ Plug 'tpope/vim-endwise'
 
 " }}}
 
-" Shell {{{
-
-Plug 'dag/vim-fish', {'for': 'fish'}
-
-" }}}
-
-" Docker {{{
-
-" Provides snippets and highlights popular bash commands
-Plug 'ekalinin/Dockerfile.vim'
-
-" }}}
-
-" Fortran {{{
-" Use free-form input (Don't assume everything is offset by 8 spaces)
-let fortran_free_source = 1
-
-" Make syntax colouring more precise (albeit slower)
-let fortran_more_precise = 1
-
-" }}}
-
 " Git {{{
 
 " Shows git diff in column - better than mhinz/vim-signify
@@ -149,35 +180,8 @@ let g:gitgutter_sign_modified_removed = '~-'
 " Git Wrapper.
 Plug 'tpope/vim-fugitive'
 
-" Syntax highlighting
-Plug 'tpope/vim-git'
-
 " Enable spell-check on git commits
 autocmd Filetype gitcommit set spell
-
-" }}}
-
-" Go {{{
-" }}}
-
-" Haskell {{{
-
-" Syntax highlighting & indentation for Haskell/Cabal
-Plug 'neovimhaskell/haskell-vim', {'for': 'haskell'}
-
-" }}}
-
-" i3 {{{
-Plug 'mboughaba/i3config.vim'
-" }}}
-
-" HTML / CSS {{{
-"
-" CSS3 Syntax support to built-in CSS syntax
-Plug 'hail2u/vim-css3-syntax', { 'for': ['html', 'xhtml', 'css'] }
-
-" HTML5 + inline SVG omnicomplete function, indent and ayntax.
-Plug 'othree/html5.vim', { 'for': ['html', 'xhtml'] }
 
 " }}}
 
@@ -256,38 +260,6 @@ Plug 'tpope/vim-eunuch', {'on': ['Remove', 'Unlink', 'Move', 'Rename', 'Chmod',
                                \ 'SudoWrite', 'SudoEdit']}
 " }}}
 
-" JavaScript {{{
-
-" Syntax and indent support
-Plug 'pangloss/vim-javascript', { 'for' : 'javascript' }
-
-" TypeScript
-Plug 'leafgarland/typescript-vim', {'for': 'typescript'}
-
-" JSON5
-Plug 'gutenye/json5.vim'
-
-" }}}
-
-" Kotlin {{{
-
-Plug 'udalov/kotlin-vim'
-
-" }}}
-
-" LaTeX {{{
-
-au BufNewFile,BufRead *.tex set filetype=tex
-
-" Set spellcheck on documents
-autocmd FileType tex set spell
-
-" LaTeX Plugin
-Plug 'lervag/vimtex'
-let g:tex_flavor = 'latex'
-
-" }}}
-
 " Mappings {{{
 
 " Align text with 'gaip='
@@ -346,38 +318,6 @@ nnoremap <Leader>ff :FZF<cr>
 nmap <C-]> <Plug>(lcn-definition)
 nmap K <Plug>(lcn-hover)
 
-" }}}
-
-" Markdown {{{
-
-" Set relevant files with markdown extensions to be MarkDown.
-au BufNewFile,BufRead *.md,*.mkd set filetype=markdown
-
-" Spell check markdown files.
-autocmd FileType markdown set spell
-
-" Markdown runtime files
-" godlygeek/tabular MUST come before this.
-Plug 'plasticboy/vim-markdown', { 'for' : 'markdown' }
-let g:vim_markdown_folding_disabled = 1
-
-" Mediawiki syntax highlighting
-Plug 'chikamichi/mediawiki.vim'
-
-" }}}
-
-" Nginx {{{
-Plug 'chr4/nginx.vim'
-" }}}
-
-" Python {{{
-
-Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
-
-" }}}
-
-" Rust {{{
-Plug 'rust-lang/rust.vim', {'for': 'rust'}
 " }}}
 
 " Searching (& Exploring) {{{
