@@ -243,10 +243,10 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'tarfile::.*']
 let g:EditorConfig_max_line_indicator = 'line'
 
 " Support for this was removed; see #121 on editorconfig-vim for any update.
-" if executable('editorconfig')
-"   " Requires editorconfig-core-c
-"   let g:EditorConfig_core_mode = 'external_command'
-" endif
+if executable('editorconfig')
+  " Requires editorconfig-core-c
+  let g:EditorConfig_core_mode = 'external_command'
+endif
 
 " Don't the current line if it was already longer than the allowed width when
 " the user started editing it.
