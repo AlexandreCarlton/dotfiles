@@ -37,6 +37,9 @@ Plug 'pearofducks/ansible-vim'
 " C / C++
 Plug 'octol/vim-cpp-enhanced-highlight', {'for': ['c', 'cpp']}
 
+" Cmake
+autocmd FileType cmake setlocal commentstring=#\ %s
+
 " Docker (+ snippets)
 Plug 'ekalinin/Dockerfile.vim'
 
@@ -107,7 +110,6 @@ let g:ale_sign_warning = '!'
 " }}}
 
 " CMake {{{
-autocmd FileType cmake setlocal commentstring=#\ %s
 " }}}
 
 " Colours {{{
