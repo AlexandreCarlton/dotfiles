@@ -23,10 +23,6 @@ let g:netrw_home='$HOME/.cache/nvim'
 
 call plug#begin('$HOME/.config/nvim/plugged')
 
-" Defaults everyone can agree on.
-" Defined up here so other plugins can benefit from settings
-Plug 'tpope/vim-sensible'
-
 " When neovim 0.6 arrives we should move to treesitter
 " See https://github.com/nvim-treesitter/nvim-treesitter#supported-languages
 " Languages (Syntax) {{{
