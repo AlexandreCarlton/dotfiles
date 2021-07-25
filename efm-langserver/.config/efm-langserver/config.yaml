@@ -1,0 +1,35 @@
+# Configuration for efm, an LSP for linting tools
+# See https://github.com/mattn/efm-langserver
+
+version: 2
+root-markers:
+  - .git/
+# How long it takes to apply the linter after finishing editing.
+# Useful so that this doesn't fire while we type.
+lint-debounce: 1s
+
+tools:
+  dockerfile-hadolint: &dockerfile-hadolint
+    lint-command: 'hadolint'
+    lint-formats:
+      - '%f:%l %m'
+
+  sh-shellcheck: &sh-shellcheck
+    lint-command: 'shellcheck -f gcc -x'
+    lint-source: 'shellcheck'
+    lint-formats:
+      - '%f:%l:%c: %trror: %m'
+      - '%f:%l:%c: %tarning: %m'
+      - '%f:%l:%c: %tote: %m'
+
+  yaml-yamllint: &yaml-yamllint
+    lint-command: 'yamllint -f parsable -'
+    lint-stdin: true
+
+languages:
+  dockerfile:
+    - <<: *dockerfile-hadolint
+  sh:
+    - <<: *sh-shellcheck
+  yaml:
+    - <<: *yaml-yamllint
