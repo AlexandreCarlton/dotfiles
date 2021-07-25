@@ -94,16 +94,7 @@ Plug 'leafgarland/typescript-vim', {'for': 'typescript'}
 " }}}
 
 " Colours {{{
-
 Plug 'altercation/vim-colors-solarized'
-
-" Set utf8 as standard encoding and en_US as standard language
-set encoding=utf-8
-scriptencoding utf-8
-
-" Set unix as standard file type
-set fileformats=unix,dos,mac
-
 " }}}
 
 " Completion {{{
@@ -410,11 +401,6 @@ function! MyMode()
 endfunction
 
 " }}}
-
-" }}}
-
-" Show statusline on all windows - done by sensible
-set laststatus=2
 
 " }}}
 
