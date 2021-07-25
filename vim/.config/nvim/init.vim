@@ -93,21 +93,6 @@ Plug 'leafgarland/typescript-vim', {'for': 'typescript'}
 
 " }}}
 
-" Syntax {{{
-" Checks the buffer in addition to on save (unlike NeoMake)
-" Use ']l' and '[l' to cycle through errors (with vim-unimpaired)
-Plug 'w0rp/ale' " {{{
-
-let g:ale_sign_error = 'x'
-let g:ale_sign_warning = '!'
-
-" }}}
-
-" }}}
-
-" CMake {{{
-" }}}
-
 " Colours {{{
 
 Plug 'altercation/vim-colors-solarized'
@@ -369,7 +354,7 @@ let g:lightline = {
     \     ['fugitive', 'gitgutter', 'filename']
     \   ],
     \   'right': [
-    \     ['ale', 'lineinfo'],
+    \     ['lineinfo'],
     \     ['percent'],
     \     ['fileformat', 'fileencoding', 'filetype'],
     \   ]
@@ -385,10 +370,6 @@ let g:lightline = {
     \   'mode': 'MyMode',
     \   'fugitive': 'MyFugitive',
     \   'gitgutter': 'MyGitGutter',
-    \   'ale': 'MyALE',
-    \ },
-    \ 'component_type': {
-    \   'ale': 'error',
     \ },
     \ 'separator': { 'left': '', 'right': '' },
     \ 'subseparator': { 'left': '|', 'right': '|' }
@@ -396,7 +377,7 @@ let g:lightline = {
 
 " Lightline functions {{{
 function! MyFugitive()
-  if expand('%:t') !~? 'Tagbar' && &ft !~? 'vimfiler' && exists('*fugitive#head')
+  if exists('*fugitive#head')
     let head = fugitive#head()
     return strlen(head) ? head : ''
   endif
@@ -420,8 +401,7 @@ endfunction
 
 function! MyMode()
   let fname = expand('%:t')
-  return fname == '__Tagbar__' ? 'Tagbar' :
-       \ lightline#mode() == 'COMMAND' ? 'C' :
+  return lightline#mode() == 'COMMAND' ? 'C' :
        \ lightline#mode() == 'INSERT' ? 'I' :
        \ lightline#mode() == 'NORMAL' ? 'N' :
        \ lightline#mode() == 'REPLACE' ? 'R' :
@@ -433,17 +413,6 @@ function! MyMode()
        \ lightline#mode() == 'V-BLOCK' ? 'V' :
        \ lightline#mode() == 'V-LINE' ? 'V' :
        \ lightline#mode()
-endfunction
-
-function! MyALE()
-  let l:counts = ale#statusline#Count(bufnr(''))
-  let l:errors = l:counts.error + l:counts.style_error
-  let l:warnings = l:counts.warning + l:counts.style_warning
-  if [l:warnings, l:errors] != [0, 0]
-    return 'E:' . l:errors . ' W:' . l:warnings
-  else
-    return ''
-  endif
 endfunction
 
 " }}}
