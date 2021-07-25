@@ -253,12 +253,6 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 " }}}
 
-" Easier way of navigating - s{char}{char}, ; to go to next match.
-Plug 'justinmk/vim-sneak' "{{{
-" Act like Easy-motion.
-let g:sneak#streak = 1
-"}}}
-
 " Use gcc to toggle comments.
 Plug 'tpope/vim-commentary' ", {'on': '<Plug>Commentary'}
 
