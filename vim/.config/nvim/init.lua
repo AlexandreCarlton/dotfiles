@@ -282,6 +282,13 @@ require('packer').startup(function()
     }
   }
   require'telescope'.setup {
+    defaults = {
+      mappings = {
+        -- Ctrl-T will open the search results in trouble.
+        i = { ["<c-t>"] = require'trouble.providers.telescope'.open_with_trouble },
+        n = { ["<c-t>"] = require'trouble.providers.telescope'.open_with_trouble },
+      }
+    },
     extensions = {
       -- Use telescope's C implementation of fzf
       fzf = {
