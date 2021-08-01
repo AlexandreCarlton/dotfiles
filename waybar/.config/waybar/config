@@ -71,6 +71,7 @@
 
   // man waybar-network
   "network": {
+    "interface": "wlan0",
     "interval": 1,
     "format-wifi": "<b></b> {essid}",
     "format-disconnected": "",
