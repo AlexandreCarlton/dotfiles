@@ -60,6 +60,9 @@ require('packer').startup(function()
   -- Rust
   use 'rust-lang/rust.vim'
 
+  -- Terraform
+  use 'hashivim/vim-terraform'
+
   -- Typescript
   use 'leafgarland/typescript-vim'
 
