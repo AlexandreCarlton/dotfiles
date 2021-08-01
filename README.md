@@ -22,15 +22,13 @@ As you can probably tell, I'm a big fan of
 
 If you wish to change this, then the following files will need to be edited:
 
- - ~/.config/dunst/dunstrc
- - ~/.config/gtk-3.0/settings.ini
- - ~/.config/htop/htoprc (We won't need to use 'Broken Gray')
- - ~/.config/nvim/init.vim
- - ~/.config/polybar/config
- - ~/.config/spacemacs/init.el
- - ~/.config/Trolltech.conf
- - ~/.config/X11/Xresources
+ - `~/.config/alacritty.yml`
+ - `~/.config/gtk-3.0/settings.ini`
+ - `~/.config/htop/htoprc` (We won't need to use 'Broken Gray')
+ - `~/.config/mako/config`
+ - `~/.config/nvim/init.lua`
+ - `~/.config/Trolltech.conf`
+ - `~/.config/waybar/style.css`
 
 Fontwise, I'm using Hack (bitmap fonts don't work so well on HiDPI screens) and
-changing this requires editing all the aforementioned files bar `init.vim` and
-`htoprc`.
+changing this requires editing almost all the aforementioned files.
