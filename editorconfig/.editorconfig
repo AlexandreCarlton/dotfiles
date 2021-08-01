@@ -17,6 +17,10 @@ indent_style = tab
 indent_size = 2
 indent_style = tab
 
+[*.fish]
+indent_size = 2
+indent_style = space
+
 [{**/git/,.git}config]
 indent_style = tab
 
@@ -52,6 +56,11 @@ indent_size = 2
 indent_style = space
 indent_size = 4
 continuation_indent_size = 4
+
+# http://lua-users.org/wiki/LuaStyleGuide
+[*.lua]
+indent_style = space
+indent_size = 2
 
 [{M,m}akefile]
 indent_style = tab
@@ -92,6 +101,10 @@ indent_size = 2
 indent_style = space
 
 [*.tsx]
+indent_size = 2
+indent_style = space
+
+[*.vim]
 indent_size = 2
 indent_style = space
 
