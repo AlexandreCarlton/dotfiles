@@ -2,7 +2,7 @@
 # having to type out its XDG path).
 # Also to prevent exiting a file and opening it up again with sudo.
 
-alias vimrc "$EDITOR $XDG_CONFIG_HOME/nvim/init.vim"
+alias vimrc "$EDITOR $XDG_CONFIG_HOME/nvim/init.lua"
 
 alias tmuxconf "$EDITOR $XDG_CONFIG_HOME/tmux/tmux.conf"
 
