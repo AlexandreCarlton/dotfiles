@@ -160,7 +160,7 @@ require('packer').startup(function()
 
   -- Show disagnostics in loclist
   use { 'folke/trouble.nvim', -- {{{
-    requires = { 'kyazdani42/nvim-web-devicons' },
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true },
     config = function()
       require'trouble'.setup {
         icons = false
@@ -271,10 +271,10 @@ require('packer').startup(function()
   -- Command-invoked {{{
 
   -- Git
-  use 'tpope/vim-fugitive'
+  use { 'tpope/vim-fugitive', opt = true, cmd = { 'Git', 'G' } }
 
   -- Shell commands
-  use { 'tpope/vim-eunuch', opt = true, cmd= { 'Mkdir', 'SudoWrite', 'SudoEdit' } }
+  use { 'tpope/vim-eunuch', opt = true, cmd = { 'Mkdir', 'SudoWrite', 'SudoEdit' } }
 
   -- Run things in tmux pane
   use { 'tpope/vim-dispatch', opt = true, cmd = { 'Make', 'Dispatch', 'Start' } }
