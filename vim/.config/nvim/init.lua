@@ -2,6 +2,28 @@
 
 vim.cmd [[ runtime! plugin/python_setup.vim ]]
 
+  -- Sensible defaults {{{
+
+  -- Map leader to space
+  vim.cmd [[ let mapleader=" " ]]
+
+  -- Make searches case-insensitive, unless we have an upper-case character.
+  vim.o.ignorecase = true
+  vim.o.smartcase = true
+
+  -- Don't highlight previous search results.
+  vim.o.hlsearch = false
+
+  -- Hide buffer when it is hidden.
+  vim.o.hidden = true
+
+  -- Highlight current row
+  vim.o.cursorline = true
+
+  -- Straya
+  vim.o.spelllang = 'en_au'
+  -- }}}
+
 -- Install via git clone https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 -- Run :PackerCompiler after _any_ change.
 -- Run :PackerSync to update.
@@ -84,6 +106,7 @@ require('packer').startup(function()
   use { 'neovim/nvim-lspconfig',  -- {{{
     config = function()
       require'lspconfig'.efm.setup { filetypes = {"sh", "Dockerfile", "yaml"} }
+      require'lspconfig'.gopls.setup {}
       require'lspconfig'.pylsp.setup { cmd = { "pyls" } }
     end
   } -- }}}
@@ -132,24 +155,6 @@ require('packer').startup(function()
 
   -- }}}
 
-  -- Sane defaults {{{
-  -- Make searches case-insensitive, unless we have an upper-case character.
-  vim.o.ignorecase = true
-  vim.o.smartcase = true
-
-  -- Don't highlight previous search results.
-  vim.o.hlsearch = false
-
-  -- Hide buffer when it is hidden.
-  vim.o.hidden = true
-
-  -- Highlight current row
-  vim.o.cursorline = true
-
-  -- Straya
-  vim.o.spelllang = 'en_au'
-  -- }}}
-
   -- UI {{{
   -- Solarized colorscheme
   use 'lifepillar/vim-solarized8' -- {{{
@@ -163,10 +168,38 @@ require('packer').startup(function()
     requires = { 'kyazdani42/nvim-web-devicons', opt = true },
     config = function()
       require'trouble'.setup {
-        icons = false
+        -- No devicons for filenames
+        icons = false,
+        -- Use normal characters for fold
+        fold_open = "v",
+        fold_closed = ">",
+        -- use signs from LSP client
+        use_lsp_diagnostic_signs = true
       }
     end
   } -- }}}
+
+  -- Nicer UI on top of LSP - keymapping is inspired by IntelliJ
+  use { 'glepnir/lspsaga.nvim',
+    config = function()
+      require'lspsaga'.init_lsp_saga {
+        finder_action_keys = {
+          open = '<cr>',
+        }
+      }
+    end
+  }
+  vim.cmd [[
+    " alt-enter to prompt suggestions
+    nnoremap <a-cr> :Lspsaga code_action<cr>
+    " ctrl-] to find definition/references
+    nnoremap <c-]> :Lspsaga lsp_finder<cr>
+    " shift-k to consult docs
+    nnoremap K :Lspsaga hover_doc<cr>
+    " <space>r to rename
+    nnoremap <Leader>r :Lspsaga rename<cr>
+  ]]
+
 
   -- Create missing highlight LSP diagnostics groups for colourschemes that don't have them.
   use 'folke/lsp-colors.nvim'
@@ -228,7 +261,7 @@ require('packer').startup(function()
   use { 'mbbill/undotree', opt = true, cmd = 'UndotreeToggle' }
   vim.cmd [[ nnoremap <Leader>ud :UndotreeToggle<cr> ]]
 
-  -- Provide more options when dealin with swap files.
+  -- Provide more options when dealing with swap files.
   use 'chrisbra/recover.vim'
 
   -- }}}
@@ -245,7 +278,6 @@ require('packer').startup(function()
   -- }}}
 
   -- Key mappings {{{
-  vim.cmd [[ let mapleader=" " ]]
 
   -- gcc to toggle comments
   use 'tpope/vim-commentary'
@@ -299,6 +331,12 @@ require('packer').startup(function()
             -- Ctrl-T will open the search results in trouble.
             i = { ["<c-t>"] = require'trouble.providers.telescope'.open_with_trouble },
             n = { ["<c-t>"] = require'trouble.providers.telescope'.open_with_trouble },
+          }
+        },
+        pickers = {
+          find_files = {
+            -- No devicons for filenames
+            disable_devicons = true,
           }
         },
         extensions = {
