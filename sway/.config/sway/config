@@ -48,6 +48,9 @@ client.unfocused        $base03 $base03 $base01
 # view with urgency hint (only supported in Xwayland windows)
 client.urgent           $base2  $red    $base3
 
+# Font of sway title bar.
+font Inter 10
+
 ### Output configuration
 
 # Wallpaper is handled by swaybg@.service.
