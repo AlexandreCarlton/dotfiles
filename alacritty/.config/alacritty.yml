@@ -1,7 +1,8 @@
+---
 # Configuration for Alacritty, the GPU enhanced terminal emulator.
 
 font:
-  size: 7.0
+  size: 9.0
   normal:
     family: Hack
     style: Regular
@@ -11,8 +12,6 @@ font:
     style: Italic
   bold_italic:
     style: Italic
-  offset:
-    x: -1
 
 scrolling:
   # Tmux handles this for us.
