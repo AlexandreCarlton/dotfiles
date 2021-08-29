@@ -6,25 +6,29 @@ update-submodules:
 	git submodule update --init --recursive --remote
 
 development:
+	stow alacritty
+	stow bat
+	stow ccache
 	stow ctags
 	stow docker
-	stow efm-langserver
-	stow fzf
-	stow go
 	stow editorconfig
+	stow efm-langserver
 	stow fish
+	stow fzf
 	stow ghc
 	stow git
+	stow go
+	stow htop
 	stow jetbrains
 	stow less
-	stow htop
 	stow maven
 	stow npm
 	stow python
+	stow R
 	stow ripgrep
 	stow sh
-	stow systemd
 	stow ssh
+	stow systemd
 	stow tmux
 	stow vim
 .PHONY: development
@@ -50,6 +54,7 @@ desktop: development
 	stow wallpaper
 	stow waybar
 	stow zathura
+	stow zoom
 .PHONY: desktop
 
 hidpi:
