@@ -8,6 +8,7 @@ update-submodules:
 development:
 	stow ctags
 	stow docker
+	stow efm-langserver
 	stow fzf
 	stow go
 	stow editorconfig
@@ -20,6 +21,7 @@ development:
 	stow maven
 	stow npm
 	stow python
+	stow ripgrep
 	stow sh
 	stow systemd
 	stow ssh
@@ -28,21 +30,26 @@ development:
 .PHONY: development
 
 desktop: development
-	stow bspwm
 	stow chromium
 	stow dunst
 	stow fontconfig
+	stow gammastep
 	stow gtk
+	stow kanshi
 	stow mime
 	stow mpv
+	stow mako
 	stow pacman
 	stow polybar
 	stow psd
-	stow redshift
 	stow qt
+	stow redshift
 	stow retroarch
+	stow swappy
+	stow sway
+	stow swaylock
 	stow wallpaper
-	stow X
+	stow waybar
 	stow zathura
 .PHONY: desktop
 
