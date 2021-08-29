@@ -31,7 +31,6 @@ development:
 
 desktop: development
 	stow chromium
-	stow dunst
 	stow fontconfig
 	stow gammastep
 	stow gtk
