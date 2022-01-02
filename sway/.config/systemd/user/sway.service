@@ -10,7 +10,9 @@ Environment=LIBSEAT_BACKEND=logind
 # Magic variables that seem to be required to start sway via systemd
 Environment=XDG_CURRENT_DESKTOP=sway
 Environment=XDG_SESSION_TYPE=wayland
-ExecStart=/usr/bin/sway --verbose
+# The official nvidia drivers must be enabled to use optimus (on-demand GPU),
+# even though sway itself will use the intel GPU.
+ExecStart=/usr/bin/sway --verbose --unsupported-gpu
 
 [Install]
 WantedBy=default.target
