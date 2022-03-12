@@ -40,9 +40,6 @@ require('packer').startup(function()
   -- C / C++
   use 'octol/vim-cpp-enhanced-highlight'
 
-  -- Docker
-  use 'ekalinin/Dockerfile.vim'
-
   -- Fish
   use 'dag/vim-fish'
 
