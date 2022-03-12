@@ -5,6 +5,7 @@ PartOf=graphical-session.target
 After=graphical-session-pre.target
 
 [Service]
+# If we have NVIDIA Optimus, replace with /usr/bin/prime-run steam
 ExecStart=/usr/bin/steam
 ExecStop=/usr/bin/pkill -9 -F %h/.steampid
 
