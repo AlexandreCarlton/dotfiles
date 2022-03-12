@@ -47,6 +47,9 @@ require('packer').startup(function()
   use 'tpope/vim-git'
   vim.cmd 'autocmd Filetype gitcommit set spell'
 
+  -- GraphQL
+  use 'jparise/vim-graphql'
+
   -- i3
   use 'mboughaba/i3config.vim'
 
