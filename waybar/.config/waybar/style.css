@@ -10,7 +10,7 @@
 /* Applies to entire bar */
 #waybar {
 	/* `otf-font-awesome` is required to be installed for icons */
-	font-family: "Inter", "Font Awesome 5 Free", sans-serif;
+	font-family: "Inter", "Font Awesome 6 Free", sans-serif;
 	font-size: 13px;
 	background-color: #002b36;
 	color: #93a1a1;

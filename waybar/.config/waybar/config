@@ -1,6 +1,9 @@
 {
   // vim:ft=json5
   // vim:sw=2:ts=2:et:
+
+  // See style.css for the font used for the icons.
+
   "height": 30,
 
   "modules-left": [
@@ -25,7 +28,8 @@
     "format-icons": {
       "1": "",
       "2": "",
-      "3": ""
+      "3": "",
+      "4": "",
     }
   },
 
