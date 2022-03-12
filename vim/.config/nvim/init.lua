@@ -165,7 +165,7 @@ require('packer').startup(function()
         fold_open = "v",
         fold_closed = ">",
         -- use signs from LSP client
-        use_lsp_diagnostic_signs = true
+        use_diagnostic_signs = true
       }
     end
   } -- }}}
