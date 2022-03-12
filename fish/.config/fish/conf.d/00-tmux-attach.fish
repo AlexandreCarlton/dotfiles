@@ -4,6 +4,6 @@
 if ! set -q TMUX;
   and test "$TERM" != linux;
   and test "$TERMINAL_EMULATOR" != 'JetBrains-JediTerm'
-	# if the session 'alexandre' already exists, tmux attaches to it; otherwise, it creates a new one.
-  tmux new-session -A -s alexandre
+	# if the session named after the user already exists, tmux attaches to it; otherwise, it creates a new one.
+  tmux new-session -A -s "$USER"
 end
