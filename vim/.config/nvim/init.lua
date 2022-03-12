@@ -231,7 +231,7 @@ require('packer').startup(function()
     },
     sections = {
         lualine_a = {short_mode},
-        lualine_b = {'filename'}, -- no branch (too verbose)
+        lualine_b = { {'filename', file_status = true, path = 1 } }, -- no branch (too verbose)
         lualine_c = {'diff'},
         lualine_x = {'encoding', 'fileformat', 'filetype'},
         lualine_y = {'progress'},
