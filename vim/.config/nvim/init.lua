@@ -90,7 +90,7 @@ require('packer').startup(function()
 
   -- Completion {{{
 
-  -- Autocompleteion for quotes, parentheses, etc.
+  -- Autocompletion for quotes, parentheses, etc.
   use { 'raimondi/delimitMate', opt = true, event = 'InsertEnter' } --- {{{
   -- Turn on expansion of <Space>.
   vim.g.delimitMate_expand_cr = 1
@@ -101,52 +101,43 @@ require('packer').startup(function()
 
   -- LSP support
   use { 'neovim/nvim-lspconfig',  -- {{{
+    requires = {
+      { 'hrsh7th/cmp-nvim-lsp' },
+    },
     config = function()
-      require'lspconfig'.efm.setup { filetypes = {"sh", "Dockerfile", "yaml"} }
-      require'lspconfig'.gopls.setup {}
-      require'lspconfig'.pylsp.setup { cmd = { "pyls" } }
+      -- Add extra capabilities supported by nvim-cmp
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
+      capabilities = require'cmp_nvim_lsp'.update_capabilities(capabilities)
+      require'lspconfig'.efm.setup { filetypes = {"sh", "Dockerfile", "yaml"}, capbilities = capabilities }
+      require'lspconfig'.gopls.setup { capbilities = capabilities }
+      require'lspconfig'.pylsp.setup { cmd = { "pyls" }, capbilities = capabilities }
+      require'lspconfig'.tsserver.setup { capbilities = capabilities }
     end
   } -- }}}
 
   -- Autocompletion (recommended by nvim-lspconfig)
-  use { 'hrsh7th/nvim-compe', --- {{{
+  -- See https://github.com/neovim/nvim-lspconfig/wiki/Autocompletion
+  -- Note that this seems to disable teh default omnifunc.
+  use { 'hrsh7th/nvim-cmp', --- {{{
+    requires = {
+      { 'hrsh7th/cmp-buffer' }, -- source for buffer words
+      { 'hrsh7th/cmp-nvim-lsp' }, -- source for neovim's LSP
+      { 'hrsh7th/cmp-path' }, -- source for filesystem paths
+    },
     opt = true,
     event = 'InsertEnter',
-    requires = {'neovim/nvim-lspconfig'},
     config = function()
-      vim.o.completeopt = "menuone,noselect"
-      require'compe'.setup {
-        source = {
-          path = true,
-          buffer = true,
-          nvim_lsp = true,
-          nvim_lua = true,
+      require'cmp'.setup {
+        mapping = {
+          ['<Tab>'] = require'cmp'.mapping.select_next_item(),
+          ['<S-Tab>'] = require'cmp'.mapping.select_prev_item(),
+        },
+        sources = {
+          { name = 'buffer' },
+          { name = 'nvim_lsp' },
+          { name = 'path' },
         }
       }
-      -- (S-)Tab to cycle through suggestions
-      local t = function(str)
-        return vim.api.nvim_replace_termcodes(str, true, true, true)
-      end
-      local check_back_space = function()
-        local col = vim.fn.col('.') - 1
-        return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s')
-      end
-      _G.tab_complete = function()
-        if vim.fn.pumvisible() == 1 then
-          return t "<C-n>"
-        elseif check_back_space() then
-          return t "<Tab>"
-        else
-          return vim.fn['compe#complete']()
-        end
-      end
-      _G.s_tab_complete = function()
-        return vim.fn.pumvisible() == 1 and t "<C-p>" or t "<S-Tab>"
-      end
-      vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
-      vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
-      vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
-      vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
     end
   } -- }}}
 
