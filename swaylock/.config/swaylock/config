@@ -1,18 +1,8 @@
-# Requires swaylock-effects
-screenshots
-indicator
-effect-blur=10x4
-# clock
-
-# Transitiion
-fade-in=1
-# Only require password after 5s in case we auto-lock while watching something
-grace=5
-
 # Universal appearance
 font=Hack
 font-size=24
 line-uses-ring
+image=$HOME/Pictures/Wallpaper/BadAtMath.jpg
 
 # Default appearance
 ring-color=#073642
