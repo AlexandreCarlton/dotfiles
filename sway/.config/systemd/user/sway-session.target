@@ -10,3 +10,12 @@ Description=Sway Session
 BindsTo=graphical-session.target
 Requires=graphical-session-pre.target
 After=graphical-session-pre.target
+
+# Declare all services we want with sway here to:
+# - ease updates across systems (no need to re-stow)
+# - switch between DEs more easily
+Wants=kanshi.service
+Wants=mako.service
+Wants=swaybg@PikachuEevee.png.service
+Wants=swayidle.service
+Wants=waybar.service
