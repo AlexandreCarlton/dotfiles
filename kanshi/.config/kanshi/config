@@ -1,4 +1,9 @@
+# vim:ft=i3config:
 
+# To retrieve monitor info, run:
+#   weston-info
+
+# Dell machine + working at home with external monitor.
 profile working_from_home {
   output "Sharp Corporation 0x148D 0x00000000" position 0,0
   output "Samsung Electric Company S24D300 0x00005B45" position 1920,0
@@ -6,4 +11,16 @@ profile working_from_home {
   exec swaymsg workspace 1, move workspace to output '"Sharp Corporation 0x148D 0x00000000"'
   exec swaymsg workspace 2, move workspace to output '"Samsung Electric Company S24D300 0x00005B45"'
   exec swaymsg workspace 3, move workspace to output '"Samsung Electric Company S24D300 0x00005B45"'
+  exec swaymsg workspace 4, move workspace to output '"Samsung Electric Company S24D300 0x00005B45"'
+}
+
+# Dell machine + working with office external (4K) monitor.
+profile office {
+  output "Sharp Corporation 0x148D 0x00000000" position 0,0 scale 2
+  output "Dell Inc. DELL P2715Q GVDF873BCVZL" position 1920,0 scale 2
+
+  exec swaymsg workspace 1, move workspace to output '"Sharp Corporation 0x148D 0x00000000"'
+  exec swaymsg workspace 2, move workspace to output '"Dell Inc. DELL P2715Q GVDF873BCVZL"'
+  exec swaymsg workspace 3, move workspace to output '"Dell Inc. DELL P2715Q GVDF873BCVZL"'
+  exec swaymsg workspace 4, move workspace to output '"Dell Inc. DELL P2715Q GVDF873BCVZL"'
 }
