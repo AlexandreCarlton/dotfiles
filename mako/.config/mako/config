@@ -1,4 +1,5 @@
-font=Hack 8
+font=Hack 10
 background-color=#268bd2
 text-color=#fdf6e3
 border-color=#eee8d5
+default-timeout=5000
