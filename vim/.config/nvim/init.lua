@@ -45,16 +45,23 @@ require('packer').startup(function()
 
   -- Should provide _most_ of our syntax highlighting
   -- Anything else in this section is too esoteric.
-  -- use { 'nvim-treesitter/nvim-treesitter',
-  --   run = ':TSUpdate'
-  -- }
+  use { 'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate',
+    config = function()
+      require 'nvim-treesitter.configs'.setup {
+        ensure_installed = "all",
+        -- Install parsers in 'ensure_installed' synchronously (so we don't overload the machine)
+        sync_install = true,
+        highlight = {
+          -- Enable syntax highlighting
+          enable = true,
+        }
+      }
+    end
+  }
 
   -- Ansible
   use 'pearofducks/ansible-vim'
-
-  -- Git (syntax highlighting messages)
-  -- use 'tpope/vim-git'
-  -- vim.cmd 'autocmd Filetype gitcommit set spell'
 
   -- i3
   use 'mboughaba/i3config.vim'
