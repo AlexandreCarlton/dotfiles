@@ -30,73 +30,40 @@ vim.cmd [[ runtime! plugin/python_setup.vim ]]
 require('packer').startup(function()
   use 'wbthomason/packer.nvim'
 
+  -- {{{ Optimisations
   -- Speeds up loading of lua modules.
   -- Must be at the beginning to cover as many plugins as possible.
-  use { 'lewis6991/impatient',
+  use { 'lewis6991/impatient.nvim',
     config = function()
       -- replace with require'impatient'.enable_profile() to access :LuaCacheProfile
-      require'impatient'
+      require'impatient'.enable_profile()
     end
   }
+  --- }}}
 
-  -- When neovim 0.6 arrives we should move to treesitter
-  -- See https://github.com/nvim-treesitter/nvim-treesitter#supported-languages
   -- Languages (mainly Syntax) -- {{{
+
+  -- Should provide _most_ of our syntax highlighting
+  -- Anything else in this section is too esoteric.
+  -- use { 'nvim-treesitter/nvim-treesitter',
+  --   run = ':TSUpdate'
+  -- }
 
   -- Ansible
   use 'pearofducks/ansible-vim'
 
-  -- C / C++
-  use 'octol/vim-cpp-enhanced-highlight'
-
-  -- Fish
-  use 'dag/vim-fish'
-
   -- Git (syntax highlighting messages)
-  use 'tpope/vim-git'
-  vim.cmd 'autocmd Filetype gitcommit set spell'
-
-  -- GraphQL
-  use 'jparise/vim-graphql'
+  -- use 'tpope/vim-git'
+  -- vim.cmd 'autocmd Filetype gitcommit set spell'
 
   -- i3
   use 'mboughaba/i3config.vim'
-
-  -- JavaScript
-  use 'pangloss/vim-javascript'
-
-  -- JSON5 (json but allows comments)
-  use 'gutenye/json5.vim'
-
-  -- Kotlin
-  use 'udalov/kotlin-vim'
-
-  -- Markdown
-  use 'plasticboy/vim-markdown' -- {{{
-  vim.g.vim_markdown_folding_disabled=1
-  -- Set relevant files with markdown extensions to be MarkDown.
-  -- vim.call "au BufNewFile,BufRead *.md,*.mkd set filetype=markdown"
-  -- Spell check markdown files.
-  -- vim.call "autocmd FileType markdown set spell"
-  -- }}}
 
   -- Mediawiki
   use 'chikamichi/mediawiki.vim'
 
   -- Nginx
   use 'chr4/nginx.vim'
-
-  -- Python PEP-8 indenting
-  use 'hynek/vim-python-pep8-indent'
-
-  -- Rust
-  use 'rust-lang/rust.vim'
-
-  -- Terraform
-  use 'hashivim/vim-terraform'
-
-  -- Typescript
-  use 'leafgarland/typescript-vim'
 
   -- }}}
 
@@ -183,7 +150,6 @@ require('packer').startup(function()
   use { 'glepnir/lspsaga.nvim',
     config = function()
       require'lspsaga'.init_lsp_saga {
-        use_saga_diagnostic_sign = false,
         finder_action_keys = {
           open = '<cr>',
         },
