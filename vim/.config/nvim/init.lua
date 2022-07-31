@@ -30,6 +30,15 @@ vim.cmd [[ runtime! plugin/python_setup.vim ]]
 require('packer').startup(function()
   use 'wbthomason/packer.nvim'
 
+  -- Speeds up loading of lua modules.
+  -- Must be at the beginning to cover as many plugins as possible.
+  use { 'lewis6991/impatient',
+    config = function()
+      -- replace with require'impatient'.enable_profile() to access :LuaCacheProfile
+      require'impatient'
+    end
+  }
+
   -- When neovim 0.6 arrives we should move to treesitter
   -- See https://github.com/nvim-treesitter/nvim-treesitter#supported-languages
   -- Languages (mainly Syntax) -- {{{
