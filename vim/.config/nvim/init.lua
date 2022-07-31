@@ -183,9 +183,11 @@ require('packer').startup(function()
   use { 'glepnir/lspsaga.nvim',
     config = function()
       require'lspsaga'.init_lsp_saga {
+        use_saga_diagnostic_sign = false,
         finder_action_keys = {
           open = '<cr>',
-        }
+        },
+        max_preview_lines = 20,
       }
     end
   }
