@@ -5,6 +5,3 @@ Documentation=man:swayidle(1)
 [Service]
 ExecStart=/usr/bin/swayidle -d -w \
     timeout 300 swaylock
-
-[Install]
-WantedBy=sway-session.target

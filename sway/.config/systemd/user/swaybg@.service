@@ -4,6 +4,3 @@ Documentation=man:swaybg(1)
 
 [Service]
 ExecStart=/usr/bin/swaybg --output * --image %h/Pictures/Wallpaper/%I --mode fill
-
-[Install]
-WantedBy=sway-session.target

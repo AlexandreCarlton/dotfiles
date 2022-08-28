@@ -235,9 +235,5 @@ bindsym Print exec 'slurp | grim -g - - | swappy -f -'
 # Import all environment variables sway sets into systemd so other services can use it.
 include /etc/sway/config.d/*
 
-# Register that we've started sway so that we can start other things depending on it
-# This includes:
-#  - waybar (statusbar)
-#  - mako (TODO to ensure that takes precendence over other notification daemons if present, like dunst)
-#  - swaybg (wallpaper)
+# Register that we've started sway so that we can start other things depending on it.
 exec systemctl --user start sway-session.target

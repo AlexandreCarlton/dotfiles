@@ -5,6 +5,3 @@ PartOf=graphical-session.target
 
 [Service]
 ExecStart=/usr/bin/kanshi
-
-[Install]
-WantedBy=sway-session.target

@@ -13,9 +13,16 @@ After=graphical-session-pre.target
 
 # Declare all services we want with sway here to:
 # - ease updates across systems (no need to re-stow)
-# - switch between DEs more easily
+# - switch between DEs more easily (which may provided their own versions of
+#   the below).
+Wants=gammastep.service
 Wants=kanshi.service
 Wants=mako.service
+# Needed for VPN
+# Wants=nm-applet.service
 Wants=swaybg@PikachuEevee.png.service
 Wants=swayidle.service
+# We delay tmux so that it can import wayland variables so we can start
+# applications from the terminal
+Wants=tmux.service
 Wants=waybar.service
