@@ -1,0 +1,10 @@
+# To connect to VPNs, we need nm-applet up and running to prompt us a password.
+# Dumb, but I haven't found a nicer way around this.
+[Unit]
+Description=Network monitor and control GUI applet
+Documentation=man:nm-applet(1)
+PartOf=graphical-session.target
+After=graphical-session-pre.target
+
+[Service]
+ExecStart=/usr/bin/nm-applet
