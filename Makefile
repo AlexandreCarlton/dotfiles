@@ -39,14 +39,14 @@ desktop: development
 	stow gammastep
 	stow gtk
 	stow kanshi
+	stow mako
 	stow mime
 	stow mpv
-	stow mako
+	stow networkmanager
 	stow pacman
 	stow polybar
 	stow psd
 	stow qt
-	stow redshift
 	stow retroarch
 	stow swappy
 	stow sway
