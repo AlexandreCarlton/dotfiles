@@ -61,6 +61,8 @@ require('packer').startup(function()
           "kotlin",
           "lua",
           "make",
+          "markdown",
+          "markdown_inline",
           "proto",
           "python",
           "rust",
@@ -185,14 +187,21 @@ require('packer').startup(function()
 
   -- Nicer UI on top of LSP - keymapping is inspired by IntelliJ
   use { 'glepnir/lspsaga.nvim',
+    branch = 'main',
+    event = 'BufRead', -- Try 'LspAttach' in future as recommended in readme
+    opt = true,
     config = function()
-      require'lspsaga'.init_lsp_saga {
-        finder_action_keys = {
-          open = '<cr>',
-        },
-        max_preview_lines = 20,
+      require'lspsaga'.setup {
+        symbol_in_winbar = {
+          enable = false -- This provides a file/class/method at the top of the window.
+        }
       }
-    end
+    end,
+    requires = {
+      { "nvim-tree/nvim-web-devicons" },
+      -- Requires markdown and markdown_inline parser
+      { "nvim-treesitter/nvim-treesitter" }
+    }
   }
   vim.cmd [[
     " alt-enter to prompt suggestions
