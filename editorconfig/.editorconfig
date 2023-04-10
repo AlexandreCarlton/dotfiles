@@ -12,6 +12,11 @@ trim_trailing_whitespace = true
 indent_size = 2
 indent_style = tab
 
+# https://google.github.io/styleguide/cppguide.html
+[{*.c, *.h, *.cc, *.cpp, *.hpp}]
+indent_size = 2
+indent_style = space
+
 # https://google.github.io/styleguide/htmlcssguide.html
 [*.css]
 indent_size = 2
@@ -46,6 +51,10 @@ indent_style = space
 indent_style = space
 indent_size = 4
 continuation_indent_size = 8
+
+[*.html]
+indent_size = 2
+indent_style = space
 
 # https://google.github.io/styleguide/javaguide.html
 [*.java]
@@ -105,6 +114,11 @@ indent_style = space
 # https://google.github.io/styleguide/shell.xml
 [*.sh]
 indent_size = 2
+indent_style = space
+
+# https://github.com/alanmcruickshank/sqlfluff
+[*.sql]
+indent_size = 4
 indent_style = space
 
 # https://www.terraform.io/docs/language/syntax/style.html
