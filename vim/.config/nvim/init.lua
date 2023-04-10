@@ -111,13 +111,21 @@ require('packer').startup(function()
     config = function()
       -- Add extra capabilities supported by nvim-cmp
       local capabilities = vim.lsp.protocol.make_client_capabilities()
-      capabilities = require'cmp_nvim_lsp'.update_capabilities(capabilities)
+      capabilities = require'cmp_nvim_lsp'.default_capabilities(capabilities)
       require'lspconfig'.efm.setup { filetypes = {"sh", "Dockerfile", "yaml"}, capbilities = capabilities }
       require'lspconfig'.gopls.setup { capbilities = capabilities }
       require'lspconfig'.pylsp.setup { cmd = { "pyls" }, capbilities = capabilities }
       require'lspconfig'.tsserver.setup { capbilities = capabilities }
+      require'lspconfig'.rust_analyzer.setup { settings = { ['rust-analyzer'] = {} } }
     end
   } -- }}}
+
+  -- LSP progress to indicate why completions aren't yet active.
+  use { 'j-hui/fidget.nvim',
+   config = function()
+     require'fidget'.setup{}
+   end
+  }
 
   -- Autocompletion (recommended by nvim-lspconfig)
   -- See https://github.com/neovim/nvim-lspconfig/wiki/Autocompletion
@@ -125,7 +133,9 @@ require('packer').startup(function()
   use { 'hrsh7th/nvim-cmp', --- {{{
     requires = {
       { 'hrsh7th/cmp-buffer' }, -- source for buffer words
+      { 'hrsh7th/cmp-nvim-lua' }, -- source for neovim's Lua API
       { 'hrsh7th/cmp-nvim-lsp' }, -- source for neovim's LSP
+      { 'hrsh7th/cmp-nvim-lsp-signature-help' }, -- source for displaying function signatures
       { 'hrsh7th/cmp-path' }, -- source for filesystem paths
     },
     opt = true,
@@ -138,7 +148,9 @@ require('packer').startup(function()
         },
         sources = {
           { name = 'buffer' },
+          { name = 'nvim_lua' },
           { name = 'nvim_lsp' },
+          { name = 'nvim_lsp_signature_help' },
           { name = 'path' },
         }
       }
