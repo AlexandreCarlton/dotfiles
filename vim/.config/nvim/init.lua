@@ -49,7 +49,25 @@ require('packer').startup(function()
     run = ':TSUpdate',
     config = function()
       require 'nvim-treesitter.configs'.setup {
-        ensure_installed = "all",
+        ensure_installed = {
+          "bash",
+          "cpp",
+          "fish",
+          "go",
+          "java",
+          "javascript",
+          "json",
+          "json5",
+          "kotlin",
+          "lua",
+          "make",
+          "proto",
+          "python",
+          "rust",
+          "sql",
+          "terraform",
+          "typescript",
+        },
         -- Install parsers in 'ensure_installed' synchronously (so we don't overload the machine)
         sync_install = true,
         highlight = {
