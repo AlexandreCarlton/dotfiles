@@ -107,7 +107,7 @@ max_line_length = 79
 indent_size = 2
 indent_style = space
 
-[{BUILD,WORKSPACE}]
+[{BUILD,WORKSPACE,*.bzl,*.bazel}]
 indent_size = 4
 indent_style = space
 
