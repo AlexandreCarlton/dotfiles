@@ -163,7 +163,7 @@ require('packer').startup(function()
   -- }}}
 
   -- UI {{{
-  -- Solarized colorscheme
+  -- Colorscheme
   use 'lifepillar/vim-solarized8' -- {{{
   vim.o.termguicolors = true
   vim.o.background = 'dark'
@@ -184,7 +184,15 @@ require('packer').startup(function()
         use_diagnostic_signs = true
       }
     end
-  } -- }}}
+  }
+  vim.api.nvim_set_keymap("n", "<leader>xx", "<cmd>TroubleToggle<cr>", { silent = true, noremap = true })
+  vim.api.nvim_set_keymap("n", "<leader>xw", "<cmd>Trouble workspace_diagnostics<cr>", { silent = true, noremap = true })
+  vim.api.nvim_set_keymap("n", "<leader>xd", "<cmd>Trouble document_diagnostics<cr>", { silent = true, noremap = true })
+  vim.api.nvim_set_keymap("n", "<leader>xl", "<cmd>Trouble loclist<cr>", { silent = true, noremap = true })
+  vim.api.nvim_set_keymap("n", "<leader>xq", "<cmd>Trouble quickfix<cr>", { silent = true, noremap = true })
+  vim.api.nvim_set_keymap("n", "gR", "<cmd>Trouble lsp_references<cr>", { silent = true, noremap = true })
+  -- }}}
+
 
   -- Nicer UI on top of LSP - keymapping is inspired by IntelliJ
   use { 'glepnir/lspsaga.nvim',
@@ -208,7 +216,7 @@ require('packer').startup(function()
     " alt-enter to prompt suggestions
     nnoremap <a-cr> :Lspsaga code_action<cr>
     " ctrl-] to find definition/references
-    nnoremap <c-]> :Lspsaga lsp_finder<cr>
+    nnoremap <c-]> :Lspsaga goto_definition<cr>
     " shift-k to consult docs
     nnoremap K :Lspsaga hover_doc<cr>
     " <space>r to rename
@@ -291,7 +299,7 @@ require('packer').startup(function()
   end
   require'lualine'.setup {
     options = {
-      theme = 'solarized_dark',
+      theme = 'solarized',
       section_separators = {'', ''},
       component_separators = {'|', '|'},
       icons_enabled = false,
