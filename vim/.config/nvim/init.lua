@@ -114,9 +114,10 @@ require('packer').startup(function()
       -- Add extra capabilities supported by nvim-cmp
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities = require'cmp_nvim_lsp'.default_capabilities(capabilities)
+      require'lspconfig'.ccls.setup {}
       require'lspconfig'.efm.setup { filetypes = {"sh", "Dockerfile", "yaml"}, capbilities = capabilities }
       require'lspconfig'.gopls.setup { capbilities = capabilities }
-      require'lspconfig'.pylsp.setup { cmd = { "pyls" }, capbilities = capabilities }
+      require'lspconfig'.pylsp.setup { cmd = { "pylsp" }, capbilities = capabilities }
       require'lspconfig'.tsserver.setup { capbilities = capabilities }
       require'lspconfig'.rust_analyzer.setup { settings = { ['rust-analyzer'] = {} } }
     end
