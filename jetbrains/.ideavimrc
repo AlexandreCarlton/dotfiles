@@ -31,3 +31,6 @@ nnoremap <leader>/ :action FindInPath<cr>
 
 " easymotion/vim-sneak emulation
 nnoremap s :action AceAction<CR>
+
+# Go to class
+nnoremap <C-n> :action GotoClass<CR>
