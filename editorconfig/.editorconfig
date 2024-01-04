@@ -43,7 +43,7 @@ indent_style = tab
 indent_size = 2
 indent_style = space
 
-[*.graphql]
+[{*.graphql,*.graphqls,*.nadel}]
 indent_size = 2
 indent_style = space
 
