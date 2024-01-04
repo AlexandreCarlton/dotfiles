@@ -29,7 +29,7 @@
       "1": "",
       "2": "",
       "3": "",
-      "4": "",
+      "4": "",
     }
   },
 
@@ -37,7 +37,6 @@
   "battery": {
     "format": "{icon} {capacity}%",
     "format-icons": ["", "", "", "", ""],
-    "full-at": 98,
     "states": {
       "warning": 30,
       "critical": 15
