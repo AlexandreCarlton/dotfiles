@@ -134,6 +134,7 @@
 	# Automatically remove remote-tracking references that
 	# no longer exist on the remote (e.g. deleted branches).
 	prune = true
+	pruneTags = true
 [log]
 	# Show the date of commits in the reader's timezone.
 	date = local
