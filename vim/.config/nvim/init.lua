@@ -51,9 +51,16 @@ require('packer').startup(function()
       require 'nvim-treesitter.configs'.setup {
         ensure_installed = {
           "bash",
+          "c",
           "cpp",
+          "css",
+          "diff",
+          "dockerfile",
           "fish",
+          "gitcommit",
+          "git_rebase",
           "go",
+          "graphql",
           "java",
           "javascript",
           "json",
@@ -69,6 +76,8 @@ require('packer').startup(function()
           "sql",
           "terraform",
           "typescript",
+          "xml",
+          "yaml",
         },
         -- Install parsers in 'ensure_installed' synchronously (so we don't overload the machine)
         sync_install = true,
