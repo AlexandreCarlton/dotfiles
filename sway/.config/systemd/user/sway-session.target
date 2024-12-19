@@ -6,7 +6,6 @@
 
 [Unit]
 Description=Sway Session
-# BindsTo=sway.service // if sway dies, take down this target
 BindsTo=graphical-session.target
 Requires=graphical-session-pre.target
 After=graphical-session-pre.target
@@ -26,3 +25,5 @@ Wants=swayidle.service
 # applications from the terminal
 Wants=tmux.service
 Wants=waybar.service
+# Allow media keys to interact with things like Chromium
+Wants=playerctld.service

@@ -1,0 +1,10 @@
+[Unit]
+Description=Playerctl Daemon
+Documentation=man:playerctl(1)
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/playerctld daemon
+
+[Install]
+WantedBy=default.target
